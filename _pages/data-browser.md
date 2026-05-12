@@ -5,9 +5,9 @@ layout: single
 author_profile: false
 ---
 
-## Interactive Pan-Cancer Immune Exclusion Data
+## Interactive Pan-Cancer Data
 
-Explore key findings from the EpiBarrier study. This bar chart shows the CD8⁺ T-cell immune‑epithelial exclusion Z‑score across five representative cancer types. A more negative Z‑score indicates stronger active exclusion of CD8⁺ T cells from the tumor epithelial compartment.
+Explore key findings from the EpiBarrier study.
 
 <div id="zscore-chart" style="width:100%; height:500px;"></div>
 
