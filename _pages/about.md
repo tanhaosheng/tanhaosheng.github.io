@@ -21,4 +21,4 @@ redirect_from:
 
 ## Citation
 
-Tan H, et al. Active Immune-Epithelial Spatial Exclusion Is a Conserved Hallmark of Peripheral Epithelial Cancers. *Research Square* (preprint), 2026.
+Tan H, et al. EpiBarrier. *Research Square* (preprint), 2026.
