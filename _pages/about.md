@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Pan-Cancers Spatial Portal"
+title: "Pan-Cancers Spatial Transcriptomics"
 author_profile: true
 redirect_from: 
   - /about/
