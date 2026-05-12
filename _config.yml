@@ -17,18 +17,15 @@ url                      : https://tanhaosheng.github.io # The base hostname & p
                                                            # or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "tanhaosheng/tanhaosheng.github.io"
-
-# Site Author - The following control what appear as part of the author content on the side bar.
-#               If a field is blank the icon and link will not appear, otherwise it will be shown.
-#               Additional customization can be done by editing /_includes/author-profile.html
+  
 author:
   # Biographic information
   avatar           : "profile.png"
-  name             : "Your Sidebar Name"
+  name             : "Tan Haosheng"
   pronouns         : # example: "she/her"  
-  bio              : "Short biography for the left-hand sidebar"
-  location         : "Earth"
-  employer         : "Red Brick University"
+  bio              : "EpiBarrier Project · Pan-Cancer Spatial Transcriptomics"
+  location         : "Taizhou, Jiangsu, China"
+  employer         : "Nanjing Medical University"
   uri              : # URL
   email            : "tanhaosheng@163.com" 
 
