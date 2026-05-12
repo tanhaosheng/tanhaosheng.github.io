@@ -6,7 +6,7 @@ author_profile: false
 ---
 
 ## Interactive Pan-Cancer Data
-
+![Immune Hotspot Score]({{ site.baseurl }}/images/epibarrier.png)
 Explore key findings from the EpiBarrier study.
 
 <div id="zscore-chart" style="width:100%; height:500px;"></div>
