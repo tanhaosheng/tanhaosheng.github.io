@@ -52,8 +52,8 @@
             border-radius: 6px;
             font-size: 0.95rem;
         }
-        .form-row { display: flex; gap: 16px; }
-        .form-row .form-group { flex: 1; }
+        .form-row { display: flex; gap: 16px; flex-wrap: wrap; }
+        .form-row .form-group { flex: 1; min-width: 180px; }
         .btn {
             display: inline-block;
             padding: 12px 28px;
@@ -63,11 +63,16 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s;
+            text-decoration: none;
         }
         .btn-primary { background: var(--primary); color: white; }
         .btn-primary:hover { background: #2471a3; transform: translateY(-1px); }
         .btn-primary:disabled { background: #95a5a6; cursor: not-allowed; transform: none; }
         .btn-secondary { background: #ecf0f1; color: #2c3e50; margin-right: 10px; }
+        .btn-success { background: var(--success); color: white; }
+        .btn-success:hover { background: #219a52; transform: translateY(-1px); }
+        .btn-download { background: #2980b9; color: white; padding: 10px 20px; border-radius: 6px; font-weight: 600; }
+        .btn-download:hover { background: #2471a3; transform: translateY(-1px); }
         .result-card {
             background: #f0f8ff;
             border-left: 4px solid var(--primary);
@@ -116,6 +121,17 @@
             margin-top: 16px;
             font-size: 0.9rem;
         }
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin-top: 12px;
+            font-size: 0.85rem;
+        }
+        summary { cursor: pointer; font-weight: 600; color: #2980b9; margin-top: 12px; }
+        .inline-note { font-size: 0.9rem; color: #7f8c8d; margin-top: 12px; }
     </style>
 </head>
 <body>
@@ -130,6 +146,8 @@
 </div>
 
 <div class="container">
+
+    <!-- ==================== Card 1: Upload & Parameters ==================== -->
     <div class="card">
         <h2>🔬 Strict Permutation Test</h2>
         <p style="color:#7f8c8d;margin-bottom:20px;">
@@ -138,119 +156,17 @@
             avoiding false-positive exclusion signals caused by tissue regionalization.
         </p>
 
-        <div class="form-row">
-            <div class="form-group">
-                <label>📊 Upload Cell Data (CSV)</label>
-                <input type="file" id="dataFile" accept=".csv,.tsv,.txt">
-                <small style="color:#7f8c8d;">
-                    Required columns: <code>cell_id, x, y, group</code> (e.g., "High", "Low")
-                </small>
-<!-- ==================== 新增：数据准备区域 ==================== -->
-<div class="card">
-    <h2>📤 数据准备 (Xenium → CSV)</h2>
-    <p style="margin-bottom:12px;">
-        如果您尚未将 Xenium 输出数据转换为置换检验所需的 CSV 格式，可以使用下面的 R 脚本。
-        脚本将读取 <code>cells.parquet</code> 和 <code>cell_feature_matrix.h5</code>，按 EpiBarrier 签名划分 High/Low 组，并输出标准 CSV 文件。
-    </p>
-    
-    <div style="display:flex;gap:12px;margin-bottom:16px;">
-        <a class="btn" href="xenium_to_csv.R" download style="background:#27ae60;color:white;padding:10px 20px;border-radius:6px;text-decoration:none;font-weight:600;">
-            ⬇ 下载 R 脚本
-        </a>
-        <a class="btn" href="breast_prime_5k.csv" download style="background:#2980b9;color:white;padding:10px 20px;border-radius:6px;text-decoration:none;font-weight:600;">
-            ⬇ 下载示例 CSV
-        </a>
-    </div>
-    
-    <details>
-        <summary style="cursor:pointer;font-weight:600;color:#2980b9;">📋 查看 R 代码</summary>
-        <pre style="background:#2c3e50;color:#ecf0f1;padding:16px;border-radius:6px;overflow-x:auto;margin-top:12px;font-size:0.85rem;">
-# 文件：xenium_to_csv.R
-# 功能：将 Xenium 输出转换为置换检验输入 CSV
-# 用法：修改 input_dir 和 output_csv，然后在 R 中运行 source("xenium_to_csv.R")
-
-library(arrow)
-library(Matrix)
-library(hdf5r)
-library(Seurat)   # 用于 Read10X_h5
-
-# ========== 修改这里的路径 ==========
-input_dir  <- "/path/to/your/xenium/output"
-output_csv <- "epibarrier_high_low.csv"
-# ====================================
-
-dir.create(dirname(output_csv), showWarnings = FALSE, recursive = TRUE)
-
-# 1. 读取坐标
-cat("读取坐标...\n")
-all_files <- list.files(input_dir, full.names = TRUE)
-cells_file <- grep("cells.*\\.parquet", all_files, value = TRUE)[1]
-cells <- read_parquet(cells_file)
-
-x_col <- grep("^(x_centroid|x_location|x)$", colnames(cells), value = TRUE)[1]
-y_col <- grep("^(y_centroid|y_location|y)$", colnames(cells), value = TRUE)[1]
-id_col <- grep("cell_id", colnames(cells), value = TRUE)[1]
-
-# 2. 读取表达矩阵
-h5_files <- list.files(input_dir, pattern = "\\.h5$", full.names = TRUE)
-h5_file <- h5_files[!grepl("molecule_info", h5_files, ignore.case = TRUE)][1]
-raw <- Read10X_h5(h5_file)
-if (is.list(raw)) {
-    ge_idx <- grep("Gene Expression", names(raw), ignore.case = TRUE)
-    counts <- if (length(ge_idx) > 0) raw[[ge_idx[1]]] else raw[[which.max(sapply(raw, nrow))]]
-} else counts <- raw
-counts <- as(counts, "dgCMatrix")
-
-# 3. 统一 barcode
-clean_barcodes <- function(x) { sub("-1$", "", gsub("\\s", "", x)) }
-coords_df <- data.frame(
-    cell_id = clean_barcodes(cells[[id_col]]),
-    x = cells[[x_col]], y = cells[[y_col]]
-)
-matrix_barcodes <- clean_barcodes(colnames(counts))
-common <- intersect(matrix_barcodes, coords_df$cell_id)
-coords_df <- coords_df[coords_df$cell_id %in% common, ]
-counts <- counts[, match(common, matrix_barcodes)]
-colnames(counts) <- common
-
-# 4. 对数标准化
-lib <- colSums(counts)
-norm <- counts %*% Diagonal(x = 10000 / lib)
-norm <- as(norm, "dgCMatrix")
-norm@x <- log1p(norm@x)
-rm(counts, lib); gc()
-
-# 5. EpiBarrier 评分
-epi_genes <- c("CDH1","DSP","KRT8","KRT19","KRT7","EPCAM","FGFBP1")
-available <- intersect(epi_genes, rownames(norm))
-epi_score <- colMeans(norm[available, , drop = FALSE])
-
-# 6. High/Low 分组
-group_label <- ifelse(epi_score > median(epi_score), "High", "Low")
-
-# 7. 输出 CSV
-output_df <- data.frame(
-    cell_id = coords_df$cell_id,
-    x = coords_df$x,
-    y = coords_df$y,
-    group = group_label
-)
-write.csv(output_df, output_csv, row.names = FALSE)
-cat(sprintf("\n✅ 成功！输出文件：%s\n  细胞数：%d (High: %d, Low: %d)\n",
-    output_csv, nrow(output_df), sum(group_label=="High"), sum(group_label=="Low")))
-        </pre>
-    </details>
-    <p style="font-size:0.9rem;color:#7f8c8d;margin-top:12px;">
-        ⚙️ 运行前请确保已安装 R 包：<code>install.packages(c("arrow","Matrix","hdf5r","Seurat","R.utils"))</code>
-    </p>
-</div>
-                
-            </div>
+        <div class="form-group">
+            <label>📊 Upload Cell Data (CSV)</label>
+            <input type="file" id="dataFile" accept=".csv,.tsv,.txt">
+            <small style="color:#7f8c8d;">
+                Required columns: <code>cell_id, x, y, group</code> (e.g., "High", "Low")
+            </small>
         </div>
 
         <div class="form-row">
             <div class="form-group">
-                <label>📏 Neighborhood Radius (μm)</label>
+                <label>📏 Neighborhood Radius (&mu;m)</label>
                 <input type="number" id="radius" value="50" min="10" max="200" step="10">
             </div>
             <div class="form-group">
@@ -275,6 +191,109 @@ cat(sprintf("\n✅ 成功！输出文件：%s\n  细胞数：%d (High: %d, Low: 
         </div>
     </div>
 
+    <!-- ==================== Card 2: Data Preparation (Xenium → CSV) ==================== -->
+    <div class="card">
+        <h2>📤 Data Preparation: Xenium → CSV</h2>
+        <p style="margin-bottom:12px;">
+            If you have not yet converted your Xenium output into the CSV format required by this tool,
+            use the R script below. It reads <code>cells.parquet</code> and <code>cell_feature_matrix.h5</code>,
+            computes the EpiBarrier signature, splits cells into High/Low groups, and produces a standard CSV file.
+        </p>
+
+        <div style="display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap;">
+            <a class="btn btn-success" href="xenium_to_csv.R" download>
+                ⬇ Download R Script
+            </a>
+            <a class="btn btn-download" href="breast_prime_5k.csv" download>
+                ⬇ Download Example CSV
+            </a>
+        </div>
+
+        <details>
+            <summary>📋 View R Source Code</summary>
+            <pre>
+# File: xenium_to_csv.R
+# Purpose: Convert Xenium output to permutation-test-ready CSV
+# Usage: Modify input_dir and output_csv below, then run in R:
+#        source("xenium_to_csv.R")
+
+library(arrow)
+library(Matrix)
+library(hdf5r)
+library(Seurat)   # for Read10X_h5
+
+# ========== MODIFY THESE PATHS ==========
+input_dir  <- "/path/to/your/xenium/output"
+output_csv <- "epibarrier_high_low.csv"
+# ========================================
+
+dir.create(dirname(output_csv), showWarnings = FALSE, recursive = TRUE)
+
+# 1. Read coordinates
+cat("Reading coordinates...\n")
+all_files <- list.files(input_dir, full.names = TRUE)
+cells_file <- grep("cells.*\\.parquet", all_files, value = TRUE)[1]
+cells <- read_parquet(cells_file)
+
+x_col <- grep("^(x_centroid|x_location|x)$", colnames(cells), value = TRUE)[1]
+y_col <- grep("^(y_centroid|y_location|y)$", colnames(cells), value = TRUE)[1]
+id_col <- grep("cell_id", colnames(cells), value = TRUE)[1]
+
+# 2. Read expression matrix
+h5_files <- list.files(input_dir, pattern = "\\.h5$", full.names = TRUE)
+h5_file <- h5_files[!grepl("molecule_info", h5_files, ignore.case = TRUE)][1]
+raw <- Read10X_h5(h5_file)
+if (is.list(raw)) {
+    ge_idx <- grep("Gene Expression", names(raw), ignore.case = TRUE)
+    counts <- if (length(ge_idx) > 0) raw[[ge_idx[1]]] else raw[[which.max(sapply(raw, nrow))]]
+} else counts <- raw
+counts <- as(counts, "dgCMatrix")
+
+# 3. Harmonise barcodes
+clean_barcodes <- function(x) { sub("-1$", "", gsub("\\s", "", x)) }
+coords_df <- data.frame(
+    cell_id = clean_barcodes(cells[[id_col]]),
+    x = cells[[x_col]], y = cells[[y_col]]
+)
+matrix_barcodes <- clean_barcodes(colnames(counts))
+common <- intersect(matrix_barcodes, coords_df$cell_id)
+coords_df <- coords_df[coords_df$cell_id %in% common, ]
+counts <- counts[, match(common, matrix_barcodes)]
+colnames(counts) <- common
+
+# 4. Log-normalise
+lib <- colSums(counts)
+norm <- counts %*% Diagonal(x = 10000 / lib)
+norm <- as(norm, "dgCMatrix")
+norm@x <- log1p(norm@x)
+rm(counts, lib); gc()
+
+# 5. EpiBarrier score
+epi_genes <- c("CDH1","DSP","KRT8","KRT19","KRT7","EPCAM","FGFBP1")
+available <- intersect(epi_genes, rownames(norm))
+epi_score <- colMeans(norm[available, , drop = FALSE])
+
+# 6. High/Low grouping
+group_label <- ifelse(epi_score > median(epi_score), "High", "Low")
+
+# 7. Write CSV
+output_df <- data.frame(
+    cell_id = coords_df$cell_id,
+    x = coords_df$x,
+    y = coords_df$y,
+    group = group_label
+)
+write.csv(output_df, output_csv, row.names = FALSE)
+cat(sprintf("\n✅ Done! Output: %s\n   Cells: %d (High: %d, Low: %d)\n",
+    output_csv, nrow(output_df), sum(group_label=="High"), sum(group_label=="Low")))
+            </pre>
+        </details>
+        <p class="inline-note">
+            ⚙️ Prerequisites: <code>install.packages(c("arrow","Matrix","hdf5r","Seurat","R.utils"))</code>
+        </p>
+    </div>
+
+    <!-- ==================== Results Section ==================== -->
     <div id="resultsContainer" style="display:none;">
         <div class="card">
             <h2>📋 Results Summary</h2>
@@ -300,12 +319,15 @@ cat(sprintf("\n✅ 成功！输出文件：%s\n  细胞数：%d (High: %d, Low: 
 
         <div class="method-note">
             <strong>📝 Interpretation:</strong><br>
-            <strong>Z &lt; 0 &amp; P &lt; 0.05</strong> → <span class="active-exclusion">Active Exclusion</span> (real CD8⁺ count is significantly lower than random expectation)<br>
-            <strong>Z &gt; 0 &amp; P &gt; 0.95</strong> → <span class="no-exclusion">Co-localization / "Permissive but Impotent"</span> (real CD8⁺ count is significantly higher than random expectation)<br>
+            <strong>Z &lt; 0 &amp; P &lt; 0.05</strong> → <span class="active-exclusion">Active Exclusion</span>
+            (real CD8⁺ count significantly lower than random expectation)<br>
+            <strong>Z &gt; 0 &amp; P &gt; 0.95</strong> → <span class="no-exclusion">Co-localisation / "Permissive but Impotent"</span>
+            (real CD8⁺ count significantly higher than random expectation)<br>
             <strong>Otherwise</strong> → No significant spatial deviation<br><br>
             <em>Reference: Tan et al., "Unbiased spatial transcriptomic screening reveals dual-axis immune exclusion..." (2026).</em>
         </div>
     </div>
+
 </div>
 
 <script>
@@ -315,13 +337,12 @@ cat(sprintf("\n✅ 成功！输出文件：%s\n  细胞数：%d (High: %d, Low: 
 
 let uploadedData = null;
 
-// ---- 加载示例数据 ----
+// ---- Load example data ----
 function loadExample() {
-    // 生成模拟数据（1000个上皮细胞，2000个CD8 T细胞）
     const nEpi = 1000, nCD8 = 2000;
     const rows = [];
-    
-    // 高屏障组上皮细胞（集中在组织中心，周围CD8少）
+
+    // High-barrier epithelial cells (centre, fewer CD8 around)
     for (let i = 0; i < nEpi/2; i++) {
         rows.push({
             cell_id: `epi_high_${i}`,
@@ -331,7 +352,7 @@ function loadExample() {
             type: 'epithelial'
         });
     }
-    // 低屏障组上皮细胞（分布在组织边缘，周围CD8多）
+    // Low-barrier epithelial cells (periphery, more CD8 around)
     for (let i = 0; i < nEpi/2; i++) {
         const angle = Math.random() * 2 * Math.PI;
         const dist = 600 + Math.random() * 400;
@@ -343,7 +364,7 @@ function loadExample() {
             type: 'epithelial'
         });
     }
-    // CD8 T细胞（均匀分布）
+    // CD8 T cells (uniform)
     for (let i = 0; i < nCD8; i++) {
         rows.push({
             cell_id: `cd8_${i}`,
@@ -363,23 +384,22 @@ function loadExample() {
     const dataTransfer = new DataTransfer();
     dataTransfer.items.add(file);
     document.getElementById('dataFile').files = dataTransfer.files;
-    
+
     uploadedData = rows;
     document.getElementById('status').innerHTML = '✅ Example data loaded. Ready to run.';
 }
 
-// ---- 解析上传的CSV文件 ----
+// ---- Parse uploaded CSV ----
 document.getElementById('dataFile').addEventListener('change', function(e) {
     const file = e.target.files[0];
     if (!file) return;
-    
+
     const reader = new FileReader();
     reader.onload = function(event) {
         const text = event.target.result;
         const lines = text.trim().split('\n');
         const headers = lines[0].toLowerCase().split(',').map(h => h.trim());
-        
-        // 检查必需列
+
         const requiredCols = ['cell_id', 'x', 'y', 'group'];
         const missingCols = requiredCols.filter(c => !headers.some(h => h.includes(c)));
         if (missingCols.length > 0) {
@@ -387,7 +407,6 @@ document.getElementById('dataFile').addEventListener('change', function(e) {
             return;
         }
 
-        // 定位列索引
         const idxX = headers.findIndex(h => h === 'x' || h === 'x_centroid' || h === 'x_location');
         const idxY = headers.findIndex(h => h === 'y' || h === 'y_centroid' || h === 'y_location');
         const idxGroup = headers.findIndex(h => h === 'group');
@@ -402,8 +421,7 @@ document.getElementById('dataFile').addEventListener('change', function(e) {
             if (isNaN(x) || isNaN(y)) continue;
             uploadedData.push({
                 cell_id: idxId >= 0 ? cols[idxId].trim() : `cell_${i}`,
-                x: x,
-                y: y,
+                x: x, y: y,
                 group: cols[idxGroup].trim()
             });
         }
@@ -412,12 +430,7 @@ document.getElementById('dataFile').addEventListener('change', function(e) {
     reader.readAsText(file);
 });
 
-// ---- 计算欧氏距离 ----
-function euclideanDist(a, b) {
-    return Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2);
-}
-
-// ---- 核心：严格置换检验 ----
+// ---- Core: Strict permutation test ----
 function runPermutationTest() {
     if (!uploadedData || uploadedData.length === 0) {
         alert('Please upload data or load the example dataset first.');
@@ -426,14 +439,12 @@ function runPermutationTest() {
 
     const radius = parseFloat(document.getElementById('radius').value);
     const nPerm = parseInt(document.getElementById('nPerm').value);
-    const k = parseInt(document.getElementById('knn').value);
 
     document.getElementById('runBtn').disabled = true;
     document.getElementById('progressContainer').style.display = 'block';
     document.getElementById('progressBar').style.width = '0%';
     document.getElementById('status').innerHTML = '🔄 Running permutation test...';
 
-    // 分离上皮细胞和CD8 T细胞
     const epithelialCells = uploadedData.filter(d => d.group !== 'CD8' && d.group !== 'cd8');
     const cd8Cells = uploadedData.filter(d => d.group === 'CD8' || d.group === 'cd8');
 
@@ -448,27 +459,22 @@ function runPermutationTest() {
         return;
     }
 
-    // 构建CD8坐标数组用于快速距离计算
     const cd8Coords = cd8Cells.map(c => [c.x, c.y]);
 
-    // 为每个上皮细胞计算邻域内CD8数量
     function computeNeighborCD8Counts(epiSubset) {
         return epiSubset.map(epi => {
             let count = 0;
             for (let j = 0; j < cd8Coords.length; j++) {
                 const dx = epi.x - cd8Coords[j][0];
                 const dy = epi.y - cd8Coords[j][1];
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist <= radius) count++;
+                if (Math.sqrt(dx * dx + dy * dy) <= radius) count++;
             }
             return count;
         });
     }
 
-    // 获取所有分组
     const groups = [...new Set(epithelialCells.map(d => d.group))];
-    
-    // 真实CD8计数
+
     const realCountsByGroup = {};
     groups.forEach(g => {
         const subset = epithelialCells.filter(d => d.group === g);
@@ -479,35 +485,29 @@ function runPermutationTest() {
         };
     });
 
-    // 执行置换检验
     const permResults = {};
     groups.forEach(g => { permResults[g] = { permMeans: [] }; });
 
     const totalEpi = epithelialCells.length;
     const allEpiIndices = Array.from({length: totalEpi}, (_, i) => i);
 
-    // 使用setTimeout避免阻塞UI
     setTimeout(() => {
         for (let p = 0; p < nPerm; p++) {
-            // 随机抽取等量上皮细胞
             const shuffled = [...allEpiIndices].sort(() => Math.random() - 0.5);
-            
+
             groups.forEach(g => {
                 const nGroup = realCountsByGroup[g].cells;
                 const permIndices = shuffled.slice(0, nGroup);
                 const permSubset = permIndices.map(idx => epithelialCells[idx]);
                 const counts = computeNeighborCD8Counts(permSubset);
-                const permMean = counts.reduce((a,b) => a+b, 0) / counts.length;
-                permResults[g].permMeans.push(permMean);
+                permResults[g].permMeans.push(counts.reduce((a,b) => a+b, 0) / counts.length);
             });
 
-            // 更新进度条
             if (p % 5 === 0) {
                 document.getElementById('progressBar').style.width = `${(p / nPerm) * 100}%`;
             }
         }
 
-        // 计算Z值和P值
         const finalResults = groups.map(g => {
             const realMean = realCountsByGroup[g].realMean;
             const permMeans = permResults[g].permMeans;
@@ -520,7 +520,7 @@ function runPermutationTest() {
             if (Z < 0 && P < 0.05) {
                 conclusion = '<span class="active-exclusion">Active Exclusion</span>';
             } else if (Z > 0 && P > 0.95) {
-                conclusion = '<span class="no-exclusion">Co-localization</span>';
+                conclusion = '<span class="no-exclusion">Co-localisation</span>';
             } else {
                 conclusion = 'No significant deviation';
             }
@@ -537,7 +537,6 @@ function runPermutationTest() {
             };
         });
 
-        // 显示结果表格
         const tbody = document.getElementById('resultsBody');
         tbody.innerHTML = finalResults.map(r => `
             <tr>
@@ -550,7 +549,6 @@ function runPermutationTest() {
             </tr>
         `).join('');
 
-        // 生成Plotly图
         const traces = [];
         const colors = ['#e74c3c', '#3498db', '#2ecc71', '#f39c12', '#9b59b6', '#1abc9c'];
         finalResults.forEach((r, idx) => {
@@ -565,7 +563,7 @@ function runPermutationTest() {
             traces.push({
                 type: 'scatter',
                 x: [r.realMeanNum, r.realMeanNum],
-                y: [0, Math.max(...r.permMeans.map(() => 1))],
+                y: [0, 2],
                 mode: 'lines',
                 name: `${r.group} (Real)`,
                 line: { color: colors[idx % colors.length], width: 3, dash: 'dash' }
@@ -574,7 +572,7 @@ function runPermutationTest() {
 
         const layout = {
             title: 'Permutation Distribution by Group',
-            xaxis: { title: 'Mean CD8⁺ T cells in neighborhood' },
+            xaxis: { title: 'Mean CD8⁺ T cells in neighbourhood' },
             yaxis: { title: 'Frequency' },
             barmode: 'overlay',
             font: { size: 12 }
