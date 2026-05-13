@@ -145,6 +145,106 @@
                 <small style="color:#7f8c8d;">
                     Required columns: <code>cell_id, x, y, group</code> (e.g., "High", "Low")
                 </small>
+<!-- ==================== 新增：数据准备区域 ==================== -->
+<div class="card">
+    <h2>📤 数据准备 (Xenium → CSV)</h2>
+    <p style="margin-bottom:12px;">
+        如果您尚未将 Xenium 输出数据转换为置换检验所需的 CSV 格式，可以使用下面的 R 脚本。
+        脚本将读取 <code>cells.parquet</code> 和 <code>cell_feature_matrix.h5</code>，按 EpiBarrier 签名划分 High/Low 组，并输出标准 CSV 文件。
+    </p>
+    
+    <div style="display:flex;gap:12px;margin-bottom:16px;">
+        <a class="btn" href="xenium_to_csv.R" download style="background:#27ae60;color:white;padding:10px 20px;border-radius:6px;text-decoration:none;font-weight:600;">
+            ⬇ 下载 R 脚本
+        </a>
+        <a class="btn" href="breast_prime_5k.csv" download style="background:#2980b9;color:white;padding:10px 20px;border-radius:6px;text-decoration:none;font-weight:600;">
+            ⬇ 下载示例 CSV
+        </a>
+    </div>
+    
+    <details>
+        <summary style="cursor:pointer;font-weight:600;color:#2980b9;">📋 查看 R 代码</summary>
+        <pre style="background:#2c3e50;color:#ecf0f1;padding:16px;border-radius:6px;overflow-x:auto;margin-top:12px;font-size:0.85rem;">
+# 文件：xenium_to_csv.R
+# 功能：将 Xenium 输出转换为置换检验输入 CSV
+# 用法：修改 input_dir 和 output_csv，然后在 R 中运行 source("xenium_to_csv.R")
+
+library(arrow)
+library(Matrix)
+library(hdf5r)
+library(Seurat)   # 用于 Read10X_h5
+
+# ========== 修改这里的路径 ==========
+input_dir  <- "/path/to/your/xenium/output"
+output_csv <- "epibarrier_high_low.csv"
+# ====================================
+
+dir.create(dirname(output_csv), showWarnings = FALSE, recursive = TRUE)
+
+# 1. 读取坐标
+cat("读取坐标...\n")
+all_files <- list.files(input_dir, full.names = TRUE)
+cells_file <- grep("cells.*\\.parquet", all_files, value = TRUE)[1]
+cells <- read_parquet(cells_file)
+
+x_col <- grep("^(x_centroid|x_location|x)$", colnames(cells), value = TRUE)[1]
+y_col <- grep("^(y_centroid|y_location|y)$", colnames(cells), value = TRUE)[1]
+id_col <- grep("cell_id", colnames(cells), value = TRUE)[1]
+
+# 2. 读取表达矩阵
+h5_files <- list.files(input_dir, pattern = "\\.h5$", full.names = TRUE)
+h5_file <- h5_files[!grepl("molecule_info", h5_files, ignore.case = TRUE)][1]
+raw <- Read10X_h5(h5_file)
+if (is.list(raw)) {
+    ge_idx <- grep("Gene Expression", names(raw), ignore.case = TRUE)
+    counts <- if (length(ge_idx) > 0) raw[[ge_idx[1]]] else raw[[which.max(sapply(raw, nrow))]]
+} else counts <- raw
+counts <- as(counts, "dgCMatrix")
+
+# 3. 统一 barcode
+clean_barcodes <- function(x) { sub("-1$", "", gsub("\\s", "", x)) }
+coords_df <- data.frame(
+    cell_id = clean_barcodes(cells[[id_col]]),
+    x = cells[[x_col]], y = cells[[y_col]]
+)
+matrix_barcodes <- clean_barcodes(colnames(counts))
+common <- intersect(matrix_barcodes, coords_df$cell_id)
+coords_df <- coords_df[coords_df$cell_id %in% common, ]
+counts <- counts[, match(common, matrix_barcodes)]
+colnames(counts) <- common
+
+# 4. 对数标准化
+lib <- colSums(counts)
+norm <- counts %*% Diagonal(x = 10000 / lib)
+norm <- as(norm, "dgCMatrix")
+norm@x <- log1p(norm@x)
+rm(counts, lib); gc()
+
+# 5. EpiBarrier 评分
+epi_genes <- c("CDH1","DSP","KRT8","KRT19","KRT7","EPCAM","FGFBP1")
+available <- intersect(epi_genes, rownames(norm))
+epi_score <- colMeans(norm[available, , drop = FALSE])
+
+# 6. High/Low 分组
+group_label <- ifelse(epi_score > median(epi_score), "High", "Low")
+
+# 7. 输出 CSV
+output_df <- data.frame(
+    cell_id = coords_df$cell_id,
+    x = coords_df$x,
+    y = coords_df$y,
+    group = group_label
+)
+write.csv(output_df, output_csv, row.names = FALSE)
+cat(sprintf("\n✅ 成功！输出文件：%s\n  细胞数：%d (High: %d, Low: %d)\n",
+    output_csv, nrow(output_df), sum(group_label=="High"), sum(group_label=="Low")))
+        </pre>
+    </details>
+    <p style="font-size:0.9rem;color:#7f8c8d;margin-top:12px;">
+        ⚙️ 运行前请确保已安装 R 包：<code>install.packages(c("arrow","Matrix","hdf5r","Seurat","R.utils"))</code>
+    </p>
+</div>
+                
             </div>
         </div>
 
