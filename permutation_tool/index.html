@@ -1,1 +1,495 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EpiExclusion | Strict Permutation Test</title>
+    <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+    <style>
+        :root {
+            --primary: #2980b9;
+            --danger: #e74c3c;
+            --success: #27ae60;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --border: #dee2e6;
+            --text: #2c3e50;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        .navbar {
+            background: linear-gradient(135deg, #1a252f, #2c3e50);
+            color: white;
+            padding: 16px 40px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .navbar h1 { font-size: 1.4rem; font-weight: 600; }
+        .navbar a { color: #bdc3c7; text-decoration: none; font-size: 0.9rem; }
+        .navbar a:hover { color: white; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 30px 20px; }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+        }
+        .card h2 { font-size: 1.2rem; margin-bottom: 16px; color: #1a252f; }
+        .form-group { margin-bottom: 16px; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 0.9rem; }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.95rem;
+        }
+        .form-row { display: flex; gap: 16px; }
+        .form-row .form-group { flex: 1; }
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover { background: #2471a3; transform: translateY(-1px); }
+        .btn-primary:disabled { background: #95a5a6; cursor: not-allowed; transform: none; }
+        .btn-secondary { background: #ecf0f1; color: #2c3e50; margin-right: 10px; }
+        .result-card {
+            background: #f0f8ff;
+            border-left: 4px solid var(--primary);
+            padding: 16px 20px;
+            margin: 16px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .result-card.significant {
+            background: #fef9e7;
+            border-left-color: var(--danger);
+        }
+        .result-card span { font-weight: 700; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+        }
+        th, td {
+            padding: 10px 14px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9rem;
+        }
+        th { background: #f1f3f5; font-weight: 600; }
+        .active-exclusion { color: var(--danger); font-weight: 700; }
+        .no-exclusion { color: var(--success); font-weight: 700; }
+        #status { margin-top: 12px; font-size: 0.9rem; color: #7f8c8d; }
+        .progress-bar {
+            height: 6px;
+            background: #ecf0f1;
+            border-radius: 3px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+        .progress-bar-inner {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 3px;
+            transition: width 0.3s;
+        }
+        .method-note {
+            background: #fef9e7;
+            border: 1px solid #f9e79f;
+            border-radius: 6px;
+            padding: 14px 18px;
+            margin-top: 16px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <h1>🧬 EpiExclusion Portal</h1>
+    <a href="../">Home</a>
+    <a href="../data_browser/">Data Browser</a>
+    <a href="../permutation_tool/" style="color:white;font-weight:700;">Permutation Test</a>
+    <a href="../prognosis_calculator/">Prognosis Calculator</a>
+    <a href="https://github.com/tanhaosheng/EpiExclusion" target="_blank">GitHub</a>
+</div>
+
+<div class="container">
+    <div class="card">
+        <h2>🔬 Strict Permutation Test</h2>
+        <p style="color:#7f8c8d;margin-bottom:20px;">
+            This tool implements the <strong>strict permutation test</strong> described in our manuscript.
+            It keeps all cell spatial coordinates unchanged and only shuffles group labels,
+            avoiding false-positive exclusion signals caused by tissue regionalization.
+        </p>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>📊 Upload Cell Data (CSV)</label>
+                <input type="file" id="dataFile" accept=".csv,.tsv,.txt">
+                <small style="color:#7f8c8d;">
+                    Required columns: <code>cell_id, x, y, group</code> (e.g., "High", "Low")
+                </small>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>📏 Neighborhood Radius (μm)</label>
+                <input type="number" id="radius" value="50" min="10" max="200" step="10">
+            </div>
+            <div class="form-group">
+                <label>🔢 Number of Permutations</label>
+                <input type="number" id="nPerm" value="20" min="10" max="1000" step="10">
+            </div>
+            <div class="form-group">
+                <label>📐 k-Nearest Neighbors</label>
+                <input type="number" id="knn" value="50" min="10" max="200" step="10">
+            </div>
+        </div>
+
+        <button class="btn btn-primary" id="runBtn" onclick="runPermutationTest()">
+            ▶ Run Permutation Test
+        </button>
+        <button class="btn btn-secondary" onclick="loadExample()">
+            📥 Load Example Data
+        </button>
+        <span id="status"></span>
+        <div class="progress-bar" id="progressContainer" style="display:none;">
+            <div class="progress-bar-inner" id="progressBar" style="width:0%;"></div>
+        </div>
+    </div>
+
+    <div id="resultsContainer" style="display:none;">
+        <div class="card">
+            <h2>📋 Results Summary</h2>
+            <table id="resultsTable">
+                <thead>
+                    <tr>
+                        <th>Group</th>
+                        <th>Real Mean CD8⁺ T cells</th>
+                        <th>Permuted Mean</th>
+                        <th>Z-score</th>
+                        <th>P-value</th>
+                        <th>Conclusion</th>
+                    </tr>
+                </thead>
+                <tbody id="resultsBody"></tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>📊 Permutation Distribution</h2>
+            <div id="plotlyDiv" style="width:100%;height:450px;"></div>
+        </div>
+
+        <div class="method-note">
+            <strong>📝 Interpretation:</strong><br>
+            <strong>Z &lt; 0 &amp; P &lt; 0.05</strong> → <span class="active-exclusion">Active Exclusion</span> (real CD8⁺ count is significantly lower than random expectation)<br>
+            <strong>Z &gt; 0 &amp; P &gt; 0.95</strong> → <span class="no-exclusion">Co-localization / "Permissive but Impotent"</span> (real CD8⁺ count is significantly higher than random expectation)<br>
+            <strong>Otherwise</strong> → No significant spatial deviation<br><br>
+            <em>Reference: Tan et al., "Unbiased spatial transcriptomic screening reveals dual-axis immune exclusion..." (2026).</em>
+        </div>
+    </div>
+</div>
+
+<script>
+// ============================================================
+// Strict Permutation Test — Pure JavaScript Implementation
+// ============================================================
+
+let uploadedData = null;
+
+// ---- 加载示例数据 ----
+function loadExample() {
+    // 生成模拟数据（1000个上皮细胞，2000个CD8 T细胞）
+    const nEpi = 1000, nCD8 = 2000;
+    const rows = [];
+    
+    // 高屏障组上皮细胞（集中在组织中心，周围CD8少）
+    for (let i = 0; i < nEpi/2; i++) {
+        rows.push({
+            cell_id: `epi_high_${i}`,
+            x: 500 + (Math.random() - 0.5) * 400,
+            y: 500 + (Math.random() - 0.5) * 400,
+            group: 'High',
+            type: 'epithelial'
+        });
+    }
+    // 低屏障组上皮细胞（分布在组织边缘，周围CD8多）
+    for (let i = 0; i < nEpi/2; i++) {
+        const angle = Math.random() * 2 * Math.PI;
+        const dist = 600 + Math.random() * 400;
+        rows.push({
+            cell_id: `epi_low_${i}`,
+            x: 500 + Math.cos(angle) * dist,
+            y: 500 + Math.sin(angle) * dist,
+            group: 'Low',
+            type: 'epithelial'
+        });
+    }
+    // CD8 T细胞（均匀分布）
+    for (let i = 0; i < nCD8; i++) {
+        rows.push({
+            cell_id: `cd8_${i}`,
+            x: Math.random() * 1400,
+            y: Math.random() * 1400,
+            group: 'CD8',
+            type: 'cd8'
+        });
+    }
+
+    const csvContent = 'cell_id,x,y,group\n' + rows.map(r =>
+        `${r.cell_id},${r.x},${r.y},${r.group}`
+    ).join('\n');
+
+    const blob = new Blob([csvContent], {type: 'text/csv'});
+    const file = new File([blob], 'example_data.csv', {type: 'text/csv'});
+    const dataTransfer = new DataTransfer();
+    dataTransfer.items.add(file);
+    document.getElementById('dataFile').files = dataTransfer.files;
+    
+    uploadedData = rows;
+    document.getElementById('status').innerHTML = '✅ Example data loaded. Ready to run.';
+}
+
+// ---- 解析上传的CSV文件 ----
+document.getElementById('dataFile').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    
+    const reader = new FileReader();
+    reader.onload = function(event) {
+        const text = event.target.result;
+        const lines = text.trim().split('\n');
+        const headers = lines[0].toLowerCase().split(',').map(h => h.trim());
+        
+        // 检查必需列
+        const requiredCols = ['cell_id', 'x', 'y', 'group'];
+        const missingCols = requiredCols.filter(c => !headers.some(h => h.includes(c)));
+        if (missingCols.length > 0) {
+            alert(`Missing required columns: ${missingCols.join(', ')}. Expected: cell_id, x, y, group`);
+            return;
+        }
+
+        // 定位列索引
+        const idxX = headers.findIndex(h => h === 'x' || h === 'x_centroid' || h === 'x_location');
+        const idxY = headers.findIndex(h => h === 'y' || h === 'y_centroid' || h === 'y_location');
+        const idxGroup = headers.findIndex(h => h === 'group');
+        const idxId = headers.findIndex(h => h.includes('cell_id') || h.includes('id'));
+
+        uploadedData = [];
+        for (let i = 1; i < lines.length; i++) {
+            const cols = lines[i].split(',');
+            if (cols.length < 4) continue;
+            const x = parseFloat(cols[idxX]);
+            const y = parseFloat(cols[idxY]);
+            if (isNaN(x) || isNaN(y)) continue;
+            uploadedData.push({
+                cell_id: idxId >= 0 ? cols[idxId].trim() : `cell_${i}`,
+                x: x,
+                y: y,
+                group: cols[idxGroup].trim()
+            });
+        }
+        document.getElementById('status').innerHTML = `✅ Loaded ${uploadedData.length} cells. Groups: ${[...new Set(uploadedData.map(d => d.group))].join(', ')}`;
+    };
+    reader.readAsText(file);
+});
+
+// ---- 计算欧氏距离 ----
+function euclideanDist(a, b) {
+    return Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2);
+}
+
+// ---- 核心：严格置换检验 ----
+function runPermutationTest() {
+    if (!uploadedData || uploadedData.length === 0) {
+        alert('Please upload data or load the example dataset first.');
+        return;
+    }
+
+    const radius = parseFloat(document.getElementById('radius').value);
+    const nPerm = parseInt(document.getElementById('nPerm').value);
+    const k = parseInt(document.getElementById('knn').value);
+
+    document.getElementById('runBtn').disabled = true;
+    document.getElementById('progressContainer').style.display = 'block';
+    document.getElementById('progressBar').style.width = '0%';
+    document.getElementById('status').innerHTML = '🔄 Running permutation test...';
+
+    // 分离上皮细胞和CD8 T细胞
+    const epithelialCells = uploadedData.filter(d => d.group !== 'CD8' && d.group !== 'cd8');
+    const cd8Cells = uploadedData.filter(d => d.group === 'CD8' || d.group === 'cd8');
+
+    if (epithelialCells.length < 10) {
+        alert(`Too few epithelial cells (${epithelialCells.length}). Need at least 10.`);
+        document.getElementById('runBtn').disabled = false;
+        return;
+    }
+    if (cd8Cells.length < 5) {
+        alert(`Too few CD8+ T cells (${cd8Cells.length}). Need at least 5.`);
+        document.getElementById('runBtn').disabled = false;
+        return;
+    }
+
+    // 构建CD8坐标数组用于快速距离计算
+    const cd8Coords = cd8Cells.map(c => [c.x, c.y]);
+
+    // 为每个上皮细胞计算邻域内CD8数量
+    function computeNeighborCD8Counts(epiSubset) {
+        return epiSubset.map(epi => {
+            let count = 0;
+            for (let j = 0; j < cd8Coords.length; j++) {
+                const dx = epi.x - cd8Coords[j][0];
+                const dy = epi.y - cd8Coords[j][1];
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist <= radius) count++;
+            }
+            return count;
+        });
+    }
+
+    // 获取所有分组
+    const groups = [...new Set(epithelialCells.map(d => d.group))];
+    
+    // 真实CD8计数
+    const realCountsByGroup = {};
+    groups.forEach(g => {
+        const subset = epithelialCells.filter(d => d.group === g);
+        const counts = computeNeighborCD8Counts(subset);
+        realCountsByGroup[g] = {
+            cells: subset.length,
+            realMean: counts.reduce((a,b) => a+b, 0) / counts.length
+        };
+    });
+
+    // 执行置换检验
+    const permResults = {};
+    groups.forEach(g => { permResults[g] = { permMeans: [] }; });
+
+    const totalEpi = epithelialCells.length;
+    const allEpiIndices = Array.from({length: totalEpi}, (_, i) => i);
+
+    // 使用setTimeout避免阻塞UI
+    setTimeout(() => {
+        for (let p = 0; p < nPerm; p++) {
+            // 随机抽取等量上皮细胞
+            const shuffled = [...allEpiIndices].sort(() => Math.random() - 0.5);
+            
+            groups.forEach(g => {
+                const nGroup = realCountsByGroup[g].cells;
+                const permIndices = shuffled.slice(0, nGroup);
+                const permSubset = permIndices.map(idx => epithelialCells[idx]);
+                const counts = computeNeighborCD8Counts(permSubset);
+                const permMean = counts.reduce((a,b) => a+b, 0) / counts.length;
+                permResults[g].permMeans.push(permMean);
+            });
+
+            // 更新进度条
+            if (p % 5 === 0) {
+                document.getElementById('progressBar').style.width = `${(p / nPerm) * 100}%`;
+            }
+        }
+
+        // 计算Z值和P值
+        const finalResults = groups.map(g => {
+            const realMean = realCountsByGroup[g].realMean;
+            const permMeans = permResults[g].permMeans;
+            const permMeanOfMeans = permMeans.reduce((a,b) => a+b, 0) / permMeans.length;
+            const permSD = Math.sqrt(permMeans.reduce((s, v) => s + (v - permMeanOfMeans)**2, 0) / (permMeans.length - 1));
+            const Z = permSD > 0 ? (realMean - permMeanOfMeans) / permSD : 0;
+            const P = permMeans.filter(v => v <= realMean).length / permMeans.length;
+
+            let conclusion = '';
+            if (Z < 0 && P < 0.05) {
+                conclusion = '<span class="active-exclusion">Active Exclusion</span>';
+            } else if (Z > 0 && P > 0.95) {
+                conclusion = '<span class="no-exclusion">Co-localization</span>';
+            } else {
+                conclusion = 'No significant deviation';
+            }
+
+            return {
+                group: g,
+                realMean: realMean.toFixed(4),
+                permMean: permMeanOfMeans.toFixed(4),
+                Z: Z.toFixed(4),
+                P: P.toFixed(4),
+                conclusion: conclusion,
+                permMeans: permMeans,
+                realMeanNum: realMean
+            };
+        });
+
+        // 显示结果表格
+        const tbody = document.getElementById('resultsBody');
+        tbody.innerHTML = finalResults.map(r => `
+            <tr>
+                <td><strong>${r.group}</strong></td>
+                <td>${r.realMean}</td>
+                <td>${r.permMean}</td>
+                <td>${r.Z}</td>
+                <td>${r.P}</td>
+                <td>${r.conclusion}</td>
+            </tr>
+        `).join('');
+
+        // 生成Plotly图
+        const traces = [];
+        const colors = ['#e74c3c', '#3498db', '#2ecc71', '#f39c12', '#9b59b6', '#1abc9c'];
+        finalResults.forEach((r, idx) => {
+            traces.push({
+                type: 'histogram',
+                x: r.permMeans,
+                name: `${r.group} (Permuted)`,
+                opacity: 0.6,
+                marker: { color: colors[idx % colors.length] },
+                xbins: { size: (Math.max(...r.permMeans) - Math.min(...r.permMeans)) / 30 }
+            });
+            traces.push({
+                type: 'scatter',
+                x: [r.realMeanNum, r.realMeanNum],
+                y: [0, Math.max(...r.permMeans.map(() => 1))],
+                mode: 'lines',
+                name: `${r.group} (Real)`,
+                line: { color: colors[idx % colors.length], width: 3, dash: 'dash' }
+            });
+        });
+
+        const layout = {
+            title: 'Permutation Distribution by Group',
+            xaxis: { title: 'Mean CD8⁺ T cells in neighborhood' },
+            yaxis: { title: 'Frequency' },
+            barmode: 'overlay',
+            font: { size: 12 }
+        };
+
+        Plotly.newPlot('plotlyDiv', traces, layout);
+
+        document.getElementById('resultsContainer').style.display = 'block';
+        document.getElementById('progressBar').style.width = '100%';
+        document.getElementById('status').innerHTML = `✅ Analysis complete. ${nPerm} permutations.`;
+        document.getElementById('runBtn').disabled = false;
+    }, 100);
+}
+</script>
+
+</body>
+</html>
