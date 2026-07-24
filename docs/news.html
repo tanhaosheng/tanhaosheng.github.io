@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI News Today - AI Tool Stack</title>
+    <meta name="description" content="Latest AI news updated daily. Breaking news from DeepSeek, OpenAI, Google, Meta, and the global AI industry.">
+    <meta name="keywords" content="AI news, artificial intelligence news, AI industry, machine learning news">
+    <link rel="canonical" href="https://tanhaosheng.github.io/news.html">
+    <meta name="robots" content="index, follow">
+    <style>
+        :root{--primary:#6C3CE1;--primary-dark:#4F2DB5;--accent:#F59E0B;--bg:#f5f7fa;--card-bg:#fff;--text:#1a1a2e;--text-light:#6b7280;--border:#e5e7eb}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;line-height:1.8;color:var(--text);background:var(--bg);font-size:18px}
+        header{background:linear-gradient(135deg,#6C3CE1 0%,#4F2DB5 50%,#2D1B69 100%);color:white;padding:50px 20px;text-align:center}
+        header h1{font-size:2.2em;margin-bottom:10px}
+        .subtitle{opacity:0.92;max-width:600px;margin:0 auto;font-size:1.1em}
+        .container{max-width:800px;margin:0 auto;padding:0 20px}
+        .update-badge{display:inline-block;background:var(--accent);color:#1a1a2e;padding:4px 14px;border-radius:20px;font-size:0.85em;font-weight:700;margin-bottom:15px}
+        main{background:var(--card-bg);margin:30px auto;padding:40px;border-radius:12px;box-shadow:0 2px 20px rgba(0,0,0,0.06)}
+        .sticky-news{background:#fefce8;border:2px solid var(--accent);border-radius:12px;padding:25px;margin:25px 0}
+        .sticky-news .label{display:inline-block;background:var(--accent);color:#1a1a2e;padding:3px 12px;border-radius:20px;font-size:0.8em;font-weight:700;margin-bottom:12px}
+        .sticky-news h2{margin:0 0 10px;color:var(--primary)}
+        .sticky-news h2 a{color:var(--primary);text-decoration:none}
+        .sticky-news h2 a:hover{text-decoration:underline}
+        .sticky-news .meta{color:var(--text-light);font-size:0.85em}
+        .sticky-news p{margin:12px 0 0;color:var(--text)}
+        .news-list{margin:30px 0}
+        .news-item{padding:20px;border-bottom:1px solid var(--border);transition:background 0.2s}
+        .news-item:hover{background:#f8f6ff}
+        .news-item:last-child{border-bottom:none}
+        .news-item .date{font-size:0.82em;color:var(--text-light);margin-bottom:4px}
+        .news-item .source{display:inline-block;background:#e8f4fd;color:var(--primary);padding:2px 8px;border-radius:12px;font-size:0.75em;font-weight:600;margin-right:8px}
+        .news-item h3{font-size:1.05em;margin:5px 0}
+        .news-item h3 a{color:var(--text);text-decoration:none}
+        .news-item h3 a:hover{color:var(--primary);text-decoration:underline}
+        .news-item p{font-size:0.9em;color:var(--text-light);margin:5px 0 0}
+        footer{background:#1a1a2e;color:white;text-align:center;padding:30px 20px;margin-top:50px}
+        footer p{margin:5px 0;font-size:0.9em;opacity:0.85}
+        footer a{color:#a78bfa}
+        .loading{text-align:center;padding:40px;color:var(--text-light)}
+        .loading .spinner{display:inline-block;width:40px;height:40px;border:4px solid var(--border);border-top-color:var(--primary);border-radius:50%;animation:spin 0.8s linear infinite;margin-bottom:15px}
+        @keyframes spin{to{transform:rotate(360deg)}}
+        .error-msg{text-align:center;padding:30px;color:#ef4444}
+        @media(max-width:600px){body{font-size:16px}header h1{font-size:1.6em}main{padding:20px}}
+    </style>
+    <link rel="stylesheet" href="nav.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3090420115329103" crossorigin="anonymous"></script>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</head>
+<body>
+<nav><div class="nav-inner"><a href="index.html">🏠 Home</a><a href="news.html" class="active">📰 News</a><a href="chatgpt-beginners-guide.html">ChatGPT</a><a href="best-ai-tools-2026.html">AI Tools</a><a href="deepseek-guide.html">🇨🇳 China AI</a><a href="prompt-engineering-guide.html">Prompting</a><a href="about.html">About</a></div></nav>
+
+<header>
+    <h1>📰 AI News Today</h1>
+    <p class="subtitle">Curated AI news, updated daily. Breaking stories from OpenAI, DeepSeek, Google, Meta, and the global AI industry — automatically fetched and organized.</p>
+</header>
+
+<div class="container">
+    <main>
+        <span class="update-badge">🔄 Auto-updated daily</span>
+        <p style="margin-bottom:25px;color:var(--text-light);">News is automatically fetched from major AI news sources every day. The latest story is featured at the top.</p>
+
+        <div id="news-container">
+            <div class="loading">
+                <div class="spinner"></div>
+                <p>Loading latest AI news...</p>
+            </div>
+        </div>
+
+        <div style="margin-top:30px;padding:20px;background:#f8f6ff;border-radius:10px;text-align:center;">
+            <p style="margin:0;font-size:0.9em;color:var(--text-light);">📡 News powered by automated RSS fetching via GitHub Actions. Sources: TechCrunch AI, ArsTechnica AI, MIT Tech Review, and more.</p>
+        </div>
+    </main>
+</div>
+
+<footer>
+    <p><strong>AI Tool Stack</strong> — Practical AI guides for real people</p>
+    <p style="margin-top:8px;font-size:0.85em;opacity:0.7;">© 2026 AI Tool Stack | <a href="index.html">Home</a> | <a href="about.html">About</a> | <a href="privacy.html">Privacy</a></p>
+    <p style="margin-top:12px;font-size:0.85em;opacity:0.7;">📊 <span id="busuanzi_container_site_pv">Total visits <span id="busuanzi_value_site_pv"></span></span></p>
+</footer>
+
+<script>
+async function loadNews() {
+    try {
+        const resp = await fetch('news/data.json');
+        if (!resp.ok) throw new Error('Failed to load news data');
+        const data = await resp.json();
+
+        if (!data.items || data.items.length === 0) {
+            document.getElementById('news-container').innerHTML = '<div class="error-msg"><p>📭 No news items yet. Check back after the first automated fetch runs.</p></div>';
+            return;
+        }
+
+        const items = data.items;
+        const latest = items[0];
+        const older = items.slice(1);
+
+        let html = '';
+
+        // Sticky / Latest news
+        html += '<div class="sticky-news">';
+        html += '<span class="label">⭐ Latest News</span>';
+        html += `<h2><a href="${latest.link}" target="_blank" rel="noopener">${latest.title}</a></h2>`;
+        html += `<div class="meta">📅 ${latest.date} · <span class="source">${latest.source}</span></div>`;
+        if (latest.summary) html += `<p>${latest.summary}</p>`;
+        html += '</div>';
+
+        // Older news
+        html += '<h2 style="margin-top:30px;">📋 Previous News</h2>';
+        html += '<div class="news-list">';
+
+        older.forEach(item => {
+            html += '<div class="news-item">';
+            html += `<div class="date">📅 ${item.date} <span class="source">${item.source}</span></div>`;
+            html += `<h3><a href="${item.link}" target="_blank" rel="noopener">${item.title}</a></h3>`;
+            if (item.summary) html += `<p>${item.summary}</p>`;
+            html += '</div>';
+        });
+
+        html += '</div>';
+        document.getElementById('news-container').innerHTML = html;
+    } catch (e) {
+        document.getElementById('news-container').innerHTML = `<div class="error-msg"><p>⚠️ Could not load news. The automated fetcher may not have run yet.</p><p style="font-size:0.85em;margin-top:8px;">After you deploy to GitHub, the fetcher runs automatically once a day.</p></div>`;
+    }
+}
+loadNews();
+</script>
+</body>
+</html>
