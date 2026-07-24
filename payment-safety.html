@@ -1,129 +1,109 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.7">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; -webkit-text-stroke: #000000}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'PingFang SC'; -webkit-text-stroke: #000000}
-    span.s1 {font-kerning: none}
-    span.s2 {font: 12.0px Helvetica; font-kerning: none}
-    span.s3 {font: 12.0px 'PingFang SC'; font-kerning: none}
-    span.s4 {font: 12.0px 'Apple Color Emoji'; font-kerning: none}
-    span.s5 {font: 12.0px 'Lucida Grande'; font-kerning: none}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>老年人移动支付安全设置手册：5步锁死钱包，骗子无从下手</title>
+    <meta name="description" content="2026年老年人支付宝/微信支付安全设置完全指南。手把手教您设置支付密码、限额、指纹锁，让移动支付既方便又安全。">
+    <meta name="keywords" content="老人支付安全,支付宝安全设置,微信支付密码,老人防骗,移动支付限额">
+    <link rel="canonical" href="https://tanhaosheng.github.io/payment-safety.html">
+    <meta name="robots" content="index, follow">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"TechArticle","headline":"老年人移动支付安全设置手册：5步锁死钱包","description":"老年人支付宝/微信支付安全设置完全指南，手把手教您设置支付密码、限额、指纹锁。","author":{"@type":"Person","name":"银发科技编辑部"},"datePublished":"2026-07-24T06:00:00+08:00","proficiencyLevel":"Beginner"}
+    </script>
+    <style>
+        :root{--primary:#2c5aa0;--accent:#e67e22;--bg:#f8f9fa;--text:#333;--danger:#c62828;--safe:#27ae60}
+        body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.8;color:var(--text);background:var(--bg);font-size:18px;margin:0}
+        .container{max-width:800px;margin:0 auto;padding:0 20px}
+        header{background:linear-gradient(135deg,#1677ff 0%,#0958d9 100%);color:white;padding:40px 20px;text-align:center}
+        header h1{font-size:2em;margin-bottom:10px}
+        .subtitle{opacity:0.95;max-width:600px;margin:0 auto}
+        main{background:white;margin:30px auto;padding:40px;border-radius:12px;box-shadow:0 2px 20px rgba(0,0,0,0.06)}
+        h2{color:var(--primary);border-bottom:3px solid var(--accent);padding-bottom:10px;margin-top:40px}
+        h3{color:#1e3d6f;margin-top:25px}
+        p{margin-bottom:20px;text-align:justify}
+        .lead{background:#e3f2fd;border-left:4px solid #1677ff;padding:20px;border-radius:0 8px 8px 0;margin:25px 0}
+        .danger-box{background:#ffebee;border-left:4px solid var(--danger);padding:20px;margin:25px 0;border-radius:0 8px 8px 0}
+        .safe-box{background:#e8f5e9;border-left:4px solid var(--safe);padding:20px;margin:25px 0;border-radius:0 8px 8px 0}
+        .steps{counter-reset:step;margin:25px 0}
+        .step{position:relative;padding-left:60px;margin-bottom:30px}
+        .step::before{counter-increment:step;content:counter(step);position:absolute;left:0;top:0;width:40px;height:40px;background:var(--danger);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:1.2em}
+        .step h4{color:#1e3d6f;margin-bottom:8px;font-size:1.1em}
+        .checklist{list-style:none;padding:0}
+        .checklist li{padding:15px;margin-bottom:10px;background:#f8f9fa;border-radius:8px;border-left:4px solid var(--safe)}
+        .checklist li::before{content:"✅ ";font-weight:bold}
+        table{width:100%;border-collapse:collapse;margin:25px 0;font-size:0.95em}
+        th,td{padding:15px;text-align:left;border-bottom:1px solid #e0e0e0}
+        th{background:var(--primary);color:white}
+        tr:nth-child(even){background:#f8f9fa}
+        footer{background:#1e3d6f;color:white;text-align:center;padding:30px 20px;margin-top:50px}
+        footer a{color:#fff}
+        @media(max-width:600px){body{font-size:16px}main{padding:20px}header h1{font-size:1.5em}}
+    </style>
+
 </head>
 <body>
-<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
-<p class="p1"><span class="s1">&lt;html lang="zh-CN"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;head&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">    </span>&lt;title&gt;</span><span class="s1">老年人移动支付安全设置手册：</span><span class="s2">5</span><span class="s1">步锁死钱包，骗子无从下手</span><span class="s2">&lt;/title&gt;</span></p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">    </span>&lt;meta name="description" content="2026</span><span class="s1">年老年人支付宝</span><span class="s2">/</span><span class="s1">微信支付安全设置完全指南。手把手教您设置支付密码、限额、指纹锁，让移动支付既方便又安全。</span><span class="s2">"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="keywords" content="</span><span class="s3">老人支付安全</span><span class="s1">,</span><span class="s3">支付宝安全设置</span><span class="s1">,</span><span class="s3">微信支付密码</span><span class="s1">,</span><span class="s3">老人防骗</span><span class="s1">,</span><span class="s3">移动支付限额</span><span class="s1">"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link rel="canonical" href="https://</span><span class="s3">tanhaosheng</span><span class="s1">.github.io/payment-safety.html"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="robots" content="index, follow"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script type="application/ld+json"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>{"@context":"https://schema.org","@type":"TechArticle","headline":"</span><span class="s3">老年人移动支付安全设置手册：</span><span class="s1">5</span><span class="s3">步锁死钱包</span><span class="s1">","description":"</span><span class="s3">老年人支付宝</span><span class="s1">/</span><span class="s3">微信支付安全设置完全指南，手把手教您设置支付密码、限额、指纹锁。</span><span class="s1">","author":{"@type":"Person","name":"</span><span class="s3">银发科技编辑部</span><span class="s1">"},"datePublished":"2026-07-24T06:00:00+08:00","proficiencyLevel":"Beginner"}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;style&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>:root{--primary:#2c5aa0;--accent:#e67e22;--bg:#f8f9fa;--text:#333;--danger:#c62828;--safe:#27ae60}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.8;color:var(--text);background:var(--bg);font-size:18px;margin:0}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.container{max-width:800px;margin:0 auto;padding:0 20px}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>header{background:linear-gradient(135deg,#1677ff 0%,#0958d9 100%);color:white;padding:40px 20px;text-align:center}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>header h1{font-size:2em;margin-bottom:10px}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.subtitle{opacity:0.95;max-width:600px;margin:0 auto}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>main{background:white;margin:30px auto;padding:40px;border-radius:12px;box-shadow:0 2px 20px rgba(0,0,0,0.06)}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>h2{color:var(--primary);border-bottom:3px solid var(--accent);padding-bottom:10px;margin-top:40px}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>h3{color:#1e3d6f;margin-top:25px}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>p{margin-bottom:20px;text-align:justify}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.lead{background:#e3f2fd;border-left:4px solid #1677ff;padding:20px;border-radius:0 8px 8px 0;margin:25px 0}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.danger-box{background:#ffebee;border-left:4px solid var(--danger);padding:20px;margin:25px 0;border-radius:0 8px 8px 0}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.safe-box{background:#e8f5e9;border-left:4px solid var(--safe);padding:20px;margin:25px 0;border-radius:0 8px 8px 0}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.steps{counter-reset:step;margin:25px 0}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.step{position:relative;padding-left:60px;margin-bottom:30px}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.step::before{counter-increment:step;content:counter(step);position:absolute;left:0;top:0;width:40px;height:40px;background:var(--danger);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:1.2em}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.step h4{color:#1e3d6f;margin-bottom:8px;font-size:1.1em}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.checklist{list-style:none;padding:0}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.checklist li{padding:15px;margin-bottom:10px;background:#f8f9fa;border-radius:8px;border-left:4px solid var(--safe)}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.checklist li::before{content:"</span><span class="s4">✅</span><span class="s1"> ";font-weight:bold}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>table{width:100%;border-collapse:collapse;margin:25px 0;font-size:0.95em}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>th,td{padding:15px;text-align:left;border-bottom:1px solid #e0e0e0}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>th{background:var(--primary);color:white}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>tr:nth-child(even){background:#f8f9fa}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>footer{background:#1e3d6f;color:white;text-align:center;padding:30px 20px;margin-top:50px}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>footer a{color:#fff}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>@media(max-width:600px){body{font-size:16px}main{padding:20px}header h1{font-size:1.5em}}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
-<p class="p1"><span class="s1">&lt;body&gt;</span></p>
-<p class="p1"><span class="s1">&lt;header&gt;&lt;div class="container"&gt;&lt;h1&gt;</span><span class="s3">老年人移动支付安全设置手册</span><span class="s1">&lt;/h1&gt;&lt;p class="subtitle"&gt;5</span><span class="s3">步锁死钱包，骗子无从下手。支付宝</span><span class="s1">/</span><span class="s3">微信支付安全设置完全指南。</span><span class="s1">&lt;/p&gt;&lt;/div&gt;&lt;/header&gt;</span></p>
-<p class="p1"><span class="s1">&lt;div class="container"&gt;&lt;main&gt;</span></p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">    </span>&lt;p class="lead"&gt;</span><span class="s1">移动支付给生活带来了极大便利，但也让不法分子有了可乘之机。本手册将手把手教您设置支付密码、限额、指纹锁等安全措施，让长辈既能享受便利，又能守住钱袋子。</span><span class="s2">&lt;/p&gt;</span></p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">    </span>&lt;div class="danger-box"&gt;&lt;strong&gt;</span><span class="s4">🚨</span><span class="s2"> </span><span class="s1">真实案例：</span><span class="s2">&lt;/strong&gt;2026</span><span class="s1">年上半年，某市一位</span><span class="s2">68</span><span class="s1">岁老人因未设置支付限额，被骗子诱导扫描付款码，一次损失</span><span class="s2">2</span><span class="s1">万元。如果提前设置了单日限额</span><span class="s2">500</span><span class="s1">元，损失可以控制在极小范围内。</span><span class="s2">&lt;/div&gt;</span></p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">    </span>&lt;h2&gt;</span><span class="s1">一、支付安全自检清单（先对照检查）</span><span class="s2">&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;ul class="checklist"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;li&gt;</span><span class="s3">支付密码不是生日、手机号或简单数字（如</span><span class="s1">123456</span><span class="s3">、</span><span class="s1">000000</span><span class="s3">）</span><span class="s1">&lt;/li&gt;</span></p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">        </span>&lt;li&gt;</span><span class="s1">开启了指纹或面容支付（代替输入密码）</span><span class="s2">&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;li&gt;</span><span class="s3">设置了单日支付限额（建议</span><span class="s1">500-1000</span><span class="s3">元）</span><span class="s1">&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;li&gt;</span><span class="s3">关闭了</span><span class="s1">"</span><span class="s3">免密支付</span><span class="s1">"</span><span class="s3">功能</span><span class="s1">&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;li&gt;</span><span class="s3">开启了支付安全险（大部分免费）</span><span class="s1">&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;li&gt;</span><span class="s3">定期检查自动扣款项目，取消不需要的</span><span class="s1">&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/ul&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h2&gt;</span><span class="s3">二、支付宝安全设置（</span><span class="s1">5</span><span class="s3">步完成）</span><span class="s1">&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h3&gt;</span><span class="s3">第</span><span class="s1">1</span><span class="s3">步：设置强支付密码</span><span class="s1">&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="steps"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="step"&gt;&lt;h4&gt;</span><span class="s3">打开支付宝</span><span class="s1"> </span><span class="s5">→</span><span class="s1"> </span><span class="s3">我的</span><span class="s1"> </span><span class="s5">→</span><span class="s1"> </span><span class="s3">右上角设置（齿轮图标）</span><span class="s1">&lt;/h4&gt;&lt;p&gt;</span><span class="s3">点击</span><span class="s1">"</span><span class="s3">账号与安全</span><span class="s1">" </span><span class="s5">→</span><span class="s1"> "</span><span class="s3">支付密码</span><span class="s1">" </span><span class="s5">→</span><span class="s1"> "</span><span class="s3">重置支付密码</span><span class="s1">"</span><span class="s3">。</span><span class="s1">&lt;/p&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="step"&gt;&lt;h4&gt;</span><span class="s3">设置</span><span class="s1">6</span><span class="s3">位数字密码</span><span class="s1">&lt;/h4&gt;&lt;p&gt;</span><span class="s3">避免使用生日、手机号、连续数字。建议选择一个家人都知道但外人猜不到的数字组合。</span><span class="s1">&lt;/p&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="safe-box"&gt;&lt;strong&gt;</span><span class="s4">💡</span><span class="s1"> </span><span class="s3">密码建议：</span><span class="s1">&lt;/strong&gt;</span><span class="s3">可以选择子女结婚年份</span><span class="s1">+</span><span class="s3">一个特殊数字，如</span><span class="s1">"201508"</span><span class="s3">。既好记，又不容易被猜到。</span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h3&gt;</span><span class="s3">第</span><span class="s1">2</span><span class="s3">步：开启指纹</span><span class="s1">/</span><span class="s3">面容支付</span><span class="s1">&lt;/h3&gt;</span></p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">    </span>&lt;p&gt;</span><span class="s1">进入</span><span class="s2">&lt;strong&gt;</span><span class="s1">设置</span><span class="s2"> </span><span class="s5">→</span><span class="s2"> </span><span class="s1">支付设置</span><span class="s2"> </span><span class="s5">→</span><span class="s2"> </span><span class="s1">生物支付</span><span class="s2">&lt;/strong&gt;</span><span class="s1">，开启</span><span class="s2">"</span><span class="s1">指纹支付</span><span class="s2">"</span><span class="s1">或</span><span class="s2">"</span><span class="s1">面容支付</span><span class="s2">"</span><span class="s1">。这样付款时只需按指纹，不用输入密码，既方便又防止旁人偷看密码。</span><span class="s2">&lt;/p&gt;</span></p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">    </span>&lt;h3&gt;</span><span class="s1">第</span><span class="s2">3</span><span class="s1">步：设置支付限额（最重要！）</span><span class="s2">&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p&gt;</span><span class="s3">进入</span><span class="s1">&lt;strong&gt;</span><span class="s3">设置</span><span class="s1"> </span><span class="s5">→</span><span class="s1"> </span><span class="s3">支付设置</span><span class="s1"> </span><span class="s5">→</span><span class="s1"> </span><span class="s3">支付限额</span><span class="s1">&lt;/strong&gt;</span><span class="s3">：</span><span class="s1">&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;</span><span class="s3">限额类型</span><span class="s1">&lt;/th&gt;&lt;th&gt;</span><span class="s3">建议设置</span><span class="s1">&lt;/th&gt;&lt;th&gt;</span><span class="s3">说明</span><span class="s1">&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;tr&gt;&lt;td&gt;</span><span class="s3">单笔限额</span><span class="s1">&lt;/td&gt;&lt;td&gt;500</span><span class="s3">元</span><span class="s1">&lt;/td&gt;&lt;td&gt;</span><span class="s3">单次支付不能超过此金额</span><span class="s1">&lt;/td&gt;&lt;/tr&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;tr&gt;&lt;td&gt;</span><span class="s3">单日限额</span><span class="s1">&lt;/td&gt;&lt;td&gt;1000</span><span class="s3">元</span><span class="s1">&lt;/td&gt;&lt;td&gt;</span><span class="s3">一天累计支付不能超过此金额</span><span class="s1">&lt;/td&gt;&lt;/tr&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;tr&gt;&lt;td&gt;</span><span class="s3">单月限额</span><span class="s1">&lt;/td&gt;&lt;td&gt;3000</span><span class="s3">元</span><span class="s1">&lt;/td&gt;&lt;td&gt;</span><span class="s3">防止长期大额损失</span><span class="s1">&lt;/td&gt;&lt;/tr&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/tbody&gt;&lt;/table&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h3&gt;</span><span class="s3">第</span><span class="s1">4</span><span class="s3">步：关闭免密支付</span><span class="s1">&lt;/h3&gt;</span></p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">    </span>&lt;p&gt;</span><span class="s1">进入</span><span class="s2">&lt;strong&gt;</span><span class="s1">设置</span><span class="s2"> </span><span class="s5">→</span><span class="s2"> </span><span class="s1">支付设置</span><span class="s2"> </span><span class="s5">→</span><span class="s2"> </span><span class="s1">免密支付</span><span class="s2">/</span><span class="s1">自动扣款</span><span class="s2">&lt;/strong&gt;</span><span class="s1">，关闭所有不需要的免密支付项目。只保留确实需要的（如公交卡）。</span><span class="s2">&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h3&gt;</span><span class="s3">第</span><span class="s1">5</span><span class="s3">步：开启安全险</span><span class="s1">&lt;/h3&gt;</span></p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">    </span>&lt;p&gt;</span><span class="s1">在支付宝首页搜索</span><span class="s2">"</span><span class="s1">账户安全险</span><span class="s2">"</span><span class="s1">，大部分用户可以免费领取。一旦账户被盗，最高可赔付一定金额。</span><span class="s2">&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h2&gt;</span><span class="s3">三、微信支付安全设置</span><span class="s1">&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p&gt;</span><span class="s3">打开微信</span><span class="s1"> </span><span class="s5">→</span><span class="s1"> &lt;strong&gt;</span><span class="s3">我</span><span class="s1"> </span><span class="s5">→</span><span class="s1"> </span><span class="s3">服务</span><span class="s1"> </span><span class="s5">→</span><span class="s1"> </span><span class="s3">钱包</span><span class="s1"> </span><span class="s5">→</span><span class="s1"> </span><span class="s3">支付设置</span><span class="s1"> </span><span class="s5">→</span><span class="s1"> </span><span class="s3">修改支付密码</span><span class="s1">&lt;/strong&gt;</span><span class="s3">。同样避免使用简单数字。</span><span class="s1">&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p&gt;</span><span class="s3">在</span><span class="s1">&lt;strong&gt;</span><span class="s3">支付设置</span><span class="s1"> </span><span class="s5">→</span><span class="s1"> </span><span class="s3">指纹支付</span><span class="s1">&lt;/strong&gt;</span><span class="s3">中开启。如果手机不支持指纹，可以开启</span><span class="s1">"</span><span class="s3">面容支付</span><span class="s1">"</span><span class="s3">。</span><span class="s1">&lt;/p&gt;</span></p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">    </span>&lt;h3&gt;</span><span class="s1">设置转账到账时间（防骗关键！）</span><span class="s2">&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p&gt;</span><span class="s3">进入</span><span class="s1">&lt;strong&gt;</span><span class="s3">支付设置</span><span class="s1"> </span><span class="s5">→</span><span class="s1"> </span><span class="s3">转账到账时间</span><span class="s1">&lt;/strong&gt;</span><span class="s3">，选择</span><span class="s1">"2</span><span class="s3">小时到账</span><span class="s1">"</span><span class="s3">或</span><span class="s1">"24</span><span class="s3">小时到账</span><span class="s1">"</span><span class="s3">。</span><span class="s1">&lt;/p&gt;</span></p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">    </span>&lt;div class="safe-box"&gt;&lt;strong&gt;</span><span class="s4">🛡️</span><span class="s2"> </span><span class="s1">为什么这很重要：</span><span class="s2">&lt;/strong&gt;</span><span class="s1">设置延迟到账后，如果不慎转给骗子，可以在到账前联系微信客服（</span><span class="s2">95017</span><span class="s1">）申请撤回。这是挽回损失的最后机会。</span><span class="s2">&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h3&gt;</span><span class="s3">关闭自动扣费</span><span class="s1">&lt;/h3&gt;</span></p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">    </span>&lt;p&gt;</span><span class="s1">进入</span><span class="s2">&lt;strong&gt;</span><span class="s1">支付设置</span><span class="s2"> </span><span class="s5">→</span><span class="s2"> </span><span class="s1">自动续费</span><span class="s2">&lt;/strong&gt;</span><span class="s1">，检查并取消不需要的自动扣费项目。很多长辈不知不觉中订阅了各种服务，每月被自动扣款。</span><span class="s2">&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h2&gt;</span><span class="s3">四、必须牢记的</span><span class="s1">5</span><span class="s3">条支付安全铁律</span><span class="s1">&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="danger-box"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;ol style="padding-left:20px;margin:0;"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;li style="margin-bottom:10px;"&gt;&lt;strong&gt;</span><span class="s3">绝不向任何人透露支付密码</span><span class="s1">&lt;/strong&gt; —— </span><span class="s3">包括自称</span><span class="s1">"</span><span class="s3">客服</span><span class="s1">"</span><span class="s3">、</span><span class="s1">"</span><span class="s3">警察</span><span class="s1">"</span><span class="s3">的人</span><span class="s1">&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;li style="margin-bottom:10px;"&gt;&lt;strong&gt;</span><span class="s3">绝不扫描陌生人发来的二维码</span><span class="s1">&lt;/strong&gt; —— </span><span class="s3">二维码可能直接扣款</span><span class="s1">&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;li style="margin-bottom:10px;"&gt;&lt;strong&gt;</span><span class="s3">付款码只给收银员看，绝不截图发给别人</span><span class="s1">&lt;/strong&gt; —— </span><span class="s3">付款码等同于银行卡</span><span class="s1">&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;li style="margin-bottom:10px;"&gt;&lt;strong&gt;</span><span class="s3">转账前必须电话确认对方身份</span><span class="s1">&lt;/strong&gt; —— </span><span class="s3">即使是</span><span class="s1">"</span><span class="s3">子女</span><span class="s1">"</span><span class="s3">要借钱，也要打电话核实</span><span class="s1">&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;li style="margin-bottom:10px;"&gt;&lt;strong&gt;</span><span class="s3">发现异常立即冻结账户</span><span class="s1">&lt;/strong&gt; —— </span><span class="s3">拨打支付宝</span><span class="s1">95188</span><span class="s3">或微信</span><span class="s1">95017&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/ol&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h2&gt;</span><span class="s3">五、紧急情况处理指南</span><span class="s1">&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;</span><span class="s3">情况</span><span class="s1">&lt;/th&gt;&lt;th&gt;</span><span class="s3">立即操作</span><span class="s1">&lt;/th&gt;&lt;th&gt;</span><span class="s3">联系电话</span><span class="s1">&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;tr&gt;&lt;td&gt;</span><span class="s3">怀疑被骗转账</span><span class="s1">&lt;/td&gt;&lt;td&gt;</span><span class="s3">立即拨打银行客服冻结银行卡</span><span class="s1">&lt;/td&gt;&lt;td&gt;</span><span class="s3">银行卡背面电话</span><span class="s1">&lt;/td&gt;&lt;/tr&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;tr&gt;&lt;td&gt;</span><span class="s3">支付宝异常</span><span class="s1">&lt;/td&gt;&lt;td&gt;</span><span class="s3">拨打</span><span class="s1">95188</span><span class="s3">，申请冻结账户</span><span class="s1">&lt;/td&gt;&lt;td&gt;95188&lt;/td&gt;&lt;/tr&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;tr&gt;&lt;td&gt;</span><span class="s3">微信异常</span><span class="s1">&lt;/td&gt;&lt;td&gt;</span><span class="s3">拨打</span><span class="s1">95017</span><span class="s3">，申请冻结支付</span><span class="s1">&lt;/td&gt;&lt;td&gt;95017&lt;/td&gt;&lt;/tr&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;tr&gt;&lt;td&gt;</span><span class="s3">银行卡被盗刷</span><span class="s1">&lt;/td&gt;&lt;td&gt;</span><span class="s3">立即挂失并报警</span><span class="s1">&lt;/td&gt;&lt;td&gt;110&lt;/td&gt;&lt;/tr&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;tr&gt;&lt;td&gt;</span><span class="s3">遭遇电信诈骗</span><span class="s1">&lt;/td&gt;&lt;td&gt;</span><span class="s3">拨打反诈专线并保存证据</span><span class="s1">&lt;/td&gt;&lt;td&gt;96110&lt;/td&gt;&lt;/tr&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/tbody&gt;&lt;/table&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="safe-box"&gt;&lt;strong&gt;</span><span class="s4">📌</span><span class="s1"> </span><span class="s3">建议：</span><span class="s1">&lt;/strong&gt;</span><span class="s3">把上述电话号码写在纸上，贴在手机背面或钱包里。紧急时刻比在手机里查找更快。</span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/main&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">&lt;footer&gt;&lt;p&gt;© 2026 </span><span class="s3">银发科技指南</span><span class="s1"> | &lt;a href="index.html"&gt;</span><span class="s3">返回首页</span><span class="s1">&lt;/a&gt; | &lt;a href="about.html"&gt;</span><span class="s3">关于我们</span><span class="s1">&lt;/a&gt; | &lt;a href="privacy.html"&gt;</span><span class="s3">隐私政策</span><span class="s1">&lt;/a&gt;&lt;/p&gt;&lt;/footer&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+<header><div class="container"><h1>老年人移动支付安全设置手册</h1><p class="subtitle">5步锁死钱包，骗子无从下手。支付宝/微信支付安全设置完全指南。</p></div></header>
+<div class="container"><main>
+    <p class="lead">移动支付给生活带来了极大便利，但也让不法分子有了可乘之机。本手册将手把手教您设置支付密码、限额、指纹锁等安全措施，让长辈既能享受便利，又能守住钱袋子。</p>
+    <div class="danger-box"><strong>🚨 真实案例：</strong>2026年上半年，某市一位68岁老人因未设置支付限额，被骗子诱导扫描付款码，一次损失2万元。如果提前设置了单日限额500元，损失可以控制在极小范围内。</div>
+    <h2>一、支付安全自检清单（先对照检查）</h2>
+    <ul class="checklist">
+        <li>支付密码不是生日、手机号或简单数字（如123456、000000）</li>
+        <li>开启了指纹或面容支付（代替输入密码）</li>
+        <li>设置了单日支付限额（建议500-1000元）</li>
+        <li>关闭了"免密支付"功能</li>
+        <li>开启了支付安全险（大部分免费）</li>
+        <li>定期检查自动扣款项目，取消不需要的</li>
+    </ul>
+    <h2>二、支付宝安全设置（5步完成）</h2>
+    <h3>第1步：设置强支付密码</h3>
+    <div class="steps">
+        <div class="step"><h4>打开支付宝 → 我的 → 右上角设置（齿轮图标）</h4><p>点击"账号与安全" → "支付密码" → "重置支付密码"。</p></div>
+        <div class="step"><h4>设置6位数字密码</h4><p>避免使用生日、手机号、连续数字。建议选择一个家人都知道但外人猜不到的数字组合。</p></div>
+    </div>
+    <div class="safe-box"><strong>💡 密码建议：</strong>可以选择子女结婚年份+一个特殊数字，如"201508"。既好记，又不容易被猜到。</div>
+    <h3>第2步：开启指纹/面容支付</h3>
+    <p>进入<strong>设置 → 支付设置 → 生物支付</strong>，开启"指纹支付"或"面容支付"。这样付款时只需按指纹，不用输入密码，既方便又防止旁人偷看密码。</p>
+    <h3>第3步：设置支付限额（最重要！）</h3>
+    <p>进入<strong>设置 → 支付设置 → 支付限额</strong>：</p>
+    <table><thead><tr><th>限额类型</th><th>建议设置</th><th>说明</th></tr></thead><tbody>
+        <tr><td>单笔限额</td><td>500元</td><td>单次支付不能超过此金额</td></tr>
+        <tr><td>单日限额</td><td>1000元</td><td>一天累计支付不能超过此金额</td></tr>
+        <tr><td>单月限额</td><td>3000元</td><td>防止长期大额损失</td></tr>
+    </tbody></table>
+    <h3>第4步：关闭免密支付</h3>
+    <p>进入<strong>设置 → 支付设置 → 免密支付/自动扣款</strong>，关闭所有不需要的免密支付项目。只保留确实需要的（如公交卡）。</p>
+    <h3>第5步：开启安全险</h3>
+    <p>在支付宝首页搜索"账户安全险"，大部分用户可以免费领取。一旦账户被盗，最高可赔付一定金额。</p>
+    <h2>三、微信支付安全设置</h2>
+    <p>打开微信 → <strong>我 → 服务 → 钱包 → 支付设置 → 修改支付密码</strong>。同样避免使用简单数字。</p>
+    <p>在<strong>支付设置 → 指纹支付</strong>中开启。如果手机不支持指纹，可以开启"面容支付"。</p>
+    <h3>设置转账到账时间（防骗关键！）</h3>
+    <p>进入<strong>支付设置 → 转账到账时间</strong>，选择"2小时到账"或"24小时到账"。</p>
+    <div class="safe-box"><strong>🛡️ 为什么这很重要：</strong>设置延迟到账后，如果不慎转给骗子，可以在到账前联系微信客服（95017）申请撤回。这是挽回损失的最后机会。</div>
+    <h3>关闭自动扣费</h3>
+    <p>进入<strong>支付设置 → 自动续费</strong>，检查并取消不需要的自动扣费项目。很多长辈不知不觉中订阅了各种服务，每月被自动扣款。</p>
+    <h2>四、必须牢记的5条支付安全铁律</h2>
+    <div class="danger-box">
+        <ol style="padding-left:20px;margin:0;">
+            <li style="margin-bottom:10px;"><strong>绝不向任何人透露支付密码</strong> —— 包括自称"客服"、"警察"的人</li>
+            <li style="margin-bottom:10px;"><strong>绝不扫描陌生人发来的二维码</strong> —— 二维码可能直接扣款</li>
+            <li style="margin-bottom:10px;"><strong>付款码只给收银员看，绝不截图发给别人</strong> —— 付款码等同于银行卡</li>
+            <li style="margin-bottom:10px;"><strong>转账前必须电话确认对方身份</strong> —— 即使是"子女"要借钱，也要打电话核实</li>
+            <li style="margin-bottom:10px;"><strong>发现异常立即冻结账户</strong> —— 拨打支付宝95188或微信95017</li>
+        </ol>
+    </div>
+    <h2>五、紧急情况处理指南</h2>
+    <table><thead><tr><th>情况</th><th>立即操作</th><th>联系电话</th></tr></thead><tbody>
+        <tr><td>怀疑被骗转账</td><td>立即拨打银行客服冻结银行卡</td><td>银行卡背面电话</td></tr>
+        <tr><td>支付宝异常</td><td>拨打95188，申请冻结账户</td><td>95188</td></tr>
+        <tr><td>微信异常</td><td>拨打95017，申请冻结支付</td><td>95017</td></tr>
+        <tr><td>银行卡被盗刷</td><td>立即挂失并报警</td><td>110</td></tr>
+        <tr><td>遭遇电信诈骗</td><td>拨打反诈专线并保存证据</td><td>96110</td></tr>
+    </tbody></table>
+    <div class="safe-box"><strong>📌 建议：</strong>把上述电话号码写在纸上，贴在手机背面或钱包里。紧急时刻比在手机里查找更快。</div>
+</main></div>
+<footer><p>© 2026 银发科技指南 | <a href="index.html">返回首页</a> | <a href="about.html">关于我们</a> | <a href="privacy.html">隐私政策</a></p></footer>
 </body>
 </html>
