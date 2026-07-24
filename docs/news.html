@@ -58,8 +58,14 @@
 
 <div class="container">
     <main>
-        <span class="update-badge">🔄 Auto-updated daily</span>
-        <p style="margin-bottom:25px;color:var(--text-light);">News is automatically fetched from major AI news sources every day. The latest story is featured at the top.</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:20px;">
+            <span class="update-badge">🔄 Auto-updated every 10 min</span>
+            <button onclick="triggerRefresh()" style="background:var(--primary);color:white;border:none;padding:10px 20px;border-radius:50px;font-size:0.9em;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:8px;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                🔄 Check for Updates
+            </button>
+        </div>
+        <p style="margin-bottom:8px;color:var(--text-light);font-size:0.9em;">News is automatically fetched from major AI news sources. Click <strong>"Check for Updates"</strong> to refresh the latest stories.</p>
+        <div id="last-updated" style="margin-bottom:20px;font-size:0.85em;color:var(--text-light);"></div>
 
         <div id="news-container">
             <div class="loading">
@@ -83,12 +89,20 @@
 <script>
 async function loadNews() {
     try {
-        const resp = await fetch('news/data.json');
+        const resp = await fetch('news/data.json?_t=' + Date.now());
         if (!resp.ok) throw new Error('Failed to load news data');
         const data = await resp.json();
 
+        // Show last updated time
+        const updateEl = document.getElementById('last-updated');
+        if (data.last_updated) {
+            updateEl.innerHTML = '📡 Last updated: <strong>' + data.last_updated + '</strong> · <a href="https://github.com/tanhaosheng/tanhaosheng/actions/workflows/fetch-news.yml" target="_blank" style="color:var(--primary);">Trigger manual refresh →</a>';
+        } else {
+            updateEl.innerHTML = '⏳ Waiting for first automated fetch...';
+        }
+
         if (!data.items || data.items.length === 0) {
-            document.getElementById('news-container').innerHTML = '<div class="error-msg"><p>📭 No news items yet. Check back after the first automated fetch runs.</p></div>';
+            document.getElementById('news-container').innerHTML = '<div class="error-msg"><p>📭 No news items yet. The automated fetcher will run after you deploy to GitHub.</p><p style="font-size:0.85em;margin-top:8px;">Go to GitHub → Actions → "Fetch AI News" → Run workflow to trigger manually.</p></div>';
             return;
         }
 
@@ -101,29 +115,50 @@ async function loadNews() {
         // Sticky / Latest news
         html += '<div class="sticky-news">';
         html += '<span class="label">⭐ Latest News</span>';
-        html += `<h2><a href="${latest.link}" target="_blank" rel="noopener">${latest.title}</a></h2>`;
-        html += `<div class="meta">📅 ${latest.date} · <span class="source">${latest.source}</span></div>`;
-        if (latest.summary) html += `<p>${latest.summary}</p>`;
+        html += '<h2><a href="' + latest.link + '" target="_blank" rel="noopener">' + latest.title + '</a></h2>';
+        html += '<div class="meta">📅 ' + latest.date + ' · <span class="source">' + latest.source + '</span></div>';
+        if (latest.summary) html += '<p>' + latest.summary + '</p>';
         html += '</div>';
 
         // Older news
         html += '<h2 style="margin-top:30px;">📋 Previous News</h2>';
         html += '<div class="news-list">';
 
-        older.forEach(item => {
+        older.forEach(function(item) {
             html += '<div class="news-item">';
-            html += `<div class="date">📅 ${item.date} <span class="source">${item.source}</span></div>`;
-            html += `<h3><a href="${item.link}" target="_blank" rel="noopener">${item.title}</a></h3>`;
-            if (item.summary) html += `<p>${item.summary}</p>`;
+            html += '<div class="date">📅 ' + item.date + ' <span class="source">' + item.source + '</span></div>';
+            html += '<h3><a href="' + item.link + '" target="_blank" rel="noopener">' + item.title + '</a></h3>';
+            if (item.summary) html += '<p>' + item.summary + '</p>';
             html += '</div>';
         });
 
         html += '</div>';
         document.getElementById('news-container').innerHTML = html;
     } catch (e) {
-        document.getElementById('news-container').innerHTML = `<div class="error-msg"><p>⚠️ Could not load news. The automated fetcher may not have run yet.</p><p style="font-size:0.85em;margin-top:8px;">After you deploy to GitHub, the fetcher runs automatically once a day.</p></div>`;
+        document.getElementById('news-container').innerHTML = '<div class="error-msg"><p>⚠️ Could not load news. The automated fetcher may not have run yet.</p><p style="font-size:0.85em;margin-top:8px;">After you deploy to GitHub, the fetcher runs automatically every 10 minutes.</p></div>';
     }
 }
+
+function triggerRefresh() {
+    const btn = document.querySelector('button[onclick="triggerRefresh()"]');
+    btn.innerHTML = '⏳ Refreshing...';
+    btn.disabled = true;
+    btn.style.opacity = '0.6';
+
+    // Reload news with cache busting
+    document.getElementById('news-container').innerHTML = '<div class="loading"><div class="spinner"></div><p>Fetching latest news...</p></div>';
+
+    setTimeout(function() {
+        loadNews();
+        btn.innerHTML = '✅ Done!';
+        setTimeout(function() {
+            btn.innerHTML = '🔄 Check for Updates';
+            btn.disabled = false;
+            btn.style.opacity = '1';
+        }, 2000);
+    }, 500);
+}
+
 loadNews();
 </script>
 </body>

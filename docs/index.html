@@ -67,6 +67,23 @@
 
 <div class="container" id="start">
 
+    <!-- 📰 Prominent News Section -->
+    <a href="news.html" style="display:block;background:linear-gradient(135deg,#fefce8,#f5f3ff);border:3px solid var(--accent);border-radius:16px;padding:30px;text-decoration:none;margin-bottom:30px;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 12px 30px rgba(245,158,11,0.2)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:5px;">
+            <span style="font-size:2.2em;">📰</span>
+            <div>
+                <h2 style="margin:0;font-size:1.3em;color:var(--primary);">AI News — Live Feed</h2>
+                <p style="margin:4px 0 0;font-size:0.85em;color:var(--text-light);">🔄 Auto-updated every 10 minutes · Click to open full page</p>
+            </div>
+            <span style="margin-left:auto;background:var(--accent);color:#1a1a2e;padding:8px 20px;border-radius:50px;font-weight:700;font-size:0.9em;white-space:nowrap;">View All →</span>
+        </div>
+        <!-- Live preview of latest headline -->
+        <div id="home-news-preview" style="margin-top:15px;padding:15px 20px;background:white;border-radius:10px;border-left:4px solid var(--primary);">
+            <span style="font-size:0.82em;color:var(--text-light);">⭐ Latest Headline</span>
+            <p id="home-news-title" style="margin:5px 0 0;font-weight:600;color:var(--text);font-size:1.05em;">Loading latest news...</p>
+        </div>
+    </a>
+
     <div class="why-section">
         <h2>🎯 Welcome to AI Tool Stack</h2>
         <p style="margin-top:15px;">AI is transforming how we work, create, and solve problems. But with new tools launching every week, it's hard to know what's worth your time. We cut through the noise with honest reviews, step-by-step tutorials, and practical advice you can actually use.</p>
@@ -76,16 +93,6 @@
             <li>✅ <strong>US + China AI coverage</strong> — Both ecosystems, one site</li>
             <li>✅ <strong>Free & practical</strong> — Focus on tools you can actually afford</li>
         </ul>
-    </div>
-
-    <div class="why-section" style="background:linear-gradient(135deg,#fefce8,#f5f3ff);border:2px solid var(--accent);">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
-            <span style="font-size:2em;">📰</span>
-            <h2 style="margin:0;font-size:1.3em;">AI News — Updated Daily</h2>
-        </div>
-        <p>Stay on top of the fast-moving AI industry. Our <strong>automated news feed</strong> fetches the latest stories from TechCrunch, ArsTechnica, The Verge, and more every day.</p>
-        <a href="news.html" style="display:inline-block;background:var(--accent);color:#1a1a2e;padding:10px 24px;border-radius:50px;font-weight:700;text-decoration:none;margin-top:10px;transition:transform 0.2s;">📰 View Latest News →</a>
-        <span style="display:inline-block;margin-left:12px;font-size:0.85em;color:var(--text-light);">🔄 Auto-updated via GitHub Actions</span>
     </div>
 
     <h2 class="section-title">🔥 Essential Guides</h2>
@@ -188,5 +195,22 @@
     <p style="margin-top:8px;font-size:0.85em;opacity:0.7;">© 2026 AI Tool Stack | <a href="about.html">About</a> | <a href="privacy.html">Privacy</a> | <a href="contact.html">Contact</a></p>
     <p style="margin-top:12px;font-size:0.85em;opacity:0.7;">📊 <span id="busuanzi_container_site_pv">Total visits <span id="busuanzi_value_site_pv"></span></span></p>
 </footer>
+<script>
+async function loadHeadline() {
+    try {
+        const resp = await fetch('news/data.json?_t=' + Date.now());
+        if (!resp.ok) throw Error();
+        const data = await resp.json();
+        if (data.items && data.items.length > 0) {
+            document.getElementById('home-news-title').textContent = data.items[0].title;
+        } else {
+            document.getElementById('home-news-title').textContent = '📭 News feed will start after deployment.';
+        }
+    } catch (e) {
+        document.getElementById('home-news-title').textContent = '📰 News feed activates after deployment to GitHub.';
+    }
+}
+loadHeadline();
+</script>
 </body>
 </html>
