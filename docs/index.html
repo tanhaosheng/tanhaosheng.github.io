@@ -196,21 +196,23 @@
     <p style="margin-top:12px;font-size:0.85em;opacity:0.7;">📊 <span id="busuanzi_container_site_pv">Total visits <span id="busuanzi_value_site_pv"></span></span></p>
 </footer>
 <script>
-async function loadHeadline() {
+// Show cached headline on homepage
+function loadHomeHeadline() {
     try {
-        const resp = await fetch('news/data.json?_t=' + Date.now());
-        if (!resp.ok) throw Error();
-        const data = await resp.json();
-        if (data.items && data.items.length > 0) {
-            document.getElementById('home-news-title').textContent = data.items[0].title;
-        } else {
-            document.getElementById('home-news-title').textContent = '📭 News feed will start after deployment.';
+        var cached = localStorage.getItem('aitoolstack_news');
+        if (cached) {
+            var data = JSON.parse(cached);
+            if (data.items && data.items.length > 0) {
+                document.getElementById('home-news-title').textContent = '⭐ ' + data.items[0].title;
+                return;
+            }
         }
-    } catch (e) {
-        document.getElementById('home-news-title').textContent = '📰 News feed activates after deployment to GitHub.';
+        document.getElementById('home-news-title').textContent = '📰 Click to view latest AI news';
+    } catch(e) {
+        document.getElementById('home-news-title').textContent = '📰 Click to view latest AI news';
     }
 }
-loadHeadline();
+loadHomeHeadline();
 </script>
 </body>
 </html>
