@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSD Guide: Choosing the Right Storage - AI Tool Stack</title>
+    <meta name="description" content="A complete guide to solid-state drives: NVMe vs SATA, M.2 form factors, NAND flash types, and how to choose the best SSD for your computer.">
+    <meta name="keywords" content="SSD, NVMe, SATA, M.2, solid state drive, storage, NAND flash, PC storage">
+    <link rel="canonical" href="https://tanhaosheng.github.io/tech-3.html">
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.8; max-width: 800px; margin: 0 auto; padding: 20px; color: #333; }
+        h1 { color: #6C3CE1; font-size: 2em; margin-bottom: 0.5em; border-bottom: 3px solid #6C3CE1; padding-bottom: 10px; }
+        h2 { color: #6C3CE1; margin-top: 1.5em; }
+        a { color: #6C3CE1; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; font-size: 0.9em; color: #666; }
+    </style>
+</head>
+<body>
+    <h1>SSD Guide: Choosing the Right Storage</h1>
+    <p>Solid-state drives (SSDs) have revolutionized computer storage with dramatically faster speeds, lower power consumption, and greater durability compared to traditional hard disk drives. Whether you are building a new PC or upgrading an old one, an SSD is the most impactful upgrade you can make.</p>
+
+    <h2>NVMe vs SATA: Understanding the Difference</h2>
+    <p>SATA SSDs use the same interface as traditional hard drives, offering read speeds up to 560 MB/s. NVMe SSDs connect directly through the PCIe bus, achieving speeds of 3,000 to 10,000 MB/s depending on the PCIe generation. NVMe is the clear choice for operating system drives and demanding applications, while SATA remains viable for budget builds and secondary storage.</p>
+
+    <h2>M.2 Form Factor</h2>
+    <p>The M.2 form factor has become the standard for modern SSDs. These small, stick-like drives mount directly onto the motherboard, eliminating the need for cables. M.2 slots support both SATA and NVMe protocols, so it is important to check your motherboard specifications to ensure compatibility and maximum performance.</p>
+
+    <h2>NAND Flash Types</h2>
+    <p>SSD NAND flash memory comes in several types: SLC (single-level cell) is the fastest and most durable but expensive; MLC (multi-level cell) balances performance and cost; TLC (triple-level cell) offers good value for consumer use; and QLC (quad-level cell) provides the lowest cost per gigabyte but slower write speeds and lower endurance.</p>
+
+    <h2>Endurance and Lifespan</h2>
+    <p>SSD endurance is measured in TBW (terabytes written), indicating how much data can be written to the drive before it is likely to fail. Modern SSDs are remarkably durable: a typical 1TB TLC SSD can withstand 300-600 TBW, enough for years of normal use. The SSD controller uses wear-leveling algorithms to distribute writes evenly across all memory cells.</p>
+
+    <h2>DRAM and Cache</h2>
+    <p>SSDs with onboard DRAM cache deliver more consistent performance, especially during sustained writes. DRAM stores the mapping table that tracks where data is stored on the NAND. DRAM-less SSDs use system memory or a portion of the NAND as cache, which can lead to performance degradation during heavy workloads.</p>
+
+    <div class="footer">
+        <p>When choosing an SSD, consider the interface (NVMe preferred), capacity (512GB minimum for a boot drive), NAND type, and whether DRAM is included. Prices have dropped significantly, making SSDs accessible for virtually every budget.</p>
+        <p style="margin-top:12px;font-size:0.85em;opacity:0.7;">📊 <span id="busuanzi_container_site_pv">Total visits <span id="busuanzi_value_site_pv"></span></span><span id="visitor-ip"></span></p>
+    </div>
+    <script>fetch('https://api.ipify.org?format=json').then(r=>r.json()).then(d=>{var el=document.getElementById('visitor-ip');if(el&&d.ip){var ips=JSON.parse(localStorage.getItem('ip_list')||'[]');if(!ips.includes(d.ip)){ips.push(d.ip);localStorage.setItem('ip_list',JSON.stringify(ips))}el.innerHTML=' | 🖥️ Your IP: '+d.ip+' | Unique IPs: '+ips.length}}).catch(function(){})</script>
+</body>
+</html>

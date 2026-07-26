@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAM Guide: Computer Memory Explained - AI Tool Stack</title>
+    <meta name="description" content="A complete guide to computer memory: DDR4 vs DDR5, RAM capacity, speed timings, dual-channel configurations, and how much RAM you really need.">
+    <meta name="keywords" content="RAM, DDR5, DDR4, computer memory, memory speed, dual channel, RAM capacity, PC building">
+    <link rel="canonical" href="https://tanhaosheng.github.io/tech-4.html">
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.8; max-width: 800px; margin: 0 auto; padding: 20px; color: #333; }
+        h1 { color: #6C3CE1; font-size: 2em; margin-bottom: 0.5em; border-bottom: 3px solid #6C3CE1; padding-bottom: 10px; }
+        h2 { color: #6C3CE1; margin-top: 1.5em; }
+        a { color: #6C3CE1; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; font-size: 0.9em; color: #666; }
+    </style>
+</head>
+<body>
+    <h1>RAM Guide: Computer Memory Explained</h1>
+    <p>Random Access Memory (RAM) is your computer's short-term memory, storing data that the CPU needs to access quickly. Having sufficient fast RAM is crucial for system responsiveness, multitasking, and demanding applications like gaming, video editing, and virtual machines.</p>
+
+    <h2>DDR4 vs DDR5: Which Generation to Choose</h2>
+    <p>DDR4 has been the standard for years, offering good performance at affordable prices. DDR5 is the newer generation, providing higher speeds (4800 MHz and beyond), greater capacity per module, and improved power efficiency. DDR5 also includes on-die ECC for better data integrity. The trade-off is higher cost and the need for a compatible motherboard and CPU.</p>
+
+    <h2>Capacity: How Much RAM Do You Need?</h2>
+    <p>For everyday computing and office work, 8GB is the minimum, while 16GB is the sweet spot for most users. Gamers benefit from 32GB for modern titles, especially when running background applications. Content creators, developers running virtual machines, and data professionals should consider 32GB to 64GB or more for optimal workflow.</p>
+
+    <h2>Speed and Timings</h2>
+    <p>RAM speed (measured in MHz) and timings (CAS latency) both affect performance. Higher speeds allow more data transfers per second, while lower CAS latencies reduce delay. For DDR4, 3200MHz CL16 is a common sweet spot. For DDR5, 5600MHz CL36 offers good value. The performance difference between speeds is most noticeable in CPU-intensive tasks.</p>
+
+    <h2>Dual-Channel and Quad-Channel Configurations</h2>
+    <p>Installing RAM in matched pairs enables dual-channel mode, which effectively doubles the memory bandwidth. This provides a significant performance boost in many workloads. For optimal performance, always install RAM in the correct slots as indicated by your motherboard manual. High-end desktop platforms support quad-channel configurations for even greater bandwidth.</p>
+
+    <h2>XMP and EXPO</h2>
+    <p>XMP (Intel Extreme Memory Profile) and EXPO (AMD Extended Profiles for Overclocking) are pre-configured overclocking profiles stored on RAM modules. Enabling these profiles in the BIOS allows the RAM to run at its rated speed beyond the standard JEDEC specifications, unlocking additional performance.</p>
+
+    <div class="footer">
+        <p>When selecting RAM, ensure compatibility with your motherboard and CPU. Consider capacity first, then speed and latency. Investing in quality RAM from reputable brands ensures stability and long-term reliability.</p>
+        <p style="margin-top:12px;font-size:0.85em;opacity:0.7;">📊 <span id="busuanzi_container_site_pv">Total visits <span id="busuanzi_value_site_pv"></span></span><span id="visitor-ip"></span></p>
+    </div>
+    <script>fetch('https://api.ipify.org?format=json').then(r=>r.json()).then(d=>{var el=document.getElementById('visitor-ip');if(el&&d.ip){var ips=JSON.parse(localStorage.getItem('ip_list')||'[]');if(!ips.includes(d.ip)){ips.push(d.ip);localStorage.setItem('ip_list',JSON.stringify(ips))}el.innerHTML=' | 🖥️ Your IP: '+d.ip+' | Unique IPs: '+ips.length}}).catch(function(){})</script>
+</body>
+</html>
