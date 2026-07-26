@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Cloud Platform Guide - AI Tool Stack</title>
+    <meta name="description" content="A comprehensive guide to Google Cloud Platform: Compute Engine, Cloud Storage, BigQuery, Kubernetes Engine, and how GCP compares to AWS and Azure.">
+    <meta name="keywords" content="Google Cloud, GCP, cloud computing, BigQuery, Kubernetes, Compute Engine, cloud platform">
+    <link rel="canonical" href="https://tanhaosheng.github.io/tech-27.html">
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.8; max-width: 800px; margin: 0 auto; padding: 20px; color: #333; }
+        h1 { color: #6C3CE1; font-size: 2em; margin-bottom: 0.5em; border-bottom: 3px solid #6C3CE1; padding-bottom: 10px; }
+        h2 { color: #6C3CE1; margin-top: 1.5em; }
+        a { color: #6C3CE1; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; font-size: 0.9em; color: #666; }
+    </style>
+</head>
+<body>
+    <h1>Google Cloud Platform Guide</h1>
+    <p>Google Cloud Platform (GCP) is a suite of cloud computing services that runs on Google's infrastructure, the same network that powers Google Search, YouTube, and Gmail. GCP is known for its strengths in data analytics, machine learning, and containerized applications, making it a compelling choice for data-driven organizations.</p>
+
+    <h2>Compute Engine and Google Kubernetes Engine</h2>
+    <p>Compute Engine provides virtual machines running on Google's infrastructure, offering predefined and custom machine types. Google Kubernetes Engine (GKE) is one of the most advanced managed Kubernetes services, automating cluster management, scaling, and updates. GKE pioneered many Kubernetes innovations and remains a leading choice for container orchestration.</p>
+
+    <h2>BigQuery: Data Analytics at Scale</h2>
+    <p>BigQuery is GCP's serverless data warehouse, capable of analyzing petabytes of data using SQL queries. It separates compute from storage, allowing queries to scale massively without managing infrastructure. BigQuery's speed and ease of use have made it extremely popular for data analytics, business intelligence, and machine learning data preparation. Its on-demand pricing means you pay only for the data processed by queries.</p>
+
+    <h2>Cloud Storage and Databases</h2>
+    <p>Cloud Storage offers unified object storage with features like automatic multi-region replication, nearline and coldline storage tiers for cost optimization, and strong consistency. GCP's database offerings include Cloud SQL for relational databases, Firestore for NoSQL document data, Cloud Spanner for globally distributed relational databases, and Memorystore for Redis and Memcached.</p>
+
+    <h2>AI and Machine Learning Services</h2>
+    <p>Leveraging Google's AI expertise, GCP offers Vertex AI for end-to-end ML workflow management, pre-trained APIs for vision, language, and translation, and custom model training with TPUs (Tensor Processing Units). Google's TPUs are custom ASICs designed specifically for machine learning, offering exceptional performance for large model training.</p>
+
+    <h2>GCP vs AWS vs Azure</h2>
+    <p>GCP differentiates itself through data analytics leadership, Kubernetes expertise, competitive pricing (particularly for sustained usage), and a strong networking infrastructure. AWS offers the broadest service portfolio and market share. Azure excels in enterprise integration with Microsoft products. The choice often depends on specific technical requirements, existing vendor relationships, and team expertise.</p>
+
+    <div class="footer">
+        <p>Google Cloud Platform is an excellent choice for organizations prioritizing data analytics, container orchestration, and machine learning. Its competitive pricing and innovative services make it a strong contender in the cloud computing market.</p>
+        <p style="margin-top:12px;font-size:0.85em;opacity:0.7;">📊 <span id="busuanzi_container_site_pv">Total visits <span id="busuanzi_value_site_pv"></span></span><span id="visitor-ip"></span></p>
+    </div>
+    <script>fetch('https://api.ipify.org?format=json').then(r=>r.json()).then(d=>{var el=document.getElementById('visitor-ip');if(el&&d.ip){var ips=JSON.parse(localStorage.getItem('ip_list')||'[]');if(!ips.includes(d.ip)){ips.push(d.ip);localStorage.setItem('ip_list',JSON.stringify(ips))}el.innerHTML=' | 🖥️ Your IP: '+d.ip+' | Unique IPs: '+ips.length}}).catch(function(){})</script>
+</body>
+</html>
