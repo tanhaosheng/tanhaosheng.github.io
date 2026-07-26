@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - AI Tool Stack</title>
+    <meta name="description" content="Contact AI Tool Stack with questions, suggestions, or collaboration ideas.">
+    <style>
+        :root{--primary:#6C3CE1;--accent:#F59E0B;--bg:#f5f7fa;--text:#1a1a2e;--text-light:#6b7280;--border:#e5e7eb}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;line-height:1.8;color:var(--text);background:var(--bg);font-size:18px;max-width:800px;margin:0 auto;padding:0 20px}
+        h1{color:var(--primary);border-bottom:3px solid var(--accent);padding-bottom:10px;margin-top:40px}
+        .contact-box{background:#f5f3ff;padding:25px;border-radius:10px;margin:25px 0;border:1px solid var(--border)}
+        .contact-box p{margin:12px 0}
+        footer{margin-top:50px;padding-top:20px;border-top:1px solid var(--border);text-align:center;color:var(--text-light);font-size:0.9em}
+        a{color:var(--primary)}
+        @media(max-width:600px){body{font-size:16px}}
+    </style>
+    <link rel="stylesheet" href="nav.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3090420115329103" crossorigin="anonymous"></script>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NE8DYNMNYZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-NE8DYNMNYZ');
+    </script>
+</head>
+<body>
+<nav><div class="nav-inner"><a href="index.html">🏠 Home</a><a href="news.html">📰 News</a><a href="chatgpt-beginners-guide.html">ChatGPT</a><a href="best-ai-tools-2026.html">AI Tools</a><a href="deepseek-guide.html">🇨🇳 China AI</a><a href="prompt-engineering-guide.html">Prompting</a><a href="ai-productivity.html">Productivity</a><a href="ai-scam-safety.html">Safety</a><a href="about.html" class="active">About</a></div></nav>
+
+<h1>Contact Us</h1>
+<p>Have a question, suggestion, or want to collaborate? We'd love to hear from you.</p>
+
+<div class="contact-box">
+    <p><strong>📧 Email:</strong> jstz1983@163.com</p>
+    <p><strong>💬 Topics:</strong> Tool suggestions, corrections, guest posts, partnerships</p>
+    <p><strong>⏱️ Response time:</strong> Within 48 hours</p>
+</div>
+
+<p>We regularly update our guides and welcome feedback. If you found an error or think a tool deserves a review, let us know!</p>
+
+<footer>
+    <p>© 2026 AI Tool Stack | <a href="index.html">Home</a> | <a href="about.html">About</a> | <a href="privacy.html">Privacy</a></p>
+    <p style="margin-top:12px;font-size:0.85em;opacity:0.7;">📊 <span id="busuanzi_container_site_pv">Total visits <span id="busuanzi_value_site_pv"></span></span><span id="visitor-ip"></span></p>
+</footer>
+
+<script>
+// IP Address Display
+fetch('https://api.ipify.org?format=json').then(r=>r.json()).then(d=>{
+    var el = document.getElementById('visitor-ip');
+    if(el && d.ip) {
+        // Count unique IPs seen
+        var count = parseInt(localStorage.getItem('ip_count') || '0');
+        var ips = JSON.parse(localStorage.getItem('ip_list') || '[]');
+        if (!ips.includes(d.ip)) {
+            ips.push(d.ip);
+            localStorage.setItem('ip_list', JSON.stringify(ips));
+            count = ips.length;
+            localStorage.setItem('ip_count', String(count));
+        } else {
+            count = ips.length;
+        }
+        el.innerHTML = ' | 🖥️ Your IP: ' + d.ip + ' | Unique IPs: ' + count;
+    }
+}).catch(function(){});
+</script>
+
+</body>
+</html>
