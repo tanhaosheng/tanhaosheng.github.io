@@ -72,7 +72,7 @@
                 🔄 Check for Updates
             </button>
         </div>
-        <p style="margin-bottom:8px;color:var(--text-light);font-size:0.9em;">News is automatically fetched from major AI news sources. Click <strong>"Check for Updates"</strong> to refresh the latest stories.</p>
+        <p style="margin-bottom:8px;color:var(--text-light);font-size:0.9em;">News is automatically fetched from major AI news sources. Each item is a direct link to the original article — click any title to read the full story on the source site.</p>
         <div id="last-updated" style="margin-bottom:20px;font-size:0.85em;color:var(--text-light);"></div>
 
         <div id="news-container">
@@ -84,6 +84,11 @@
 
         <div style="margin-top:30px;padding:20px;background:#f8f6ff;border-radius:10px;text-align:center;">
             <p style="margin:0;font-size:0.9em;color:var(--text-light);">📡 News fetched directly from <strong>TechCrunch AI</strong>, <strong>ArsTechnica AI</strong>, <strong>The Verge AI</strong>, and <strong>Hacker News</strong>. Click "Check for Updates" to refresh.</p>
+        </div>
+
+        <div style="margin-top:40px;padding:20px;background:#fff;border:1px solid var(--border);border-radius:10px;">
+            <h3 style="font-size:1em;color:var(--primary);margin-bottom:8px;">© Copyright Disclaimer</h3>
+            <p style="margin:0;font-size:0.85em;color:var(--text-light);line-height:1.6;">This site aggregates news headlines, brief excerpts (up to 200 characters), and direct links to original sources for informational purposes only. All copyright and intellectual property of the original articles belong to their respective publishers and authors. Clicking any link opens the source website in a new tab. This site does not host full articles. If you are a rights holder and believe your content is being used improperly, please contact us at <a href="mailto:contact@tanhaosheng.github.io" style="color:var(--primary);">contact@tanhaosheng.github.io</a> and we will remove the relevant item promptly.</p>
         </div>
     </main>
 </div>
@@ -149,7 +154,7 @@ async function fetchFeed(url, name, proxyIdx) {
                     items.push({
                         title: item.title || '',
                         link: item.link || '',
-                        summary: (item.description || '').replace(/<[^>]*>/g,'').substring(0,200),
+                        summary: null,
                         date: item.pubDate || '',
                         source: name
                     });
@@ -173,7 +178,7 @@ async function fetchFeed(url, name, proxyIdx) {
                 items.push({
                     title: title,
                     link: link,
-                    summary: get('description').replace(/<[^>]*>/g,'').substring(0,200),
+                    summary: null,
                     date: get('pubDate'),
                     source: name
                 });
@@ -208,12 +213,11 @@ function renderNews(items) {
     var older = items.slice(1);
     var html = '';
 
-    // Sticky latest
+    // Sticky latest — only title + source, no summary
     html += '<div class="sticky-news">';
     html += '<span class="label">⭐ Latest News</span>';
     html += '<h2><a href="' + escapeHtml(latest.link) + '" target="_blank" rel="noopener">' + escapeHtml(latest.title) + '</a></h2>';
     html += '<div class="meta">📅 ' + formatDate(parseDate(latest.date)) + ' · <span class="source">' + escapeHtml(latest.source) + '</span></div>';
-    if (latest.summary) html += '<p>' + escapeHtml(latest.summary) + '</p>';
     html += '</div>';
 
     // Older
@@ -223,7 +227,6 @@ function renderNews(items) {
         html += '<div class="news-item">';
         html += '<div class="date">📅 ' + formatDate(parseDate(item.date)) + ' <span class="source">' + escapeHtml(item.source) + '</span></div>';
         html += '<h3><a href="' + escapeHtml(item.link) + '" target="_blank" rel="noopener">' + escapeHtml(item.title) + '</a></h3>';
-        if (item.summary) html += '<p>' + escapeHtml(item.summary) + '</p>';
         html += '</div>';
     });
     html += '</div>';
