@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Guide: Understanding Application Programming Interfaces - AI Tool Stack</title>
+    <meta name="description" content="A comprehensive guide to APIs: RESTful APIs, GraphQL, authentication methods, API design best practices, and how developers use APIs to build modern applications.">
+    <meta name="keywords" content="API, REST API, GraphQL, API design, web API, API authentication, RESTful, JSON API">
+    <link rel="canonical" href="https://tanhaosheng.github.io/tech-34.html">
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.8; max-width: 800px; margin: 0 auto; padding: 20px; color: #333; }
+        h1 { color: #6C3CE1; font-size: 2em; margin-bottom: 0.5em; border-bottom: 3px solid #6C3CE1; padding-bottom: 10px; }
+        h2 { color: #6C3CE1; margin-top: 1.5em; }
+        a { color: #6C3CE1; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; font-size: 0.9em; color: #666; }
+    </style>
+</head>
+<body>
+    <h1>API Guide: Understanding Application Programming Interfaces</h1>
+    <p>An Application Programming Interface (API) defines how software components should interact. APIs allow different applications, services, and systems to communicate with each other in a standardized way. They are the backbone of modern software development, enabling integration between countless services and platforms.</p>
+
+    <h2>RESTful APIs: The Web Standard</h2>
+    <p>REST (Representational State Transfer) is the most common API architecture. REST APIs use standard HTTP methods: GET (retrieve data), POST (create data), PUT/PATCH (update data), and DELETE (remove data). Resources are identified by URLs, and responses are typically formatted as JSON or XML. REST APIs are stateless, meaning each request contains all necessary information for the server to process it.</p>
+
+    <h2>GraphQL: Flexible Data Queries</h2>
+    <p>GraphQL, developed by Meta, offers an alternative to REST where clients specify exactly what data they need. This eliminates over-fetching (receiving too much data) and under-fetching (needing multiple requests). A single GraphQL endpoint handles all queries, mutations (data changes), and subscriptions (real-time updates). GraphQL is particularly valuable for complex applications with diverse data requirements.</p>
+
+    <h2>API Authentication and Security</h2>
+    <p>APIs need authentication to verify who is making requests. Common methods include API keys (simple but less secure), OAuth 2.0 (industry standard for delegated access), JWT (JSON Web Tokens for stateless authentication), and Basic Auth (simple username/password). Security best practices include rate limiting to prevent abuse, input validation to prevent injection attacks, HTTPS for encrypted communication, and proper error handling that does not leak sensitive information.</p>
+
+    <h2>API Design Best Practices</h2>
+    <p>Well-designed APIs are intuitive, consistent, and developer-friendly. Key practices: use clear, descriptive resource names (nouns, not verbs); maintain consistent naming conventions; use proper HTTP status codes (200 for success, 201 for created, 400 for bad request, 404 for not found, 500 for server error); provide comprehensive documentation; version your API; and include pagination for list endpoints.</p>
+
+    <h2>Testing and Documentation</h2>
+    <p>API testing tools like Postman and Insomnia allow developers to explore and test APIs interactively. Automated testing frameworks like Jest and Supertest validate API behavior. Documentation tools like Swagger/OpenAPI and API Blueprint generate interactive API documentation that developers can use to understand and test endpoints directly.</p>
+
+    <div class="footer">
+        <p>APIs power the modern internet, enabling the integrations and services we rely on every day. Understanding API concepts, design patterns, and security practices is essential for any software developer building connected applications.</p>
+        <p style="margin-top:12px;font-size:0.85em;opacity:0.7;">📊 <span id="busuanzi_container_site_pv">Total visits <span id="busuanzi_value_site_pv"></span></span><span id="visitor-ip"></span></p>
+    </div>
+    <script>fetch('https://api.ipify.org?format=json').then(r=>r.json()).then(d=>{var el=document.getElementById('visitor-ip');if(el&&d.ip){var ips=JSON.parse(localStorage.getItem('ip_list')||'[]');if(!ips.includes(d.ip)){ips.push(d.ip);localStorage.setItem('ip_list',JSON.stringify(ips))}el.innerHTML=' | 🖥️ Your IP: '+d.ip+' | Unique IPs: '+ips.length}}).catch(function(){})</script>
+</body>
+</html>

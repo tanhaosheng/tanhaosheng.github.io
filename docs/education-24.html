@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile App Development: iOS and Android Essentials</title>
+    <meta name="description" content="Learn mobile app development covering native iOS and Android, cross-platform frameworks like Flutter and React Native, and publishing apps.">
+    <meta name="keywords" content="mobile development, iOS development, Android development, Flutter, React Native, app development, mobile apps">
+    <link rel="canonical" href="https://tanhaosheng.github.io/education-24.html">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; background: #fafafa; }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; background: #fff; min-height: 100vh; }
+        h1 { color: #6C3CE1; font-size: 2em; margin-bottom: 10px; border-bottom: 3px solid #6C3CE1; padding-bottom: 10px; }
+        h2 { color: #6C3CE1; margin: 25px 0 12px; font-size: 1.4em; }
+        p { margin-bottom: 15px; color: #444; }
+        .footer { margin-top: 30px; border-top: 1px solid #eee; padding-top: 15px; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mobile App Development: iOS and Android Essentials</h1>
+        <p>Mobile app development offers the opportunity to reach billions of users worldwide. Whether you choose native or cross-platform, the demand for skilled developers continues to grow.</p>
+        <h2>Native iOS Development</h2>
+        <p>iOS apps are built with Swift using Xcode. Swift is a modern, safe, and expressive language. Learn UIKit for traditional interfaces or SwiftUI for declarative UI development. Apple's Human Interface Guidelines define design standards.</p>
+        <h2>Native Android Development</h2>
+        <p>Android apps use Kotlin or Java with Android Studio. Kotlin is now the preferred language with modern features and null safety. Learn Jetpack Compose for modern UI development. Material Design guidelines inform Android app design.</p>
+        <h2>Cross-Platform Frameworks</h2>
+        <p>Flutter uses Dart and compiles to native code for both platforms. React Native lets web developers use JavaScript skills. Both offer near-native performance with a single codebase, reducing development time and cost significantly.</p>
+        <h2>App Architecture and State Management</h2>
+        <p>Understand Model-View-ViewModel architecture. Learn state management approaches specific to your framework: Provider or Riverpod for Flutter, Redux or Context API for React Native. Good architecture ensures maintainable, scalable apps.</p>
+        <h2>Publishing and Monetization</h2>
+        <p>Apple App Store and Google Play Store have different submission requirements. Prepare app icons, screenshots, and descriptions. Understand in-app purchases, subscriptions, and advertising models. Plan for updates, user feedback, and app store optimization.</p>
+        <div class="footer">
+            <p style="margin-top:12px;font-size:0.85em;opacity:0.7;">📊 <span id="busuanzi_container_site_pv">Total visits <span id="busuanzi_value_site_pv"></span></span><span id="visitor-ip"></span></p>
+        </div>
+    </div>
+    <script>fetch('https://api.ipify.org?format=json').then(r=>r.json()).then(d=>{var el=document.getElementById('visitor-ip');if(el&&d.ip){var ips=JSON.parse(localStorage.getItem('ip_list')||'[]');if(!ips.includes(d.ip)){ips.push(d.ip);localStorage.setItem('ip_list',JSON.stringify(ips))}el.innerHTML=' | 🖥️ Your IP: '+d.ip+' | Unique IPs: '+ips.length}}).catch(function(){})</script>
+</body>
+</html>
