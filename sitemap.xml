@@ -43,6 +43,18 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://tanhaosheng.github.io/ai-7.html</loc>
+    <lastmod>2026-07-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tanhaosheng.github.io/ai-agent-platforms-2026.html</loc>
+    <lastmod>2026-07-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://tanhaosheng.github.io/ai-coding-assistants.html</loc>
     <lastmod>2026-07-28</lastmod>
     <changefreq>weekly</changefreq>
