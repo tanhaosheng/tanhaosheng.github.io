@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DeepSeek Fast Mode · Clinical Benchmark Report</title>
+<style>
+  :root{--bg:#fff;--fg:#1f2937;--muted:#6b7280;--line:#e5e7eb;--accent:#2563eb;--warn:#dc2626;--ok:#059669;}
+  *{box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;color:var(--fg);background:#f8fafc;margin:0;padding:32px 16px;line-height:1.65}
+  .wrap{max-width:920px;margin:0 auto;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:28px 30px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+  h1{font-size:24px;margin:0 0 4px}
+  h2{font-size:18px;margin:30px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--accent);color:var(--accent)}
+  h3{font-size:15px;margin:18px 0 6px}
+  .sub{color:var(--muted);font-size:13px;margin:0 0 8px}
+  table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f1f5f9;font-weight:600}
+  td.l,th.l{text-align:left}
+  .zero{color:var(--warn);font-weight:600}
+  .ok{color:var(--ok)}
+  .pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:600}
+  .pill.red{background:#fef2f2;color:var(--warn)}
+  .pill.blue{background:#eff6ff;color:var(--accent)}
+  .note{background:#fff7ed;border-left:4px solid #f59e0b;padding:10px 14px;border-radius:0 8px 8px 0;font-size:13px;margin:14px 0}
+  .ext{background:#ecfdf5;border-left:4px solid var(--ok);padding:10px 14px;border-radius:0 8px 8px 0;font-size:13px;margin:14px 0}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}
+  .card{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+  .card .n{font-size:26px;font-weight:700}
+  .card .t{font-size:12px;color:var(--muted)}
+  .miss{background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:12px 16px;margin:10px 0}
+  .miss b{color:var(--warn)}
+  code{background:#f1f5f9;padding:1px 5px;border-radius:4px;font-size:12px}
+  .foot{color:var(--muted);font-size:12px;margin-top:24px;border-top:1px solid var(--line);padding-top:12px}
+  a{color:var(--accent)}
+  .lang{text-align:right;font-size:13px;margin-bottom:8px}
+  .lang a{text-decoration:none;font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="lang"><a href="deepseek_report.html">🇨🇳 中文</a> · <span style="color:var(--muted)">English</span></div>
+  <h1>DeepSeek Fast Mode · Clinical Decision-Making Benchmark Report</h1>
+  <p class="sub">Framework v1.0 · Post-operative breast cancer case interpretation + adjuvant therapy recommendations · Reference: 2026 CBCS Version 2026.1.0</p>
+
+  <div class="note">
+    <b>Method note (why text-only input):</b> This benchmark used <b>plain-text case notes</b> (PDF guideline summary + case text), not images.
+    Reason: DeepSeek's Expert mode does not accept images, so text input was used to keep both models' inputs identical for a fair comparison.
+    Both models are on the free tier (DeepSeek web Fast mode / Zhipu ChatGLM 5.2), at zero cost.
+  </div>
+
+  <div class="note">
+    <b>Score calibration (important):</b> The earlier 15 / 15 / 40 based on truncated screenshots was an <b>underestimate</b> (screenshots cut off at the top, many items were "unseen" and scored 0).
+    Rescored item-by-item against the <b>full text</b> you provided, the result is more stable and accurate: <b>all three runs = 28 / 100</b>.
+  </div>
+
+  <div class="ext">
+    <b>Full answers (external appendix, not in body):</b> the three raw answers are saved separately as
+    <a href="deepseek_answers.md">deepseek_answers.md</a>, so you can verify each scoring point sentence by sentence; the body does not repeat large blocks of original text.
+  </div>
+
+  <div class="ext" style="background:#eff6ff;border-left-color:var(--accent)">
+    🔗 <b>Official model URLs (use or verify yourself):</b>
+    <ul style="margin:8px 0 0;padding-left:20px">
+      <li><b>DeepSeek (web Fast mode)</b>: <a href="https://chat.deepseek.com/" target="_blank" rel="noopener">https://chat.deepseek.com/</a> — this report is based on this mode.</li>
+      <li><b>Zhipu ChatGLM (web)</b>: <a href="https://chatglm.cn/" target="_blank" rel="noopener">https://chatglm.cn/</a> — the comparison model, see the comparison report below.</li>
+    </ul>
+  </div>
+
+  <h2>1. Overall Scores</h2>
+  <div class="grid">
+    <div class="card"><div class="n">28</div><div class="t">Run 1 / 100</div></div>
+    <div class="card"><div class="n">28</div><div class="t">Run 2 / 100</div></div>
+    <div class="card"><div class="n">28</div><div class="t">Run 3 / 100</div></div>
+    <div class="card"><div class="n">28</div><div class="t">Median</div></div>
+    <div class="card"><div class="n">0</div><div class="t">Max−Min (stability)</div></div>
+    <div class="card"><div class="n">≈3–4s</div><div class="t">Avg response</div></div>
+  </div>
+  <p class="sub">Conclusion: DeepSeek Fast mode on this task is <b>highly consistent and perfectly reproducible</b> (zero variance across 3 runs), but the <b>absolute level is low and it systematically fails the same high-weight items</b>.</p>
+
+  <h2>2. Item-by-item Scorecard (max 100)</h2>
+  <table>
+    <thead>
+      <tr><th class="l">#</th><th class="l">Item</th><th>Max</th><th>R1</th><th>R1 pts</th><th>R2</th><th>R2 pts</th><th>R3</th><th>R3 pts</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="l">1.1</td><td class="l">Accept TisN0M0 (should question ambiguity)</td><td>6</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr><td class="l">1.2</td><td class="l">Stage correction (T1a vs T1mi)</td><td>10</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr><td class="l">1.3</td><td class="l">Molecular subtype (Luminal A-like)</td><td>4</td><td>1</td><td>2</td><td>1</td><td>2</td><td>1</td><td>2</td></tr>
+      <tr><td class="l">2.1</td><td class="l">Surgery rationale + ALND</td><td>8</td><td>1</td><td>4</td><td>1</td><td>4</td><td>1</td><td>4</td></tr>
+      <tr><td class="l">2.2</td><td class="l">Adjuvant radiotherapy</td><td>4</td><td>1</td><td>2</td><td>1</td><td>2</td><td>1</td><td>2</td></tr>
+      <tr><td class="l">3.1</td><td class="l">Chemo indication + multigene test</td><td>10</td><td>1</td><td>5</td><td>1</td><td>5</td><td>1</td><td>5</td></tr>
+      <tr><td class="l">3.2a</td><td class="l">Endocrine necessity + mastectomy/BCS difference <span class="pill red">core</span></td><td>12</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr><b></b><td class="l">3.2b</td><td class="l">AI vs TAM + age cutoff <span class="pill red">core</span></td><td>10</td><td class="zero">0</td><td>0</td><td>1</td><td>3</td><td class="zero">0</td><td>0</td></tr>
+      <tr><td class="l">3.2c</td><td class="l">Drug dose &amp; duration</td><td>6</td><td>1</td><td>3</td><td>1</td><td>3</td><td>1</td><td>3</td></tr>
+      <tr><td class="l">3.2d</td><td class="l">OFS / extension / CDK4/6</td><td>6</td><td>1</td><td>3</td><td class="zero">0</td><td>0</td><td>1</td><td>3</td></tr>
+      <tr><td class="l">3.3</td><td class="l">Anti-HER2</td><td>4</td><td>1</td><td>2</td><td>1</td><td>2</td><td>1</td><td>2</td></tr>
+      <tr><td class="l">4.1</td><td class="l">Endocrine AE monitoring</td><td>6</td><td>1</td><td>3</td><td>1</td><td>3</td><td>1</td><td>3</td></tr>
+      <tr><td class="l">4.2</td><td class="l">Bone density &amp; lifestyle</td><td>4</td><td>1</td><td>2</td><td>1</td><td>2</td><td>1</td><td>2</td></tr>
+      <tr><td class="l">4.3</td><td class="l">Follow-up plan</td><td>4</td><td>1</td><td>2</td><td>1</td><td>2</td><td>1</td><td>2</td></tr>
+      <tr><td class="l">4.4</td><td class="l">Contralateral breast + BRCA</td><td>4</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr><td class="l">5</td><td class="l">Self-assessment + uncertainty</td><td>2</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr style="font-weight:700;background:#f1f5f9"><td class="l" colspan="2">Total</td><td>100</td><td></td><td>28</td><td></td><td>28</td><td></td><td>28</td></tr>
+    </tbody>
+  </table>
+  <p class="sub">Scoring rule: 0/1/2 points; <b>a correct item that does not cite a specific 2026 CBCS section/page is capped at 1</b> (cannot verify it actually used the guideline). All three runs cite no specific section, so every "directionally correct" item scored 1, not 2.</p>
+
+  <h2>3. Three Systematic Failures (every run, the main point loss)</h2>
+
+  <div class="miss">
+    <b>① Never questions the staging (1.1+1.2, all 16 points lost)</b><br>
+    Pathology states "3 clusters of stromal invasion, largest focus 0.2 cm = 2 mm". Microinvasion is defined as a single focus ≤1 mm; <b>0.2 cm already exceeds microinvasion → should be at least pT1a (Stage IA)</b>.
+    All three runs copied the discharge "TisN0M0 Stage 0" without flagging the ambiguity. This is the biggest clinical safety-level error: a staging mismatch cascades into treatment intensity, follow-up cadence, and patient expectations.
+    (Run 3 used the term "DCIS with microinvasion" but still did not correct Stage 0.)
+  </div>
+
+  <div class="miss">
+    <b>② Post-mastectomy DCIS endocrine recommendation not downgraded (3.2a, all 12 points lost)</b><br>
+    Guideline P59 note a states: for DCIS after mastectomy, endocrine drugs belong to the "<b>chemoprevention</b>" category, with the recommendation level downgraded to "consider / optional".
+    All three runs applied the "DCIS → endocrine is standard / strongly recommended" template, <b>without distinguishing mastectomy vs breast-conserving surgery</b>. This is the highest-discrimination core item in the framework; total failure.
+  </div>
+
+  <div class="miss">
+    <b>③ 60-year age cutoff for AI vs TAM not mentioned (3.2b, all 10 points lost)</b><br>
+    Guideline P59 note b: AI's advantage over TAM is mainly seen in <b>postmenopausal women &lt;60</b>; at ≥60 the two are nearly equivalent, clinically either is acceptable (slight lean to AI).
+    The patient is exactly <b>60, at the boundary</b>. Run1/Run3 directly gave "AI first choice", Run2 said "either after menopause" — <b>none wrote out the age cutoff</b>, showing no fine reading of the guideline.
+  </div>
+
+  <h2>4. Other Key Findings</h2>
+  <h3>✅ What it got right (strengths)</h3>
+  <ul>
+    <li><b>Correct chemo-exemption judgment</b>: all three correctly gave "no chemo needed"; Run1 also proactively mentioned <code>Oncotype DX</code> multigene testing for risk stratification (beyond framework expectation).</li>
+    <li><b>Follow-up plan mostly adequate</b>: Run3 explicitly stated "routine tumor markers (CEA/CA15-3) not recommended", consistent with the guideline, better than the other two.</li>
+    <li><b>Reasonable safety awareness</b>: all mentioned AI-related bone-density/lipid monitoring, calcium and Vit D.</li>
+    <li><b>Extremely consistent</b>: zero variance across 3 runs, meaning output is templated not random, and thus predictable.</li>
+  </ul>
+
+  <h3>⚠️ Structural weaknesses</h3>
+  <ul>
+    <li><b>Guideline-section citation accuracy = 0 / 16</b>: all three only say "mainstream guideline / latest 2026 / authoritative guideline", <b>with no single reference to a specific 2026 CBCS section or page</b>. You cannot verify it actually read the guideline vs applied generic knowledge — a hard hit to clinical credibility.</li>
+    <li><b>Structured output failed</b>: the Prompt asked for "bullets + section/page citations + 5-block structure"; none delivered verifiable section citations.</li>
+    <li><b>Templated phrasing</b>: all open with the safe boilerplate "very early stage / low risk / Luminal type", like pattern matching rather than clinical reasoning.</li>
+    <li><b>No self-assessment (item 5 all lost)</b>: no run stated "confidence level" or "what is clinical reasoning vs guideline".</li>
+  </ul>
+
+  <h2>5. Practical Conclusion for Clinical Use</h2>
+  <ul>
+    <li><b>DeepSeek Fast mode is good for</b>: quick Q&amp;A, drug常识, follow-up reminders, patient-education phrasing — its conclusions "don't crash on the big picture" and it replies instantly.</li>
+    <li><b>Do not rely on it for</b>: stage re-interpretation, recommendation-grade fine-tuning, age/boundary-related nuanced decisions — exactly where it systematically lost points, and it <b>appears very confident</b>, which is misleading.</li>
+    <li><b>Key reminder</b>: when a case has "pathology description inconsistent with discharge diagnosis" (like this invasion focus vs Tis), <b>no free-tier LLM should be trusted alone</b>; a clinician must review.</li>
+  </ul>
+
+  <div class="ext">
+    📎 <b>Comparison report:</b> The same case and same Prompt were also benchmarked on <b>Zhipu ChatGLM 5.2</b> three times.
+    Full comparison analysis in <a href="chatglm_report.html">chatglm_report.html</a> (includes DeepSeek vs ChatGLM score comparison and the final "which model fits which task" recommendation).
+  </div>
+
+  <p class="foot">
+    Data limitations: 1 case only, text input only, free tier only, 3 runs per model. This report is an internal LLM选型 evaluation, <b>not clinical advice</b>, and model output must not be used for real patient decisions.
+    Full raw answers in <a href="deepseek_answers.md">deepseek_answers.md</a>.
+  </p>
+</div>
+</body>
+</html>

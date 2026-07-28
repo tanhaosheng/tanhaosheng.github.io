@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>中文 LLM 临床决策实测 · 总入口</title>
+<style>
+  :root{--bg:#fff;--fg:#1f2937;--muted:#6b7280;--line:#e5e7eb;--accent:#2563eb;--warn:#dc2626;--ok:#059669;}
+  *{box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;color:var(--fg);background:#f8fafc;margin:0;padding:32px 16px;line-height:1.65}
+  .wrap{max-width:920px;margin:0 auto;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:28px 30px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+  h1{font-size:24px;margin:0 0 4px}
+  h2{font-size:18px;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--accent);color:var(--accent)}
+  .sub{color:var(--muted);font-size:13px;margin:0 0 8px}
+  .card{display:block;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:12px 0;text-decoration:none;color:inherit;transition:.15s}
+  .card:hover{border-color:var(--accent);box-shadow:0 2px 10px rgba(37,99,235,.08);transform:translateY(-1px)}
+  .card .t{font-size:16px;font-weight:700;color:var(--accent)}
+  .card .d{font-size:13px;color:var(--muted);margin-top:4px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:640px){.grid2{grid-template-columns:1fr}}
+  .models{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .model{border:1px solid var(--line);border-radius:12px;padding:16px;background:#f8fafc}
+  .model .name{font-weight:700;font-size:15px}
+  .model a{font-size:13px;word-break:break-all}
+  .pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:600}
+  .pill.blue{background:#eff6ff;color:var(--accent)}
+  .pill.red{background:#fef2f2;color:var(--warn)}
+  .note{background:#fff7ed;border-left:4px solid #f59e0b;padding:10px 14px;border-radius:0 8px 8px 0;font-size:13px;margin:14px 0}
+  .foot{color:var(--muted);font-size:12px;margin-top:24px;border-top:1px solid var(--line);padding-top:12px}
+  a{color:var(--accent)}
+  .lang{text-align:right;font-size:13px;margin-bottom:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="lang"><span style="color:var(--muted)">中文</span> · <a href="index_en.html" style="text-decoration:none;font-weight:600">🇬🇧 English</a></div>
+  <h1>中文 LLM 临床决策实测 · 总入口</h1>
+  <p class="sub">一个外科医生的视角：用真实（脱敏）病例，对比免费档大模型在"乳腺癌术后后续治疗建议"上的准确性（参考 2026 CBCS 指南）</p>
+
+  <div class="note">
+    ⚠️ 本实测为 AI 选型评估，<b>不构成任何临床建议</b>。模型输出<b>不可用于真实患者决策</b>。
+    病例已匿名化，仅用于方法演示。
+  </div>
+
+  <h2>一、参与评测的模型（点击去使用 / 验证）</h2>
+  <div class="models">
+    <div class="model">
+      <div class="name">🔵 DeepSeek（网页快速模式）</div>
+      <div class="sub" style="margin:6px 0">实测得分：中位 <b>28/100</b> · 中文输出 · 稳定可复现</div>
+      <a href="https://chat.deepseek.com/" target="_blank" rel="noopener">https://chat.deepseek.com/</a>
+    </div>
+    <div class="model">
+      <div class="name">🟢 智谱清言 ChatGLM（网页版）</div>
+      <div class="sub" style="margin:6px 0">实测得分：中位 <b>5/100</b> · 英文输出 · 高度不稳定</div>
+      <a href="https://chatglm.cn/" target="_blank" rel="noopener">https://chatglm.cn/</a>
+    </div>
+  </div>
+
+  <h2>二、实测报告</h2>
+  <a class="card" href="deepseek_report.html">
+    <div class="t">📊 DeepSeek 快速模式 · 实测分析报告</div>
+    <div class="d">16 项逐项评分、三大系统性失误、对临床场景的实用结论。附完整回答外部附录。</div>
+  </a>
+  <a class="card" href="chatglm_report.html">
+    <div class="t">📊 ChatGLM 5.2 · 实测分析报告（含 DeepSeek 对比）</div>
+    <div class="d">两大独立硬伤、与 DeepSeek 的维度对比表、最终"哪个模型适合什么任务"建议矩阵。</div>
+  </a>
+
+  <h2>三、评测方法（可复现）</h2>
+  <a class="card" href="framework.md">
+    <div class="t">🧪 测试框架 v1.0（Prompt + 评分 Rubric）</div>
+    <div class="d">标准化输入 Prompt、16 项满分 100 评分表、参考答案要点、复测与稳定性要求。把 Prompt 贴到任何模型即可自行复现。</div>
+  </a>
+
+  <h2>四、完整原始回答（外部附录，供逐句核对）</h2>
+  <div class="grid2">
+    <a class="card" href="deepseek_answers.md">
+      <div class="t">DeepSeek 三段完整回答</div>
+      <div class="d">deepseek_answers.md</div>
+    </a>
+    <a class="card" href="chatglm_answers.md">
+      <div class="t">ChatGLM 三段完整回答</div>
+      <div class="d">chatglm_answers.md</div>
+    </a>
+  </div>
+
+  <div class="note">
+    💡 <b>想自己验证？</b> 打开 <a href="framework.md">测试框架</a> 复制 §1 的 Prompt，分别粘贴到
+    <a href="https://chat.deepseek.com/" target="_blank" rel="noopener">DeepSeek</a> 和
+    <a href="https://chatglm.cn/" target="_blank" rel="noopener">ChatGLM</a>，
+    再按 Rubric 16 项打分，就能得到你自己的结论。
+  </div>
+
+  <p class="foot">
+    数据局限：仅 1 例、仅文字输入、仅免费档、每模型 3 次。评测由一名外科医生设计与解读，供 LLM 临床场景选型参考。
+  </p>
+</div>
+</body>
+</html>

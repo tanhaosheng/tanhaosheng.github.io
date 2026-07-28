@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ChatGLM 5.2 · Clinical Benchmark Report (with DeepSeek comparison)</title>
+<style>
+  :root{--bg:#fff;--fg:#1f2937;--muted:#6b7280;--line:#e5e7eb;--accent:#2563eb;--warn:#dc2626;--ok:#059669;}
+  *{box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;color:var(--fg);background:#f8fafc;margin:0;padding:32px 16px;line-height:1.65}
+  .wrap{max-width:960px;margin:0 auto;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:28px 30px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+  h1{font-size:24px;margin:0 0 4px}
+  h2{font-size:18px;margin:30px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--accent);color:var(--accent)}
+  h3{font-size:15px;margin:18px 0 6px}
+  .sub{color:var(--muted);font-size:13px;margin:0 0 8px}
+  table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f1f5f9;font-weight:600}
+  td.l,th.l{text-align:left}
+  .zero{color:var(--warn);font-weight:600}
+  .pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:600}
+  .pill.red{background:#fef2f2;color:var(--warn)}
+  .pill.blue{background:#eff6ff;color:var(--accent)}
+  .pill.orange{background:#fff7ed;color:#c2410c}
+  .pill.green{background:#ecfdf5;color:var(--ok)}
+  .note{background:#fff7ed;border-left:4px solid #f59e0b;padding:10px 14px;border-radius:0 8px 8px 0;font-size:13px;margin:14px 0}
+  .critical{background:#fef2f2;border-left:4px solid var(--warn);padding:12px 14px;border-radius:0 8px 8px 0;font-size:14px;margin:14px 0}
+  .ext{background:#ecfdf5;border-left:4px solid var(--ok);padding:10px 14px;border-radius:0 8px 8px 0;font-size:13px;margin:14px 0}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}
+  .card{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+  .card .n{font-size:26px;font-weight:700}
+  .card .t{font-size:12px;color:var(--muted)}
+  .miss{background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:12px 16px;margin:10px 0}
+  .miss b{color:var(--warn)}
+  code{background:#f1f5f9;padding:1px 5px;border-radius:4px;font-size:12px}
+  .foot{color:var(--muted);font-size:12px;margin-top:24px;border-top:1px solid var(--line);padding-top:12px}
+  a{color:var(--accent)}
+  .highlight{background:#fef9c3;font-weight:700}
+  .lang{text-align:right;font-size:13px;margin-bottom:8px}
+  .lang a{text-decoration:none;font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="lang"><a href="chatglm_report.html">🇨🇳 中文</a> · <span style="color:var(--muted)">English</span></div>
+  <h1>ChatGLM 5.2 · Clinical Decision-Making Benchmark Report</h1>
+  <p class="sub">Framework v1.0 · Post-operative breast cancer case interpretation + adjuvant therapy recommendations · Reference: 2026 CBCS Version 2026.1.0 · with DeepSeek Fast mode comparison</p>
+
+  <div class="critical">
+    ⚠️ <b>Two independent critical flaws (before scoring):</b><br>
+    ① <b>All three runs answered in English</b>. The Prompt and case were both in Chinese, yet GLM 5.2 output English in all three runs (confirmed in both screenshots and text) — <b>near-zero usability for Chinese clinicians</b>, and suggests the model did not truly "absorb" the Chinese medical context.<br>
+    ② <b>All three runs were extremely short and vague</b>. The pattern was basically "restate the case + generic advice + disclaimer", with almost no real clinical decision reasoning.
+  </div>
+
+  <div class="ext" style="background:#eff6ff;border-left-color:var(--accent)">
+    🔗 <b>Official model URLs (use or verify yourself):</b>
+    <ul style="margin:8px 0 0;padding-left:20px">
+      <li><b>Zhipu ChatGLM (web)</b>: <a href="https://chatglm.cn/" target="_blank" rel="noopener">https://chatglm.cn/</a> — this report is based on this version (ChatGLM 5.2).</li>
+      <li><b>DeepSeek (web Fast mode)</b>: <a href="https://chat.deepseek.com/" target="_blank" rel="noopener">https://chat.deepseek.com/</a> — the comparison model; benchmark details in <a href="deepseek_report.html">deepseek_report.html</a>.</li>
+    </ul>
+  </div>
+
+  <div class="ext">
+    📎 <b>Full answers (external appendix, not in body):</b> the three raw answers are saved separately as
+    <a href="chatglm_answers.md">chatglm_answers.md</a>, for sentence-by-sentence verification.
+    DeepSeek's three runs are in <a href="deepseek_answers.md">deepseek_answers.md</a>.
+  </div>
+
+  <h2>1. Overall Scores</h2>
+  <div class="grid">
+    <div class="card"><div class="n">10</div><div class="t">Run 1 / 100</div></div>
+    <div class="card"><div class="n">2</div><div class="t">Run 2 / 100</div></div>
+    <div class="card"><div class="n">5</div><div class="t">Run 3 / 100</div></div>
+    <div class="card"><div class="n">5</div><div class="t">Median</div></div>
+    <div class="card"><div class="n"><span class="zero">8</span></div><div class="t">Max−Min <span class="pill orange">unstable</span></div></div>
+    <div class="card"><div class="n">0/16</div><div class="t">Guideline citations</div></div>
+  </div>
+  <p class="sub">Conclusion: ChatGLM 5.2 on this task has <b>very low absolute level (median 5/100) and is highly unstable (spread = 8, triggering the framework's "≥8 = unstable" threshold)</b>. Only Run 1 came near a pass; Run 2 was almost blank.</p>
+
+  <h2>2. Item-by-item Scorecard (max 100)</h2>
+  <table>
+    <thead>
+      <tr><th class="l">#</th><th class="l">Item</th><th>Max</th><th>R1</th><th>R1 pts</th><th>R2</th><th>R2 pts</th><th>R3</th><th>R3 pts</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="l">1.1</td><td class="l">Accept TisN0M0 (should question ambiguity)</td><td>6</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr><td class="l">1.2</td><td class="l">Stage correction (T1a vs T1mi)</td><td>10</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr><td class="l">1.3</td><td class="l">Molecular subtype</td><td>4</td><td>1</td><td>2</td><td>1</td><td>2</td><td>1</td><td>2</td></tr>
+      <tr><td class="l">2.1</td><td class="l">Surgery rationale + ALND</td><td>8</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr><td class="l">2.2</td><td class="l">Adjuvant radiotherapy</td><td>4</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr><td class="l">3.1</td><td class="l">Chemo indication + multigene test</td><td>10</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr><td class="l">3.2a</td><td class="l">Endocrine necessity + mastectomy/BCS difference <span class="pill red">core</span></td><td>12</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr><td class="l">3.2b</td><td class="l">AI vs TAM + age cutoff <span class="pill red">core</span></td><td>10</td><td>1</td><td>3</td><td class="zero">0</td><td>0</td><td>1</td><td>3</td></tr>
+      <tr><td class="l">3.2c</td><td class="l">Drug dose &amp; duration</td><td>6</td><td>1</td><td>3</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr><td class="l">3.2d</td><td class="l">OFS / extension / CDK4/6</td><td>6</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr><td class="l">3.3</td><td class="l">Anti-HER2</td><td>4</td><td>1</td><td>2</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr><td class="l">4.1</td><td class="l">Endocrine AE monitoring</td><td>6</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr><td class="l">4.2</td><td class="l">Bone density &amp; lifestyle</td><td>4</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr><td class="l">4.3</td><td class="l">Follow-up plan</td><td>4</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr><td class="l">4.4</td><td class="l">Contralateral breast + BRCA</td><td>4</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr><td class="l">5</td><td class="l">Self-assessment + uncertainty</td><td>2</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr style="font-weight:700;background:#f1f5f9"><td class="l" colspan="2">Total</td><td>100</td><td></td><td class="highlight">10</td><td></td><td class="highlight">2</td><td></td><td class="highlight">5</td></tr>
+    </tbody>
+  </table>
+  <p class="sub">Scoring rule same as DeepSeek report: 0/1/2 points; a correct item not citing a 2026 CBCS section/page is capped at 1.</p>
+
+  <h2>3. Comparison with DeepSeek Fast Mode</h2>
+  <table>
+    <thead>
+      <tr><th class="l">Dimension</th><th>DeepSeek Fast</th><th>ChatGLM 5.2 web</th><th>Gap</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="l">Median / 100</td><td><b>28</b></td><td><b>5</b></td><td class="zero">−23</td></tr>
+      <tr><td class="l">Stability (max−min)</td><td><span class="pill green">0 (perfect)</span></td><td><span class="pill red">8 (unstable)</span></td><td>major disadvantage</td></tr>
+      <tr><td class="l">Output language</td><td><span class="pill green">Chinese</span></td><td><span class="pill red">English (!)</span></td><td class="zero">unusable for Chinese users</td></tr>
+      <tr><td class="l">Avg words (3-run mean)</td><td>≈ 450 / run</td><td>≈ 130 / run</td><td>DeepSeek ≈ 3×</td></tr>
+      <tr><td class="l">Core 3.2a (post-mastectomy DCIS endocrine grade)</td><td class="zero">0</td><td class="zero">0</td><td>both lost</td></tr>
+      <tr><td class="l">Stage questioning (1.1+1.2)</td><td class="zero">0</td><td class="zero">0</td><td>both lost</td></tr>
+      <tr><td class="l">Chemo exemption (3.1)</td><td><span class="pill green">correct + Oncotype DX</span></td><td class="zero">not mentioned</td><td>DeepSeek better</td></tr>
+      <tr><td class="l">Follow-up detail (4.3)</td><td><span class="pill green">specific cadence</span></td><td class="zero">vague "regular check"</td><td>DeepSeek better</td></tr>
+      <tr><td class="l">CBCS section citation</td><td class="zero">0 / 16</td><td class="zero">0 / 16</td><td>both lost</td></tr>
+      <tr><td class="l">Self-assessment</td><td class="zero">not done</td><td><span class="pill orange">generic disclaimer</span></td><td>neither met requirement</td></tr>
+      <tr><td class="l">Response time (est.)</td><td>≈ 3–4 s</td><td>≈ 5–8 s (English gen)</td><td>DeepSeek slightly faster</td></tr>
+    </tbody>
+  </table>
+
+  <h2>4. ChatGLM's Two Independent Critical Flaws</h2>
+
+  <div class="miss">
+    <b>① All-English output (usability flaw)</b><br>
+    Input was a Chinese Prompt + Chinese case, yet all three answers were English. For Chinese clinicians this means:
+    - High reading/review cost (clinical terms must be checked word by word);
+    - Chinese guideline citations, term translation, and dosage notation may be lost/mistranslated;
+    - It hands the decision to a model that "did not think in your language".
+    <br><b>Clinically unacceptable</b>, regardless of score.
+  </div>
+
+  <div class="miss">
+    <b>② Extremely low information density + high instability (quality flaw)</b><br>
+    Three runs averaged ~130 words (DeepSeek ~450), with almost no concrete clinical decisions; Run 2 scored only 2 (basically restating the case + "let the doctor decide").
+    Spread = 8, <b>triggering the framework's "≥8 = unstable" threshold</b>, meaning <b>repeating the same question yields unpredictable results</b>.
+  </div>
+
+  <h2>5. Final Recommendation (Framework §6)</h2>
+
+  <h3>Overall ranking</h3>
+  <p><b>DeepSeek Fast mode ≫ ChatGLM 5.2</b> — DeepSeek is stronger on every comparable dimension, and is Chinese-output that can be directly clinically reviewed.</p>
+
+  <h3>Practical conclusion for clinical scenarios</h3>
+  <table>
+    <thead><tr><th class="l">Task type</th><th>Recommend</th><th>Reason</th></tr></thead>
+    <tbody>
+      <tr><td class="l">Chinese clinical decision reasoning (like this case)</td><td><span class="pill green">DeepSeek Fast</span></td><td>Chinese output, high density, stable &amp; reproducible</td></tr>
+      <tr><td class="l">Quick Q&amp;A / drug常识</td><td><span class="pill green">DeepSeek Fast</span></td><td>instant reply, big picture doesn't crash</td></tr>
+      <tr><td class="l">Needs citation of specific guideline sections</td><td><span class="pill red">neither</span></td><td>both 0/16 citation accuracy</td></tr>
+      <tr><td class="l">Stage re-interpretation / recommendation-grade fine-tuning</td><td><span class="pill red">neither alone</span></td><td>both lost core items, both "confidently" accepted discharge dx</td></tr>
+      <tr><td class="l">English medical literature / international guidelines</td><td><span class="pill blue">ChatGLM possible</span></td><td>English output is an advantage for int'l materials (not covered here)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="ext">
+    ✅ <b>One-line conclusion:</b> In the triangle of "Chinese + clinical decision reasoning + zero cost", <b>DeepSeek Fast mode decisively beats ChatGLM 5.2</b>. Neither model reaches the threshold of being trusted alone clinically, but DeepSeek at least gives a "wrong-but-deep" reasoning chain to verify; ChatGLM gives "vague + disclaimer" with <b>no verification value and poor fit for Chinese doctors' daily use</b>.
+  </div>
+
+  <p class="foot">
+    Data limitations: 1 case only, text input only, free tier only, 3 runs per model. This report is an internal LLM选型 evaluation, <b>not clinical advice</b>.
+    ChatGLM full raw answers: <a href="chatglm_answers.md">chatglm_answers.md</a>.
+    DeepSeek full raw answers: <a href="deepseek_answers.md">deepseek_answers.md</a>.
+  </p>
+</div>
+</body>
+</html>

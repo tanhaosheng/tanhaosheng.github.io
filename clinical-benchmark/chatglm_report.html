@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ChatGLM 5.2 · 临床决策实测分析报告（含 DeepSeek 对比）</title>
+<style>
+  :root{--bg:#fff;--fg:#1f2937;--muted:#6b7280;--line:#e5e7eb;--accent:#2563eb;--warn:#dc2626;--ok:#059669;}
+  *{box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;color:var(--fg);background:#f8fafc;margin:0;padding:32px 16px;line-height:1.65}
+  .wrap{max-width:960px;margin:0 auto;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:28px 30px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+  h1{font-size:24px;margin:0 0 4px}
+  h2{font-size:18px;margin:30px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--accent);color:var(--accent)}
+  h3{font-size:15px;margin:18px 0 6px}
+  .sub{color:var(--muted);font-size:13px;margin:0 0 8px}
+  table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f1f5f9;font-weight:600}
+  td.l,th.l{text-align:left}
+  .zero{color:var(--warn);font-weight:600}
+  .pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:600}
+  .pill.red{background:#fef2f2;color:var(--warn)}
+  .pill.blue{background:#eff6ff;color:var(--accent)}
+  .pill.orange{background:#fff7ed;color:#c2410c}
+  .pill.green{background:#ecfdf5;color:var(--ok)}
+  .note{background:#fff7ed;border-left:4px solid #f59e0b;padding:10px 14px;border-radius:0 8px 8px 0;font-size:13px;margin:14px 0}
+  .critical{background:#fef2f2;border-left:4px solid var(--warn);padding:12px 14px;border-radius:0 8px 8px 0;font-size:14px;margin:14px 0}
+  .ext{background:#ecfdf5;border-left:4px solid var(--ok);padding:10px 14px;border-radius:0 8px 8px 0;font-size:13px;margin:14px 0}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}
+  .card{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+  .card .n{font-size:26px;font-weight:700}
+  .card .t{font-size:12px;color:var(--muted)}
+  .miss{background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:12px 16px;margin:10px 0}
+  .miss b{color:var(--warn)}
+  code{background:#f1f5f9;padding:1px 5px;border-radius:4px;font-size:12px}
+  .foot{color:var(--muted);font-size:12px;margin-top:24px;border-top:1px solid var(--line);padding-top:12px}
+  a{color:var(--accent)}
+  .lang{text-align:right;font-size:13px;margin-bottom:8px}
+  .highlight{background:#fef9c3;font-weight:700}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="lang"><span style="color:var(--muted)">中文</span> · <a href="chatglm_report_en.html" style="text-decoration:none;font-weight:600">🇬🇧 English</a></div>
+  <h1>ChatGLM 5.2 · 临床决策实测分析报告</h1>
+  <p class="sub">框架 v1.0 · 乳腺癌术后病例解读 + 后续辅助治疗建议 · 参考 2026 CBCS Version 2026.1.0 · 含与 DeepSeek 快速模式对比</p>
+
+  <div class="critical">
+    ⚠️ <b>两个独立硬伤（先于评分）：</b><br>
+    ① <b>三段全部英文回答</b>。输入 Prompt 与病历均为中文，但 GLM 5.2 三跑均输出英文（截图与文字版均确认）——对中文临床用户的<b>可用性几乎为零</b>，且意味着模型未真正"吃透"中文医学语境。<br>
+    ② <b>三跑内容极短极泛</b>。基本模式是"复述病历 + 泛泛建议 + 免责声明"，几乎没有真正展开临床决策推理。
+  </div>
+
+  <div class="ext" style="background:#eff6ff;border-left-color:var(--accent)">
+    🔗 <b>参与评测的模型官方网址（感兴趣可亲自去使用或验证）：</b>
+    <ul style="margin:8px 0 0;padding-left:20px">
+      <li><b>智谱清言 ChatGLM（网页版）</b>：<a href="https://chatglm.cn/" target="_blank" rel="noopener">https://chatglm.cn/</a> —— 本报告即基于该版本（ChatGLM 5.2）实测。</li>
+      <li><b>DeepSeek（网页快速模式）</b>：<a href="https://chat.deepseek.com/" target="_blank" rel="noopener">https://chat.deepseek.com/</a> —— 对比模型，实测详见 <a href="deepseek_report.html">deepseek_report.html</a>。</li>
+    </ul>
+    <span class="sub" style="margin-top:6px;display:block">提示：用同一份 <a href="framework.md">测试框架 Prompt</a> 粘贴进去，即可复现本报告结论。</span>
+  </div>
+
+  <div class="ext">
+    📎 <b>完整回答（外部附录，不在正文）：</b> 三段原始回答已单独保存为
+    <a href="chatglm_answers.md">chatglm_answers.md</a>，可点开逐句核对评分依据。
+    DeepSeek 三段在 <a href="deepseek_answers.md">deepseek_answers.md</a>。
+  </div>
+
+  <h2>一、总体得分</h2>
+  <div class="grid">
+    <div class="card"><div class="n">10</div><div class="t">Run 1 / 100</div></div>
+    <div class="card"><div class="n">2</div><div class="t">Run 2 / 100</div></div>
+    <div class="card"><div class="n">5</div><div class="t">Run 3 / 100</div></div>
+    <div class="card"><div class="n">5</div><div class="t">中位数</div></div>
+    <div class="card"><div class="n"><span class="zero">8</span></div><div class="t">最高−最低 <span class="pill orange">不稳定</span></div></div>
+    <div class="card"><div class="n">0/16</div><div class="t">引用指南章节</div></div>
+  </div>
+  <p class="sub">结论：ChatGLM 5.2 在该任务上<b>绝对水平极低（中位 5/100）且高度不稳定（spread = 8，触发框架"≥8 分判定为不稳定"阈值）</b>。三跑中只有 Run 1 接近及格线，Run 2 几乎是空白。</p>
+
+  <h2>二、逐项评分表（满分 100）</h2>
+  <table>
+    <thead>
+      <tr><th class="l">#</th><th class="l">评测项</th><th>满分</th><th>R1 分</th><th>R1 得</th><th>R2 分</th><th>R2 得</th><th>R3 分</th><th>R3 得</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="l">1.1</td><td class="l">是否认同 TisN0M0（应质疑歧义）</td><td>6</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr><td class="l">1.2</td><td class="l">分期修正（T1a vs T1mi）</td><td>10</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr><td class="l">1.3</td><td class="l">分子分型</td><td>4</td><td>1</td><td>2</td><td>1</td><td>2</td><td>1</td><td>2</td></tr>
+      <tr><td class="l">2.1</td><td class="l">手术合理性 + ALND</td><td>8</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr><td class="l">2.2</td><td class="l">辅助放疗</td><td>4</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr><td class="l">3.1</td><td class="l">化疗指征 + 多基因检测</td><td>10</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr><td class="l">3.2a</td><td class="l">内分泌必要性 + 全切/保乳差异 <span class="pill red">核心</span></td><td>12</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr><td class="l">3.2b</td><td class="l">AI vs TAM + 年龄切点 <span class="pill red">核心</span></td><td>10</td><td>1</td><td>3</td><td class="zero">0</td><td>0</td><td>1</td><td>3</td></tr>
+      <tr><td class="l">3.2c</td><td class="l">药物剂量疗程</td><td>6</td><td>1</td><td>3</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr><td class="l">3.2d</td><td class="l">OFS / 延长 / CDK4/6</td><td>6</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr><td class="l">3.3</td><td class="l">抗 HER2</td><td>4</td><td>1</td><td>2</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr><td class="l">4.1</td><td class="l">内分泌不良反应监测</td><td>6</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr><td class="l">4.2</td><td class="l">骨密度与生活方式</td><td>4</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr><td class="l">4.3</td><td class="l">随访计划</td><td>4</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr><td class="l">4.4</td><td class="l">对侧乳腺 + BRCA</td><td>4</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr><td class="l">5</td><td class="l">自我评估 + 不确定性表达</td><td>2</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr style="font-weight:700;background:#f1f5f9"><td class="l" colspan="2">合计</td><td>100</td><td></td><td class="highlight">10</td><td></td><td class="highlight">2</td><td></td><td class="highlight">5</td></tr>
+    </tbody>
+  </table>
+  <p class="sub">评分规则同 DeepSeek 报告：0/1/2 分；未引用 2026 CBCS 章节/页码的正确项封顶 1 分。</p>
+
+  <h2>三、与 DeepSeek 快速模式对比</h2>
+  <table>
+    <thead>
+      <tr><th class="l">维度</th><th>DeepSeek 快速模式</th><th>ChatGLM 5.2 网页版</th><th>差距</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="l">中位得分 / 100</td><td><b>28</b></td><td><b>5</b></td><td class="zero">−23</td></tr>
+      <tr><td class="l">稳定性（max−min）</td><td><span class="pill green">0（完美可复现）</span></td><td><span class="pill red">8（不稳定）</span></td><td>深度劣势</td></tr>
+      <tr><td class="l">输出语言</td><td><span class="pill green">中文</span></td><td><span class="pill red">英文（！）</span></td><td class="zero">对中文用户不可用</td></tr>
+      <tr><td class="l">平均字数（三段均值）</td><td>≈ 450 字/段</td><td>≈ 130 字/段</td><td>DeepSeek ≈ 3×</td></tr>
+      <tr><td class="l">核心题 3.2a（全切 DCIS 内分泌分级）</td><td class="zero">0</td><td class="zero">0</td><td>同失分</td></tr>
+      <tr><td class="l">分期质疑（1.1+1.2）</td><td class="zero">0</td><td class="zero">0</td><td>同失分</td></tr>
+      <tr><td class="l">化疗豁免判断（3.1）</td><td><span class="pill green">正确 + Oncotype DX</span></td><td class="zero">未提及</td><td>DeepSeek 优</td></tr>
+      <tr><td class="l">随访细节（4.3）</td><td><span class="pill green">具体频次</span></td><td class="zero">"定期复查"笼统</td><td>DeepSeek 优</td></tr>
+      <tr><td class="l">引用 CBCS 章节</td><td class="zero">0 / 16</td><td class="zero">0 / 16</td><td>同失分</td></tr>
+      <tr><td class="l">自我评估</td><td class="zero">未做</td><td><span class="pill orange">有泛免责声明</span></td><td>两者均未达要求</td></tr>
+      <tr><td class="l">响应时间（估）</td><td>≈ 3–4 秒</td><td>≈ 5–8 秒（英文生成）</td><td>DeepSeek 略快</td></tr>
+    </tbody>
+  </table>
+
+  <h2>四、ChatGLM 的两大独立硬伤</h2>
+
+  <div class="miss">
+    <b>① 全部英文输出（可用性硬伤）</b><br>
+    输入是中文 Prompt + 中文病历，三段回答均为英文。对中文临床用户意味着：
+    - 阅读/复核成本高（临床要逐字对照术语）；
+    - 中文指南引用、术语翻译、剂量写法可能丢失/错译；
+    - 等于把决策权交给一个"未用你的语言思考"的模型。
+    <br><b>临床场景下不可接受</b>，无论评分高低。
+  </div>
+
+  <div class="miss">
+    <b>② 极低信息密度 + 高度不稳定（质量硬伤）</b><br>
+    三段平均字数约 130 字（DeepSeek 约 450 字），几乎没有具体临床决策；Run 2 只有 2 分（几乎只是复述病历 + "建议医生决定"）。
+    三跑 spread = 8，<b>触发框架"≥8 分判定为不稳定"阈值</b>，意味着<b>同一任务重复提问结果不可预期</b>。
+  </div>
+
+  <h2>五、最终建议（框架 §6）</h2>
+
+  <h3>综合排名</h3>
+  <p><b>DeepSeek 快速模式 ≫ ChatGLM 5.2</b>，在所有可比维度上 DeepSeek 都更强，且 DeepSeek 是中文输出可直接临床复核。</p>
+
+  <h3>对临床场景的实用结论</h3>
+  <table>
+    <thead><tr><th class="l">任务类型</th><th>推荐</th><th>理由</th></tr></thead>
+    <tbody>
+      <tr><td class="l">中文临床决策推理（如本例）</td><td><span class="pill green">DeepSeek 快速</span></td><td>中文输出、信息密度高、稳定可复现</td></tr>
+      <tr><td class="l">快问快答 / 用药常识</td><td><span class="pill green">DeepSeek 快速</span></td><td>秒回、大方向不翻车</td></tr>
+      <tr><td class="l">需要引用具体指南章节</td><td><span class="pill red">两者均不可</span></td><td>引用准确率都是 0/16</td></tr>
+      <tr><td class="l">分期再判读 / 推荐等级微调</td><td><span class="pill red">两者均不可单独采信</span></td><td>核心题双双失分，且都"自信"地不质疑出院诊断</td></tr>
+      <tr><td class="l">英文医学文献阅读 / 国际指南</td><td><span class="pill blue">可考虑 ChatGLM</span></td><td>英文输出对国际资料阅读反而是优势（但本次任务未涉及）</td></tr>
+    </tbody>
+  </table>
+
+  <div class="ext">
+    ✅ <b>结论一句话：</b> 在"中文 + 临床决策推理 + 0 成本"这个三角里，<b>DeepSeek 快速模式完胜 ChatGLM 5.2</b>。两个模型都还达不到临床可单独采信的门槛，但 DeepSeek 至少给了"虽错但深"的推理链可核对；ChatGLM 给的是"泛泛 + 免责声明"，<b>既无核对价值也不适合中文医生日常使用</b>。
+  </div>
+
+  <p class="foot">
+    数据局限：仅 1 例、仅文字输入、仅免费档、每模型 3 次。本报告为内部 LLM 选型评估，<b>不构成任何临床建议</b>。
+    ChatGLM 三段完整原文：<a href="chatglm_answers.md">chatglm_answers.md</a>。
+    DeepSeek 三段完整原文：<a href="deepseek_answers.md">deepseek_answers.md</a>。
+  </p>
+</div>
+</body>
+</html>

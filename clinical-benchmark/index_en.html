@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clinical LLM Benchmark · Hub</title>
+<style>
+  :root{--bg:#fff;--fg:#1f2937;--muted:#6b7280;--line:#e5e7eb;--accent:#2563eb;--warn:#dc2626;--ok:#059669;}
+  *{box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;color:var(--fg);background:#f8fafc;margin:0;padding:32px 16px;line-height:1.65}
+  .wrap{max-width:920px;margin:0 auto;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:28px 30px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+  h1{font-size:24px;margin:0 0 4px}
+  h2{font-size:18px;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--accent);color:var(--accent)}
+  .sub{color:var(--muted);font-size:13px;margin:0 0 8px}
+  .card{display:block;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:12px 0;text-decoration:none;color:inherit;transition:.15s}
+  .card:hover{border-color:var(--accent);box-shadow:0 2px 10px rgba(37,99,235,.08);transform:translateY(-1px)}
+  .card .t{font-size:16px;font-weight:700;color:var(--accent)}
+  .card .d{font-size:13px;color:var(--muted);margin-top:4px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:640px){.grid2{grid-template-columns:1fr}}
+  .models{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .model{border:1px solid var(--line);border-radius:12px;padding:16px;background:#f8fafc}
+  .model .name{font-weight:700;font-size:15px}
+  .model a{font-size:13px;word-break:break-all}
+  .note{background:#fff7ed;border-left:4px solid #f59e0b;padding:10px 14px;border-radius:0 8px 8px 0;font-size:13px;margin:14px 0}
+  .foot{color:var(--muted);font-size:12px;margin-top:24px;border-top:1px solid var(--line);padding-top:12px}
+  a{color:var(--accent)}
+  .lang{text-align:right;font-size:13px;margin-bottom:8px}
+  .lang a{text-decoration:none;font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="lang"><a href="index.html">🇨🇳 中文</a> · <span style="color:var(--muted)">English</span></div>
+  <h1>Clinical LLM Benchmark · Hub</h1>
+  <p class="sub">A surgeon's perspective: using a real (anonymized) case to compare free-tier LLMs on "post-op breast cancer treatment recommendations" accuracy (reference: 2026 CBCS guideline)</p>
+
+  <div class="note">
+    ⚠️ This benchmark is an AI选型 evaluation, <b>not clinical advice</b>. Model output <b>must not be used for real patient decisions</b>.
+    The case is anonymized and used for methodology demonstration only.
+  </div>
+
+  <h2>1. Models Benchmarked (click to use / verify)</h2>
+  <div class="models">
+    <div class="model">
+      <div class="name">🔵 DeepSeek (web Fast mode)</div>
+      <div class="sub" style="margin:6px 0">Score: median <b>28/100</b> · Chinese output · stable &amp; reproducible</div>
+      <a href="https://chat.deepseek.com/" target="_blank" rel="noopener">https://chat.deepseek.com/</a>
+    </div>
+    <div class="model">
+      <div class="name">🟢 Zhipu ChatGLM (web)</div>
+      <div class="sub" style="margin:6px 0">Score: median <b>5/100</b> · English output · highly unstable</div>
+      <a href="https://chatglm.cn/" target="_blank" rel="noopener">https://chatglm.cn/</a>
+    </div>
+  </div>
+
+  <h2>2. Benchmark Reports</h2>
+  <a class="card" href="deepseek_report_en.html">
+    <div class="t">📊 DeepSeek Fast Mode · Benchmark Report</div>
+    <div class="d">16-item scorecard, three systematic failures, practical conclusions for clinical use. With external raw-answer appendix.</div>
+  </a>
+  <a class="card" href="chatglm_report_en.html">
+    <div class="t">📊 ChatGLM 5.2 · Benchmark Report (with DeepSeek comparison)</div>
+    <div class="d">Two independent critical flaws, dimension-by-dimension comparison vs DeepSeek, final "which model fits which task" matrix.</div>
+  </a>
+
+  <h2>3. Methodology (reproducible)</h2>
+  <a class="card" href="framework.md">
+    <div class="t">🧪 Benchmark Framework v1.0 (Prompt + Rubric)</div>
+    <div class="d">Standardized input Prompt, 16-item / 100-point scorecard, reference answer key, re-test &amp; stability requirements. Paste the Prompt into any model to reproduce.</div>
+  </a>
+
+  <h2>4. Full Raw Answers (external appendix, verify sentence by sentence)</h2>
+  <div class="grid2">
+    <a class="card" href="deepseek_answers.md">
+      <div class="t">DeepSeek — three full answers</div>
+      <div class="d">deepseek_answers.md</div>
+    </a>
+    <a class="card" href="chatglm_answers.md">
+      <div class="t">ChatGLM — three full answers</div>
+      <div class="d">chatglm_answers.md</div>
+    </a>
+  </div>
+
+  <div class="note">
+    💡 <b>Want to verify yourself?</b> Open the <a href="framework.md">framework</a>, copy the §1 Prompt, paste it into
+    <a href="https://chat.deepseek.com/" target="_blank" rel="noopener">DeepSeek</a> and
+    <a href="https://chatglm.cn/" target="_blank" rel="noopener">ChatGLM</a>,
+    then score against the 16-item Rubric to get your own conclusion.
+  </div>
+
+  <p class="foot">
+    Data limitations: 1 case, text input only, free tier only, 3 runs per model. Designed and interpreted by a surgeon, for LLM clinical-scenario选型 reference.
+  </p>
+</div>
+</html>
+</body>

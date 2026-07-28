@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DeepSeek 快速模式 · 临床决策实测分析报告</title>
+<style>
+  :root{--bg:#fff;--fg:#1f2937;--muted:#6b7280;--line:#e5e7eb;--accent:#2563eb;--warn:#dc2626;--ok:#059669;}
+  *{box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;color:var(--fg);background:#f8fafc;margin:0;padding:32px 16px;line-height:1.65}
+  .wrap{max-width:920px;margin:0 auto;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:28px 30px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+  h1{font-size:24px;margin:0 0 4px}
+  h2{font-size:18px;margin:30px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--accent);color:var(--accent)}
+  h3{font-size:15px;margin:18px 0 6px}
+  .sub{color:var(--muted);font-size:13px;margin:0 0 8px}
+  table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f1f5f9;font-weight:600}
+  td.l,th.l{text-align:left}
+  .zero{color:var(--warn);font-weight:600}
+  .ok{color:var(--ok)}
+  .pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:600}
+  .pill.red{background:#fef2f2;color:var(--warn)}
+  .pill.blue{background:#eff6ff;color:var(--accent)}
+  .note{background:#fff7ed;border-left:4px solid #f59e0b;padding:10px 14px;border-radius:0 8px 8px 0;font-size:13px;margin:14px 0}
+  .ext{background:#ecfdf5;border-left:4px solid var(--ok);padding:10px 14px;border-radius:0 8px 8px 0;font-size:13px;margin:14px 0}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}
+  .card{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+  .card .n{font-size:26px;font-weight:700}
+  .card .t{font-size:12px;color:var(--muted)}
+  .miss{background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:12px 16px;margin:10px 0}
+  .miss b{color:var(--warn)}
+  code{background:#f1f5f9;padding:1px 5px;border-radius:4px;font-size:12px}
+  .foot{color:var(--muted);font-size:12px;margin-top:24px;border-top:1px solid var(--line);padding-top:12px}
+  a{color:var(--accent)}
+  .lang{text-align:right;font-size:13px;margin-bottom:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="lang"><span style="color:var(--muted)">中文</span> · <a href="deepseek_report_en.html" style="text-decoration:none;font-weight:600">🇬🇧 English</a></div>
+  <h1>DeepSeek 快速模式 · 临床决策实测分析报告</h1>
+  <p class="sub">框架 v1.0 · 乳腺癌术后病例解读 + 后续辅助治疗建议 · 参考 2026 CBCS Version 2026.1.0</p>
+
+  <div class="note">
+    <b>方法说明（关于"为什么用文字版"）：</b> 本次评测输入为<b>纯文字版病历</b>（PDF 指南摘要 + 病历文字），而非图片。
+    原因：DeepSeek 专家模式不支持图片输入，故采用文字输入以保证两模型输入完全一致、对比公平。
+    两个模型均为免费档（DeepSeek 网页快速模式 / 智谱清言 ChatGLM 5.2），零成本。
+  </div>
+
+  <div class="ext" style="background:#eff6ff;border-left-color:var(--accent)">
+    🔗 <b>参与评测的模型官方网址（感兴趣可亲自去使用或验证）：</b>
+    <ul style="margin:8px 0 0;padding-left:20px">
+      <li><b>DeepSeek（网页快速模式）</b>：<a href="https://chat.deepseek.com/" target="_blank" rel="noopener">https://chat.deepseek.com/</a> —— 本报告即基于该模式实测。</li>
+      <li><b>智谱清言 ChatGLM（网页版）</b>：<a href="https://chatglm.cn/" target="_blank" rel="noopener">https://chatglm.cn/</a> —— 对比模型，详见下方对比报告。</li>
+    </ul>
+    <span class="sub" style="margin-top:6px;display:block">提示：用同一份 <a href="framework.md">测试框架 Prompt</a> 粘贴进去，即可复现本报告结论。</span>
+  </div>
+
+  <div class="note">
+    <b>分数校准（重要）：</b> 此前基于被截断的截图给出的 15 / 15 / 40 为<b>低估</b>（截图只截到开头，大量项目"看不到"被打 0）。
+    现用你提供的<b>完整文字版</b>逐条重评，结果更稳定也更准确：<b>三段均为 28 / 100</b>。
+  </div>
+
+  <div class="ext">
+    <b>完整回答（外部附录，不在正文）：</b> 三段原始回答已单独保存为
+    <a href="deepseek_answers.md">deepseek_answers.md</a>，可点开逐句核对评分依据，本正文不再重复粘贴大段原文。
+  </div>
+
+  <h2>一、总体得分</h2>
+  <div class="grid">
+    <div class="card"><div class="n">28</div><div class="t">Run 1 / 100</div></div>
+    <div class="card"><div class="n">28</div><div class="t">Run 2 / 100</div></div>
+    <div class="card"><div class="n">28</div><div class="t">Run 3 / 100</div></div>
+    <div class="card"><div class="n">28</div><div class="t">中位数</div></div>
+    <div class="card"><div class="n">0</div><div class="t">最高−最低（稳定性）</div></div>
+    <div class="card"><div class="n">≈3–4s</div><div class="t">平均响应</div></div>
+  </div>
+  <p class="sub">结论：DeepSeek 快速模式在此任务上<b>表现高度一致、完全可复现</b>（三跑零波动），但<b>绝对水平偏低且系统性地卡在同一批高权重题上</b>。</p>
+
+  <h2>二、逐项评分表（满分 100）</h2>
+  <table>
+    <thead>
+      <tr><th class="l">#</th><th class="l">评测项</th><th>满分</th><th>R1 分</th><th>R1 得</th><th>R2 分</th><th>R2 得</th><th>R3 分</th><th>R3 得</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="l">1.1</td><td class="l">是否认同 TisN0M0（应质疑歧义）</td><td>6</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr><td class="l">1.2</td><td class="l">分期修正（T1a vs T1mi）</td><td>10</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr><td class="l">1.3</td><td class="l">分子分型（Luminal A-like）</td><td>4</td><td>1</td><td>2</td><td>1</td><td>2</td><td>1</td><td>2</td></tr>
+      <tr><td class="l">2.1</td><td class="l">手术合理性 + ALND</td><td>8</td><td>1</td><td>4</td><td>1</td><td>4</td><td>1</td><td>4</td></tr>
+      <tr><td class="l">2.2</td><td class="l">辅助放疗</td><td>4</td><td>1</td><td>2</td><td>1</td><td>2</td><td>1</td><td>2</td></tr>
+      <tr><td class="l">3.1</td><td class="l">化疗指征 + 多基因检测</td><td>10</td><td>1</td><td>5</td><td>1</td><td>5</td><td>1</td><td>5</td></tr>
+      <tr><td class="l">3.2a</td><td class="l">内分泌必要性 + 全切/保乳差异 <span class="pill red">核心</span></td><td>12</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr><td class="l">3.2b</td><td class="l">AI vs TAM + 年龄切点 <span class="pill red">核心</span></td><td>10</td><td class="zero">0</td><td>0</td><td>1</td><td>3</td><td class="zero">0</td><td>0</td></tr>
+      <tr><td class="l">3.2c</td><td class="l">药物剂量疗程</td><td>6</td><td>1</td><td>3</td><td>1</td><td>3</td><td>1</td><td>3</td></tr>
+      <tr><td class="l">3.2d</td><td class="l">OFS / 延长 / CDK4/6</td><td>6</td><td>1</td><td>3</td><td class="zero">0</td><td>0</td><td>1</td><td>3</td></tr>
+      <tr><td class="l">3.3</td><td class="l">抗 HER2</td><td>4</td><td>1</td><td>2</td><td>1</td><td>2</td><td>1</td><td>2</td></tr>
+      <tr><td class="l">4.1</td><td class="l">内分泌不良反应监测</td><td>6</td><td>1</td><td>3</td><td>1</td><td>3</td><td>1</td><td>3</td></tr>
+      <tr><td class="l">4.2</td><td class="l">骨密度与生活方式</td><td>4</td><td>1</td><td>2</td><td>1</td><td>2</td><td>1</td><td>2</td></tr>
+      <tr><td class="l">4.3</td><td class="l">随访计划</td><td>4</td><td>1</td><td>2</td><td>1</td><td>2</td><td>1</td><td>2</td></tr>
+      <tr><td class="l">4.4</td><td class="l">对侧乳腺 + BRCA</td><td>4</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr><td class="l">5</td><td class="l">自我评估 + 不确定性表达</td><td>2</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td><td class="zero">0</td><td>0</td></tr>
+      <tr style="font-weight:700;background:#f1f5f9"><td class="l" colspan="2">合计</td><td>100</td><td></td><td>28</td><td></td><td>28</td><td></td><td>28</td></tr>
+    </tbody>
+  </table>
+  <p class="sub">评分规则：0/1/2 分；<b>未引用 2026 CBCS 具体章节/页码的正确项封顶 1 分</b>（无法验证其真用了该指南）。三段均未引用具体章节，故所有"方向正确项"得 1 而非 2。</p>
+
+  <h2>三、三大系统性失误（每跑必中，丢分主力）</h2>
+
+  <div class="miss">
+    <b>① 分期从不质疑（1.1+1.2，合计 16 分全失）</b><br>
+    病理写明"3 簇间质浸润，最大灶 0.2 cm = 2 mm"。微浸润定义为单灶 ≤1 mm，<b>0.2 cm 已超出微浸润 → 至少应为 pT1a（IA 期）</b>。
+    三段全部照搬出院"TisN0M0 0 期"，无一指出歧义。这是最大的临床安全级错误：分期错位会连锁影响治疗强度、随访节奏与心理预期。
+    （Run 3 虽用了"DCIS 伴微小浸润"术语，但仍未纠正 0 期。）
+  </div>
+
+  <div class="miss">
+    <b>② 全切后 DCIS 的内分泌推荐未降级（3.2a，12 分全失）</b><br>
+    指南 P59 注 a 明确：对 DCIS 全乳切除患者，内分泌药物属"<b>化学预防</b>"范畴，推荐等级应降为"考虑/可选"。
+    三段均套"DCIS → 内分泌是标准/强烈推荐"模板，<b>未区分全切 vs 保乳</b>。这是框架预设区分度最高的核心题，全军覆没。
+  </div>
+
+  <div class="miss">
+    <b>③ 60 岁 AI vs TAM 的年龄切点未提（3.2b，10 分全失）</b><br>
+    指南 P59 注 b：AI 相对 TAM 的优势主要体现在 <b>&lt;60 岁</b>绝经后人群；≥60 岁二者近乎等价，临床可任选（略偏 AI）。
+    患者恰为 <b>60 岁踩边界</b>。Run1/Run3 直接给"AI 首选"，Run2 说"绝经后可任选"——<b>均未写出年龄切点</b>，体现不出指南细读能力。
+  </div>
+
+  <h2>四、其他关键发现</h2>
+  <h3>✅ 做对的地方（亮点）</h3>
+  <ul>
+    <li><b>化疗豁免判断正确</b>：三段均正确给出"无需化疗"，Run1 还主动提及 <code>Oncotype DX</code> 多基因检测作风险分层（超出框架预期）。</li>
+    <li><b>随访计划基本到位</b>：Run3 明确"不推荐常规肿瘤标志物（CEA/CA15-3）"，与指南一致，优于另两段。</li>
+    <li><b>安全性意识尚可</b>：均提到 AI 相关骨密度/血脂监测、补钙与 Vit D。</li>
+    <li><b>一致性极强</b>：三跑 0 波动，说明输出是模板化而非随机，可预期。</li>
+  </ul>
+
+  <h3>⚠️ 结构性短板</h3>
+  <ul>
+    <li><b>引用指南章节准确率 = 0 / 16</b>：三段都只说"主流指南/2026 最新/权威指南"，<b>没有任何一处具体到 2026 CBCS 的章节或页码</b>。你无法验证它真读了该指南，还是套了通用知识——对临床可信度是硬伤。</li>
+    <li><b>结构化输出失败</b>：Prompt 要求"分点 + 章节/页码引用 + 5 大块结构"，三段均未按要求给出可对照的章节引用。</li>
+    <li><b>模板化话术</b>：开头均重复"分期极早/低风险/Luminal 型"安全套话，像模式匹配而非临床推理。</li>
+    <li><b>自我评估缺失（第 5 项全失）</b>：无一段写出"把握度"或"哪些是基于临床推理而非指南"。</li>
+  </ul>
+
+  <h2>五、对临床场景的实用结论</h2>
+  <ul>
+    <li><b>DeepSeek 快速模式适合</b>：快问快答、用药常识、随访提醒、患者教育话术——它给的结论"大方向不翻车"，且秒回。</li>
+    <li><b>不适合依赖它做</b>：分期再判读、推荐等级微调、年龄/边界相关的细化决策——这些正是它系统性失分处，且它<b>表现得很自信</b>，容易误导。</li>
+    <li><b>关键提醒</b>：当病例存在"病理描述与出院诊断不一致"（如本例浸润灶 vs Tis）时，<b>任何免费档 LLM 都不应单独采信</b>，必须由临床医生复核。</li>
+  </ul>
+
+  <div class="ext">
+    📎 <b>对比报告：</b> 同一病例、同一份 Prompt 也已实测 <b>智谱清言 ChatGLM 5.2</b> 三次，
+    完整对比分析见 <a href="chatglm_report.html">chatglm_report.html</a>（含 DeepSeek vs ChatGLM 评分对比与"哪个模型适合什么任务"的最终建议）。
+  </div>
+
+  <p class="foot">
+    数据局限：仅 1 例、仅文字输入、仅免费档、每模型 3 次。本报告为内部 LLM 选型评估，<b>不构成任何临床建议</b>，模型输出不可用于真实患者决策。
+    完整原始回答见 <a href="deepseek_answers.md">deepseek_answers.md</a>。
+  </p>
+</div>
+</body>
+</html>

@@ -88,4 +88,34 @@
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
+<url>
+    <loc>https://tanhaosheng.github.io/clinical-benchmark/index.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+<url>
+    <loc>https://tanhaosheng.github.io/clinical-benchmark/index_en.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+<url>
+    <loc>https://tanhaosheng.github.io/clinical-benchmark/deepseek_report.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+<url>
+    <loc>https://tanhaosheng.github.io/clinical-benchmark/deepseek_report_en.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+<url>
+    <loc>https://tanhaosheng.github.io/clinical-benchmark/chatglm_report.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+<url>
+    <loc>https://tanhaosheng.github.io/clinical-benchmark/chatglm_report_en.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
