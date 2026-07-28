@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>AWS Explained: What You Actually Pay For - AI Tool Stack</title><meta name="description" content="A myth-busting, use-case guide to Amazon Web Services — EC2, S3, Lambda, and the hidden line items that surprise new accounts. Built from AWS pricing docs and community reports; not an independent test."><meta name="robots" content="index, follow"><link rel="canonical" href="https://tanhaosheng.github.io/tech-aws-explained-what-you-actually-pay.html"><meta property="og:title" content="AWS Explained: What You Actually Pay For - AI Tool Stack"><meta property="og:description" content="A myth-busting, use-case guide to Amazon Web Services — EC2, S3, Lambda, and the hidden line items that surprise new accounts. Built from AWS pricing docs and community reports; not an independent test."><meta property="og:type" content="article"><meta property="og:url" content="https://tanhaosheng.github.io/tech-aws-explained-what-you-actually-pay.html"><meta property="og:image" content="https://tanhaosheng.github.io/assets/og-ai-tools.jpg"><meta property="og:locale" content="en_US"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="AWS Explained: What You Actually Pay For - AI Tool Stack"><meta name="twitter:description" content="A myth-busting, use-case guide to Amazon Web Services — EC2, S3, Lambda, and the hidden line items that surprise new accounts. Built from AWS pricing docs and community reports; not an independent test."><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AWS Explained: What You Actually Pay For","description":"A myth-busting, use-case guide to Amazon Web Services — EC2, S3, Lambda, and the hidden line items that surprise new accounts. Built from AWS pricing docs and community reports; not an independent test.","author":{"@type":"Organization","name":"AI Tool Stack"},"datePublished":"2026-07-28","dateModified":"2026-07-28"}</script><!-- AdSense --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3090420115329103" crossorigin="anonymous"></script><!-- Google Analytics 4 --><script async src="https://www.googletagmanager.com/gtag/js?id=G-NE8DYNMNYZ"></script><script>(function(){const gaId = "G-NE8DYNMNYZ";
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', gaId);
+})();</script><style>:root{--primary:#6c3ce1;--primary-dark:#4f2db5;--accent:#f59e0b;--bg:#f5f7fa;--text:#1a1a2e;--text-light:#6b7280;--border:#e5e7eb;--card:#fff}.hero-wrap{max-width:840px;margin:0 auto;padding:20px 20px 0}.hero-img{border:1px solid var(--border);border-radius:14px;width:100%;height:auto;display:block;box-shadow:0 8px 28px #6c3ce12e}*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--text);max-width:800px;margin:0 auto;padding:0 20px;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;font-size:20px;line-height:1.8}a{color:var(--primary);text-decoration:none}h1{color:var(--primary);margin:30px 0 20px;font-size:28px;line-height:1.3}h2{color:var(--primary-dark);margin:30px 0 15px;font-size:22px}h3{color:var(--primary-dark);margin:20px 0 10px;font-size:18px}p{margin-bottom:16px}ul,ol{margin:0 0 16px 22px}li{margin-bottom:8px}table{border-collapse:collapse;width:100%;margin:20px 0;font-size:16px}th,td{border:1px solid var(--border);text-align:left;padding:12px}th{background:#f3f4f6}tr:nth-child(2n){background:#f9fafb}.box{border-left:4px solid var(--accent);background:#fff3cd;border-radius:4px;margin:20px 0;padding:16px}.takeaways{background:var(--card);border:1px solid var(--border);border-radius:8px;margin:20px 0;padding:18px 22px}.takeaways h3{color:var(--primary);margin-top:0}.takeaways li{margin-bottom:6px}.features{margin:20px 0;padding:0;list-style:none}.features li{border-bottom:1px solid #e5e7eb;padding:8px 0}.features li:last-child{border-bottom:none}.verdict{border:2px solid var(--primary);background:#ede9fe;border-radius:12px;margin:24px 0;padding:20px}.verdict strong{color:var(--primary-dark)}.faq{margin:20px 0}.faq details{border:1px solid var(--border);background:var(--card);border-radius:8px;margin-bottom:10px;padding:12px 16px}.faq summary{cursor:pointer;color:var(--primary-dark);font-weight:700}.faq p{margin:10px 0 0}.pill{background:var(--primary);color:#fff;border-radius:999px;margin-bottom:10px;padding:3px 10px;font-size:13px;display:inline-block}.screenshot{border:1px solid var(--border);background:var(--card);border-radius:12px;margin:24px 0;overflow:hidden;box-shadow:0 4px 18px #6c3ce11a}.screenshot img{width:100%;height:auto;display:block}.screenshot figcaption{color:var(--text-light);border-top:1px solid var(--border);background:#fafafa;padding:12px 16px;font-size:14px;line-height:1.6}.placeholder{border:1px dashed var(--accent);color:#9a3412;background:#fff7ed;border-radius:6px;padding:1px 8px;font-size:14px;display:inline-block}.lang-switch{background:#f1f5f9;border:1px solid #cbd5e1;border-radius:10px;margin:0 0 22px;padding:10px 14px;font-size:15px}.lang-switch a{color:var(--primary);font-weight:600;text-decoration:none}.lang-switch a:hover{text-decoration:underline}.site-footer{color:#ffffffb3;text-align:center;background:#1a1a2e;margin-top:60px;padding:36px 0;font-size:14px;line-height:1.7}.site-footer a{color:#fffc;margin:0 8px}@media (width<=600px){body{font-size:16px}h1{font-size:24px}}
+</style></head><body><div class="container"><h1>AWS Explained: What You Actually Pay For</h1>
+<p><span class="pill">☁️ Cloud Infrastructure</span></p>
+<p><em>By AI Tool Stack Editorial · Last updated: 2026-07-28</em></p>
+
+<div class="box"><p><strong>How this was compiled:</strong> This guide is built from AWS's official pricing and service documentation, plus widely shared community reports about real billing surprises. <strong>No AWS account was provisioned or measured by us.</strong> Prices vary by region and change often — the linked AWS pages are the source of truth.</p></div>
+
+<h2>Eleven nines, and the bill that ignores them</h2>
+<p>Amazon advertises S3 durability at 99.999999999% — "eleven nines." That's a real, documented claim about the probability of losing an object in a year (<a href="https://aws.amazon.com/s3/storage-classes/">aws.amazon.com/s3/storage-classes</a>). It's an impressive number and almost beside the point for most newcomers, because the thing that actually injures people on AWS isn't data loss — it's the bill. The myths around that bill are worth killing first.</p>
+
+<h2>Myth 1: "You only pay for what you use"</h2>
+<p>True in spirit, misleading in practice. Compute is pay-per-hour. But the meter also runs on things you didn't intend to buy: data <em>egress</em> (traffic leaving AWS), NAT gateway processing, load balancer hours, and idle EBS volumes left attached to a stopped instance. Community reports are full of "$5 experiment, $80 month" stories where the surprise was a forgotten load balancer or cross-region replication. The honest version: you pay for what you provision and what moves, and "what moves" is easy to overlook.</p>
+
+<h2>Myth 2: "The cloud is cheaper than a server"</h2>
+<p>Only if you're elastic. A server you run 24/7 on EC2 often costs more over three years than buying hardware. AWS wins when your load spikes and shrinks; it loses when your load is flat and permanent. Reserved Instances (1- or 3-year commitments) and Spot Instances (spare capacity at up to ~90% discount, per AWS) close the gap — but they're choices you have to make, not defaults (<a href="https://aws.amazon.com/ec2/pricing/">aws.amazon.com/ec2/pricing</a>).</p>
+
+<h2>Myth 3: "No ops required"</h2>
+<p>Managed services reduce ops; they don't delete them. Someone still configures IAM, sets budgets, rotates keys, and reads the bill. The "we moved to cloud and fired the sysadmin" story usually ends with a contractor re-hired at 2x to clean up the bill.</p>
+
+<h2>The use-case matrix</h2>
+<p>Match the job to the service. These are on-demand us-east-1 list prices as of mid-2026; your region and commitments will differ.</p>
+<table>
+<tr><th>If you need to…</th><th>Use</th><th>Real cost anchor</th></tr>
+<tr><td>Run a server / app</td><td>EC2</td><td>t3.micro ~$0.0104/hr; free tier 750 hrs/mo for 12 mo</td></tr>
+<tr><td>Store files / backups</td><td>S3</td><td>~$0.023/GB/mo (first 50TB); 11 nines durability</td></tr>
+<tr><td>Run code without a server</td><td>Lambda</td><td>Free tier 1M req/mo; ~$0.20 per 1M after</td></tr>
+<tr><td>Block storage for a server</td><td>EBS</td><td>gp3 ~$0.08/GB/mo</td></tr>
+<tr><td>Managed SQL database</td><td>RDS</td><td>db.t3.micro ~$0.017/hr; free tier included</td></tr>
+<tr><td>Serve a static site / CDN</td><td>CloudFront + S3</td><td>CDN ~$0.085/GB egress</td></tr>
+</table>
+<p><em>Anchors are approximate us-east-1 on-demand list prices from the linked pages; verify for your region.</em></p>
+
+<h2>What each core service actually is</h2>
+
+<p><strong>EC2 — a rented virtual server.</strong> You pick an instance type (CPU/RAM profile) and an OS image, and you pay by the hour or second. The free tier gives new accounts 750 hours/month of t3.micro for 12 months — enough to run one small server continuously at no cost (<a href="https://aws.amazon.com/free">aws.amazon.com/free</a>). The catch is that "one server" quietly becomes "one server + a load balancer + a NAT gateway + logs," and only the server was in your mental budget.</p>
+
+<p><strong>S3 — object storage with a durability obsession.</strong> You put objects in "buckets" and pay per gigabyte per month, plus a little per request. The 11-nines durability figure means AWS designs against hardware failure, not against you deleting a file or writing a public-read policy by mistake. The famous S3 disasters are almost always permission errors, not AWS losing data. Treat the bucket policy as the real security boundary.</p>
+
+<p><strong>Lambda — code that runs on events, not servers.</strong> You upload a function; AWS runs it when triggered (an HTTP request, a file upload, a timer). You pay per invocation and per compute-second, with a generous free tier. The win is zero idle cost — a function that runs 100 times a day costs almost nothing. The limit is that long-running or tightly-coupled workflows fight the model; at some scale a plain EC2 box is cheaper and simpler.</p>
+
+<h2>Where the money actually goes (scenarios)</h2>
+<ul>
+<li><strong>A personal portfolio site:</strong> S3 + CloudFront. A few cents a month, or free inside the free tier. AWS is frankly overkill, but the bill is trivial.</li>
+<li><strong>A startup with a 10-person dev team:</strong> EC2 + RDS + S3 + Lambda for glue. Realistic monthly bill lands in the low hundreds once you leave the free tier — dominated by RDS and EC2, not by storage.</li>
+<li><strong>A data pipeline moving terabytes out to the internet:</strong> Egress becomes the line item that surprises you. This is where a careful architecture (region choice, CloudFront caching, compression) pays for itself.</li>
+</ul>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+<details><summary>Is the AWS Free Tier really free?</summary>
+<p>For 12 months on specific services (750 hrs/mo of t3.micro EC2, 5GB of S3, etc.), yes — as long as you stay within the quotas. Exceed them, or use services not in the free tier, and you're billed. Set a billing alarm on day one; the free tier has no mercy for forgetting.</p></details>
+<details><summary>Why is my bill higher than my compute?</summary>
+<p>Egress, NAT gateway, load balancers, and idle EBS volumes are the usual culprits. Pull the cost-by-service breakdown in the billing console and sort — the top three line items are rarely what you expected.</p></details>
+<details><summary>EC2 or Lambda for a new project?</summary>
+<p>If the workload is a steady server with persistent state, EC2 (or a container service). If it's event-driven, bursty, and stateless, Lambda's zero-idle-cost model usually wins. Many real systems use both — Lambda for glue, EC2 for the long-lived core.</p></details>
+<details><summary>How do I avoid being locked in?</summary>
+<p>AWS services are sticky by design. Mitigate with infrastructure-as-code (Terraform), portable data formats, and avoiding the most proprietary managed features unless they earn their keep. Full portability isn't free, but a clean IaC repo makes exit a project rather than a rewrite.</p></details>
+</div>
+
+<h2>Sources</h2>
+<ul>
+<li>AWS S3 storage classes &amp; durability — <a href="https://aws.amazon.com/s3/storage-classes/">aws.amazon.com/s3/storage-classes</a></li>
+<li>AWS EC2 pricing — <a href="https://aws.amazon.com/ec2/pricing/">aws.amazon.com/ec2/pricing</a></li>
+<li>AWS Lambda pricing — <a href="https://aws.amazon.com/lambda/pricing/">aws.amazon.com/lambda/pricing</a></li>
+<li>AWS Free Tier — <a href="https://aws.amazon.com/free">aws.amazon.com/free</a></li>
+</ul>
+
+<div class="verdict"><p><strong>Verdict:</strong> AWS is not a product you "buy" — it's a meter you attach to a architecture. EC2 for servers, S3 for objects, Lambda for event-driven glue, RDS for managed SQL. The caveat: the durability headline (11 nines) is real but irrelevant next to the real risks — forgotten idle resources, egress, and permission mistakes. Read the cost-by-service breakdown monthly, set a billing alarm on day one, and remember the cloud saves money only when your load is elastic or your commitments are deliberate.</p></div></div><footer class="site-footer">&copy; 2024-2026 AI Tool Stack<br><a href="/index.html">Home</a> · <a href="/about.html">About</a> · <a href="/category-ai.html">AI Models &amp; Tools</a> · <a href="/category-dev-tools.html">Developer Tools</a> · <a href="/category-tech-products.html">Tech Products</a> · <a href="/privacy.html">Privacy</a></footer><script src="/assets/related.js"></script><script src="/assets/likes.js"></script><script src="/assets/counter.js"></script></body></html>

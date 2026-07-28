@@ -1,71 +1,8 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Google Cloud Platform Guide - AI Tool Stack</title><meta name="description" content="A candid GCP guide for 2026: what Compute Engine, GKE, BigQuery, and Cloud Storage actually cost and do, a plain-English glossary, and myths busted. Compiled from Google's public pricing and docs; not a sponsored review."><meta name="robots" content="index, follow"><link rel="canonical" href="https://tanhaosheng.github.io/tech-27.html"><meta property="og:title" content="Google Cloud Platform Guide - AI Tool Stack"><meta property="og:description" content="A candid GCP guide for 2026: what Compute Engine, GKE, BigQuery, and Cloud Storage actually cost and do, a plain-English glossary, and myths busted. Compiled from Google's public pricing and docs; not a sponsored review."><meta property="og:type" content="article"><meta property="og:url" content="https://tanhaosheng.github.io/tech-27.html"><meta property="og:image" content="https://tanhaosheng.github.io/assets/og-ai-tools.jpg"><meta property="og:locale" content="en_US"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Google Cloud Platform Guide - AI Tool Stack"><meta name="twitter:description" content="A candid GCP guide for 2026: what Compute Engine, GKE, BigQuery, and Cloud Storage actually cost and do, a plain-English glossary, and myths busted. Compiled from Google's public pricing and docs; not a sponsored review."><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Google Cloud Platform Guide","description":"A candid GCP guide for 2026: what Compute Engine, GKE, BigQuery, and Cloud Storage actually cost and do, a plain-English glossary, and myths busted. Compiled from Google's public pricing and docs; not a sponsored review.","author":{"@type":"Organization","name":"AI Tool Stack"},"datePublished":"2026-07-28","dateModified":"2026-07-28"}</script><!-- AdSense --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3090420115329103" crossorigin="anonymous"></script><!-- Google Analytics 4 --><script async src="https://www.googletagmanager.com/gtag/js?id=G-NE8DYNMNYZ"></script><script>(function(){const gaId = "G-NE8DYNMNYZ";
-
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', gaId);
-})();</script><style>:root{--primary:#6c3ce1;--primary-dark:#4f2db5;--accent:#f59e0b;--bg:#f5f7fa;--text:#1a1a2e;--text-light:#6b7280;--border:#e5e7eb;--card:#fff}.hero-wrap{max-width:840px;margin:0 auto;padding:20px 20px 0}.hero-img{border:1px solid var(--border);border-radius:14px;width:100%;height:auto;display:block;box-shadow:0 8px 28px #6c3ce12e}*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--text);max-width:800px;margin:0 auto;padding:0 20px;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;font-size:20px;line-height:1.8}a{color:var(--primary);text-decoration:none}h1{color:var(--primary);margin:30px 0 20px;font-size:28px;line-height:1.3}h2{color:var(--primary-dark);margin:30px 0 15px;font-size:22px}h3{color:var(--primary-dark);margin:20px 0 10px;font-size:18px}p{margin-bottom:16px}ul,ol{margin:0 0 16px 22px}li{margin-bottom:8px}table{border-collapse:collapse;width:100%;margin:20px 0;font-size:16px}th,td{border:1px solid var(--border);text-align:left;padding:12px}th{background:#f3f4f6}tr:nth-child(2n){background:#f9fafb}.box{border-left:4px solid var(--accent);background:#fff3cd;border-radius:4px;margin:20px 0;padding:16px}.takeaways{background:var(--card);border:1px solid var(--border);border-radius:8px;margin:20px 0;padding:18px 22px}.takeaways h3{color:var(--primary);margin-top:0}.takeaways li{margin-bottom:6px}.features{margin:20px 0;padding:0;list-style:none}.features li{border-bottom:1px solid #e5e7eb;padding:8px 0}.features li:last-child{border-bottom:none}.verdict{border:2px solid var(--primary);background:#ede9fe;border-radius:12px;margin:24px 0;padding:20px}.verdict strong{color:var(--primary-dark)}.faq{margin:20px 0}.faq details{border:1px solid var(--border);background:var(--card);border-radius:8px;margin-bottom:10px;padding:12px 16px}.faq summary{cursor:pointer;color:var(--primary-dark);font-weight:700}.faq p{margin:10px 0 0}.pill{background:var(--primary);color:#fff;border-radius:999px;margin-bottom:10px;padding:3px 10px;font-size:13px;display:inline-block}.screenshot{border:1px solid var(--border);background:var(--card);border-radius:12px;margin:24px 0;overflow:hidden;box-shadow:0 4px 18px #6c3ce11a}.screenshot img{width:100%;height:auto;display:block}.screenshot figcaption{color:var(--text-light);border-top:1px solid var(--border);background:#fafafa;padding:12px 16px;font-size:14px;line-height:1.6}.placeholder{border:1px dashed var(--accent);color:#9a3412;background:#fff7ed;border-radius:6px;padding:1px 8px;font-size:14px;display:inline-block}.lang-switch{background:#f1f5f9;border:1px solid #cbd5e1;border-radius:10px;margin:0 0 22px;padding:10px 14px;font-size:15px}.lang-switch a{color:var(--primary);font-weight:600;text-decoration:none}.lang-switch a:hover{text-decoration:underline}.site-footer{color:#ffffffb3;text-align:center;background:#1a1a2e;margin-top:60px;padding:36px 0;font-size:14px;line-height:1.7}.site-footer a{color:#fffc;margin:0 8px}@media (width<=600px){body{font-size:16px}h1{font-size:24px}}
-</style></head><body><div class="container"><h1>Google Cloud Platform Guide</h1>
-<p><span class="pill">☁️ Cloud</span></p>
-<p><em>By AI Tool Stack Editorial · Last updated: 2026-07-28</em></p>
-
-<div class="box"><p><strong>How this was compiled:</strong> From Google's public documentation and pricing pages, plus the cost stories teams tell us. We have no commercial relationship with Google. Prices are public list rates and change — verify on the linked pages before budgeting.</p></div>
-
-<h2>The bill that ruins a quarter</h2>
-<p>A team I know ran what they thought was a small analytics query and got a $14,000 BigQuery invoice for the month. The cause wasn't malice or even a bug — it was a SELECT * over a huge table with no partitioned filter, and BigQuery charges per terabyte scanned. One line of carelessness, one five-figure bill. That single fact tells you more about GCP than any feature list: the power is real, and so is the meter.</p>
-
-<h2>Glossary, in plain English</h2>
-<dl>
-<dt><strong>Compute Engine</strong></dt>
-<dd>Virtual machines on Google's infrastructure. You pick a machine type (predefined or custom) and pay per second after the first minute. The f1-micro / e2-micro in eligible regions is part of the always-free tier.</dd>
-<dt><strong>Google Kubernetes Engine (GKE)</strong></dt>
-<dd>Managed Kubernetes. Google originated Kubernetes, and GKE automates cluster upgrades, scaling, and node pools. The control plane is free on the standard tier; you pay for the worker nodes.</dd>
-<dt><strong>BigQuery</strong></dt>
-<dd>Serverless data warehouse. You write SQL; it scans petabytes. On-demand pricing is about $6.25 per TB scanned — so query design directly controls your bill.</dd>
-<dt><strong>Cloud Storage classes</strong></dt>
-<dd>Standard (frequent access), Nearline (~$0.01/GB-month), Coldline, and Archive (cheapest, for rarely read data). Picking the wrong class quietly inflates cost.</dd>
-<dt><strong>VPC</strong></dt>
-<dd>Virtual Private Cloud — your isolated network inside GCP, where you set firewall rules, subnets, and private connectivity.</dd>
-</dl>
-
-<h2>Myths worth killing</h2>
-<p><strong>Myth: "GCP is just cheaper than AWS."</strong> Sometimes, on sustained usage and data analytics, yes. But "cheaper" isn't a law — it's a per-workload calculation. A lift-and-shift VM fleet can cost about the same across clouds. Model your actual usage.</p>
-
-<p><strong>Myth: "The $300 free credit means I can experiment freely."</strong> The credit is real (90 days, new accounts) and useful — but some services bill against it fast (see: that BigQuery story). The always-free tier is separate and persists, but it's narrowly scoped (small VM, limited storage). Read what's actually free.</p>
-
-<p><strong>Myth: "Managed means I don't need to understand it."</strong> GKE manages the Kubernetes control plane, not your misconfigured pod requests or your public LoadBalancer. Managed reduces toil; it doesn't remove judgment.</p>
-
-<h2>Where GCP genuinely leads</h2>
-<ul>
-<li><strong>Data analytics:</strong> BigQuery plus the rest of the data stack (Dataflow, Pub/Sub) is a coherent story few match.</li>
-<li><strong>Kubernetes maturity:</strong> GKE is the reference implementation of Kubernetes for a reason.</li>
-<li><strong>Networking:</strong> Google's backbone is the same one serving Search and YouTube — low-latency global reach.</li>
-<li><strong>TPUs:</strong> Custom ML silicon you can't get from the other two hyperscalers in the same form.</li>
-</ul>
-
-<h2>Frequently asked questions</h2>
-<div class="faq">
-<details><summary>Is GCP easier to start on than AWS?</summary>
-<p>Many find the console and BigQuery gentler than AWS's breadth. But "easier" depends on what you're building; a pure EC2/S3 shop may find AWS more familiar. Both have free tiers — start there.</p>
-</details>
-<details><summary>How do I avoid a surprise BigQuery bill?</summary>
-<p>Use partitioned/clustered tables, select only needed columns, set query cost controls and quotas, and preview row counts before full scans. BigQuery's pricing is per-TB-scanned, so query shape is your bill.</p>
-</details>
-<details><summary>Which storage class should I pick?</summary>
-<p>Standard for hot data, Nearline for monthly access, Coldline/Archive for backups and compliance archives. Moving data to a colder class later is fine, but retrieval fees apply — match the class to access frequency.</p>
-</details>
-<details><summary>Can I run GCP alongside AWS or Azure?</summary>
-<p>Yes — many shops run multi-cloud. Just don't assume prices or features map 1:1; a "VM" in each cloud differs in billing granularity, support, and networking model.</p>
-</details>
-</div>
-
-<h2>Sources</h2>
-<ul>
-<li>Google Cloud pricing — <a href="https://cloud.google.com/pricing">cloud.google.com/pricing</a></li>
-<li>BigQuery pricing — <a href="https://cloud.google.com/bigquery/pricing">cloud.google.com/bigquery/pricing</a></li>
-<li>Cloud Storage pricing — <a href="https://cloud.google.com/storage/pricing">cloud.google.com/storage/pricing</a></li>
-<li>Free tier — <a href="https://cloud.google.com/free">cloud.google.com/free</a></li>
-<li>GKE — <a href="https://cloud.google.com/kubernetes-engine">cloud.google.com/kubernetes-engine</a></li>
-</ul>
-
-<div class="verdict"><p><strong>Verdict:</strong> GCP is a strong pick when your work is data-heavy, Kubernetes-centric, or ML on TPUs — and a trap if you treat its meters casually. Learn the glossary, kill the "it's just cheaper" myth, and model your bill before you scale. Confirm every rate on Google's pricing pages; they move.</p></div></div><footer class="site-footer">&copy; 2024-2026 AI Tool Stack<br><a href="/index.html">Home</a> · <a href="/about.html">About</a> · <a href="/category-ai.html">AI Models &amp; Tools</a> · <a href="/category-dev-tools.html">Developer Tools</a> · <a href="/category-tech-products.html">Tech Products</a> · <a href="/privacy.html">Privacy</a></footer><script src="/assets/related.js"></script><script src="/assets/likes.js"></script><script src="/assets/counter.js"></script></body></html>
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<title>Page moved</title>
+<link rel="canonical" href="/tech-google-cloud-platform-guide.html">
+<meta http-equiv="refresh" content="0; url=/tech-google-cloud-platform-guide.html">
+</head><body>
+<p>This page has moved. <a href="/tech-google-cloud-platform-guide.html">Continue to the new page</a>.</p>
+</body></html>

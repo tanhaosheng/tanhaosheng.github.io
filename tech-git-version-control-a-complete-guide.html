@@ -1,0 +1,99 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Git Version Control: A Complete Guide - AI Tool Stack</title><meta name="description" content="A 2026 guide to Git — where it sits in the version-control landscape, how it works under the hood, the commands that matter, and a branching decision map. Compiled from official Git docs; not an independent test."><meta name="robots" content="index, follow"><link rel="canonical" href="https://tanhaosheng.github.io/tech-git-version-control-a-complete-guide.html"><meta property="og:title" content="Git Version Control: A Complete Guide - AI Tool Stack"><meta property="og:description" content="A 2026 guide to Git — where it sits in the version-control landscape, how it works under the hood, the commands that matter, and a branching decision map. Compiled from official Git docs; not an independent test."><meta property="og:type" content="article"><meta property="og:url" content="https://tanhaosheng.github.io/tech-git-version-control-a-complete-guide.html"><meta property="og:image" content="https://tanhaosheng.github.io/assets/og-ai-tools.jpg"><meta property="og:locale" content="en_US"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Git Version Control: A Complete Guide - AI Tool Stack"><meta name="twitter:description" content="A 2026 guide to Git — where it sits in the version-control landscape, how it works under the hood, the commands that matter, and a branching decision map. Compiled from official Git docs; not an independent test."><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Git Version Control: A Complete Guide","description":"A 2026 guide to Git — where it sits in the version-control landscape, how it works under the hood, the commands that matter, and a branching decision map. Compiled from official Git docs; not an independent test.","author":{"@type":"Organization","name":"AI Tool Stack"},"datePublished":"2026-07-28","dateModified":"2026-07-28"}</script><!-- AdSense --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3090420115329103" crossorigin="anonymous"></script><!-- Google Analytics 4 --><script async src="https://www.googletagmanager.com/gtag/js?id=G-NE8DYNMNYZ"></script><script>(function(){const gaId = "G-NE8DYNMNYZ";
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', gaId);
+})();</script><style>:root{--primary:#6c3ce1;--primary-dark:#4f2db5;--accent:#f59e0b;--bg:#f5f7fa;--text:#1a1a2e;--text-light:#6b7280;--border:#e5e7eb;--card:#fff}.hero-wrap{max-width:840px;margin:0 auto;padding:20px 20px 0}.hero-img{border:1px solid var(--border);border-radius:14px;width:100%;height:auto;display:block;box-shadow:0 8px 28px #6c3ce12e}*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--text);max-width:800px;margin:0 auto;padding:0 20px;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;font-size:20px;line-height:1.8}a{color:var(--primary);text-decoration:none}h1{color:var(--primary);margin:30px 0 20px;font-size:28px;line-height:1.3}h2{color:var(--primary-dark);margin:30px 0 15px;font-size:22px}h3{color:var(--primary-dark);margin:20px 0 10px;font-size:18px}p{margin-bottom:16px}ul,ol{margin:0 0 16px 22px}li{margin-bottom:8px}table{border-collapse:collapse;width:100%;margin:20px 0;font-size:16px}th,td{border:1px solid var(--border);text-align:left;padding:12px}th{background:#f3f4f6}tr:nth-child(2n){background:#f9fafb}.box{border-left:4px solid var(--accent);background:#fff3cd;border-radius:4px;margin:20px 0;padding:16px}.takeaways{background:var(--card);border:1px solid var(--border);border-radius:8px;margin:20px 0;padding:18px 22px}.takeaways h3{color:var(--primary);margin-top:0}.takeaways li{margin-bottom:6px}.features{margin:20px 0;padding:0;list-style:none}.features li{border-bottom:1px solid #e5e7eb;padding:8px 0}.features li:last-child{border-bottom:none}.verdict{border:2px solid var(--primary);background:#ede9fe;border-radius:12px;margin:24px 0;padding:20px}.verdict strong{color:var(--primary-dark)}.faq{margin:20px 0}.faq details{border:1px solid var(--border);background:var(--card);border-radius:8px;margin-bottom:10px;padding:12px 16px}.faq summary{cursor:pointer;color:var(--primary-dark);font-weight:700}.faq p{margin:10px 0 0}.pill{background:var(--primary);color:#fff;border-radius:999px;margin-bottom:10px;padding:3px 10px;font-size:13px;display:inline-block}.screenshot{border:1px solid var(--border);background:var(--card);border-radius:12px;margin:24px 0;overflow:hidden;box-shadow:0 4px 18px #6c3ce11a}.screenshot img{width:100%;height:auto;display:block}.screenshot figcaption{color:var(--text-light);border-top:1px solid var(--border);background:#fafafa;padding:12px 16px;font-size:14px;line-height:1.6}.placeholder{border:1px dashed var(--accent);color:#9a3412;background:#fff7ed;border-radius:6px;padding:1px 8px;font-size:14px;display:inline-block}.lang-switch{background:#f1f5f9;border:1px solid #cbd5e1;border-radius:10px;margin:0 0 22px;padding:10px 14px;font-size:15px}.lang-switch a{color:var(--primary);font-weight:600;text-decoration:none}.lang-switch a:hover{text-decoration:underline}.site-footer{color:#ffffffb3;text-align:center;background:#1a1a2e;margin-top:60px;padding:36px 0;font-size:14px;line-height:1.7}.site-footer a{color:#fffc;margin:0 8px}@media (width<=600px){body{font-size:16px}h1{font-size:24px}}
+</style></head><body><div class="container"><h1>Git Version Control: A Complete Guide</h1>
+<p><span class="pill">🔧 Version Control</span></p>
+<p><em>By AI Tool Stack Editorial · Last updated: 2026-07-28</em></p>
+
+<div class="box"><p><strong>How this was built:</strong> A <strong>conceptual and command reference drawn from the official Git documentation and the free Pro Git book</strong> — not a benchmark we ran. Commands below are standard Git; verify version-specific behavior in the docs linked at the end.</p></div>
+
+<h2>Monday 9 a.m. The branch is broken</h2>
+<p>The merge succeeded. The tests don't. Nobody remembers which commit was last good. This is the failure Git exists to prevent — not by magic, but by recording every state of every file as an immutable snapshot you can return to. If you only learn one tool as a developer, make it this one.</p>
+
+<h2>The landscape: Git is not the only VCS</h2>
+<p>Git dominates today, but it lives in a field with distinct designs. Know the map before you assume Git is the answer to every problem.</p>
+<table>
+<tr><th>System</th><th>Model</th><th>Best at</th><th>Where it loses</th></tr>
+<tr><td><strong>Git</strong></td><td>Distributed, snapshot-based</td><td>Almost everything; huge ecosystem (GitHub, GitLab)</td><td>Very large binary repos, monorepos at scale</td></tr>
+<tr><td><strong>Mercurial (hg)</strong></td><td>Distributed, simpler CLI</td><td>Gentle learning curve, large repos</td><td>Smaller ecosystem, less mindshare</td></tr>
+<tr><td><strong>Subversion (SVN)</strong></td><td>Centralized</td><td>Strict central control, linear history</td><td>No offline work; server is a single point of failure</td></tr>
+<tr><td><strong>Perforce (Helix)</strong></td><td>Centralized, enterprise</td><td>Massive binary assets (games, chip design)</td><td>Licensing cost; heavier ops</td></tr>
+</table>
+<p>Git won on distribution: every clone is a full backup, and branching is cheap. That is why it became the default, not because it is simplest.</p>
+
+<h2>How Git works, briefly</h2>
+<ul>
+<li><strong>Snapshot, not delta:</strong> each commit stores the whole file state (with de-duplication underneath). History is a graph of commits, not a patch list.</li>
+<li><strong>SHA-1 addressing:</strong> every object (blob, tree, commit) is named by a hash. Same content → same hash → tamper-evident.</li>
+<li><strong>Three areas:</strong> working directory → staging area (<code>index</code>) → repository. You choose what enters each commit.</li>
+<li><strong>Cheap branches:</strong> a branch is a pointer to a commit. Creating one is O(1). This is why Git workflows branch constantly.</li>
+</ul>
+
+<h2>The commands that actually matter</h2>
+<pre><code># start
+git init
+git clone &lt;url&gt;
+
+# record work
+git add .
+git commit -m "why this changed, not what"
+
+# branch
+git branch feature-x
+git switch feature-x
+git merge feature-x
+git rebase main
+
+# sync
+git push origin feature-x
+git pull --rebase</code></pre>
+<p>The discipline that matters is the commit message. Write the <em>reason</em>. Six months later the diff shows what changed; only the message explains why.</p>
+
+<h2>Stated design reasoning</h2>
+<p>As the project's own history records, Linus Torvalds created Git in 2005 after the free BitKeeper license used for Linux kernel development was revoked. The constraints he set — distributed, fast, integrity-checked — are still the ones Git enforces. The free <a href="https://git-scm.com/book/en/v2">Pro Git book</a> documents this and the internals in full.</p>
+
+<h2>A branching decision map</h2>
+<ul>
+<li><strong>Solo project, shipping continuously:</strong> trunk-based. Short-lived branches, merge to <code>main</code> often.</li>
+<li><strong>Team, scheduled releases:</strong> GitHub Flow — <code>main</code> always deployable, features in PRs.</li>
+<li><strong>Strict release trains (multiple versions live):</strong> Git Flow — separate <code>main</code>, <code>develop</code>, release, hotfix branches. More process, clearer control.</li>
+</ul>
+<p>Pick the lightest model your team can actually follow. Heavy branching strategy on a 2-person team is pure overhead.</p>
+
+<h2>Guardrails</h2>
+<p>A <code>.gitignore</code> keeps secrets and build junk out of history:</p>
+<pre><code># .gitignore
+.env
+node_modules/
+*.log
+dist/</code></pre>
+<p>Never commit credentials. Once a secret is in history, deleting the file doesn't remove it — the hash stays. Rotate the secret; rewrite history with <code>git filter-repo</code>.</p>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+<details><summary>Git vs GitHub — what's the difference?</summary>
+<p>Git is the version-control tool. GitHub (and GitLab, Bitbucket) is a hosting service with pull requests, issues, and CI on top. You can use Git with no host at all; the host is optional.</p>
+</details>
+<details><summary>Merge or rebase?</summary>
+<p>Merge preserves true history (a fork and join). Rebase rewrites commits onto a linear base for a clean log. Rule of thumb: rebase your local feature branch onto main; never rebase commits others have pulled — you rewrite shared history.</p>
+</details>
+<details><summary>Is Git bad for big binary files?</summary>
+<p>Git stores snapshots, so large binaries bloat the repo over time. For game assets or datasets, use Git LFS or a centralized system like Perforce. Git is not the right tool for 100 GB of media.</p>
+</details>
+<details><summary>How do I undo a commit?</summary>
+<p><code>git revert &lt;hash&gt;</code> makes a new commit that undoes it — safe on shared branches. <code>git reset</code> rewrites history — only on work no one else has. Know which one you're using.</p>
+</details>
+</div>
+
+<h2>Sources</h2>
+<ul>
+<li>Git official documentation — <a href="https://git-scm.com/doc">git-scm.com/doc</a></li>
+<li>Pro Git book (free) — <a href="https://git-scm.com/book/en/v2">git-scm.com/book/en/v2</a></li>
+<li>Git reference commands — <a href="https://git-scm.com/docs">git-scm.com/docs</a></li>
+</ul>
+
+<div class="verdict"><p><strong>Verdict:</strong> Git is the default version-control system for good reasons — distributed, integrity-checked, and backed by the largest ecosystem. But it is a tool, not a religion: for massive binary assets, Perforce or Git LFS still win, and SVN still fits teams that want central control. The honest caveat: Git's power comes from discipline (good messages, clean ignores, correct reset vs revert) — the tool won't save a team that commits secrets and rebases shared history.</p></div></div><footer class="site-footer">&copy; 2024-2026 AI Tool Stack<br><a href="/index.html">Home</a> · <a href="/about.html">About</a> · <a href="/category-ai.html">AI Models &amp; Tools</a> · <a href="/category-dev-tools.html">Developer Tools</a> · <a href="/category-tech-products.html">Tech Products</a> · <a href="/privacy.html">Privacy</a></footer><script src="/assets/related.js"></script><script src="/assets/likes.js"></script><script src="/assets/counter.js"></script></body></html>
