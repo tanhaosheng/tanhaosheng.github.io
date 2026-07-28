@@ -30,8 +30,19 @@
   a{color:var(--accent)}
   .lang{text-align:right;font-size:13px;margin-bottom:8px}
 </style>
+
+<style>
+#lang-switcher{position:fixed;top:10px;right:12px;z-index:99999;background:#fff;border:1px solid #d1d5db;border-radius:10px;padding:5px 9px;box-shadow:0 2px 10px rgba(0,0,0,.15);font:600 13px/1.3 system-ui,sans-serif;display:flex;align-items:center;gap:6px}
+#lang-switcher label{font-size:15px;cursor:default}
+#lang-switcher select{border:none;background:transparent;font:600 13px system-ui,sans-serif;cursor:pointer;outline:none;max-width:130px}
+#lang-switcher select:focus{outline:2px solid #6366f1}
+#lang-switcher option:disabled{color:#bbb}
+.mt-banner{background:#fef3c7;color:#92400e;border-bottom:1px solid #fcd34d;padding:9px 16px;font:600 13px/1.5 system-ui,sans-serif;text-align:center}
+.mt-banner a{color:#92400e;font-weight:700}
+</style>
+
 </head>
-<body>
+<body><div id="lang-switcher"><label for="lang-select">🌐</label><select id="lang-select"><option value="en" selected>English</option><option value="zh" disabled>中文</option><option value="es" disabled>Español</option><option value="fr" disabled>Français</option><option value="ar" disabled>العربية</option><option value="ja" disabled>日本語</option><option value="ko" disabled>한국어</option><option value="ru" disabled>Русский</option><option value="hi" disabled>हिन्दी</option></select></div>
 <div class="wrap">
   <div class="lang"><span style="color:var(--muted)">中文</span> · <a href="index_en.html" style="text-decoration:none;font-weight:600">🇬🇧 English</a></div>
   <h1>中文 LLM 临床决策实测 · 总入口</h1>
@@ -101,5 +112,19 @@
     数据局限：仅 1 例、仅文字输入、仅免费档、每模型 3 次。评测由一名外科医生设计与解读，供 LLM 临床场景选型参考。
   </p>
 </div>
+<script>
+(function(){
+  var CODES=['en', 'zh', 'es', 'fr', 'ar', 'ja', 'ko', 'ru', 'hi'];
+  function switchLang(l){
+    var p=location.pathname.replace(/^\//,'').split('/');
+    var base=CODES.indexOf(p[0])!==-1?p.slice(1).join('/'):p.join('/');
+    var url=(l==='en'?'/'+base:'/'+l+'/'+base)+(location.search||'');
+    try{localStorage.setItem('pref',l);}catch(e){}
+    location.href=url;
+  }
+  var s=document.getElementById('lang-select');
+  if(s){ s.addEventListener('change',function(){switchLang(this.value);}); }
+})();
+</script>
 </body>
 </html>
