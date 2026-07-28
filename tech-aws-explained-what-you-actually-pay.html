@@ -8,9 +8,9 @@
 </style></head><body><div class="container"><h1>AWS Explained: What You Actually Pay For</h1>
 <div class="article-byline" style="font-size:14px;color:#6b7280;margin:0 0 18px;padding:10px 14px;background:#f8fafc;border-left:3px solid #2563eb;border-radius:6px;">By <a href="https://tanhaosheng.github.io/about.html" style="color:#2563eb;text-decoration:none;font-weight:600;">Tan Haosheng</a> · 外科医生 / 临床+科研 AI 提效 (Surgeon · AI for clinical &amp; research efficiency)</div>
 <p><span class="pill">☁️ Cloud Infrastructure</span></p>
-<p><em>By AI Tool Stack Editorial · Last updated: 2026-05-05</em></p>
+<p><em>By Tan Haosheng · Last updated: 2026-05-05</em></p>
 
-<div class="box"><p><strong>How this was compiled:</strong> This guide is built from AWS's official pricing and service documentation, plus widely shared community reports about real billing surprises. <strong>No AWS account was provisioned or measured by us.</strong> Prices vary by region and change often — the linked AWS pages are the source of truth.</p></div>
+<div class="box"><p><strong>How this was compiled:</strong> This guide is built from AWS's official pricing and service documentation, plus widely shared community reports about real billing surprises. <strong>No AWS account was provisioned or measured by me.</strong> Prices vary by region and change often — the linked AWS pages are the source of truth.</p></div>
 
 <h2>Eleven nines, and the bill that ignores them</h2>
 <p>Amazon advertises S3 durability at 99.999999999% — "eleven nines." That's a real, documented claim about the probability of losing an object in a year (<a href="https://aws.amazon.com/s3/storage-classes/">aws.amazon.com/s3/storage-classes</a>). It's an impressive number and almost beside the point for most newcomers, because the thing that actually injures people on AWS isn't data loss — it's the bill. The myths around that bill are worth killing first.</p>
@@ -22,10 +22,10 @@
 <p>Only if you're elastic. A server you run 24/7 on EC2 often costs more over three years than buying hardware. AWS wins when your load spikes and shrinks; it loses when your load is flat and permanent. Reserved Instances (1- or 3-year commitments) and Spot Instances (spare capacity at up to ~90% discount, per AWS) close the gap — but they're choices you have to make, not defaults (<a href="https://aws.amazon.com/ec2/pricing/">aws.amazon.com/ec2/pricing</a>).</p>
 
 <h2>Myth 3: "No ops required"</h2>
-<p>Managed services reduce ops; they don't delete them. Someone still configures IAM, sets budgets, rotates keys, and reads the bill. The "we moved to cloud and fired the sysadmin" story usually ends with a contractor re-hired at 2x to clean up the bill.</p>
+<p>Managed services reduce ops; they don't delete them. Someone still configures IAM, sets budgets, rotates keys, and reads the bill. The "I moved to cloud and fired the sysadmin" story usually ends with a contractor re-hired at 2x to clean up the bill.</p>
 
 <h2>The use-case matrix</h2>
-<p>Match the job to the service. These are on-demand us-east-1 list prices as of mid-2026; your region and commitments will differ.</p>
+<p>Match the job to the service. These are on-demand me-east-1 list prices as of mid-2026; your region and commitments will differ.</p>
 <table>
 <tr><th>If you need to…</th><th>Use</th><th>Real cost anchor</th></tr>
 <tr><td>Run a server / app</td><td>EC2</td><td>t3.micro ~$0.0104/hr; free tier 750 hrs/mo for 12 mo</td></tr>
@@ -35,7 +35,7 @@
 <tr><td>Managed SQL database</td><td>RDS</td><td>db.t3.micro ~$0.017/hr; free tier included</td></tr>
 <tr><td>Serve a static site / CDN</td><td>CloudFront + S3</td><td>CDN ~$0.085/GB egress</td></tr>
 </table>
-<p><em>Anchors are approximate us-east-1 on-demand list prices from the linked pages; verify for your region.</em></p>
+<p><em>Anchors are approximate me-east-1 on-demand list prices from the linked pages; verify for your region.</em></p>
 
 <h2>What each core service actually is</h2>
 

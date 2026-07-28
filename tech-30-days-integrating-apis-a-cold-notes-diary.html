@@ -8,7 +8,7 @@
 </style></head><body><div class="container"><h1>30 Days Integrating APIs: A Cold-Notes Diary (REST, GraphQL, Auth)</h1>
 <div class="article-byline" style="font-size:14px;color:#6b7280;margin:0 0 18px;padding:10px 14px;background:#f8fafc;border-left:3px solid #2563eb;border-radius:6px;">By <a href="https://tanhaosheng.github.io/about.html" style="color:#2563eb;text-decoration:none;font-weight:600;">Tan Haosheng</a> · 外科医生 / 临床+科研 AI 提效 (Surgeon · AI for clinical &amp; research efficiency)</div>
 <p><span class="pill">🔌 APIs</span></p>
-<p><em>By AI Tool Stack Editorial · Last updated: 2026-07-11</em></p>
+<p><em>By Tan Haosheng · Last updated: 2026-07-11</em></p>
 
 <div class="box"><p><strong>How this was compiled:</strong> This is a first-person diary of a month spent building against APIs, reconstructed from standard engineering practice and official specs (MDN, the OAuth RFCs, Fielding's dissertation). It is a teaching narrative, not a benchmark of any vendor, and no tool is rated.</p></div>
 
@@ -41,7 +41,7 @@
 <p>Then exchange the code for a token. The lesson, repeated by every security write-up on MDN: keep the token server-side, scope it to the minimum, and expire it.</p>
 
 <h2>Day 22 — Rate limits are a feature</h2>
-<p>We got throttled at 429. Fine — that's the server protecting itself. The fix is not "retry instantly in a loop"; it's respect <code>Retry-After</code>, back off exponentially, and paginate list endpoints instead of pulling everything. Pagination is non-negotiable on any real dataset:</p>
+<p>I got throttled at 429. Fine — that's the server protecting itself. The fix is not "retry instantly in a loop"; it's respect <code>Retry-After</code>, back off exponentially, and paginate list endpoints instead of pulling everything. Pagination is non-negotiable on any real dataset:</p>
 <pre><code>GET /orders?limit=100&cursor=abc123
 </code></pre>
 <p>Read the docs for the cursor format; every API names it differently and none of them warn you when you hit the wall.</p>

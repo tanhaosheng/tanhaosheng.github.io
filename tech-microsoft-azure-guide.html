@@ -8,9 +8,9 @@
 </style></head><body><div class="container"><h1>Microsoft Azure Guide</h1>
 <div class="article-byline" style="font-size:14px;color:#6b7280;margin:0 0 18px;padding:10px 14px;background:#f8fafc;border-left:3px solid #2563eb;border-radius:6px;">By <a href="https://tanhaosheng.github.io/about.html" style="color:#2563eb;text-decoration:none;font-weight:600;">Tan Haosheng</a> · 外科医生 / 临床+科研 AI 提效 (Surgeon · AI for clinical &amp; research efficiency)</div>
 <p><span class="pill">☁️ Cloud</span></p>
-<p><em>By AI Tool Stack Editorial · Last updated: 2026-06-27</em></p>
+<p><em>By Tan Haosheng · Last updated: 2026-06-27</em></p>
 
-<div class="box"><p><strong>How this was compiled:</strong> An editor's take built from Azure's official pricing and docs, public cloud benchmarks (region counts, bandwidth rates, independent VM comparisons), and widely cited analyst positioning — not infrastructure we operated. Cloud prices move constantly; the linked pages are the only source of truth.</p></div>
+<div class="box"><p><strong>How this was compiled:</strong> An editor's take built from Azure's official pricing and docs, public cloud benchmarks (region counts, bandwidth rates, independent VM comparisons), and widely cited analyst positioning — not infrastructure I operated. Cloud prices move constantly; the linked pages are the only source of truth.</p></div>
 
 <h2>The bill that hides on page nine</h2>
 <p>Most Azure intros talk about regions and compliance. Let's start where the pain actually is: <strong>egress</strong>. Getting your data <em>out</em> of Azure costs roughly <strong>$0.08–$0.12 per GB</strong> beyond the first 100 GB/month, depending on region (<a href="https://azure.microsoft.com/en-us/pricing/details/bandwidth/">azure.com/bandwidth</a>). That sounds tiny until you move a terabyte: 1,000 GB × ~$0.09 ≈ <strong>$90 to extract data you already paid to store</strong>. Multiply by a monthly pipeline and a "cheap" storage tier becomes a toll road. No cloud vendor leads with this number, which is exactly why it should lead the conversation.</p>
@@ -35,7 +35,7 @@
 <p>Public cloud comparisons don't produce a single "winner" because there's no one benchmark. What's verifiable: Azure and AWS both publish 60-ish/30-ish regions; independent VM benchmarks (e.g., Phoronix-style runs) show parity on commodity compute and differences only on tuned, workload-specific instances. Translation for buyers: don't pick on raw speed — pick on the ecosystem you already live in. The performance gap is smaller than the migration cost of switching later.</p>
 
 <h2>Where analysts land</h2>
-<p>The major analyst frameworks (Gartner's Cloud Infrastructure Magic Quadrant, for instance) consistently place Azure and AWS as leaders with GCP close behind on vision and data. The analysts' public commentary converges on the same editor's take above: match the cloud to your existing stack, because the three are converging on features and diverging mainly in ecosystem and price structure. We're paraphrasing their published positioning, not quoting — the reports are paywalled.</p>
+<p>The major analyst frameworks (Gartner's Cloud Infrastructure Magic Quadrant, for instance) consistently place Azure and AWS as leaders with GCP close behind on vision and data. The analysts' public commentary converges on the same editor's take above: match the cloud to your existing stack, because the three are converging on features and diverging mainly in ecosystem and price structure. I'm paraphrasing their published positioning, not quoting — the reports are paywalled.</p>
 
 <h2>Choose by your reality</h2>
 <ul>

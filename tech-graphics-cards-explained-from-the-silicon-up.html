@@ -8,9 +8,9 @@
 </style></head><body><div class="container"><h1>Graphics Cards, Explained From the Silicon Up</h1>
 <div class="article-byline" style="font-size:14px;color:#6b7280;margin:0 0 18px;padding:10px 14px;background:#f8fafc;border-left:3px solid #2563eb;border-radius:6px;">By <a href="https://tanhaosheng.github.io/about.html" style="color:#2563eb;text-decoration:none;font-weight:600;">Tan Haosheng</a> · 外科医生 / 临床+科研 AI 提效 (Surgeon · AI for clinical &amp; research efficiency)</div>
 <p><span class="pill">🎮 Hardware</span></p>
-<p><em>By AI Tool Stack Editorial · Last updated: 2026-05-28</em></p>
+<p><em>By Tan Haosheng · Last updated: 2026-05-28</em></p>
 
-<div class="box"><p><strong>How this was compiled:</strong> This explainer is built from NVIDIA and AMD published specifications and launch pricing, plus standard architectural descriptions. <strong>No card was benchmarked by us.</strong> Specs and prices shift (especially under AI-driven demand) — the linked vendor pages are the source of truth.</p></div>
+<div class="box"><p><strong>How this was compiled:</strong> This explainer is built from NVIDIA and AMD published specifications and launch pricing, plus standard architectural descriptions. <strong>No card was benchmarked by me.</strong> Specs and prices shift (especially under AI-driven demand) — the linked vendor pages are the source of truth.</p></div>
 
 <h2>Why does a triangle-drawing chip train AI?</h2>
 <p>The counterintuitive fact: the processor rendering your game is the same class of processor training large language models. The reason is the problem shape. Drawing a frame means doing the same simple math on millions of pixels at once. Training a neural network means doing the same simple math on millions of parameters at once. Different domains, identical workload — massive parallelism over independent data. That's what a GPU is: a chip optimized to do one cheap operation on many things simultaneously, rather than many operations on one thing fast (which is what a CPU does). Understand that, and everything else about a GPU follows.</p>

@@ -8,12 +8,12 @@
 </style></head><body><div class="container"><h1>Blockchain Beyond Crypto: A Decision Guide to Where It Actually Helps</h1>
 <div class="article-byline" style="font-size:14px;color:#6b7280;margin:0 0 18px;padding:10px 14px;background:#f8fafc;border-left:3px solid #2563eb;border-radius:6px;">By <a href="https://tanhaosheng.github.io/about.html" style="color:#2563eb;text-decoration:none;font-weight:600;">Tan Haosheng</a> · 外科医生 / 临床+科研 AI 提效 (Surgeon · AI for clinical &amp; research efficiency)</div>
 <p><span class="pill">⛓️ Distributed Systems</span></p>
-<p><em>By AI Tool Stack Editorial · Last updated: 2026-07-07</em></p>
+<p><em>By Tan Haosheng · Last updated: 2026-07-07</em></p>
 
-<div class="box"><p><strong>How this was compiled:</strong> This guide is built from public technical specifications (Bitcoin and Ethereum docs, Hyperledger material) and documented real-world deployments. <strong>No deployment was built or measured by us.</strong> Blockchain is a financial and regulatory minefield — nothing here is investment advice. Verify current facts on the official sources linked at the end.</p></div>
+<div class="box"><p><strong>How this was compiled:</strong> This guide is built from public technical specifications (Bitcoin and Ethereum docs, Hyperledger material) and documented real-world deployments. <strong>No deployment was built or measured by me.</strong> Blockchain is a financial and regulatory minefield — nothing here is investment advice. Verify current facts on the official sources linked at the end.</p></div>
 
 <h2>In 2008 someone wanted to remove the middleman</h2>
-<p>The Bitcoin whitepaper landed in 2008; the genesis block was mined in January 2009 with a headline buried in it: a bank bailout headline, a quiet jab at the system. The clever part wasn't "digital money" — we had that. It was a ledger that no single party could rewrite. That one property — tamper-resistance without a central authority — is the entire reason blockchain exists. Everything else is either an extension of that idea or a solution in search of a problem.</p>
+<p>The Bitcoin whitepaper landed in 2008; the genesis block was mined in January 2009 with a headline buried in it: a bank bailout headline, a quiet jab at the system. The clever part wasn't "digital money" — I had that. It was a ledger that no single party could rewrite. That one property — tamper-resistance without a central authority — is the entire reason blockchain exists. Everything else is either an extension of that idea or a solution in search of a problem.</p>
 
 <p>So let's be the provocateur the marketing avoids: most "blockchain for X" pitches are a slow database with extra steps and a worse energy bill. The decision tree below tells you which side you're on.</p>
 
@@ -65,7 +65,7 @@
 <tr><td>Walmart food traceability</td><td>Pilot with IBM Food Trust (Hyperledger) traced produce in seconds</td>
 <td><a href="https://www.ibm.com/products/supply-chain-intelligence-suite/food-trust">ibm.com/food-trust</a></td></tr>
 </table>
-<p><em>Figures are from the linked public sources; treat the underlying deployments as documented, not measured by us.</em></p>
+<p><em>Figures are from the linked public sources; treat the underlying deployments as documented, not measured by me.</em></p>
 
 <h2>How the mechanism actually works (the spec sheet)</h2>
 <p>A blockchain is a chain of blocks; each block references the previous one via a cryptographic hash, so altering an old block breaks every block after it. Bitcoin uses SHA-256 in a proof-of-work scheme where miners expend compute to extend the chain. Ethereum now uses proof-of-stake, where validators lock capital and are penalized for misbehavior. Consensus — agreement on the chain's head — is what stops one node from rewriting history. That mechanism is the product. Everything layered on top is an app.</p>
