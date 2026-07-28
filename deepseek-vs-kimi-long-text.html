@@ -1,0 +1,103 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>DeepSeek vs Kimi：长文本能力技术对比与选型指南 - AI Tool Stack</title><meta name="description" content="DeepSeek V4 与 Kimi K3 长文本能力对比：上下文窗口架构、NIAH 检索表现、token 成本测算与中文场景选型建议，面向开发者与企业用户。"><meta name="robots" content="index, follow"><link rel="canonical" href="https://tanhaosheng.github.io/deepseek-vs-kimi-long-text.html"><meta property="og:title" content="DeepSeek vs Kimi：长文本能力技术对比与选型指南 - AI Tool Stack"><meta property="og:description" content="DeepSeek V4 与 Kimi K3 长文本能力对比：上下文窗口架构、NIAH 检索表现、token 成本测算与中文场景选型建议，面向开发者与企业用户。"><meta property="og:type" content="article"><meta property="og:url" content="https://tanhaosheng.github.io/deepseek-vs-kimi-long-text.html"><meta property="og:image" content="https://tanhaosheng.github.io/assets/og-ai-tools.jpg"><meta property="og:locale" content="en_US"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="DeepSeek vs Kimi：长文本能力技术对比与选型指南 - AI Tool Stack"><meta name="twitter:description" content="DeepSeek V4 与 Kimi K3 长文本能力对比：上下文窗口架构、NIAH 检索表现、token 成本测算与中文场景选型建议，面向开发者与企业用户。"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"DeepSeek vs Kimi：长文本能力技术对比与选型指南","description":"DeepSeek V4 与 Kimi K3 长文本能力对比：上下文窗口架构、NIAH 检索表现、token 成本测算与中文场景选型建议，面向开发者与企业用户。","author":{"@type":"Organization","name":"AI Tool Stack"},"datePublished":"2026-07-28","dateModified":"2026-07-28"}</script><!-- AdSense --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3090420115329103" crossorigin="anonymous"></script><!-- Google Analytics 4 --><script async src="https://www.googletagmanager.com/gtag/js?id=G-NE8DYNMNYZ"></script><script>(function(){const gaId = "G-NE8DYNMNYZ";
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', gaId);
+})();</script><style>:root{--primary:#6c3ce1;--primary-dark:#4f2db5;--accent:#f59e0b;--bg:#f5f7fa;--text:#1a1a2e;--text-light:#6b7280;--border:#e5e7eb;--card:#fff}.hero-wrap{max-width:840px;margin:0 auto;padding:20px 20px 0}.hero-img{border:1px solid var(--border);border-radius:14px;width:100%;height:auto;display:block;box-shadow:0 8px 28px #6c3ce12e}*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--text);max-width:800px;margin:0 auto;padding:0 20px;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;font-size:20px;line-height:1.8}a{color:var(--primary);text-decoration:none}h1{color:var(--primary);margin:30px 0 20px;font-size:28px;line-height:1.3}h2{color:var(--primary-dark);margin:30px 0 15px;font-size:22px}h3{color:var(--primary-dark);margin:20px 0 10px;font-size:18px}p{margin-bottom:16px}ul,ol{margin:0 0 16px 22px}li{margin-bottom:8px}table{border-collapse:collapse;width:100%;margin:20px 0;font-size:16px}th,td{border:1px solid var(--border);text-align:left;padding:12px}th{background:#f3f4f6}tr:nth-child(2n){background:#f9fafb}.box{border-left:4px solid var(--accent);background:#fff3cd;border-radius:4px;margin:20px 0;padding:16px}.takeaways{background:var(--card);border:1px solid var(--border);border-radius:8px;margin:20px 0;padding:18px 22px}.takeaways h3{color:var(--primary);margin-top:0}.takeaways li{margin-bottom:6px}.features{margin:20px 0;padding:0;list-style:none}.features li{border-bottom:1px solid #e5e7eb;padding:8px 0}.features li:last-child{border-bottom:none}.verdict{border:2px solid var(--primary);background:#ede9fe;border-radius:12px;margin:24px 0;padding:20px}.verdict strong{color:var(--primary-dark)}.faq{margin:20px 0}.faq details{border:1px solid var(--border);background:var(--card);border-radius:8px;margin-bottom:10px;padding:12px 16px}.faq summary{cursor:pointer;color:var(--primary-dark);font-weight:700}.faq p{margin:10px 0 0}.pill{background:var(--primary);color:#fff;border-radius:999px;margin-bottom:10px;padding:3px 10px;font-size:13px;display:inline-block}.site-footer{color:#ffffffb3;text-align:center;background:#1a1a2e;margin-top:60px;padding:36px 0;font-size:14px;line-height:1.7}.site-footer a{color:#fffc;margin:0 8px}@media (width<=600px){body{font-size:16px}h1{font-size:24px}}
+</style></head><body><div class="container"><h1>DeepSeek vs Kimi：长文本能力技术对比与选型指南</h1>
+<p><span class="pill">🧠 AI 模型对比</span></p>
+<p><em>By AI Tool Stack Editorial · Last updated: 2026-07-28</em></p>
+
+<div class="box"><p><strong>本文如何整理（How this was compiled）</strong>：全部内容基于 DeepSeek 官方技术文档、月之暗面（Moonshot AI）公开产品说明、HuggingFace 社区评测与 LMSYS/LMArena 公开排名等<strong>可查证的公开资料</strong>整理，<strong>未进行独立 API 实测</strong>。文中价格为写作时的公开定价，可能随时调整，请以官方定价页为准。生产环境决策前，建议用自己的真实文档压测。</p></div>
+
+<h2>先想一个具体问题</h2>
+<p>一份 1,200 页的并购尽调合同，需要在两天内完成条款梳理和风险点提取。你会把它喂给哪个模型？</p>
+<p>这不是抽象的"长文本能力"讨论——这是一道有具体约束的工程题：<strong>文档多长、预算多少、能不能接受分段、里面有没有图表扫描件</strong>。这四个变量基本决定了 DeepSeek 和 Kimi 之间的选择，跟"哪个模型更强"关系不大。</p>
+<p>结论可以先给：<strong>文档折算后在 256K token 以内、纯文本、预算敏感——选 DeepSeek V4，几乎没有悬念；文档必须整体处理且超过 500K token，或包含大量图表扫描件——才轮到 Kimi K3 出场，但你要先算清成本账。</strong>下面是推导过程。</p>
+
+<h2>第一步：把"页数"换算成 token</h2>
+<p>选型讨论经常在这一步就跑偏。厂商宣传用 token 计数，而你手里的文档是按页计的。粗略换算（中文文档，具体取决于分词器和排版密度）：</p>
+<ul>
+<li>一页常规中文合同 ≈ 800–1,200 字 ≈ 1,000–1,800 token</li>
+<li><strong>256K token（DeepSeek V4 上限）≈ 150–250 页</strong></li>
+<li><strong>1M token（Kimi K3 宣称上限）≈ 600–1,000 页</strong></li>
+</ul>
+<p>回到开头那份 1,200 页的合同：它<strong>超出了两个模型的单次处理能力</strong>——DeepSeek 需要切成 5–8 段，Kimi 也大概率需要至少切一次。也就是说，对于极端长文档，"分段 + 汇总"的工程方案无论如何都绕不开，此时百万级窗口的溢价是否值得，就要打个问号。</p>
+
+<h2>规格对比：官方口径</h2>
+<table>
+<tr><th>维度</th><th>DeepSeek V4</th><th>Kimi K3（月之暗面）</th></tr>
+<tr><td>最大上下文窗口</td><td>256K token<br><small>官方发布信息</small></td><td>宣称 1,000,000+ token<br><small>K3 官方发布介绍</small></td></tr>
+<tr><td>输入格式</td><td>文本、PDF、Word、Excel、PPT（官方界面）</td><td>文本、PDF、Word、Excel、PPT、图片（原生多模态）</td></tr>
+<tr><td>长文本架构思路</td><td>混合注意力 + 分段检索增强<br><small>DeepSeek 技术报告</small></td><td>分层注意力 + 多粒度压缩<br><small>K3 发布会介绍</small></td></tr>
+<tr><td>API 输出价</td><td>约 $0.28 / 1M token<br><small>以<a href="https://api-docs.deepseek.com/quick_start/pricing" target="_blank" rel="noopener">官方定价页</a>为准</small></td><td>约 $15 / 1M token（长文本模式）<br><small>以<a href="https://platform.moonshot.cn/docs/pricing" target="_blank" rel="noopener">官方定价页</a>为准</small></td></tr>
+<tr><td>生成速度</td><td>约 84 tok/s（256K 上下文，公开基准参考值）</td><td>公开评测反映长文本模式下明显偏慢</td></tr>
+<tr><td>多模态</td><td>纯文本为主</td><td>图文混合输入</td></tr>
+<tr><td>开源情况</td><td>部分开源（DeepSeek-Coder 等系列在 <a href="https://huggingface.co/deepseek-ai" target="_blank" rel="noopener">HuggingFace</a>）</td><td>闭源商业模型</td></tr>
+</table>
+<p><small>注：两家均为国内头部大模型团队——DeepSeek 由深度求索（杭州）研发，Kimi 由月之暗面（北京）研发，中文语料训练比重都很高，纯中文理解能力属同一梯队。</small></p>
+
+<h2>成本账：53 倍价差在真实账单里长什么样</h2>
+<p>$0.28 对 $15，单看单价只是个倍数（约 53 倍）；放进月度账单才有体感。假设一个 3 人法务/研究团队，每个工作日让模型输出约 30 万 token 的摘要、条款清单和风险备注（月约 660 万 token 输出）：</p>
+<table>
+<tr><th>月输出量</th><th>DeepSeek V4（$0.28/M）</th><th>Kimi K3（$15/M）</th></tr>
+<tr><td>660 万 token（3 人团队）</td><td>约 $1.85/月</td><td>约 $99/月</td></tr>
+<tr><td>2,200 万 token（10 人团队）</td><td>约 $6.2/月</td><td>约 $330/月</td></tr>
+<tr><td>1.1 亿 token（50 人/重度自动化）</td><td>约 $31/月</td><td>约 $1,650/月</td></tr>
+</table>
+<p><small>以上为按公开输出单价的算术推算，未含输入 token 费用与缓存折扣，仅用于量级感受；实际账单请按官方计价器核算。</small></p>
+<p>这笔账的含义很直接：<strong>DeepSeek 的定价低到可以"无脑全文重跑"，而 Kimi 的定价要求你精打细算每一次调用</strong>。工程上这是两种完全不同的工作方式——前者可以暴力迭代 prompt，后者每次长文本调用都值得先在小样本上调好再上全量。</p>
+
+<h2>架构差异：为什么一个 256K、一个敢标 1M</h2>
+<h3>DeepSeek V4：在"够用的窗口"里做精度</h3>
+<p>根据 DeepSeek 公开技术报告，V4 处理长文本的思路是<strong>混合注意力 + 分段检索增强</strong>：长文档分段后用局部注意力抓细节，跨段注意力负责把关键信息串起来，再叠加检索式的加权聚焦。这套设计的取舍很清楚——不追求窗口数字上的震撼，而是保证在 256K 范围内检索精度和速度都不塌。</p>
+<h3>Kimi K3：用压缩换窗口上限</h3>
+<p>月之暗面在 K3 发布会上介绍的路线是<strong>分层注意力 + 多粒度压缩</strong>：先对超长文档做保留语义结构的压缩，再在压缩表示上算注意力，从而把计算复杂度压到可接受范围，同时支持图文混合输入。代价也写在公开评测里：长文本模式速度明显偏慢，且压缩过程理论上存在细节损失的风险。</p>
+<p>一句话概括两条路线：<strong>DeepSeek 选择把 256K 做扎实，Kimi 选择用压缩技术把窗口撑到百万级</strong>。没有谁对谁错，只有和你的文档长度分布匹不匹配。</p>
+
+<h2>"上下文窗口" ≠ "有效上下文"：怎么读 NIAH 数据</h2>
+<p>NIAH（Needle In A Haystack，大海捞针）测试是检验长窗口"含金量"的标准方法：在超长文档的任意位置埋一条关键信息，看模型能否准确找到。公开社区数据的大致图景是：</p>
+<ul>
+<li><strong>DeepSeek V4</strong>：在 256K 全窗口范围内，社区测试普遍反映"针"在开头、中间、末尾都能稳定命中，与官方技术报告口径一致。</li>
+<li><strong>Kimi K3</strong>：500K 以内的公开测试反馈良好；接近百万 token 的区间公开数据很少，部分社区测试提示准确率在超长区间有回落。</li>
+</ul>
+<p>这正是"标称窗口"和"有效窗口"的区别：<strong>宣称能装下 100 万 token，不等于在第 90 万个 token 处埋的条款还能被稳定召回</strong>。如果你的业务对召回率敏感（合同审查漏一条就是事故），建议用自己的文档做一轮埋针测试，方法很简单：在真实文档不同位置插入唯一标识句，然后提问验证。</p>
+
+<h2>按画像选</h2>
+<ul>
+<li><strong>法务/咨询团队，日常处理 200 页以内中文合同</strong> → DeepSeek V4。窗口够用、速度快、成本低到可以忽略，多轮追问不心疼。</li>
+<li><strong>研究者，要一次性吞下整本学位论文或 500 页以上报告</strong> → 先试"DeepSeek + 分段汇总"，不满意再上 Kimi K3。分段方案省下的钱通常远超过工程成本。</li>
+<li><strong>文档里全是图表、扫描件、图文混排</strong> → Kimi K3。这是它相对 DeepSeek 纯文本路线的硬优势，没有替代方案。</li>
+<li><strong>开发者，想要开源权重自己部署</strong> → DeepSeek 系（HuggingFace 有开源模型可用），Kimi 闭源不提供这条路。</li>
+<li><strong>预算充足、只要能力上限、不想做任何切分工程</strong> → Kimi K3，但请先按上文成本表核一遍月账单。</li>
+</ul>
+
+<h2>FAQ</h2>
+<div class="faq">
+<details><summary>两者中文能力谁更强？</summary>
+<p>都是国内头部团队，中文语料占比都很高，纯中文文本理解属同一梯队，日常使用感知差异不大。真正拉开差距的是场景变量：图文混排的中文文档 Kimi 有多模态优势；纯文本长文档 DeepSeek 的性价比和速度占优。</p>
+</details>
+<details><summary>DeepSeek V4 能处理 1000 页的 PDF 吗？</summary>
+<p>单次不能。256K token 约合 150–250 页中文文档，1000 页需要切成 4–7 段分别处理再汇总。好消息是它的价格让"分段 + 多轮汇总"的总成本依然远低于 Kimi 单次调用；坏消息是你需要自己写分段和汇总逻辑（或用现成的 RAG 框架）。</p>
+</details>
+<details><summary>怎么验证一个模型的长文本能力是不是真的？</summary>
+<p>三步：① 用自己的真实文档，在不同位置插入唯一标识句做埋针测试；② 记录不同长度下的命中率和响应耗时；③ 交叉参考 <a href="https://lmarena.ai" target="_blank" rel="noopener">LMArena</a> 等公开榜单和 HuggingFace 社区分享。厂商宣称的窗口数字只是入场券，有效召回才是能力。</p>
+</details>
+<details><summary>DeepSeek 是完全开源的吗？</summary>
+<p>不是"完全"。DeepSeek 在 <a href="https://huggingface.co/deepseek-ai" target="_blank" rel="noopener">HuggingFace</a> 上开源了多个系列模型（如 DeepSeek-Coder），可自行下载部署；但最新对话旗舰模型主要通过 API 提供服务。开源程度以其 <a href="https://github.com/deepseek-ai" target="_blank" rel="noopener">GitHub 组织页</a>实际发布为准。</p>
+</details>
+</div>
+
+<h2>数据来源</h2>
+<ul>
+<li><a href="https://www.deepseek.com" target="_blank" rel="noopener">DeepSeek 官网与技术报告</a></li>
+<li><a href="https://api-docs.deepseek.com/quick_start/pricing" target="_blank" rel="noopener">DeepSeek API 定价文档</a></li>
+<li><a href="https://kimi.moonshot.cn" target="_blank" rel="noopener">Kimi 官方产品页（月之暗面）</a></li>
+<li><a href="https://platform.moonshot.cn" target="_blank" rel="noopener">Moonshot 开放平台（API 与定价）</a></li>
+<li><a href="https://lmarena.ai" target="_blank" rel="noopener">LMArena（原 LMSYS Chatbot Arena）公开排名</a></li>
+<li><a href="https://huggingface.co/deepseek-ai" target="_blank" rel="noopener">HuggingFace：DeepSeek 开源模型页</a></li>
+</ul>
+<p><em>本文未进行独立 API 调用测试；速度与准确率描述均来自官方声明或第三方公开测试，可能随版本更新变化。</em></p>
+
+<div class="verdict"><strong>结论</strong>：把"1M token"当成营销数字之前，先量一下自己文档的真实长度。绝大多数中文长文档场景（合同、论文、报告）折算后落在 256K 以内——这个区间里 <strong>DeepSeek V4 以约 1/53 的输出价格、更快的速度和稳定的全窗口召回，是明显更合理的默认选择</strong>。Kimi K3 的不可替代性只在两处：必须整体处理的 500K+ 超长文档，以及图文混排的多模态解析。落在这两种场景里，就为它的溢价买单；不在，就别。</div></div><footer class="site-footer">&copy; 2024-2026 AI Tool Stack<br><a href="/index.html">Home</a> · <a href="/about.html">About</a> · <a href="/category-ai.html">AI Models &amp; Tools</a> · <a href="/category-dev-tools.html">Developer Tools</a> · <a href="/category-tech-products.html">Tech Products</a> · <a href="/privacy.html">Privacy</a></footer><script src="/assets/related.js"></script><script src="/assets/likes.js"></script><script src="/assets/counter.js"></script></body></html>

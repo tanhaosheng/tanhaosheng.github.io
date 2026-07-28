@@ -1,0 +1,77 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>SaaS, Explained From the Billing Meter Up - AI Tool Stack</title><meta name="description" content="A first-principles explainer of Software as a Service: multi-tenancy, the subscription meter, SLAs, and data residency — how the model actually works under the hood, with real pricing examples. Built from vendor documentation; no independent test."><meta name="robots" content="index, follow"><link rel="canonical" href="https://tanhaosheng.github.io/tech-30.html"><meta property="og:title" content="SaaS, Explained From the Billing Meter Up - AI Tool Stack"><meta property="og:description" content="A first-principles explainer of Software as a Service: multi-tenancy, the subscription meter, SLAs, and data residency — how the model actually works under the hood, with real pricing examples. Built from vendor documentation; no independent test."><meta property="og:type" content="article"><meta property="og:url" content="https://tanhaosheng.github.io/tech-30.html"><meta property="og:image" content="https://tanhaosheng.github.io/assets/og-ai-tools.jpg"><meta property="og:locale" content="en_US"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="SaaS, Explained From the Billing Meter Up - AI Tool Stack"><meta name="twitter:description" content="A first-principles explainer of Software as a Service: multi-tenancy, the subscription meter, SLAs, and data residency — how the model actually works under the hood, with real pricing examples. Built from vendor documentation; no independent test."><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"SaaS, Explained From the Billing Meter Up","description":"A first-principles explainer of Software as a Service: multi-tenancy, the subscription meter, SLAs, and data residency — how the model actually works under the hood, with real pricing examples. Built from vendor documentation; no independent test.","author":{"@type":"Organization","name":"AI Tool Stack"},"datePublished":"2026-07-28","dateModified":"2026-07-28"}</script><!-- AdSense --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3090420115329103" crossorigin="anonymous"></script><!-- Google Analytics 4 --><script async src="https://www.googletagmanager.com/gtag/js?id=G-NE8DYNMNYZ"></script><script>(function(){const gaId = "G-NE8DYNMNYZ";
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', gaId);
+})();</script><style>:root{--primary:#6c3ce1;--primary-dark:#4f2db5;--accent:#f59e0b;--bg:#f5f7fa;--text:#1a1a2e;--text-light:#6b7280;--border:#e5e7eb;--card:#fff}.hero-wrap{max-width:840px;margin:0 auto;padding:20px 20px 0}.hero-img{border:1px solid var(--border);border-radius:14px;width:100%;height:auto;display:block;box-shadow:0 8px 28px #6c3ce12e}*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--text);max-width:800px;margin:0 auto;padding:0 20px;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;font-size:20px;line-height:1.8}a{color:var(--primary);text-decoration:none}h1{color:var(--primary);margin:30px 0 20px;font-size:28px;line-height:1.3}h2{color:var(--primary-dark);margin:30px 0 15px;font-size:22px}h3{color:var(--primary-dark);margin:20px 0 10px;font-size:18px}p{margin-bottom:16px}ul,ol{margin:0 0 16px 22px}li{margin-bottom:8px}table{border-collapse:collapse;width:100%;margin:20px 0;font-size:16px}th,td{border:1px solid var(--border);text-align:left;padding:12px}th{background:#f3f4f6}tr:nth-child(2n){background:#f9fafb}.box{border-left:4px solid var(--accent);background:#fff3cd;border-radius:4px;margin:20px 0;padding:16px}.takeaways{background:var(--card);border:1px solid var(--border);border-radius:8px;margin:20px 0;padding:18px 22px}.takeaways h3{color:var(--primary);margin-top:0}.takeaways li{margin-bottom:6px}.features{margin:20px 0;padding:0;list-style:none}.features li{border-bottom:1px solid #e5e7eb;padding:8px 0}.features li:last-child{border-bottom:none}.verdict{border:2px solid var(--primary);background:#ede9fe;border-radius:12px;margin:24px 0;padding:20px}.verdict strong{color:var(--primary-dark)}.faq{margin:20px 0}.faq details{border:1px solid var(--border);background:var(--card);border-radius:8px;margin-bottom:10px;padding:12px 16px}.faq summary{cursor:pointer;color:var(--primary-dark);font-weight:700}.faq p{margin:10px 0 0}.pill{background:var(--primary);color:#fff;border-radius:999px;margin-bottom:10px;padding:3px 10px;font-size:13px;display:inline-block}.site-footer{color:#ffffffb3;text-align:center;background:#1a1a2e;margin-top:60px;padding:36px 0;font-size:14px;line-height:1.7}.site-footer a{color:#fffc;margin:0 8px}@media (width<=600px){body{font-size:16px}h1{font-size:24px}}
+</style></head><body><div class="container"><h1>SaaS, Explained From the Billing Meter Up</h1>
+<p><span class="pill">☁️ Software Delivery</span></p>
+<p><em>By AI Tool Stack Editorial · Last updated: 2026-07-28</em></p>
+
+<div class="box"><p><strong>How this was compiled:</strong> This explainer is built from public vendor architecture docs and pricing pages (Google Workspace, Microsoft 365, Salesforce, AWS, etc.). <strong>No service was deployed or measured by us.</strong> Architecture details and SLAs shift — confirm on the linked official sources.</p></div>
+
+<h2>Monday, 9:04 a.m., a library computer</h2>
+<p>Your laptop died on the train. You sit down at a public terminal, open a browser, sign in, and your entire business is there — email, documents, the CRM, the roadmap. Nothing is installed. That moment is the whole product. Software as a Service is the delivery model that makes "your software lives on someone else's computer and you rent access" feel like nothing happened at all.</p>
+
+<h2>Under the hood: one app, many tenants</h2>
+<p>The defining mechanism is <strong>multi-tenancy</strong>. A traditional install puts a copy of the software on your server. SaaS runs a single instance of the application on the vendor's infrastructure, and every customer's data is partitioned inside it — logically separate, physically shared. That's why the vendor can update everyone at once at 2 a.m. and why your "version" is never behind.</p>
+
+<p>The trade-off is the core of the model: you trade control for someone else's operational burden. The vendor owns the servers, the patching, the backups, the scaling. You own a login and a monthly bill.</p>
+
+<h2>The billing meter</h2>
+<p>SaaS pricing is almost always a <strong>subscription per user per month</strong>, not a one-time license. The mechanism matters more than the marketing:</p>
+<ul>
+<li><strong>Google Workspace</strong> Business Starter lists at $6/user/month (<a href="https://workspace.google.com/pricing.html">workspace.google.com/pricing.html</a>) — email, docs, drive, on Google's tenant.</li>
+<li><strong>Microsoft 365</strong> Business Basic is about $6/user/month (<a href="https://www.microsoft.com/en-us/microsoft-365/business/compare-all-microsoft-365-business-plans">microsoft.com/microsoft-365/business</a>) — web apps plus email, on Microsoft's tenant.</li>
+<li><strong>Salesforce</strong> Sales Cloud starts around $25/user/month for the entry edition (<a href="https://www.salesforce.com/editions-pricing/sales-cloud/">salesforce.com/editions-pricing</a>).</li>
+</ul>
+<p>The "per user per month" meter is why SaaS scales cost with headcount — and why finance hates it when a $6 seat quietly becomes a $20 seat after three "minor" upgrades. The bill is the control surface; read it.</p>
+
+<h2>SLAs: the vendor's promise, written down</h2>
+<p>A <strong>Service Level Agreement</strong> is the contractual uptime commitment. Vendors typically promise "three nines" (99.9%) or "four nines" (99.99%) monthly availability, with service credits if they miss. The arithmetic is blunt: 99.9% allows about 43 minutes of downtime per month; 99.99% allows about 4 minutes. That number is the difference between "annoying" and "someone's on call." Cloud substrate providers publish their own SLAs — AWS, for instance, commits 99.99% for multi-AZ deployments of services like EC2 (<a href="https://aws.amazon.com/legal/service-level-agreements/">aws.amazon.com/legal/service-level-agreements</a>) — and SaaS vendors inherit and re-package that reliability.</p>
+
+<h2>Data residency and the fine print</h2>
+<p>Because your data sits on the vendor's infrastructure, <strong>where</strong> it sits is a real question. Major vendors let you choose a region (EU, US, etc.) to address GDPR and similar rules. The mechanism is straightforward: the partition holding your tenant is instantiated in a data center you select. If a vendor can't tell you where your data lives, that's a flag, not a footnote.</p>
+
+<h2>Why it won, and where it frays</h2>
+<p>The mechanical advantages are real: zero install, instant updates, elastic scaling, built-in backups. The fraying edges are equally mechanical:</p>
+<ul>
+<li><strong>Vendor lock-in.</strong> Your data is in their schema, their export format. Migration is a project, not a copy.</li>
+<li><strong>Cumulative cost.</strong> A $10/seat/mo tool across 50 people is $6,000/year — more than a one-time license would've been, indefinitely.</li>
+<li><strong>External dependency.</strong> When the vendor is down, you're down. Your SLA credit doesn't pay for your lost hour.</li>
+</ul>
+
+<h2>Categories, by the numbers</h2>
+<table>
+<tr><th>Category</th><th>Example</th><th>Entry price (approx)</th><th>What you're renting</th></tr>
+<tr><td>Productivity suite</td><td>Google Workspace</td><td>$6/user/mo</td><td>Email + docs + drive</td></tr>
+<tr><td>Office suite</td><td>Microsoft 365</td><td>$6/user/mo</td><td>Web apps + email</td></tr>
+<tr><td>CRM</td><td>Salesforce</td><td>~$25/user/mo</td><td>Sales pipeline</td></tr>
+<tr><td>Communication</td><td>Slack</td><td>Free; Pro ~$7.25/user/mo</td><td>Team messaging</td></tr>
+<tr><td>Design</td><td>Figma</td><td>Free; Pro ~$12/editor/mo</td><td>Collaborative design</td></tr>
+<tr><td>Finance</td><td>QuickBooks Online</td><td>~$30/mo</td><td>Accounting</td></tr>
+</table>
+<p><em>Prices are approximate mid-2026 list figures from the linked pages; verify before budgeting.</em></p>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+<details><summary>Is SaaS the same as "cloud"?</summary>
+<p>No. "Cloud" is the infrastructure (servers you don't own). SaaS is one delivery model on top of it — software you rent rather than install. Cloud also covers IaaS (raw servers, e.g. AWS) and PaaS (platforms). SaaS is the most consumer-visible layer.</p></details>
+<details><summary>What happens to my data if I cancel?</summary>
+<p>Reputable vendors provide an export, but the format and completeness vary. That's the lock-in risk: read the export terms before you commit, not after. Data residency and portability should be part of your evaluation, not an afterthought.</p></details>
+<details><summary>Why is it always per-user pricing?</summary>
+<p>Because in multi-tenancy, each user consumes partitioned storage, compute, and support. Per-seat billing aligns the vendor's cost with your usage. It also means cost scales with headcount — predictable for them, cumulative for you.</p></details>
+<details><summary>How do I compare vendors fairly?</summary>
+<p>Compare total cost of ownership over three years, not the sticker price; check the SLA's actual downtime allowance; confirm data residency and export. A cheaper seat with weak export and a 99.5% SLA can cost more in a bad month than a pricier, more reliable one.</p></details>
+</div>
+
+<h2>Sources</h2>
+<ul>
+<li>Google Workspace pricing — <a href="https://workspace.google.com/pricing.html">workspace.google.com/pricing.html</a></li>
+<li>Microsoft 365 business plans — <a href="https://www.microsoft.com/en-us/microsoft-365/business/compare-all-microsoft-365-business-plans">microsoft.com/microsoft-365/business</a></li>
+<li>Salesforce Sales Cloud pricing — <a href="https://www.salesforce.com/editions-pricing/sales-cloud/">salesforce.com/editions-pricing/sales-cloud</a></li>
+<li>AWS Service Level Agreements — <a href="https://aws.amazon.com/legal/service-level-agreements/">aws.amazon.com/legal/service-level-agreements</a></li>
+</ul>
+
+<div class="verdict"><p><strong>Verdict:</strong> SaaS is best understood as rented, multi-tenant software: one app instance, many logically-separated customers, billed per seat per month, with uptime backed by an SLA and data located in a region you can (usually) choose. It wins on zero-install and elastic scale, and frays on lock-in, cumulative cost, and shared-dependency risk. The caveat: the subscription meter never stops — evaluate the three-year total and the export terms before the first login, not after.</p></div></div><footer class="site-footer">&copy; 2024-2026 AI Tool Stack<br><a href="/index.html">Home</a> · <a href="/about.html">About</a> · <a href="/category-ai.html">AI Models &amp; Tools</a> · <a href="/category-dev-tools.html">Developer Tools</a> · <a href="/category-tech-products.html">Tech Products</a> · <a href="/privacy.html">Privacy</a></footer><script src="/assets/related.js"></script><script src="/assets/likes.js"></script><script src="/assets/counter.js"></script></body></html>
