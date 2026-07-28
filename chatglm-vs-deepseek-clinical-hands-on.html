@@ -1,0 +1,145 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>ChatGLM 5.2 vs DeepSeek on a Real Breast Cancer Case — A Surgeon's Hands-on Test - AI Tool Stack</title><meta name="description" content="A surgeon's hands-on test of two free LLMs (ChatGLM 5.2 vs DeepSeek fast mode) on a real, anonymized post-op breast cancer case, scored against the 2026 CBCS guideline with a 16-item / 100-point rubric. ChatGLM median 5/100 (English, unstable); DeepSeek median 28/100 (Chinese, reproducible). Neither is safe to trust alone on staging or nuance."><meta name="robots" content="index, follow"><link rel="canonical" href="https://tanhaosheng.github.io/chatglm-vs-deepseek-clinical-hands-on.html"><meta property="og:title" content="ChatGLM 5.2 vs DeepSeek on a Real Breast Cancer Case — A Surgeon's Hands-on Test"><meta property="og:description" content="Hands-on test of two free LLMs on a real, anonymized breast cancer case scored against the 2026 CBCS guideline. ChatGLM 5/100 (English, unstable) vs DeepSeek 28/100 (Chinese, reproducible)."><meta property="og:type" content="article"><meta property="og:url" content="https://tanhaosheng.github.io/chatglm-vs-deepseek-clinical-hands-on.html"><meta property="og:image" content="https://tanhaosheng.github.io/assets/og-ai-tools.jpg"><meta property="og:locale" content="en_US"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="ChatGLM 5.2 vs DeepSeek on a Real Breast Cancer Case — A Surgeon's Hands-on Test"><meta name="twitter:description" content="Hands-on test of two free LLMs on a real breast cancer case vs the 2026 CBCS guideline. ChatGLM 5/100 vs DeepSeek 28/100."><!-- AdSense --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3090420115329103" crossorigin="anonymous"></script><!-- Google Analytics 4 --><script async src="https://www.googletagmanager.com/gtag/js?id=G-NE8DYNMNYZ"></script><script>(function(){const gaId = "G-NE8DYNMNYZ";
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', gaId);
+})();</script><style>:root{--primary:#6c3ce1;--primary-dark:#4f2db5;--accent:#f59e0b;--bg:#f5f7fa;--text:#1a1a2e;--text-light:#6b7280;--border:#e5e7eb;--card:#fff}.*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--text);max-width:820px;margin:0 auto;padding:0 20px;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;font-size:19px;line-height:1.8}a{color:var(--primary);text-decoration:none}h1{color:var(--primary);margin:28px 0 14px;font-size:30px;line-height:1.25}h2{color:var(--primary-dark);margin:34px 0 12px;font-size:23px;padding-bottom:6px;border-bottom:2px solid var(--accent)}h3{color:var(--primary-dark);margin:22px 0 8px;font-size:18px}p{margin-bottom:15px}ul,ol{margin:0 0 16px 22px}li{margin-bottom:7px}table{border-collapse:collapse;width:100%;margin:18px 0;font-size:15px}th,td{border:1px solid var(--border);text-align:left;padding:10px 11px}th{background:#f3f4f6;font-weight:600}tr:nth-child(2n){background:#f9fafb}nav{z-index:100;background:linear-gradient(135deg,#6c3ce1 0%,#4f2db5 100%);position:sticky;top:0;box-shadow:0 2px 12px #6c3ce140}nav .nav-inner{max-width:900px;margin:0 auto;display:flex;overflow-x:auto}nav a{color:#ffffffe6;white-space:nowrap;padding:14px 16px;font-size:15px;font-weight:500;text-decoration:none}nav a:hover,nav a.active{color:#fff;background:#ffffff26}.article-byline{font-size:14px;color:#6b7280;margin:0 0 16px;padding:10px 14px;background:#f8fafc;border-left:3px solid #2563eb;border-radius:6px}.article-byline a{font-weight:600}.series-badge{display:inline-block;background:#ede9fe;color:var(--primary-dark);border:1px solid #c4b5fd;border-radius:999px;padding:4px 12px;font-size:13px;font-weight:700;margin-bottom:14px}.box{border-left:4px solid var(--accent);background:#fff3cd;border-radius:4px;margin:18px 0;padding:16px}.box.blue{border-left-color:#2563eb;background:#eff6ff}.takeaways{background:var(--card);border:1px solid var(--border);border-radius:8px;margin:18px 0;padding:16px 22px}.takeaways h3{color:var(--primary);margin-top:0}.takeaways li{margin-bottom:6px}.verdict{border:2px solid var(--primary);background:#ede9fe;border-radius:12px;margin:22px 0;padding:18px 20px}.verdict strong{color:var(--primary-dark)}.faq{margin:18px 0}.faq details{border:1px solid var(--border);background:var(--card);border-radius:8px;margin-bottom:10px;padding:12px 16px}.faq summary{cursor:pointer;color:var(--primary-dark);font-weight:700}.faq p{margin:10px 0 0}.pill{background:var(--primary);color:#fff;border-radius:999px;padding:3px 11px;font-size:12px;font-weight:600;display:inline-block;margin-bottom:8px}.pill.red{background:#dc2626}.pill.green{background:#059669}.pill.orange{background:#c2410c}.pill.blue{background:#2563eb}.score-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}@media(max-width:620px){.score-grid{grid-template-columns:1fr}}.score-card{border:1px solid var(--border);border-radius:12px;padding:16px;background:var(--card)}.score-card .model{font-weight:700;font-size:16px;margin-bottom:6px}.score-card .big{font-size:34px;font-weight:800;line-height:1}.score-card .big.win{color:var(--primary)}.score-card .big.lose{color:#dc2626}.score-card .rows{font-size:13px;color:var(--text-light);margin-top:8px}.miss{background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:12px 16px;margin:10px 0}.miss b{color:#dc2626}.ext{background:#ecfdf5;border-left:4px solid #059669;padding:12px 16px;border-radius:4px;margin:18px 0;font-size:15px}.note{background:#fff7ed;border-left:4px solid #f59e0b;padding:12px 16px;border-radius:4px;margin:18px 0;font-size:15px}.zh{background:#f8fafc;border:1px dashed var(--border);border-radius:10px;padding:14px 18px;margin:18px 0;font-size:16px;line-height:1.75}footer{color:#fff;text-align:center;background:#1a1a2e;margin-top:50px;padding:30px 20px;font-size:15px}footer a{color:#a78bfa}</style></head><body><nav><div class="nav-inner"><a href="/index.html" class>🏠 Home</a><a href="/news.html" class>📰 News</a><a href="/category-ai.html" class>🤖 AI</a><a href="/about.html" class>About</a></div></nav>
+
+<h1>ChatGLM 5.2 vs DeepSeek on a Real Breast Cancer Case — A Surgeon's Hands-on Test</h1>
+<div class="article-byline">By <a href="https://tanhaosheng.github.io/about.html">Tan Haosheng</a> · 副主任医师 / 医学博士 (Associate Chief Physician, MD/PhD) · Last updated 2026-07-29</div>
+<div class="series-badge">🧪 原创实测 #1 / 5 &nbsp;·&nbsp; Hands-on Review 1 of 5</div>
+
+<div class="box">
+<strong>The question that started this:</strong> Can a <em>free</em> chatbot be trusted with a post-operative breast cancer treatment plan? I'm a thyroid &amp; breast surgeon, not a prompt engineer — so instead of debating it, I ran the two cheapest models I could find on a <strong>real, fully anonymized case</strong> from my own specialty, and scored their answers against the <strong>2026 Chinese Breast Cancer Society (CBCS) guideline</strong> with a fixed rubric. This is what happened. <strong>Spoiler: neither passed, but they failed in very different ways.</strong>
+</div>
+
+<h2>Why I ran this test</h2>
+<p>I work at a public hospital. My department's software budget does not stretch to GPT-4-class subscriptions, and I suspect most of my colleagues are in the same boat. What I <em>do</em> have is free web access to a handful of Chinese LLMs. So the practical question isn't "which model is theoretically best" — it's <strong>"which free model is still useful for the clinical-adjacent reasoning I actually do?"</strong></p>
+<p>I picked a task that is hard, checkable, and high-stakes: <strong>reading a post-op pathology report and recommending next-step adjuvant therapy</strong> for an early breast cancer case. If a model can't handle this, it can't be a decision aid. If it handles it but can't show its work, I still can't trust it. Two free models went head-to-head:</p>
+<ul>
+  <li><strong>DeepSeek</strong> — web "fast mode" (网页快速模式), <a href="https://chat.deepseek.com/" target="_blank" rel="noopener">chat.deepseek.com</a></li>
+  <li><strong>ChatGLM 5.2</strong> (智谱清言) — web version, <a href="https://chatglm.cn/" target="_blank" rel="noopener">chatglm.cn</a></li>
+</ul>
+<p>Both are $0. That's the whole point — this is a budget test, not a flagship-model bake-off.</p>
+
+<h2>How I tested it (so you can reproduce it)</h2>
+<p>I built a fixed framework so the comparison is fair and re-runnable:</p>
+<ul>
+  <li><strong>One case, one prompt.</strong> A single anonymized case summary + a 16-part task list, pasted <em>verbatim</em> into both models. Same input, no image (DeepSeek's expert mode doesn't accept images, so text kept it even).</li>
+  <li><strong>Graded against 2026 CBCS.</strong> A 16-item / 100-point rubric keyed to the 2026 CBCS guideline (Version 2026.1.0) — staging, surgery, radiotherapy, chemo, endocrine therapy, safety, follow-up, and self-assessment.</li>
+  <li><strong>3 runs each, take the median.</strong> If the spread between best and worst run was ≥8 points, the model is flagged "unstable."</li>
+  <li><strong>The citation rule.</strong> A correct answer that did <em>not</em> cite a specific 2026 CBCS chapter/page was capped at 1 point (out of 2). If I can't verify it actually read the guideline, I won't credit it for having done so.</li>
+</ul>
+<p>You can copy the exact prompt and rubric from the <a href="/clinical-benchmark/framework.md">open testing framework</a> and run it yourself. That's the whole point of publishing this.</p>
+
+<h2>The case (anonymized)</h2>
+<p>A 60-year-old woman, post-op day 1 after right breast cancer surgery. Pathology: a dominant lesion with <strong>three foci of stromal invasion, largest focus 0.2 cm (2 mm)</strong>, ER 90%+, PR 90%+, HER2 0, Ki-67 5%. Sentinel nodes negative (0/2 + 1/1). Discharge diagnosis: <strong>TisN0M0 (stage 0, DCIS)</strong>.</p>
+<div class="note">
+<strong>The trap:</strong> "3 foci of invasion, largest 0.2 cm" should set off an alarm. Microinvasion is defined as a <em>single</em> focus ≤1 mm. A 2 mm focus already exceeds that → at minimum <strong>pT1a (Stage IA)</strong>, not stage 0. Any model that just rubber-stamps "TisN0M0" is missing the single most clinically important discrepancy in the record. The guideline reference is CBCS 2026, TNM staging pp. 33–34, DCIS definition p. 50.
+</div>
+
+<h2>Results at a glance</h2>
+<div class="score-grid">
+  <div class="score-card">
+    <div class="model">🔵 DeepSeek (fast mode)</div>
+    <div class="big win">28<small style="font-size:16px">/100</small></div>
+    <div class="rows">
+      Runs: 28 · 28 · 28 (median <b>28</b>)<br>
+      Spread: <span class="pill green">0 — perfectly reproducible</span><br>
+      Language: <span class="pill green">Chinese</span><br>
+      Response: ~3–4 s<br>
+      Guideline citations: 0 / 16
+    </div>
+  </div>
+  <div class="score-card">
+    <div class="model">🟢 ChatGLM 5.2 (web)</div>
+    <div class="big lose">5<small style="font-size:16px">/100</small></div>
+    <div class="rows">
+      Runs: 10 · 2 · 5 (median <b>5</b>)<br>
+      Spread: <span class="pill red">8 — unstable</span><br>
+      Language: <span class="pill red">English (!)</span><br>
+      Response: ~5–8 s<br>
+      Guideline citations: 0 / 16
+    </div>
+  </div>
+</div>
+<p><strong>Bottom line:</strong> DeepSeek scored 5–6× higher and was rock-stable; ChatGLM was both low and erratic, and — bizarrely — answered a fully Chinese prompt in English. But "DeepSeek won" hides the more important story: <strong>both models failed the same core clinical reasoning, just at different depths.</strong></p>
+
+<h2>Where DeepSeek failed (3 systematic misses — every run)</h2>
+<div class="miss"><b>① Never challenged the staging (1.1 + 1.2, 16 pts lost).</b> All three runs accepted "TisN0M0, stage 0" verbatim, despite the pathology explicitly describing 2 mm of invasion. Staging error is a safety-grade mistake here: stage 0 vs IA changes adjuvant intensity, follow-up rhythm, and the patient's whole risk narrative.</div>
+<div class="miss"><b>② Didn't downgrade endocrine therapy for post-mastectomy DCIS (3.2a, 12 pts lost).</b> CBCS 2026 p.59 note a states that for DCIS after mastectomy, endocrine drugs fall under <em>chemoprevention</em> — "consider / optional," not a strong recommendation. DeepSeek applied the "DCIS → endocrine is strongly recommended" template without distinguishing mastectomy from breast-conserving surgery. This was the highest-discrimination item in the rubric; it scored zero.</div>
+<div class="miss"><b>③ Didn't cite the AI-vs-TAM age cutoff (3.2b, 10 pts lost).</b> CBCS 2026 p.59 note b: AI's advantage over tamoxifen is mainly in <em>post-menopausal women &lt;60</em>; at ≥60 the two are near-equivalent. The patient is exactly 60 — right on the boundary. DeepSeek just said "AI first" without showing it knew the cutoff existed.</div>
+<p>To its credit, DeepSeek <strong>correctly waived chemotherapy</strong> (one run even mentioned Oncotype DX), gave reasonable follow-up frequency, and flagged bone-density/Vit-D monitoring. And its three runs were <em>identical</em> — meaning the output is templated, not random, so you can at least predict what you'll get.</p>
+
+<h2>Where ChatGLM failed (2 independent flaws)</h2>
+<div class="miss"><b>① Answered entirely in English (usability dealbreaker).</b> The prompt and the medical record were both Chinese; all three ChatGLM runs replied in English. For a Chinese clinician that means higher re-reading cost, lost nuance in guideline terminology and dosing, and effectively — handing the decision to a model that "didn't think in your language." Unacceptable in a clinical context regardless of score.</div>
+<div class="miss"><b>② Extremely short and vague, and unstable (median 5, spread 8).</b> Average ~130 characters per run (DeepSeek was ~450). Mostly "here's what the record says + generic advice + disclaimer." Run 2 scored just 2/100 — almost a restatement of the case plus "let the doctor decide." The spread of 8 trips the framework's "unstable" threshold, so the same question repeated can return wildly different quality.</div>
+<p>Notably, <strong>both models failed the same three core items</strong> (staging challenge, DCIS-endocrine downgrade, age cutoff) and <strong>both scored 0/16 on citing the guideline</strong>. The difference is depth: DeepSeek gave a "wrong but checkable" reasoning chain; ChatGLM gave "vague and uncheckable."</p>
+
+<h2>Head-to-head</h2>
+<table>
+  <tr><th>Dimension</th><th>DeepSeek (fast)</th><th>ChatGLM 5.2</th></tr>
+  <tr><td>Median score / 100</td><td><b>28</b></td><td><b>5</b></td></tr>
+  <tr><td>Stability (max − min)</td><td><span class="pill green">0 (reproducible)</span></td><td><span class="pill red">8 (unstable)</span></td></tr>
+  <tr><td>Output language</td><td><span class="pill green">Chinese</span></td><td><span class="pill red">English</span></td></tr>
+  <tr><td>Avg length / run</td><td>~450 chars</td><td>~130 chars</td></tr>
+  <tr><td>Chemo-waiver call (3.1)</td><td><span class="pill green">correct + Oncotype DX</span></td><td><span class="pill red">not mentioned</span></td></tr>
+  <tr><td>Follow-up detail (4.3)</td><td><span class="pill green">specific frequency</span></td><td><span class="pill red">"regular check-up" only</span></td></tr>
+  <tr><td>Staging challenge (1.1+1.2)</td><td><span class="pill red">0</span></td><td><span class="pill red">0</span></td></tr>
+  <tr><td>Core DCIS item (3.2a)</td><td><span class="pill red">0</span></td><td><span class="pill red">0</span></td></tr>
+  <tr><td>Cited CBCS chapters</td><td>0 / 16</td><td>0 / 16</td></tr>
+</table>
+
+<h2>The verdict: which model for which task</h2>
+<div class="verdict">
+<strong>DeepSeek fast mode ≫ ChatGLM 5.2</strong> on Chinese clinical reasoning — it wins on every comparable axis, and it's in Chinese so I can actually verify it. But the real conclusion is narrower and more useful than "DeepSeek is better": <strong>neither free model is safe to trust alone on staging or nuanced guideline interpretation.</strong> Both are confidently wrong on exactly the items where a junior doctor would most need a reliable second opinion.
+</div>
+<table>
+  <tr><th>Task</th><th>Use</th><th>Why</th></tr>
+  <tr><td>Chinese clinical reasoning (this case)</td><td><span class="pill green">DeepSeek fast</span></td><td>Chinese, denser, reproducible</td></tr>
+  <tr><td>Quick Q&amp;A / drug facts / patient-education phrasing</td><td><span class="pill green">DeepSeek fast</span></td><td>Instant, directionally safe</td></tr>
+  <tr><td>Citing a specific guideline chapter</td><td><span class="pill red">Neither</span></td><td>Both scored 0/16</td></tr>
+  <tr><td>Staging re-interpretation / recommendation fine-tuning</td><td><span class="pill red">Neither, alone</span></td><td>Both miss the core items, confidently</td></tr>
+  <tr><td>Reading English medical literature</td><td><span class="pill blue">ChatGLM (maybe)</span></td><td>Its English output is an asset here — but not tested in this run</td></tr>
+</table>
+
+<h2>What I actually do with these tools</h2>
+<p>First person, no hedging: I use free LLMs as <strong>drafting and second-opinion aids, never as decision authority.</strong> They're genuinely good at the boring 80% — a clean discharge-summary draft at 11pm, an English polish on a manuscript, a patient-explanation script. The moment the task becomes "interpret this pathology and pick the therapy," I read the model's output the way I'd read a junior colleague's note: check the staging, check the recommendation grade, and never accept a confident assertion I can't trace to the guideline.</p>
+<p>The single most important lesson from this test isn't "DeepSeek beat ChatGLM." It's the <strong>0/16 citation rate</strong>. Free models paraphrase guidelines; they don't quote them. That's fine for drafting and dangerous for deciding.</p>
+
+<h2>Limitations</h2>
+<ul>
+  <li>One case, text-only input, free tiers only, three runs per model.</li>
+  <li>I did not test DeepSeek's deeper "reasoning" mode (if offered) or any paid API — that's a candidate for a later review in this series.</li>
+  <li>Scoring is one surgeon's interpretation of a fixed rubric; the framework is published so you can disagree and re-score.</li>
+</ul>
+
+<div class="ext">
+📎 <strong>Full data behind this article:</strong> the open testing framework (prompt + rubric), both models' three complete answers, and the detailed per-item score sheets live in the <a href="/clinical-benchmark/">Clinical LLM Benchmark data appendix</a> (bilingual). Read the long-form, then go verify it yourself.
+</div>
+
+<div class="zh">
+<strong>一句话结论（中文）：</strong> 在"中文 + 临床决策推理 + 零成本"这个三角里，<b>DeepSeek 快速模式完胜 ChatGLM 5.2</b>（中位 28 vs 5，且前者稳定可复现、中文输出）。但两个模型都还达不到"可单独采信"的门槛——它们在分期质疑、全切后 DCIS 内分泌降级、60 岁 AI/TAM 年龄切点这三个核心题上<b>双双失分且都很自信</b>。免费模型可以帮忙写、帮忙想，但不能替你做决定。
+</div>
+
+<div class="note">
+⚠️ <strong>Medical disclaimer.</strong> This article is an LLM tool-selection evaluation. It is <strong>not medical advice</strong>, and model outputs must never be used for real patient decisions. The case is anonymized and used only to demonstrate a testing method.
+</div>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+<details><summary>Did you test the paid versions of these models?</summary>
+<p>No. This is deliberately a budget test of the free web tiers. DeepSeek's deeper reasoning mode and any paid API tier are left for a later review in this 5-part series.</p></details>
+<details><summary>Why score 0 on guideline citations for both?</summary>
+<p>The rubric capped a correct-but-uncited answer at 1 point and required a specific 2026 CBCS chapter/page for full credit. Neither model ever cited a chapter or page — they said "mainstream / authoritative / latest guideline" without specifics, so I could not verify they had actually read the source.</p></details>
+<details><summary>Can I reproduce this myself?</summary>
+<p>Yes. The full prompt and 16-item rubric are published at <a href="/clinical-benchmark/framework.md">/clinical-benchmark/framework.md</a>. Paste them into any model, score against the 2026 CBCS guideline, and you'll get your own numbers.</p></details>
+<details><summary>Is ChatGLM usable for anything clinical then?</summary>
+<p>Its English output is a genuine asset for reading international literature, but for Chinese clinical decision support it answered in English and was both vague and unstable — not something I'd rely on. DeepSeek fast mode is the better free pick for Chinese-language reasoning, with the caveats above.</p></details>
+</div>
+
+<p style="margin-top:24px"><em>This is the first of a planned 5-part <strong>原创实测 / Hands-on Review</strong> series — real, signed, reproducible tests of AI tools I actually use in clinical and research work. Next up: a paid-API cross-check on the same case.</em></p>
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"ChatGLM 5.2 vs DeepSeek on a Real Breast Cancer Case — A Surgeon's Hands-on Test","description":"A surgeon's hands-on test of two free LLMs (ChatGLM 5.2 vs DeepSeek fast mode) on a real, anonymized post-op breast cancer case, scored against the 2026 CBCS guideline with a 16-item / 100-point rubric. ChatGLM median 5/100 (English, unstable); DeepSeek median 28/100 (Chinese, reproducible). Neither is safe to trust alone on staging or nuance.","author":{"@type":"Person","name":"Tan Haosheng","alternateName":"谭好升","url":"https://tanhaosheng.github.io/about.html","jobTitle":"Associate Chief Physician, Department of Thyroid and Breast Surgery"},"datePublished":"2026-07-29","dateModified":"2026-07-29","publisher":{"@type":"Organization","name":"AI Tool Stack"},"mainEntityOfPage":"https://tanhaosheng.github.io/chatglm-vs-deepseek-clinical-hands-on.html","image":"https://tanhaosheng.github.io/assets/og-ai-tools.jpg"}</script>
+<footer>&copy; 2024-2026 AI Tool Stack<br><a href="/index.html">Home</a> · <a href="/about.html">About</a> · <a href="/category-ai.html">AI Models &amp; Tools</a> · <a href="/clinical-benchmark/">Clinical Benchmark Data</a> · <a href="/privacy.html">Privacy</a></footer></body></html>
