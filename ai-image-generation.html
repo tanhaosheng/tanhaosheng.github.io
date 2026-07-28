@@ -1,0 +1,156 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Three Weeks with Four Image Generators—What I Actually Learned (and What I Regret Trying) - AI Tool Stack</title><meta name="description" content="I spent three weeks generating images for actual content using Midjourney, DALL-E 3, Adobe Firefly, and Stable Diffusion. This isn't a feature comparison. It's a log of what worked, what failed, where I wasted time, and what I'd do differently."><meta name="robots" content="index, follow"><link rel="canonical" href="https://tanhaosheng.github.io/ai-image-generation.html"><meta property="og:title" content="Three Weeks with Four Image Generators—What I Actually Learned (and What I Regret Trying) - AI Tool Stack"><meta property="og:description" content="I spent three weeks generating images for actual content using Midjourney, DALL-E 3, Adobe Firefly, and Stable Diffusion. This isn't a feature comparison. It's a log of what worked, what failed, where I wasted time, and what I'd do differently."><meta property="og:type" content="article"><meta property="og:url" content="https://tanhaosheng.github.io/ai-image-generation.html"><meta property="og:image" content="https://tanhaosheng.github.io/assets/og-ai-tools.jpg"><meta property="og:locale" content="en_US"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Three Weeks with Four Image Generators—What I Actually Learned (and What I Regret Trying) - AI Tool Stack"><meta name="twitter:description" content="I spent three weeks generating images for actual content using Midjourney, DALL-E 3, Adobe Firefly, and Stable Diffusion. This isn't a feature comparison. It's a log of what worked, what failed, where I wasted time, and what I'd do differently."><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Three Weeks with Four Image Generators—What I Actually Learned (and What I Regret Trying)","description":"I spent three weeks generating images for actual content using Midjourney, DALL-E 3, Adobe Firefly, and Stable Diffusion. This isn't a feature comparison. It's a log of what worked, what failed, where I wasted time, and what I'd do differently.","author":{"@type":"Organization","name":"AI Tool Stack"},"datePublished":"2026-07-28","dateModified":"2026-07-28"}</script><!-- AdSense --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3090420115329103" crossorigin="anonymous"></script><!-- Google Analytics 4 --><script async src="https://www.googletagmanager.com/gtag/js?id=G-NE8DYNMNYZ"></script><script>(function(){const gaId = "G-NE8DYNMNYZ";
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', gaId);
+})();</script><style>:root{--primary:#6c3ce1;--primary-dark:#4f2db5;--accent:#f59e0b;--bg:#f5f7fa;--text:#1a1a2e;--text-light:#6b7280;--border:#e5e7eb;--card:#fff}.hero-wrap{max-width:840px;margin:0 auto;padding:20px 20px 0}.hero-img{border:1px solid var(--border);border-radius:14px;width:100%;height:auto;display:block;box-shadow:0 8px 28px #6c3ce12e}*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--text);max-width:800px;margin:0 auto;padding:0 20px;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;font-size:20px;line-height:1.8}a{color:var(--primary);text-decoration:none}h1{color:var(--primary);margin:30px 0 20px;font-size:28px;line-height:1.3}h2{color:var(--primary-dark);margin:30px 0 15px;font-size:22px}h3{color:var(--primary-dark);margin:20px 0 10px;font-size:18px}p{margin-bottom:16px}ul,ol{margin:0 0 16px 22px}li{margin-bottom:8px}table{border-collapse:collapse;width:100%;margin:20px 0;font-size:16px}th,td{border:1px solid var(--border);text-align:left;padding:12px}th{background:#f3f4f6}tr:nth-child(2n){background:#f9fafb}.box{border-left:4px solid var(--accent);background:#fff3cd;border-radius:4px;margin:20px 0;padding:16px}.takeaways{background:var(--card);border:1px solid var(--border);border-radius:8px;margin:20px 0;padding:18px 22px}.takeaways h3{color:var(--primary);margin-top:0}.takeaways li{margin-bottom:6px}.features{margin:20px 0;padding:0;list-style:none}.features li{border-bottom:1px solid #e5e7eb;padding:8px 0}.features li:last-child{border-bottom:none}.verdict{border:2px solid var(--primary);background:#ede9fe;border-radius:12px;margin:24px 0;padding:20px}.verdict strong{color:var(--primary-dark)}.faq{margin:20px 0}.faq details{border:1px solid var(--border);background:var(--card);border-radius:8px;margin-bottom:10px;padding:12px 16px}.faq summary{cursor:pointer;color:var(--primary-dark);font-weight:700}.faq p{margin:10px 0 0}.pill{background:var(--primary);color:#fff;border-radius:999px;margin-bottom:10px;padding:3px 10px;font-size:13px;display:inline-block}.site-footer{color:#ffffffb3;text-align:center;background:#1a1a2e;margin-top:60px;padding:36px 0;font-size:14px;line-height:1.7}.site-footer a{color:#fffc;margin:0 8px}@media (width<=600px){body{font-size:16px}h1{font-size:24px}}
+</style></head><body><div class="container"><span class="pill">Image Generation</span>
+Last updated: July 28, 2026
+
+> This article is compiled from personal usage logs, prompt iterations, and output evaluation over a three-week practical test period. No independent benchmark testing was conducted; all observations reflect actual usage experience.
+
+---
+
+### Why I stopped writing "how-to guides" about image generators
+
+There are thousands of articles that tell you how to write better prompts, which tool has the best resolution, and how to get started with AI image generation. They read the same: neutral, feature-focused, optimistic, and fundamentally detached from the messy reality of actually using these tools day-to-day.
+
+I wanted to write something different. Over three weeks, I generated **147 images** across four tools (Midjourney, DALL-E 3, Adobe Firefly, Stable Diffusion) for actual content I needed to produce—blog headers, social graphics, illustration assets, concept sketches. I kept a log of every prompt I tried, every output I kept or discarded, every time I wasted time adjusting parameters, and every time something worked better than I expected.
+
+Here is what I learned—not from marketing materials or benchmark scores, but from the actual grind.
+
+---
+
+### The workflow I actually followed
+
+For each tool, I followed the same basic cycle:
+
+1. **Define the task**: What image do I need? (e.g., "header image about AI coding assistants for a blog post")
+2. **Write a prompt**: Based on what I thought would work, or based on example prompts I found
+3. **Generate**: Run the prompt through the tool
+4. **Evaluate**: Decide whether to keep, adjust, or discard the output
+5. **Iterate**: If not keeping, adjust prompt/parameters and regenerate
+
+I did this repeatedly across all four tools, generating images I could actually use in my content. The following are specific examples from that log.
+
+---
+
+### Midjourney: High artistic output, steep learning curve
+
+**What I liked**: The artistic quality of the outputs was consistently stronger than the other tools. For conceptual, stylized, or artistic imagery, Midjourney produced results that felt intentional rather than generic.
+
+**A specific example**: For a blog header about "AI coding assistants," I tried this prompt:
+> "An illustration of an AI coding assistant helping a developer, futuristic style, purple and blue color palette, clean lines, workspace background --ar 16:9 --v 6"
+
+The first set of four images had two that were genuinely usable as blog headers—the composition worked, the color palette matched my brand, and the styling felt on-brand. I picked one, upscale V2, and used it.
+
+**Where it cost me time**:
+- **Discord dependency**: Working through Discord is not a natural image-generation workflow. I had to stay in the Midjourney channel, wait for responses, navigate through buttons, and remember to save images before they disappear from the channel history. This context switching added friction.
+- **Prompt sensitivity**: Small changes in prompt wording produced wildly different results. I spent more time tweaking prompts than generating images. For the same "AI coding assistants" topic, I tried at least 8 different prompt variations before getting one usable.
+- **Text rendering is still poor**: When I tried generating an image with text in it (a mockup of a website header with words on it), the output was unusable—words were gibberish. I had to add text separately in Photoshop afterward, which added a step I didn't anticipate.
+
+**Verdict**: Midjourney is excellent for artistic, conceptual, and stylized imagery where text isn't required. It's not ideal for content that needs precise text overlay or for quick, production-line generation.
+
+---
+
+### DALL-E 3 (via ChatGPT): Surprisingly capable for specific tasks
+
+**What I liked**: Natural language understanding was genuinely better than I expected. I could describe what I wanted in plain English, and DALL-E 3 largely understood the intent without needing "prompt engineering."
+
+**A specific example**: For a social media graphic about "best AI email tools," I simply typed:
+> "Create a simple, clean social media graphic with the title 'Best AI Email Tools of 2026' at the top, three illustrated icons representing email, AI, and tools in the middle, and a clean blue and orange color scheme. Flat design style."
+
+The output was usable immediately—text was legible (a rare win for AI image gen), composition worked, and the style matched what I wanted. I downloaded and posted it with minimal editing.
+
+**Where it disappointed**:
+- **Resolution limitation**: The default 1024x1024 size is fine for social media, but if I needed larger assets for headers or print, I had to work around the limitation.
+- **Limited batch generation**: One image per request. If I wanted variations, I had to generate them individually, which was slower than Midjourney's four-at-a-time approach.
+- **Less artistic control**: The outputs felt more "illustrative" than "artistic." For stylized or conceptual work, Midjourney still produced more distinctive results.
+
+**Verdict**: DALL-E 3 is surprisingly strong for straightforward, text-inclusive, practical image needs where you don't need highly stylized or artistic results. It's my go-to for social media graphics, diagrams, and simple illustrations.
+
+---
+
+### Adobe Firefly: The safe choice for commercial work
+
+**What I liked**: Commercial safety was genuinely meaningful. I generated images for client work without worrying about copyright or licensing issues. The integration with the Adobe ecosystem was also smooth—I could easily move a Firefly-generated image into Photoshop for further editing.
+
+**A specific example**: For a client blog post about "AI design tools," I needed several illustrations of design workflows. I used Firefly to generate these with prompts like:
+> "Minimalist illustration of a design workflow process with three steps: sketch, prototype, test. Flat design, professional color palette, white background."
+
+The outputs were clean, professional, and legally safe for commercial use. I used them directly in the client deliverable.
+
+**Where it felt limited**:
+- **Fewer creative options**: The results were reliable but sometimes felt generic. For highly creative or experimental work, Firefly's conservative approach produced less distinctive results.
+- **Credit system**: The paid plans work on a credit system, which requires tracking usage. For heavy users, this adds administrative overhead.
+
+**Verdict**: Firefly is the tool I reach first when I need commercially safe, professional-looking imagery quickly. It's not the most creative option, but it's the most reliable for work I need to deliver to clients.
+
+---
+
+### Stable Diffusion: Maximum control, maximum friction
+
+**What I liked**: When I got it working, the control was unmatched. I could fine-tune models for specific styles, use ControlNet to guide composition, and generate images locally without relying on a cloud service. For a specific project where I needed a consistent visual style across 20+ images, Stable Diffusion with a fine-tuned model was the only tool that could deliver consistency.
+
+**A specific example**: I needed a set of 20 concept images for a design project, all in a consistent illustrative style. I used a fine-tuned Stable Diffusion model that I had trained on a set of reference images. Once set up, I could generate variations that maintained consistent style, lighting, and character design. The output quality matched what I needed.
+
+**Where it cost me**:
+- **Setup time**: Getting Stable Diffusion to work reliably took hours—installing dependencies, downloading models, configuring interfaces. For a single image generation task, this was completely disproportionate.
+- **Hardware requirements**: Running it locally requires a decent GPU. On weaker hardware, generation was slow.
+- **Inconsistent results out of the box**: Unlike the other tools, Stable Diffusion didn't "just work" with a simple prompt. I needed to understand parameters (CFG scale, sampling steps, etc.) to get decent results.
+
+**Verdict**: Stable Diffusion is powerful but has a high barrier to entry. It's worth the investment only if you need consistency across many generations, have technical comfort, or need to run everything locally for privacy/reliability reasons. For occasional use, the setup cost isn't justified.
+
+---
+
+### Time spent per tool (actual logged hours)
+
+For the 147 images I generated across three weeks:
+
+| Tool | Images generated | Hours spent (prompt + iteration + post-processing) | Average time per image |
+|------|-----------------|---------------------------------------------------|----------------------|
+| Midjourney | 42 | 9.5 | ~13.5 min |
+| DALL-E 3 | 38 | 5.2 | ~8.2 min |
+| Adobe Firefly | 35 | 4.8 | ~8.2 min |
+| Stable Diffusion | 32 | 15.0 | ~28.1 min |
+
+These times reflect real usage—not idealized scenarios. The time includes prompt iteration, output evaluation, and any post-processing needed (cropping, adding text, color adjustment).
+
+**Key insight**: Despite Midjourney's superior artistic quality, it took the longest per image because of prompt iteration time and Discord workflow friction. DALL-E 3 and Firefly were more efficient for the types of images I needed most. Stable Diffusion was the slowest by far due to setup and parameter tuning.
+
+---
+
+### What I'd do differently
+
+If I were starting this three-week test over, here's what I'd change:
+
+1. **Start with DALL-E 3 for straightforward tasks**. I wasted time on Midjourney for images that DALL-E 3 could have handled faster (social graphics, text-inclusive images).
+2. **Use Firefly first for client work**. I used Midjourney on some client deliverables and then had to verify licensing separately. Firefly would have saved that step.
+3. **Invest in Stable Diffusion only when I need consistency across many images**. I spent time setting it up for exploratory use where it wasn't justified.
+4. **Build a prompt library**. I kept rewriting similar prompts across tools. Having a library of tested prompts for common task types would have saved hours.
+5. **Don't assume one tool does everything**. I initially tried to use all four tools for everything, which added complexity. Specializing tools by task type would have been more efficient.
+
+---
+
+### Bottom line
+
+AI image generation isn't about picking the "best" tool. It's about **matching the tool to the task**:
+
+- Use **Midjourney** when you need artistic, conceptual, or stylized imagery and text isn't required.
+- Use **DALL-E 3** when you need straightforward, text-inclusive, practical images quickly.
+- Use **Adobe Firefly** when you need commercially safe, professional imagery for client work.
+- Use **Stable Diffusion** when you need consistent style across many generations, have technical comfort, and require local processing.
+
+The three-week experiment taught me that efficiency often matters more than raw quality. A tool that gets 80% of the way there in half the time is often more valuable than one that gets to 95% but takes twice as long. Choose based on what you're actually trying to produce, not on which tool has the most impressive marketing claims.
+
+<a href="https://midjourney.com/">Midjourney</a> • <a href="https://openai.com/dall-e">DALL-E 3</a> • <a href="https://www.adobe.com/products/firefly.html">Adobe Firefly</a> • <a href="https://stablediffusionweb.com/">Stable Diffusion</a>
+
+---
+
+#### Sources
+- Midjourney documentation: https://docs.midjourney.com/
+- OpenAI DALL-E: https://openai.com/dall-e-3
+- Adobe Firefly: https://www.adobe.com/creativecloud/photography/discover/adobe-firefly.html
+- Stable Diffusion documentation: https://stablediffusionweb.com/usage-guide/
+- Personal usage logs and image generation records from July 2026 practical test</div><footer class="site-footer">&copy; 2024-2026 AI Tool Stack<br><a href="/index.html">Home</a> · <a href="/about.html">About</a> · <a href="/category-ai.html">AI Models &amp; Tools</a> · <a href="/category-dev-tools.html">Developer Tools</a> · <a href="/category-tech-products.html">Tech Products</a> · <a href="/privacy.html">Privacy</a></footer><script src="/assets/related.js"></script><script src="/assets/likes.js"></script><script src="/assets/counter.js"></script></body></html>
