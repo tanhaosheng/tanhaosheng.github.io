@@ -106,18 +106,53 @@ footer a{color:#a78bfa}
 <p style="text-align:center;color:#6b7280;font-size:.85em;"><em>第一步回顾：访问 platform.agnes-ai.com/login → 登录 → 设置 → API 密钥 → 创建新密钥（名字随便取） → 保存 → 复制 key。</em></p>
 
 <h2>第二步：在 WorkBuddy 中配置自定义模型</h2>
-<p>登录你的 WorkBuddy 账户，进入自定义模型配置页面。需要填写的内容如下：</p>
+<p>登录 WorkBuddy，点聊天输入框右下角的 <strong>"Auto"</strong> 选择器。整个配置走 5 小步：</p>
+
+<p style="text-align:center;margin:14px 0;"><img src="/assets/workbuddy-step1-auto-dropdown.png" alt="WorkBuddy 聊天窗口：右下角红圈标注「Auto」选择器" style="max-width:100%;height:auto;border:1px solid #e5e7eb;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.08);" loading="lazy"></p>
+
+<p>下拉列表打开，滚到最底，点 <strong>"Configure custom models"</strong>：</p>
+
+<p style="text-align:center;margin:14px 0;"><img src="/assets/workbuddy-step2-configure-custom.png" alt="WorkBuddy 模型下拉：Auto / Hy3 / GLM-5.2 / GLM-5.1 / GLM-5v-Turbo / MiniMax-M3 / Kimi-K3 / Kimi-K2.7-Code……最底部「Configure custom models」用红圈标出" style="max-width:100%;height:auto;border:1px solid #e5e7eb;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.08);" loading="lazy"></p>
+
+<p><strong>Add Model（添加模型）</strong>弹窗打开。注意顶部那个小徽章：<em>OpenAI-compatible API required</em>（要求 OpenAI 兼容 API）。默认 <strong>Provider</strong> 是腾讯云 Token Plan，但 Agnes 不在预置列表里——所以要把 Provider 下拉<strong>滚到最底</strong>，选 <strong>Custom</strong>：</p>
+
+<p style="text-align:center;margin:14px 0;"><img src="/assets/workbuddy-step3-add-model-default.png" alt="添加模型弹窗：顶部「OpenAI-compatible API required」徽章，Provider 默认「腾讯云 Token Plan / 通用 Token Plan（个人版）」用红箭头指出" style="max-width:100%;height:auto;border:1px solid #e5e7eb;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.08);" loading="lazy"></p>
+
+<p>在 Provider 下拉里，划过所有预置服务（Kimi Coding Plan / GLM / Kimi China / MiniMax China / DeepSeek / Ollama ……）。一直到最底部 <em>Other</em> 分组下面那个 <strong>Custom</strong>（红圈标出）：</p>
+
+<p style="text-align:center;margin:14px 0;"><img src="/assets/workbuddy-step4-provider-custom.png" alt="Provider 下拉：Coding Plan（Kimi Coding Plan）、Custom API（GLM Open Platform / GLM API / Kimi China / MiniMax China / DeepSeek / Ollama）、Other — Custom 在最底部，红圈标出" style="max-width:100%;height:auto;border:1px solid #e5e7eb;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.08);" loading="lazy"></p>
+
+<p><strong>提醒：</strong>千万别图省事选个名字像的（比如"GLM Open Platform"、"MiniMax China"）——只有 <strong>Custom</strong> 允许你填自己的 Endpoint + Model Name，其他选项都会把你锁死到对应厂商的预设模型列表上。</p>
+
+<p>点完 Custom，完整的表单出现。下面这三个字段一定要按截图填：</p>
+
+<p style="text-align:center;margin:14px 0;"><img src="/assets/workbuddy-step5-custom-form.png" alt="Custom 表单已填写：Provider=Custom，Endpoint=https://apihub.agnes-ai.com/v1，API Key 字段，Model Name=agnes-2.0-flash 用红框标出，外加 Advanced Settings（Tool Calling / Image Input / Reasoning / Custom Protocol）和 Input/Output 滑动条" style="max-width:100%;height:auto;border:1px solid #e5e7eb;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.08);" loading="lazy"></p>
 
 <ul>
-  <li><strong>模型名称：</strong> <code>agnes-2.0-flash</code> — 这一点<strong>至关重要</strong>。必须完全匹配，区分大小写。如果你拼写错误（例如 agnes-2.0-flashx、Agnes-2.0-Flash 或任何变体），配置将无法工作。</li>
-  <li><strong>API Base URL：</strong> 填入 Agnes 平台提供的 API 端点。</li>
-  <li><strong>API Key：</strong> 从第一步复制粘贴进来。</li>
-  <li><strong>其他字段：</strong> 根据 Agnes 文档填写任何必需的参数（例如 max tokens、temperature）。不确定时使用默认值。</li>
+  <li><strong>Provider：</strong> Custom（已在上面选好）</li>
+  <li><strong>Endpoint：</strong> <code>https://apihub.agnes-ai.com/v1</code>——这是 Agnes 的 OpenAI 兼容 API 基础地址，原样复制，包括末尾的 <code>/v1</code>。</li>
+  <li><strong>API Key：</strong> 从第一步复制的那串 <code>sk-</code> 开头的 key，粘贴进来。</li>
+  <li><strong>Model Name：</strong> <code>agnes-2.0-flash</code>——<strong>至关重要</strong>，区分大小写，照抄。错填（比如 <code>agnes-2.0-flashx</code>、<code>Agnes-2.0-Flash</code>、<code>AGNES-2.0-FLASH</code>、<code>agnes-2-flash</code> 等等），调用就会报 404 / model not found / 无响应。</li>
 </ul>
 
-<div class="code-block">模型名称：agnes-2.0-flash   ← 请反复核对！
-API Base：[从 Agnes 仪表板获取]
-API Key：[你刚才复制的密钥]</div>
+<div class="warn-box" style="background:#fee2e2;border-left:5px solid #dc2626;padding:14px 18px;border-radius:8px;margin:18px 0;"><strong>⚠️ 模型名三个最容易踩的坑：</strong>
+<ol style="margin:6px 0 0 18px;">
+  <li>大小写错误——正确的是全小写 + 数字 + 点 + 横杠，<strong>没有任何大写字母</strong>。</li>
+  <li>漏掉 <code>.0</code>——常见的错误是写成 <code>agnes-2-flash</code>，<code>2</code> 和 <code>flash</code> 之间必须有点零。</li>
+  <li>画蛇添足加后缀——比如 <code>agnes-2.0-flashx</code>、<code>agnes-2.0-flash-v2</code>。别发挥，照搬就行。</li>
+</ol>
+</div>
+
+<div class="success-box" style="background:#d1fae5;border-left:5px solid #059669;padding:14px 18px;border-radius:8px;margin:18px 0;"><strong>速记卡片——可以直接复制：</strong>
+<pre style="background:#0f172a;color:#e2e8f0;padding:12px 14px;border-radius:8px;margin:8px 0;font-size:0.95em;line-height:1.5;">Provider : Custom
+Endpoint : https://apihub.agnes-ai.com/v1
+API Key  : sk-...（从第一步粘贴）
+Model    : agnes-2.0-flash   &lt;-- 严格区分大小写，一字不差</pre>
+</div>
+
+<p>Advanced Settings（Tool Calling / Image Input / Reasoning / Custom Protocol）保持默认即可，除非你明确需要某一项；输入/输出 Token 上下文也保持默认。点 <strong>Save</strong>，就完成了。</p>
+
+<p style="text-align:center;color:#6b7280;font-size:.85em;"><em>第二步回顾：Auto → Configure custom models → Add Model → Provider 选 Custom → 填 Endpoint / API Key / Model Name（<code>agnes-2.0-flash</code>）→ Save。</em></p>
 
 <h2>你会得到什么体验</h2>
 <div class="success">

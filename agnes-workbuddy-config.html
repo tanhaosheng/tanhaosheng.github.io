@@ -111,18 +111,53 @@ footer a{color:#a78bfa}
 <p style="text-align:center;color:#6b7280;font-size:.85em;"><em>Recap of Step 1: visit platform.agnes-ai.com/login → sign in → Settings → API Keys → create new key (any name) → save → copy the key.</em></p>
 
 <h2>Step 2: Configure the custom model in WorkBuddy</h2>
-<p>Log in to your WorkBuddy account and navigate to the custom model configuration page. Here's what you need to fill in:</p>
+<p>Log in to WorkBuddy, then click the <strong>Auto</strong> selector in the bottom-right corner of the chat input box. The whole configuration goes through 5 small clicks:</p>
+
+<p style="text-align:center;margin:14px 0;"><img src="/assets/workbuddy-step1-auto-dropdown.png" alt="WorkBuddy chat window: red circle highlighting the 'Auto' selector at the bottom-right of the input box" style="max-width:100%;height:auto;border:1px solid #e5e7eb;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.08);" loading="lazy"></p>
+
+<p>A dropdown appears. Scroll to the very bottom and click <strong>Configure custom models</strong>:</p>
+
+<p style="text-align:center;margin:14px 0;"><img src="/assets/workbuddy-step2-configure-custom.png" alt="WorkBuddy model dropdown list: Auto / Hy3 / GLM-5.2 / GLM-5.1 / GLM-5v-Turbo / MiniMax-M3 / Kimi-K3 / Kimi-K2.7-Code... and at the very bottom 'Configure custom models' circled in red" style="max-width:100%;height:auto;border:1px solid #e5e7eb;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.08);" loading="lazy"></p>
+
+<p>The <strong>Add Model</strong> dialog opens. Notice the badge at the top: <em>OpenAI-compatible API required</em>. The default <strong>Provider</strong> is the Tencent Cloud Token Plan, but Agnes isn't in the built-in list — so we have to scroll the Provider dropdown all the way down to pick <strong>Custom</strong>:</p>
+
+<p style="text-align:center;margin:14px 0;"><img src="/assets/workbuddy-step3-add-model-default.png" alt="Add Model dialog: 'OpenAI-compatible API required' badge at top, Provider defaults to '腾讯云 Token Plan / 通用 Token Plan (个人版)' with red arrow pointing at it" style="max-width:100%;height:auto;border:1px solid #e5e7eb;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.08);" loading="lazy"></p>
+
+<p>In the Provider dropdown, scroll past all the built-in options (Kimi Coding Plan / GLM / Kimi China / MiniMax China / DeepSeek / Ollama …). At the very bottom of the <em>Other</em> section, pick <strong>Custom</strong>:</p>
+
+<p style="text-align:center;margin:14px 0;"><img src="/assets/workbuddy-step4-provider-custom.png" alt="Provider dropdown: Coding Plan (Kimi Coding Plan), Custom API (GLM Open Platform / GLM API / Kimi China / MiniMax China / DeepSeek / Ollama), Other — Custom circled in red at the very bottom" style="max-width:100%;height:auto;border:1px solid #e5e7eb;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.08);" loading="lazy"></p>
+
+<p><strong>Important:</strong> do <em>not</em> pick anything that looks similar (e.g., "GLM Open Platform", "MiniMax China") just to save a step — only <strong>Custom</strong> lets you type your own Endpoint + Model Name. Everything else locks you to that vendor's preset model list.</p>
+
+<p>Once you pick Custom, the full form appears. Fill in three required fields exactly as shown:</p>
+
+<p style="text-align:center;margin:14px 0;"><img src="/assets/workbuddy-step5-custom-form.png" alt="Custom form filled in: Provider=Custom, Endpoint=https://apihub.agnes-ai.com/v1, API Key field, Model Name=agnes-2.0-flash in red box, plus Advanced Settings (Tool Calling / Image Input / Reasoning / Custom Protocol) and Input/Output token sliders" style="max-width:100%;height:auto;border:1px solid #e5e7eb;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.08);" loading="lazy"></p>
 
 <ul>
-  <li><strong>Model Name:</strong> <code>agnes-2.0-flash</code> — this is <strong>critical</strong>. It must be spelled exactly as shown, case-sensitive. If you type it wrong (e.g., agnes-2.0-flashx, Agnes-2.0-Flash, or any variation), the configuration will not work.</li>
-  <li><strong>API Base URL:</strong> Enter the Agnes API endpoint provided on their platform.</li>
-  <li><strong>API Key:</strong> Paste the key you copied from Step 1.</li>
-  <li><strong>Other fields:</strong> Fill in any required parameters (e.g., max tokens, temperature) according to Agnes's documentation. Start with default values if you're unsure.</li>
+  <li><strong>Provider:</strong> Custom (already chosen above)</li>
+  <li><strong>Endpoint:</strong> <code>https://apihub.agnes-ai.com/v1</code> — this is Agnes's OpenAI-compatible base URL. Copy it character-for-character, including the trailing <code>/v1</code>.</li>
+  <li><strong>API Key:</strong> paste the key you copied in Step 1 (the one that begins with <code>sk-</code>).</li>
+  <li><strong>Model Name:</strong> <code>agnes-2.0-flash</code> — <strong>critical</strong>. It must be spelled exactly as shown, case-sensitive. If you type it wrong (e.g., <code>agnes-2.0-flashx</code>, <code>Agnes-2.0-Flash</code>, <code>AGNES-2.0-FLASH</code>, <code>agnes-2-flash</code>, or anything else), the API call will return an error and the model will not respond.</li>
 </ul>
 
-<div class="code-block">Model Name: agnes-2.0-flash   ← DOUBLE CHECK THIS
-API Base: [from Agnes dashboard]
-API Key: [your copied key]</div>
+<div class="warn-box" style="background:#fee2e2;border-left:5px solid #dc2626;padding:14px 18px;border-radius:8px;margin:18px 0;"><strong>⚠️ The three landmines for Model Name:</strong>
+<ol style="margin:6px 0 0 18px;">
+  <li>Wrong case — every character is lowercase + digits + dots + dashes. There is no uppercase letter in the correct name.</li>
+  <li>Missing the <code>.0</code> — common typo is <code>agnes-2-flash</code>. The dot-zero between <code>2</code> and <code>flash</code> must be there.</li>
+  <li>Adding an extra suffix — e.g., <code>agnes-2.0-flashx</code>, <code>agnes-2.0-flash-v2</code>. Don't improvise; copy the exact string above.</li>
+</ol>
+</div>
+
+<div class="success-box" style="background:#d1fae5;border-left:5px solid #059669;padding:14px 18px;border-radius:8px;margin:18px 0;"><strong>Quick reference card — copy this block:</strong>
+<pre style="background:#0f172a;color:#e2e8f0;padding:12px 14px;border-radius:8px;margin:8px 0;font-size:0.95em;line-height:1.5;">Provider : Custom
+Endpoint : https://apihub.agnes-ai.com/v1
+API Key  : sk-... (paste from Step 1)
+Model    : agnes-2.0-flash   &lt;-- exact, case-sensitive</pre>
+</div>
+
+<p>Advanced Settings (Tool Calling / Image Input / Reasoning / Custom Protocol) — leave these at default unless you specifically need them. Token context windows can also stay at default. Hit <strong>Save</strong>, and you're done.</p>
+
+<p style="text-align:center;color:#6b7280;font-size:.85em;"><em>Step 2 recap: Auto → Configure custom models → Add Model → Provider = Custom → fill in Endpoint / API Key / Model Name (<code>agnes-2.0-flash</code>) → Save.</em></p>
 
 <h2>What to expect</h2>
 <div class="success">
