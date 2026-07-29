@@ -110,6 +110,14 @@ footer a{color:#a78bfa}
 
 <p style="text-align:center;color:#6b7280;font-size:.85em;"><em>Recap of Step 1: visit platform.agnes-ai.com/login → sign in → Settings → API Keys → create new key (any name) → save → copy the key.</em></p>
 
+<h2>What the API key is for — and the easiest way to use it</h2>
+<p>With the API key in hand, you now have two ways to drive Agnes:</p>
+<ul>
+  <li><strong>Call the API directly</strong> — you can hit the endpoint from a terminal or your own script (e.g. <code>curl</code> / Python / a bash shell). This is fully doable and gives you raw programmatic control over every request.</li>
+  <li><strong>Let the agent use it for you</strong> — this is the part that makes Agnes genuinely pleasant to work with. Once configured in WorkBuddy (Steps 2–3), you simply open a chat, pick <code>agnes-2.0-flash</code>, and the <strong>agent</strong> handles the API calls, tool use, and multi-turn reasoning behind the scenes.</li>
+</ul>
+<div class="note"><strong>💡 The takeaway:</strong> Yes, you <em>can</em> call the Agnes API from bash or any terminal. But for day-to-day work — writing, research, coding, multi-step tasks — the <strong>agent is by far the most convenient front-end</strong>. You get all the benefits of the free API without writing a single line of integration code.</div>
+
 <h2>Step 2: Configure the custom model in WorkBuddy</h2>
 <p>Log in to WorkBuddy, then click the <strong>Auto</strong> selector in the bottom-right corner of the chat input box. The whole configuration goes through 5 small clicks:</p>
 

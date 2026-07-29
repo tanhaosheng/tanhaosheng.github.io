@@ -105,6 +105,14 @@ footer a{color:#a78bfa}
 
 <p style="text-align:center;color:#6b7280;font-size:.85em;"><em>第一步回顾：访问 platform.agnes-ai.com/login → 登录 → 设置 → API 密钥 → 创建新密钥（名字随便取） → 保存 → 复制 key。</em></p>
 
+<h2>这个 API Key 是干什么的——以及最省事的使用方式</h2>
+<p>拿到 API Key 之后，你其实有两种方式来驱动 Agnes：</p>
+<ul>
+  <li><strong>直接调用 API</strong>——你完全可以用终端或自己的脚本（比如 <code>curl</code> / Python / bash shell）直接打这个接口。这条路走得通，也能拿到最原始的编程控制权，每个请求都自己掌控。</li>
+  <li><strong>让智能体替你调用</strong>——这才是 Agnes 真正好用的地方。配置进 WorkBuddy（第二步、第三步）之后，你只要开个对话、选 <code>agnes-2.0-flash</code>，<strong>智能体</strong>就会在背后帮你完成 API 调用、工具调用、多轮推理。</li>
+</ul>
+<div class="note"><strong>💡 一句话总结：</strong>确实，你<em>可以</em>用 bash 或任何终端去调 Agnes 的 API。但对于日常写东西、查资料、写代码、跑多步骤任务，<strong>智能体才是最好用的前端</strong>——免费 API 的好处你全拿到，却一行集成代码都不用写。</div>
+
 <h2>第二步：在 WorkBuddy 中配置自定义模型</h2>
 <p>登录 WorkBuddy，点聊天输入框右下角的 <strong>"Auto"</strong> 选择器。整个配置走 5 小步：</p>
 
