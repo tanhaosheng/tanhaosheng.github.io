@@ -1,4 +1,20 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tanhaosheng.github.io/sitemap.xml
+Sitemap: https://tanhaosheng.asia/sitemap.xml
+
+# Block AI training crawlers
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
