@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>在 WorkBuddy 中配置 Agnes 模型：免费且实用，唯一的缺点是稍慢 - AI Tool Stack</title>
+<meta name="description"="在 WorkBuddy 中配置免费 Agnes-2.0-flash 模型的步骤指南。突出其实用性，同时指出响应速度稍慢的问题。">
+<meta name="robots" content="index, follow"><link rel="canonical" href="https://tanhaosheng.asia/zh/agnes-workbuddy-config.html"><meta property="og:title" content="在 WorkBuddy 中配置 Agnes 模型：免费且实用">
+<meta property="og:description"="在 WorkBuddy 中配置免费 Agnes-2.0-flash 模型的步骤指南。突出其实用性，同时指出响应速度稍慢的问题。">
+<meta property="og:type" content="article"><meta property="og:url" href="https://tanhaosheng.asia/zh/agnes-workbuddy-config.html"><meta property="og:image" content="https://tanhaosheng.asia/assets/og-ai-tools.jpg">
+<meta property="og:locale" content="zh_CN"><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="在 WorkBuddy 中配置 Agnes 模型：免费且实用">
+<meta name="twitter:description"="在 WorkBuddy 中配置免费 Agnes-2.0-flash 模型的步骤指南。突出其实用性，同时指出响应速度稍慢的问题。">
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3090420115329103" crossorigin="anonymous"></script>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NE8DYNMNYZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-NE8DYNMNYZ');
+</style>
+<style>
+:root{--primary:#6c3ce1;--primary-dark:#4f2db5;--accent:#f59e0b;--bg:#f5f7fa;--text:#1a1a2e;--text-light:#6b7280;--border:#e5e7eb;--card:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);max-width:820px;margin:0 auto;padding:0 20px;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;font-size:19px;line-height:1.8}
+a{color:var(--primary);text-decoration:none}
+h1{color:var(--primary);margin:28px 0 14px;font-size:30px;line-height:1.25}
+h2{color:var(--primary-dark);margin:34px 0 12px;font-size:23px;padding-bottom:6px;border-bottom:2px solid var(--accent)}
+h3{color:var(--primary-dark);margin:22px 0 8px;font-size:18px}
+p{margin-bottom:15px}
+ul,ol{margin:0 0 16px 22px}
+li{margin-bottom:7px}
+table{border-collapse:collapse;width:100%;margin:18px 0;font-size:15px}
+th,td{border:1px solid var(--border);text-align:left;padding:10px 11px}
+th{background:#f3f4f6;font-weight:600}
+tr:nth-child(2n){background:#f9fafb}
+nav{z-index:100;background:linear-gradient(135deg,#6c3ce1 0%,#4f2db5 100%);position:sticky;top:0;box-shadow:0 2px 12px #6c3ce140}
+nav .nav-inner{max-width:900px;margin:0 auto;display:flex;overflow-x:auto}
+nav a{color:#ffffffe6;white-space:nowrap;padding:14px 16px;font-size:15px;font-weight:500;text-decoration:none}
+nav a:hover,nav a.active{color:#fff;background:#ffffff26}
+.article-byline{font-size:14px;color:#6b7280;margin:0 0 16px;padding:10px 14px;background:#f8fafc;border-left:3px solid #2563eb;border-radius:6px}
+.article-byline a{font-weight:600}
+.series-badge{display:inline-block;background:#ede9fe;color:#4f2db5;border:1px solid #c4b5fd;border-radius:999px;padding:4px 12px;font-size:13px;font-weight:700;margin-bottom:14px}
+.box{border-left:4px solid var(--accent);background:#fff3cd;border-radius:4px;margin:18px 0;padding:16px}
+.box.blue{border-left-color:#2563eb;background:#eff6ff}
+.takeaways{background:var(--card);border:1px solid var(--border);border-radius:8px;margin:18px 0;padding:16px 22px}
+.takeaways h3{color:var(--primary);margin-top:0}
+.faq{margin:18px 0}
+.faq details{border:1px solid var(--border);background:var(--card);border-radius:8px;margin-bottom:10px;padding:12px 16px}
+.faq summary{cursor:pointer;color:#4f2db5;font-weight:700}
+.faq p{margin:10px 0 0}
+.code-block{background:#f1f5f9;border:1px solid #cbd5e1;border-radius:6px;padding:16px;margin:16px 0;font-family:monospace;font-size:14px;overflow-x:auto}
+.note{background:#fff7ed;border-left:4px solid #f59e0b;padding:12px 16px;border-radius:4px;margin:18px 0;font-size:15px}
+.success{background:#ecfdf5;border-left:4px solid #059669;padding:12px 16px;border-radius:4px;margin:18px 0;font-size:15px}
+footer{color:#fff;text-align:center;background:#1a1a2e;margin-top:50px;padding:30px 20px;font-size:15px}
+footer a{color:#a78bfa}
+</style>
+</head>
+<body>
+<div id="lang-switcher"><label for="lang-select">🌐</label><select id="lang-select"><option value="en">English</option><option value="zh" selected>中文</option><option value="es" disabled>Español</option><option value="fr" disabled>Français</option><option value="ar" disabled>العربية</option><option value="ja" disabled>日本語</option><option value="ko" disabled>한국어</option><option value="ru" disabled>Русский</option><option value="hi" disabled>हिन्दी</option></select></div>
+<nav><div class="nav-inner"><a href="/zh/index.html" class="active">🏠 首页</a><a href="/zh/index.html" class>📰 新闻</a><a href="/zh/index.html" class>🤖 AI</a><a href="/zh/about.html">关于</a></div></nav>
+<div class="note"><strong>重要提示：</strong>这是一份配置指南。请务必注意——模型名称 <code>agnes-2.0-flash</code> 必须完全一致，否则配置将无法生效。</div>
+
+<h1>在 WorkBuddy 中配置 Agnes 模型：免费且实用，唯一的缺点是稍慢</h1>
+<div class="article-byline">By <a href="https://tanhaosheng.asia/zh/about.html">谭好升</a> · 副主任医师 / 医学博士 · 最后更新 2026-07-29</div>
+<div class="series-badge">⚙️ 工作流 #1 / 3 · 配置指南 1 of 3</div>
+
+<div class="box blue">
+<strong>简短回答：</strong>Agnes 提供了一个免费模型，实际上可以用于日常任务，唯一的缺点是它的响应速度比付费方案稍慢。如果你预算有限或想要尝试而不花钱，Agnes 是一个不错的选择。关键是在 WorkBuddy 中正确配置它，特别是模型名称。
+</div>
+
+<h2>为什么写这篇指南</h2>
+<p>许多 AI 用户都在寻找免费模型，而且在质量上不要太妥协。Agnes 符合这个需求——它是真正的免费，而且对于大多数日常任务的输出结果足够好。唯一真正的缺点就是响应速度。本指南一步步带你完成 WorkBuddy 中的配置过程，让你不会踩到常见的坑。</p>
+
+<h2>第一步：在 Agnes 注册并获取 API Key</h2>
+<p>访问 <a href="https://agnes.ai/" target="_blank" rel="noopener">Agnes 网站</a>（请注意确认当前的网址，因为平台有时可能会变更）。</p>
+<ol>
+  <li>使用电子邮件地址创建一个账户。</li>
+  <li>登录后，前往仪表板中的 API Keys 区域。</li>
+  <li>生成一个新的 API Key。给它起一个有意义的标签（例如 "WorkBuddy 配置"），以便日后识别。</li>
+  <li>仔细复制 API Key。它通常只显示一次——如果丢失了，你需要重新生成。</li>
+</ol>
+
+<div class="note"><strong>提示：</strong>将你的 API Key 保存在密码管理器或安全的文本文件中。切勿公开分享，也避免提交到版本控制系统。</div>
+
+<h2>第二步：在 WorkBuddy 中配置自定义模型</h2>
+<p>登录你的 WorkBuddy 账户，进入自定义模型配置页面。需要填写的内容如下：</p>
+
+<ul>
+  <li><strong>模型名称：</strong> <code>agnes-2.0-flash</code> — 这一点<strong>至关重要</strong>。必须完全匹配，区分大小写。如果你拼写错误（例如 agnes-2.0-flashx、Agnes-2.0-Flash 或任何变体），配置将无法工作。</li>
+  <li><strong>API Base URL：</strong> 填入 Agnes 平台提供的 API 端点。</li>
+  <li><strong>API Key：</strong> 从第一步复制粘贴进来。</li>
+  <li><strong>其他字段：</strong> 根据 Agnes 文档填写任何必需的参数（例如 max tokens、temperature）。不确定时使用默认值。</li>
+</ul>
+
+<div class="code-block">模型名称：agnes-2.0-flash   ← 请反复核对！
+API Base：[从 Agnes 仪表板获取]
+API Key：[你刚才复制的密钥]</div>
+
+<h2>你会得到什么体验</h2>
+<div class="success">
+<strong>✅ 优点：</strong>
+<ul>
+  <li><strong>免费：</strong>没有订阅费用，没有按次使用的成本。非常适合实验。</li>
+  <li><strong>可用性良好：</strong>对于大多数日常写作、摘要和问答任务，Agnes 的输出结果足以满足实际需要。</li>
+  <li><strong>配置简单：</strong>WorkBuddy 界面直观，设置过程只需几分钟。</li>
+</ul>
+</div>
+
+<div class="box">
+<strong>⚠️ 代价：</strong>Agnes 相比 GPT-4、Claude 等付费模型要慢一点。响应时间在可接受范围内，但对于实时对话或大上下文输入时可能感觉有些延迟。如果你的首要需求是速度，这是个需要考虑的因素。</div>
+
+<h2>常见错误要避免</h2>
+<ul>
+  <li><strong>模型名称错误：</strong>再次强调，<code>agnes-2.0-flash</code> 必须完全一致。多一个字符或少一个字母、大小写不匹配都会导致配置失败。</li>
+  <li><strong>API Key 过期：</strong>如果你在 Agnes 那里重新生成了 Key，记得在 WorkBuddy 里同步更新。旧 Key 会停止工作。</li>
+  <li><strong>必填项遗漏：</strong>保存前仔细检查 WorkBuddy 配置表单中的所有必填字段。</li>
+</ul>
+
+<h2>测试你的配置</h2>
+<p>配置保存后，运行一个简单的测试提示来验证一切是否正常。尝试一个简单查询，例如 "总结这篇文章" 或 "法国的首都是哪里？" 如果你在几秒钟内得到了合理的响应，说明设置成功了。如果遇到错误，首先重新检查模型名称和 API Key——这两个是最常见的出错原因。</h2>
+
+<h2>结论</h2>
+<p>Agnes 确实是一个免费的模型，而且可用性不错。如果你在 WorkBuddy 中需要一个免费的选项，而且可以忍受稍微慢一点的响应速度，那么 Agnes-2.0-flash 值得配置。记住这一点：<strong>模型名称必须是 exactly <code>agnes-2.0-flash</code>——拼写错误的话什么都不会工作。</strong></p>
+
+<h2>相关文章</h2>
+<p>这是系列配置指南的第一篇。接下来还有：</p>
+<ul>
+  <li>为 Agnes 优化提示词（实用技巧）</li>
+  <li>与其他免费模型的对比（实测）</li>
+</ul>
+
+<footer>
+© 2026 谭好升。保留所有权利。<a href="/zh/affiliate-disclosure.html">利益披露</a> | <a href="/zh/privacy.html">隐私政策</a>
+</footer>
+
+<script>
+// 简单语言切换器
+(function(){
+  const langSelect = document.getElementById('lang-select');
+  const currentPath = window.location.pathname;
+  const pathParts = currentPath.split('/');
+  const langFromPath = pathParts[1] ? pathParts[1].toLowerCase() : 'en';
+  const validLangs = ['en','zh','es','fr','ar','ja','ko','ru','hi'];
+  if(langSelect && validLangs.includes(langFromPath)){
+    langSelect.value = langFromPath;
+  }
+  langSelect.addEventListener('change',function(){
+    const lang = this.value;
+    if(lang !== 'en'){
+      const newPath = '/' + lang + currentPath.replace('/'+lang+'/','/').replace('/'+lang+'.html','.html');
+      window.location.href = newPath || '/';
+    }
+  });
+})();
+</script>
+</body>
+</html>
