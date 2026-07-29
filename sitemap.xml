@@ -12,6 +12,16 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://tanhaosheng.asia/affiliate-disclosure.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://tanhaosheng.asia/zh/affiliate-disclosure.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
     <loc>https://tanhaosheng.asia/contact.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
