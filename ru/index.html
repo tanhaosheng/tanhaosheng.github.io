@@ -29,7 +29,7 @@
 
 </div>
 <footer class="site-footer">&copy; 2024-2026 AI Tool Stack<br><a href="/index.html">Главная</a> · <a href="/about.html">О нас</a> · <a href="/privacy.html">Конфиденциальность</a>&nbsp;&nbsp;|&nbsp;&nbsp; 
-<div class="page-stats" style="margin-top:10px;font-size:.85em;color:#6b7280;">📊 全站浏览 <span id="busuanzi_value_site_pv">0</span> · 全站独立访客 <span id="busuanzi_value_site_uv">0</span>　|　📄 本页浏览 <span id="busuanzi_value_page_pv">0</span> · 本页独立访客 <span id="busuanzi_value_page_uv">0</span></div>
+<div class="page-stats" style="margin-top:10px;font-size:.85em;color:#6b7280;">📊 全站浏览 <span id="busuanzi_value_site_pv">0</span> · 全站独立访客 <span id="busuanzi_value_site_uv">0</span>　|　📄 本页浏览 <span id="busuanzi_value_page_pv">0</span> · 本页独立访客 <span id="busuanzi_value_page_uv">0</span></div><div id="cf-stats" style="margin-top:6px;font-size:.85em;color:#6b7280;display:none;">🌐 Cloudflare 真实IP：全站 <b id="cf-site-pv">–</b> 浏览 / <b id="cf-site-uv">–</b> 唯一IP　|　📄 本页 <b id="cf-page-pv">–</b> 浏览 / <b id="cf-page-uv">–</b> 唯一IP <span style="opacity:.6;">(按IP累计，区别于busuanzi的cookie访客)</span></div>
 </footer><script>
 (function(){
   var CODES=['en', 'zh', 'es', 'fr', 'ar', 'ja', 'ko', 'ru', 'hi'];
@@ -45,4 +45,26 @@
 })();
 </script>
 <script async defer src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script>
+// cf-stats-fetch
+(function(){
+  try {
+    var box = document.getElementById("cf-stats");
+    if (!box) return;
+    var p = location.pathname;
+    fetch("/api/stats?path=" + encodeURIComponent(p) + "&track=1", {cache:"no-store"})
+      .then(function(r){return r.json();})
+      .then(function(d){
+        if (!d || d.ok === false) return; // binding not ready -> keep hidden
+        document.getElementById("cf-site-pv").textContent = d.sitePV;
+        document.getElementById("cf-site-uv").textContent = d.siteUV;
+        document.getElementById("cf-page-pv").textContent = d.pagePV;
+        document.getElementById("cf-page-uv").textContent = d.pageUV;
+        box.style.display = "block";
+      })
+      .catch(function(){});
+  } catch(e){}
+})();
+</script>
 </body></html>

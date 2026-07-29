@@ -16,7 +16,7 @@
 </style>
 
 </head><body><div id="lang-switcher"><label for="lang-select">🌐</label><select id="lang-select"><option value="en" selected>English</option><option value="zh" disabled>中文</option><option value="es" disabled>Español</option><option value="fr" disabled>Français</option><option value="ar" disabled>العربية</option><option value="ja" disabled>日本語</option><option value="ko" disabled>한국어</option><option value="ru" disabled>Русский</option><option value="hi" disabled>हिन्दी</option></select></div><nav><div class="nav-inner"><a href="/index.html" class>🏠 Home</a><a href="/index.html" class>📰 News</a><a href="/index.html" class>🤖 AI</a><a href="/about.html" class>About</a></div></nav><div class="prose"><h1>Privacy Policy</h1><p>Last updated: 2026-07-27</p><h2>Analytics</h2><p>This site uses Google Analytics and Google AdSense. These services may collect standard technical information such as your IP address, browser type, and pages visited, in order to understand traffic and serve relevant ads. You can opt out via your browser or Google's ad settings.</p><h2>Cookies</h2><p>We and our partners may use cookies to personalize content and ads. You can disable cookies in your browser; some features may be affected.</p><h2>Affiliate Links</h2><p>Some articles contain affiliate links. If you purchase through them, we may earn a commission at no extra cost to you. This does not influence our editorial coverage.</p><h2>Contact</h2><p>For privacy requests, email <a href="mailto:jstz1983@163.com">jstz1983@163.com</a>.</p></div><footer class="site-footer">&copy; 2024-2026 AI Tool Stack<br><a href="/index.html">Home</a> · <a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a>&nbsp;&nbsp;|&nbsp;&nbsp; 
-<div class="page-stats" style="margin-top:10px;font-size:.85em;color:#6b7280;">📊 全站浏览 <span id="busuanzi_value_site_pv">0</span> · 全站独立访客 <span id="busuanzi_value_site_uv">0</span>　|　📄 本页浏览 <span id="busuanzi_value_page_pv">0</span> · 本页独立访客 <span id="busuanzi_value_page_uv">0</span></div>
+<div class="page-stats" style="margin-top:10px;font-size:.85em;color:#6b7280;">📊 全站浏览 <span id="busuanzi_value_site_pv">0</span> · 全站独立访客 <span id="busuanzi_value_site_uv">0</span>　|　📄 本页浏览 <span id="busuanzi_value_page_pv">0</span> · 本页独立访客 <span id="busuanzi_value_page_uv">0</span></div><div id="cf-stats" style="margin-top:6px;font-size:.85em;color:#6b7280;display:none;">🌐 Cloudflare 真实IP：全站 <b id="cf-site-pv">–</b> 浏览 / <b id="cf-site-uv">–</b> 唯一IP　|　📄 本页 <b id="cf-page-pv">–</b> 浏览 / <b id="cf-page-uv">–</b> 唯一IP <span style="opacity:.6;">(按IP累计，区别于busuanzi的cookie访客)</span></div>
 </footer><script>
 (function(){
   var CODES=['en', 'zh', 'es', 'fr', 'ar', 'ja', 'ko', 'ru', 'hi'];
@@ -33,4 +33,26 @@
 </script>
 
 <script async defer src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script>
+// cf-stats-fetch
+(function(){
+  try {
+    var box = document.getElementById("cf-stats");
+    if (!box) return;
+    var p = location.pathname;
+    fetch("/api/stats?path=" + encodeURIComponent(p) + "&track=1", {cache:"no-store"})
+      .then(function(r){return r.json();})
+      .then(function(d){
+        if (!d || d.ok === false) return; // binding not ready -> keep hidden
+        document.getElementById("cf-site-pv").textContent = d.sitePV;
+        document.getElementById("cf-site-uv").textContent = d.siteUV;
+        document.getElementById("cf-page-pv").textContent = d.pagePV;
+        document.getElementById("cf-page-uv").textContent = d.pageUV;
+        box.style.display = "block";
+      })
+      .catch(function(){});
+  } catch(e){}
+})();
+</script>
 </body></html>
