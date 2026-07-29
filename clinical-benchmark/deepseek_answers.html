@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3090420115329103" crossorigin="anonymous"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DeepSeek 快速模式 · 三段完整回答（外部附录）</title>
+<meta name="description" content="DeepSeek web Fast mode three full runs (raw text) from the clinical LLM benchmark, for item-by-item scoring verification.">
+<link rel="canonical" href="https://tanhaosheng.asia/clinical-benchmark/deepseek_answers.html">
+<style>
+:root{--bg:#fff;--fg:#1f2937;--muted:#6b7280;--line:#e5e7eb;--accent:#2563eb;--warn:#dc2626;--ok:#059669;}
+*{box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;color:var(--fg);background:#f8fafc;margin:0;padding:32px 16px;line-height:1.75}
+.wrap{max-width:920px;margin:0 auto;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:28px 30px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+h1{font-size:24px;margin:0 0 4px;line-height:1.35}
+h2{font-size:19px;margin:32px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--accent);color:var(--accent)}
+h3{font-size:16px;margin:24px 0 8px;color:#0f172a}
+h4{font-size:14.5px;margin:18px 0 6px;color:#1e293b}
+.sub{color:var(--muted);font-size:13px;margin:0 0 8px}
+p{margin:10px 0}
+a{color:var(--accent)}
+strong{color:#111827}
+hr{border:none;border-top:1px solid var(--line);margin:26px 0}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;font-size:13px;flex-wrap:wrap;gap:8px}
+.topbar a{text-decoration:none;font-weight:600}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13px}
+th,td{border:1px solid var(--line);padding:8px 11px;text-align:left;vertical-align:top}
+th{background:#f1f5f9;font-weight:700}
+tbody tr:nth-child(even){background:#fafafa}
+pre{background:#0f172a;color:#e2e8f0;border-radius:10px;padding:16px 18px;overflow-x:auto;font-size:12.5px;line-height:1.6;margin:16px 0}
+pre code{font-family:"SFMono-Regular",Consolas,Menlo,monospace;white-space:pre;color:#e2e8f0}
+code{font-family:"SFMono-Regular",Consolas,Menlo,monospace;font-size:.92em;background:#f1f5f9;padding:1px 5px;border-radius:4px}
+blockquote{border-left:4px solid #f59e0b;background:#fff7ed;padding:10px 14px;border-radius:0 8px 8px 0;margin:16px 0;color:#7c2d12}
+blockquote p{margin:4px 0}
+ul,ol{margin:10px 0;padding-left:24px}
+li{margin:6px 0}
+.note{background:#fff7ed;border-left:4px solid #f59e0b;padding:10px 14px;border-radius:0 8px 8px 0;font-size:13px;margin:16px 0;color:#7c2d12}
+.foot{color:var(--muted);font-size:12px;margin-top:28px;border-top:1px solid var(--line);padding-top:14px}
+.meta{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:16px 0;font-size:13.5px}
+.meta div{margin:4px 0}
+.meta b{color:#0f172a}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="topbar"><a href="index.html">← 返回实测总入口</a></div>
+<h1>DeepSeek 快速模式 · 三段完整回答（外部附录）</h1>
+<p class="sub">框架 v1.0 实测中 DeepSeek 网页版快速模式三次运行的完整原文，供逐条核对评分。</p>
+<h1>DeepSeek 快速模式 · 三段完整回答（外部附录）</h1>
+<blockquote>本文件为「框架 v1.0」实测中 <strong>DeepSeek 网页版快速模式</strong> 三次运行的<strong>完整原文</strong>，</blockquote>
+<blockquote>供逐条核对评分使用。正文分析报告见 `deepseek_report.html`，此处不重复分析。</blockquote>
+<blockquote>输入为纯文字版病历（PDF 指南摘要 + 病历文字），因专家模式不支持图片，故采用文字输入，两模型输入一致。</blockquote>
+<hr>
+<h2>测试 1（Run 1）</h2>
+<p>根据您提供的病历信息，这是一位60岁、已绝经的乳腺癌术后患者。病理结果非常理想：<strong>0期（TisN0M0）、激素受体（ER/PR）强阳性、HER2阴性、Ki-67指数极低（5%）</strong> ，属于预后良好的低风险类型。</p>
+<p>基于当前主流的临床指南，下一步的治疗方案应以<strong>降阶梯治疗</strong>为核心思想，目标是实现治愈的同时，最大程度减少过度治疗带来的副作用。</p>
+<h3>核心治疗建议</h3>
+<p><strong>强烈建议以内分泌治疗作为唯一的术后辅助全身治疗，无需化疗。</strong></p>
+<p>理由如下：</p>
+<ol><li><strong>分期极早</strong>：0期（原位癌伴微小浸润）是乳腺癌最早期的阶段，本身复发风险就极低。</li><li><strong>分子分型良好</strong>：激素受体强阳性（ER/PR 3+，90%）意味着肿瘤对内分泌治疗敏感，是内分泌治疗的绝对优势人群。HER2阴性（0）则意味着抗HER2靶向治疗无效。</li><li><strong>增殖指数极低</strong>：Ki-67仅为5%，表明肿瘤细胞增殖速度非常慢，侵袭性弱，这是可以豁免化疗的最有力证据之一。</li></ol>
+<h3>具体方案解析</h3>
+<h4>1. 辅助内分泌治疗（核心治疗）</h4>
+<p>这是降低远期复发风险的关键。鉴于患者为60岁，已绝经，根据NCCN及CSCO等指南推荐，方案如下：</p>
+<ul><li><strong>首选方案</strong>：<strong>芳香化酶抑制剂（AIs）</strong>，如来曲唑、阿那曲唑或依西美坦。</li><li><strong>替代方案</strong>：若存在AI不耐受或骨质疏松风险，也可选用他莫昔芬。</li><li><strong>治疗时长</strong>：标准疗程为<strong>5年</strong>。5年后可根据复发风险评估和身体状况，与医生商讨是否需要延长治疗至10年。</li></ul>
+<h4>2. 关于放疗</h4>
+<p>由于患者接受的是<strong>全乳切除</strong>手术，且病理显示为0期、淋巴结阴性，因此<strong>通常不需要进行术后放疗</strong>。不过，最终决定仍需由放疗科医生根据手术具体情况和患者身体状况综合评估。</p>
+<h4>3. 关于化疗</h4>
+<p><strong>明确不建议</strong>。对于此类极低风险的早期激素受体阳性乳腺癌，化疗的获益微乎其微，但副作用却很明显。国内外指南均明确指出，对于此类低危患者，应豁免化疗，以内分泌治疗替代。</p>
+<h3>总结与随访</h3>
+<ul><li><strong>治疗方案总结</strong>：<strong>术后辅助内分泌治疗（芳香化酶抑制剂，5年）</strong>，无需化疗，大概率无需放疗。</li><li><strong>随访计划</strong>：治疗期间及结束后，需坚持定期随访。建议：</li></ul>
+<p>*   <strong>临床体检</strong>：最初2年每3-6个月1次，之后每6-12个月1次。     *   <strong>乳腺影像学检查</strong>：每年1次乳腺X线摄影（钼靶）或超声。     *   <strong>骨健康管理</strong>：由于使用AI类药物，需关注骨密度变化，必要时补充钙剂和维生素D，并在医生指导下进行监测。</p>
+<hr>
+<h3>为了让建议更具针对性，可以请您补充以下信息吗？</h3>
+<ol><li>患者是否有<strong>骨关节炎、骨质疏松</strong>或<strong>血栓</strong>病史？这对选择AIs还是他莫昔芬很重要。</li><li>是否已进行<strong>多基因检测</strong>（如Oncotype DX）？尽管目前风险极低，但该检测可提供更精确的复发风险数值，进一步巩固豁免化疗的决定。</li></ol>
+<hr>
+<h2>测试 2（Run 2）</h2>
+<p>根据您提供的病历资料，患者的乳腺癌<strong>分期极早（0期）</strong>，且属于<strong>激素受体强阳性（ER/PR 3+，90%）、HER2阴性</strong>的Luminal型，<strong>预后非常好</strong>。</p>
+<p>基于2026年最新的国内外权威指南，现对后续治疗方案的分析如下。</p>
+<h3>核心治疗建议：术后辅助内分泌治疗</h3>
+<p>这是当前最主要、也是获益最明确的后续治疗。</p>
+<ol><li><strong>强烈推荐</strong>：由于患者为激素受体（ER/PR）强阳性，术后进行辅助内分泌治疗是标准方案。</li><li><strong>治疗目的</strong>：内分泌治疗能显著降低<strong>同侧</strong>乳腺癌的复发风险，以及<strong>对侧</strong>乳房新发乳腺癌的风险。</li><li><strong>药物选择</strong>：</li></ol>
+<p>*   <strong>绝经前患者</strong>：通常使用<strong>他莫昔芬</strong>（标准剂量为20mg/天）。     *   <strong>绝经后患者</strong>：可选择他莫昔芬或<strong>芳香化酶抑制剂</strong>（如来曲唑、阿那曲唑等）。</p>
+<ol><li><strong>治疗时长</strong>：标准疗程为<strong>5年</strong>。</li></ol>
+<h3>关于其他治疗方式的考量</h3>
+<ul><li><strong>关于放疗</strong>：患者接受的是<strong>乳房单纯切除术</strong>，而非保乳手术。对于全乳切除术后的0期乳腺癌，通常<strong>不需要</strong>进行术后放疗。</li><li><strong>关于化疗和靶向治疗</strong>：0期乳腺癌本质上属于非浸润性癌（原位癌），且无淋巴结转移，<strong>不需要</strong>进行化疗。患者的HER2结果为阴性，同样<strong>不需要</strong>进行靶向治疗。</li></ul>
+<h3>后续关键步骤：定期复查与随访</h3>
+<p>这是保障长期健康的重要环节。建议与主治医生制定详细的随访计划，通常包括：</p>
+<ul><li><strong>定期体格检查</strong>：重点检查双侧乳腺、胸壁、腋窝及锁骨上区域。</li><li><strong>定期影像学检查</strong>：如乳腺X线（钼靶）和/或乳腺超声。</li><li><strong>关注长期健康</strong>：尤其注意内分泌治疗可能带来的副作用（如骨关节症状、血脂异常等），并进行相应管理。</li></ul>
+<h3>总结</h3>
+<p>总的来说，这位患者的后续治疗核心是<strong>启动并坚持为期5年的辅助内分泌治疗</strong>，同时<strong>严格遵医嘱进行定期随访</strong>。化疗、放疗和靶向治疗目前均无必要。</p>
+<p><strong>请注意</strong>：以上所有建议均基于通用医学指南，具体的用药方案、剂量和随访计划，<strong>务必</strong>与主治医生充分沟通后确定，因为医生会结合患者的整体健康状况（如是否有血栓风险、骨质疏松等）做出最个体化的决策。</p>
+<hr>
+<h2>测试 3（Run 3）</h2>
+<p>根据你提供的病历信息，患者为<strong>右乳0期（pTisN0M0）乳腺癌</strong>，这是一种<strong>非浸润性导管内癌（DCIS）伴微小浸润</strong>。基于当前主流的临床指南，下一步的治疗核心是<strong>降低复发风险</strong>，主要围绕<strong>辅助内分泌治疗</strong>和<strong>放疗</strong>的决策。</p>
+<p>以下是后续治疗的具体建议和分析：</p>
+<h3>1. 辅助内分泌治疗：强烈建议</h3>
+<p>患者<strong>ER（3+，90%）和PR（3+，90%）均为强阳性</strong>，这是内分泌治疗获益最大的人群。</p>
+<ul><li><strong>推荐方案</strong>：强烈建议进行为期<strong>5至10年</strong>的辅助内分泌治疗。</li><li><strong>药物选择</strong>：患者为60岁，属于绝经后女性，根据指南推荐，首选<strong>第三代芳香化酶抑制剂（AI）</strong>，如来曲唑、阿那曲唑或依西美坦。</li><li><strong>主要获益</strong>：可以显著降低同侧乳房肿瘤复发（包括新的DCIS或浸润性癌）和对侧乳房新发乳腺癌的风险。</li><li><strong>注意事项</strong>：用药期间需定期监测骨密度和血脂。</li></ul>
+<h3>2. 辅助放疗：可个体化选择</h3>
+<p>由于患者接受的是<strong>乳腺癌根治术（全乳切除）</strong>，而非保乳手术，这为“豁免放疗”创造了条件。</p>
+<ul><li><strong>推荐方案</strong>：对于接受<strong>全乳切除</strong>且病理为<strong>0期（DCIS）</strong> 的患者，术后放疗<strong>并非必须</strong>。</li><li><strong>决策依据</strong>：放疗决策需要个体化。如果肿瘤具有某些高危特征（如体积大、高分级、切缘近等），医生可能会建议放疗。反之，对于“低危”DCIS，豁免放疗是合理的。</li><li><strong>结论</strong>：根据目前的信息，患者有很大可能<strong>无需进行术后放疗</strong>。但最终决定需由主管医生结合完整的病理报告和患者情况综合判断。</li></ul>
+<h3>3. 辅助化疗：无需进行</h3>
+<p>患者的<strong>TNM分期为TisN0M0（0期）</strong>，且<strong>Ki-67增殖指数仅为5%</strong>，属于低风险。根据指南，此类情况<strong>完全不需要</strong>进行辅助化疗。</p>
+<h3>4. 后续随访监测</h3>
+<p>治疗结束后，规律的随访至关重要。</p>
+<ul><li><strong>定期复查</strong>：建议每年进行一次<strong>乳腺X线（钼靶）检查</strong>。</li><li><strong>自我检查</strong>：继续坚持乳房自检。</li><li><strong>无需常规抽血</strong>：对于无症状的患者，不推荐常规进行血常规、生化或肿瘤标志物（如CEA、CA15-3）的检测。</li></ul>
+<h3>总结与行动建议</h3>
+<ol><li><strong>核心治疗</strong>：与主治医生确认，<strong>尽快开始并坚持辅助内分泌治疗（芳香化酶抑制剂）</strong>。</li><li><strong>放疗决策</strong>：与主管医生明确，由于已行全乳切除，是否可以<strong>豁免术后放疗</strong>。</li><li><strong>确认无需化疗</strong>：明确告知患者无需担心化疗问题。</li><li><strong>制定计划</strong>：与医生共同制定长期的随访复查计划。</li></ol>
+<p><strong>重要提示</strong>：以上所有建议均基于指南和常规临床实践。最终的治疗方案务必与主管医生进行详细沟通后确定，因为医生掌握最全面的信息。</p>
+<p class="foot">
+⚠️ 本实测为 AI 选型评估，<b>不构成任何临床建议</b>。模型输出<b>不可用于真实患者决策</b>。
+<a href="index.html">← 返回实测总入口</a>
+</p>
+</div>
+</body>
+</html>

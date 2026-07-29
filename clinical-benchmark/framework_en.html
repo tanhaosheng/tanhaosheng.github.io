@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3090420115329103" crossorigin="anonymous"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clinical LLM Benchmark Framework v1.0 (EN)</title>
+<meta name="description" content="English clinical LLM benchmark framework v1.0: standardized prompt, 16-item scoring rubric, answer key, re-test stability rules.">
+<link rel="canonical" href="https://tanhaosheng.asia/clinical-benchmark/framework_en.html">
+<style>
+:root{--bg:#fff;--fg:#1f2937;--muted:#6b7280;--line:#e5e7eb;--accent:#2563eb;--warn:#dc2626;--ok:#059669;}
+*{box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;color:var(--fg);background:#f8fafc;margin:0;padding:32px 16px;line-height:1.75}
+.wrap{max-width:920px;margin:0 auto;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:28px 30px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+h1{font-size:24px;margin:0 0 4px;line-height:1.35}
+h2{font-size:19px;margin:32px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--accent);color:var(--accent)}
+h3{font-size:16px;margin:24px 0 8px;color:#0f172a}
+h4{font-size:14.5px;margin:18px 0 6px;color:#1e293b}
+.sub{color:var(--muted);font-size:13px;margin:0 0 8px}
+p{margin:10px 0}
+a{color:var(--accent)}
+strong{color:#111827}
+hr{border:none;border-top:1px solid var(--line);margin:26px 0}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;font-size:13px;flex-wrap:wrap;gap:8px}
+.topbar a{text-decoration:none;font-weight:600}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13px}
+th,td{border:1px solid var(--line);padding:8px 11px;text-align:left;vertical-align:top}
+th{background:#f1f5f9;font-weight:700}
+tbody tr:nth-child(even){background:#fafafa}
+pre{background:#0f172a;color:#e2e8f0;border-radius:10px;padding:16px 18px;overflow-x:auto;font-size:12.5px;line-height:1.6;margin:16px 0}
+pre code{font-family:"SFMono-Regular",Consolas,Menlo,monospace;white-space:pre;color:#e2e8f0}
+code{font-family:"SFMono-Regular",Consolas,Menlo,monospace;font-size:.92em;background:#f1f5f9;padding:1px 5px;border-radius:4px}
+blockquote{border-left:4px solid #f59e0b;background:#fff7ed;padding:10px 14px;border-radius:0 8px 8px 0;margin:16px 0;color:#7c2d12}
+blockquote p{margin:4px 0}
+ul,ol{margin:10px 0;padding-left:24px}
+li{margin:6px 0}
+.note{background:#fff7ed;border-left:4px solid #f59e0b;padding:10px 14px;border-radius:0 8px 8px 0;font-size:13px;margin:16px 0;color:#7c2d12}
+.foot{color:var(--muted);font-size:12px;margin-top:28px;border-top:1px solid var(--line);padding-top:14px}
+.meta{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:16px 0;font-size:13.5px}
+.meta div{margin:4px 0}
+.meta b{color:#0f172a}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="topbar"><a href="index_en.html">← Back to benchmark home</a><span><a href="framework.html">🇨🇳 中文</a></span></div>
+<h1>Clinical LLM Benchmark Framework v1.0 (EN)</h1>
+<p class="sub">A surgeon's perspective · post-op breast-cancer case interpretation + adjuvant therapy (ref. 2026 CBCS guideline)</p>
+<h1>Clinical LLM Benchmark Framework v1.0 (EN)</h1>
+<p><strong>Topic</strong>: A surgeon&#x27;s perspective · post-operative breast-cancer case interpretation + adjuvant therapy recommendations <strong>Models compared</strong>: (A) DeepSeek web Fast mode; (B) Zhipu ChatGLM 5.2 web (free tier) <strong>Reference standard</strong>: 2026 CBCS Breast Cancer Diagnosis &amp; Treatment Guideline (Essence Edition, Version 2026.1.0) <strong>Author stance</strong>: I am a surgeon in China. This is an internal efficiency/quality evaluation and does NOT replace any clinical decision. <strong>Anonymity</strong>: All patient data is de-identified; this framework embeds no re-identifying fields.</p>
+<hr>
+<h2>0. Why this test</h2>
+<table><thead><tr><th>Dimension</th><th>Evaluation focus</th></tr></thead><tbody><tr><td>Task complexity</td><td>Medium (not a knowledge Q&amp;A, but structured clinical decision reasoning)</td></tr><tr><td>Answer verifiability</td><td>High (guideline is explicit, can be checked item by item)</td></tr><tr><td>Failure-cost sensitivity</td><td>High (an LLM clinical error may mislead decisions)</td></tr><tr><td>Authenticity</td><td>Real case, de-identified only</td></tr><tr><td>Discrimination</td><td>High (most LLMs diverge sharply on &quot;microinvasion staging&quot; and &quot;whether endocrine is needed after mastectomy&quot;)</td></tr></tbody></table>
+<p><strong>Expectation</strong>: DeepSeek Fast is fast but may be shallow; a long-context model may reason more stably. Actual results from benchmark.</p>
+<hr>
+<h2>1. Standardized Input Prompt (paste verbatim into both models)</h2>
+<pre><code>You are a clinical-decision assistant serving a Chinese surgeon. Your answer MUST be
+strictly based on the 2026 Chinese Anti-Cancer Association Breast Cancer Diagnosis &amp;
+Treatment Guideline (CBCS Version 2026.1.
+0). Do NOT substitute an earlier version or a
+foreign guideline. Answer with bullet points and a clear structure, and explicitly state
+the guideline basis (section / page / reference number). Where the guideline is silent,
+write &quot;guideline silent&quot; and give your own clinical judgment with reasoning.
+
+[Case summary] (de-identified)
+
+Patient: female, 60, retired.
+Chief complaint: 1 day after radical right-breast cancer surgery, requesting review.
+History: In 2026-04 underwent radical right-breast surgery (simple mastectomy + sentinel
+lymph node biopsy) at our hospital.
+Post-op pathology:
+  - Right breast specimen: morphologically (IHC-supported), consistent with invasive
+    carcinoma dominated by &quot;low-grade ductal carcinoma in situ (DCIS) with intraductal
+    papillary carcinoma&quot;; largest tumor diameter 0.6 cm;
+    slides show 3 clusters of stromal invasion, ~0.05 cm, 0.06 cm, 0.2 cm;
+    no definite lymphovascular invasion or perineural invasion;
+    nipple, skin margin, deep margin and axilla all free of carcinoma.
+  - Separate &quot;right sentinel&quot; node (0/2): no metastatic carcinoma.
+  - Separate &quot;right perisentinel&quot; node (1): no metastatic carcinoma (frozen).
+  - Separate &quot;left breast mass&quot;: adenosis with fibroadenoma, focal ductal epithelial
+    hyperplasia, intraluminal calcification; IHC shows focal ductal hyperplasia.
+IHC (key slide A): ER 3+ (90%), PR 3+ (90%), HER-2 (0), P53 (+, wild-type),
+Ki-67 (+, 5%), EGFR (−), E-cad (+).
+CK14/SMA/calponin confirm loss of myoepithelium in invasive areas (reliable controls).
+Past history: no chronic disease; no food/drug allergy.
+Already on &quot;endocrine therapy&quot; post-op; no discomfort recently; requests review.
+Exam: stable vitals; affected breast removed, chest-wall scar healing well; no palpable
+axillary nodes bilaterally.
+Discharge diagnosis: right breast malignancy, medial pTNM staging TisN0M0 (Stage 0).
+
+[Task]
+Give written recommendations in the following order; each item must state its guideline basis:
+
+1. Pathology re-interpretation
+   1.1 Do you accept the discharge diagnosis &quot;TisN0M0 (Stage 0)&quot;?
+        Hint: note whether &quot;3 invasion clusters, largest focus 0.2 cm&quot; still counts as
+        microinvasion (microinvasion = single invasive focus &lt;= 1 mm).
+   1.2 If staging needs correction, give the more accurate pT/pN/pM and stage, and
+        explain how multifocal microinvasion is assigned to T stage.
+   1.3 Molecular subtype &amp; proliferation: determine subtype (e.g., Luminal A-like / B-like).
+
+2. Local therapy review
+   2.1 Is &quot;simple mastectomy + SLNB&quot; reasonable for this case? Need completion ALND?
+   2.2 Does this case need post-op adjuvant radiotherapy? State the basis.
+
+3. Systemic adjuvant therapy decisions
+   3.1 Chemotherapy indication (per 2026 CBCS Ch.7 decision tree); need 21-gene / Oncotype DX?
+   3.2 Endocrine therapy:
+       (a) Does this case need endocrine therapy? Why? How does the guideline differ on
+           endocrine recommendation for &quot;post-mastectomy DCIS&quot; vs &quot;invasive carcinoma&quot;?
+       (b) For a 60-yo postmenopausal patient, what is the role of AI vs TAM? Which is
+           first-line? State guideline basis (incl. age cutoff).
+       (c) Recommend specific drug + standard dose + duration.
+       (d) Need OFS / extended therapy / CDK4/6 inhibitor?
+   3.3 Anti-HER2 indication?
+
+4. Safety &amp; follow-up
+   4.1 Main AEs of the chosen endocrine drug, monitoring items &amp; frequency.
+   4.2 Bone-density monitoring &amp; lifestyle advice (if AI chosen).
+   4.3 Imaging &amp; tumor-marker follow-up plan (first 5 years).
+   4.4 Contralateral breast &amp; BRCA germline testing advice.
+
+5. Self-assessment
+   At the end, explicitly state:
+   - Your confidence (high / medium / low) and why;
+   - Which decision points lack clear evidence in 2026 CBCS, and what clinical reasoning
+     you used to decide them.</code></pre>
+<hr>
+<h2>2. Scoring Rubric (max 100)</h2>
+<p>Each item is weighted by clinical impact. Sub-items scored 0/1/2:</p>
+<ul><li><strong>2</strong> = fully correct + cites guideline section/reference</li><li><strong>1</strong> = directionally correct but missing detail or imprecise wording</li><li><strong>0</strong> = wrong or omitted</li></ul>
+<table><thead><tr><th>#</th><th>Item</th><th>Max</th><th>Key answer (see §3)</th></tr></thead><tbody><tr><td>1.1</td><td>Accept TisN0M0?</td><td>6</td><td>§3.1</td></tr><tr><td>1.2</td><td>Stage correction</td><td>10</td><td>§3.2</td></tr><tr><td>1.3</td><td>Molecular subtype</td><td>4</td><td>§3.3</td></tr><tr><td>2.1</td><td>Surgery rationale + ALND</td><td>8</td><td>§3.4</td></tr><tr><td>2.2</td><td>Adjuvant radiotherapy</td><td>4</td><td>§3.5</td></tr><tr><td>3.1</td><td>Chemo indication + multigene test</td><td>10</td><td>§3.6</td></tr><tr><td>3.2a</td><td>Endocrine necessity + mastectomy/BCS difference</td><td>12</td><td>§3.7 (<strong>core</strong>)</td></tr><tr><td>3.2b</td><td>AI vs TAM + age cutoff</td><td>10</td><td>§3.8 (<strong>core</strong>)</td></tr><tr><td>3.2c</td><td>Drug dose &amp; duration</td><td>6</td><td>§3.9</td></tr><tr><td>3.2d</td><td>OFS / extension / CDK4/6</td><td>6</td><td>§3.10</td></tr><tr><td>3.3</td><td>Anti-HER2</td><td>4</td><td>§3.11</td></tr><tr><td>4.1</td><td>Endocrine AE monitoring</td><td>6</td><td>§3.12</td></tr><tr><td>4.2</td><td>Bone density &amp; lifestyle</td><td>4</td><td>§3.13</td></tr><tr><td>4.3</td><td>Follow-up plan</td><td>4</td><td>§3.14</td></tr><tr><td>4.4</td><td>Contralateral breast + BRCA</td><td>4</td><td>§3.15</td></tr><tr><td>5</td><td>Self-assessment + uncertainty</td><td>2</td><td>§3.16</td></tr><tr><td><strong>Total</strong></td><td></td><td><strong>100</strong></td><td></td></tr></tbody></table>
+<hr>
+<h2>3. Answer Key (based on 2026 CBCS Version 2026.1.0)</h2>
+<h3>3.1 Accept TisN0M0 (Stage 0)?</h3>
+<ul><li><strong>Do not accept outright.</strong> &quot;TisN0M0&quot; is reasonable for DCIS, but pathology explicitly states &quot;3 clusters of stromal invasion&quot; — that is invasive carcinoma.</li><li>Microinvasion = single focus ≤ 1 mm. The case gives &quot;largest 0.2 cm&quot;; clarify whether it is the single-focus max diameter or cumulative.</li><li><strong>Correct answer</strong>: the model should <strong>actively flag the ambiguity</strong> and ask for single-focus vs cumulative extent.</li></ul>
+<h3>3.2 Stage correction</h3>
+<ul><li>If <strong>single focus max 0.2 cm = 2 mm</strong>: exceeds microinvasion → should be <strong>pT1a</strong> (&gt;1 and ≤5 mm), N0(sn), M0 → <strong>Stage IA</strong> (AJCC 8th).</li><li>If <strong>every single focus ≤1 mm</strong> (0.05, 0.06, 0.2 read as different slices of the same focus, or 0.2 is measurement error): multifocal microinvasion is staged by <strong>largest single focus</strong> per AJCC 8 → if all ≤1 mm, should be <strong>pT1mi</strong>.</li><li>pN: pN0(sn) (sentinel-negative, 0/2 + 1/1 negative).</li><li><strong>Correct answer</strong>: state T1a vs T1mi, cite AJCC 8 multifocal rule, give final stage. Basis: P33–34 TNM; P50 DCIS definition.</li></ul>
+<h3>3.3 Molecular subtype</h3>
+<ul><li>ER 90% (3+), PR 90% (3+), HER2 0, Ki-67 5%, G1–2 → <strong>Luminal A-like</strong>. Prognosis favorable.</li></ul>
+<h3>3.4 Surgery + ALND</h3>
+<ul><li>Simple mastectomy + SLNB is <strong>fully reasonable</strong> for T1a–T1mi N0 (P76, P78). No ALND needed (negative sentinel + small invasive focus).</li></ul>
+<h3>3.5 Adjuvant radiotherapy</h3>
+<ul><li>Mastectomy + negative margins + T1a/T1mi + N0 + no LVI → <strong>no post-op RT indication</strong>. RT only if primary ≥5 cm (T3), positive/close margin, or ≥4 positive nodes.</li></ul>
+<h3>3.6 Chemo + multigene</h3>
+<ul><li>T1a N0, Luminal A-like, Ki-67 5% → <strong>no clinical chemo indication</strong>. Oncotype DX: at 60 yo (≥50 but &lt;70) T1a/b N0 Luminal,可考虑; &gt;70 exempt. RS likely &lt;26 → TAILORx/RxPONDER no chemo. Recommending RS for safety is acceptable.</li></ul>
+<h3>3.7 Endocrine necessity + mastectomy vs BCS 【core】</h3>
+<ul><li><strong>If T1a/T1mi N0 invasive</strong>: endocrine <strong>strongly recommended</strong>.</li><li><strong>If strictly Tis (DCIS) per discharge</strong>: P59 note a — &quot;for DCIS after mastectomy, endocrine drugs belong to <strong>chemoprevention</strong>&quot; → recommendation downgraded to &quot;<strong>consider / optional</strong>&quot;.</li><li><strong>Correct answer</strong>: model must distinguish recommendation strength between these two scenarios. Highest-discrimination item.</li></ul>
+<h3>3.8 AI vs TAM + age cutoff 【core】</h3>
+<ul><li>Patient 60, assumed postmenopausal. P59 note b (DCIS): &quot;<strong>AI&#x27;s advantage over TAM is mainly in postmenopausal &lt;60</strong>&quot; (ATAC/BIG1-98 benefit mainly &lt;60; ≥60 AI≈TAM).</li><li>This case <strong>sits exactly on the 60 cutoff</strong>; guideline gives no clear winner. Either acceptable clinically, but <strong>lean AI</strong> (better adherence, lower endometrial/thrombotic risk).</li><li>AI: letrozole 2.5 mg/d or anastrozole 1 mg/d or exemestane 25 mg/d × 5 y. TAM: 20 mg/d × 5 y (consider sequential AI 2–5 y).</li></ul>
+<h3>3.9 Dose &amp; duration</h3>
+<ul><li>AI 5 y standard; extension usually not for IA. TAM 20 mg/d × 5 y, or TAM→AI sequential. 60 yo IA Luminal A: 5 y sufficient.</li></ul>
+<h3>3.10 OFS / extension / CDK4/6</h3>
+<ul><li>OFS only for premenopausal → not needed. Extension usually not for low-risk IA. CDK4/6 (abemaciclib, dalpiciclib, ribociclib) only for high-risk (≥pN2 or ≥pN1 + G3/high Ki-67) → not met.</li></ul>
+<h3>3.11 Anti-HER2</h3>
+<ul><li>HER2 IHC 0 → <strong>no anti-HER2 indication</strong>. P59 note: trastuzumab not supported for HER2+ DCIS; this case HER2 0, even less so.</li></ul>
+<h3>3.12 Endocrine AE monitoring</h3>
+<ul><li>AI: arthralgia, bone loss, dyslipidemia, CV events; bone-density every 6–12 mo (postmenopausal ≥60). Calcium + Vit D.</li><li>TAM: endometrial lesions, VTE, hepatic impairment; gynecologic exam + endometrial thickness every 6–12 mo (postmenopausal threshold 10 mm). Basis: P222.</li></ul>
+<h3>3.13 Bone density &amp; lifestyle</h3>
+<ul><li>60 yo postmenopausal on AI → mandatory bone-density (T-score). Calcium + Vit D, weight-bearing exercise, no smoking/excess alcohol.</li></ul>
+<h3>3.14 Follow-up</h3>
+<ul><li>Y1–2: visit q3 mo; Y3–5: q6 mo; after 5 y: annually. Imaging: annual mammography/US (contralateral + chest wall + regional nodes); no routine tumor markers / PET / bone scan for asymptomatic follow-up. Adherence &amp; AE assessed every visit.</li></ul>
+<h3>3.15 Contralateral + BRCA</h3>
+<ul><li>New breast cancer at 60 → 3-generation family history. If familial/early-onset/triple-negative/male-breast-cancer history → BRCA1/2 germline testing. Left breast fibroadenoma + calcification: continue imaging, biopsy if needed.</li></ul>
+<h3>3.16 Self-assessment</h3>
+<ul><li>Model should state confidence and take a position on the Tis vs T1a ambiguity. Honestly note which points are clinical推理 not guideline (e.g., 60 cutoff, AI vs TAM).</li></ul>
+<hr>
+<h2>4. Re-test &amp; Stability</h2>
+<p><strong>Run each model 3 times</strong>; take max and min. If the gap ≥ 8 points, the model is unstable and must be flagged in the report.</p>
+<p>Prompt unchanged; do not reset context history; record: date/time (to the minute), model version, response time (s), whether a &quot;web search&quot; hint appeared.</p>
+<hr>
+<h2>5. Data Record Template</h2>
+<table><thead><tr><th>Metric</th><th>DeepSeek Fast</th><th>ChatGLM 5.2</th></tr></thead><tbody><tr><td>Run 1 / 100</td><td></td><td></td></tr><tr><td>Run 2 / 100</td><td></td><td></td></tr><tr><td>Run 3 / 100</td><td></td><td></td></tr><tr><td>Median</td><td></td><td></td></tr><tr><td>Max−Min (stability)</td><td></td><td></td></tr><tr><td>Avg response (s)</td><td></td><td></td></tr><tr><td>Items scored 0 (errors)</td><td></td><td></td></tr><tr><td>Guideline-citation accuracy</td><td></td><td></td></tr><tr><td>Actively questioned Tis ambiguity</td><td></td><td></td></tr><tr><td>Distinguished mastectomy/BCS endocrine</td><td></td><td></td></tr><tr><td>60-yo AI vs TAM stance</td><td></td><td></td></tr></tbody></table>
+<hr>
+<h2>6. Report Output</h2>
+<p>After benchmarking, produce a one-page conclusion:</p>
+<ol><li>Overall score ranking;</li><li>Differences on the three most critical decision points (screenshot comparison);</li><li><strong>Practical conclusion for clinical use</strong>: which model for which task;</li><li>Data limitations (1 case, single test, free tier only).</li></ol>
+<hr>
+<h2>7. Boundaries &amp; Disclaimer</h2>
+<ul><li>This framework is for personal LLM selection and learning; not clinical advice.</li><li>Model output must not be used for real patient decisions.</li><li>Expanding to 5+ cases (different stages / subtypes / treatment phases) yields more reliable comparisons.</li><li>This test consumes no extra API quota (both models are free-tier web/WorkBuddy).</li></ul>
+<p class="foot">
+⚠️ 本实测为 AI 选型评估，<b>不构成任何临床建议</b>。模型输出<b>不可用于真实患者决策</b>。
+<a href="index.html">← 返回实测总入口</a>
+</p>
+</div>
+</body>
+</html>

@@ -46,7 +46,7 @@
   <li><strong>3 runs each, take the median.</strong> If the spread between best and worst run was ≥8 points, the model is flagged "unstable."</li>
   <li><strong>The citation rule.</strong> A correct answer that did <em>not</em> cite a specific 2026 CBCS chapter/page was capped at 1 point (out of 2). If I can't verify it actually read the guideline, I won't credit it for having done so.</li>
 </ul>
-<p>You can copy the exact prompt and rubric from the <a href="/clinical-benchmark/framework.md">open testing framework</a> and run it yourself. That's the whole point of publishing this.</p>
+<p>You can copy the exact prompt and rubric from the <a href="/clinical-benchmark/framework.html">open testing framework</a> and run it yourself. That's the whole point of publishing this.</p>
 
 <h2>The case (anonymized)</h2>
 <p>A 60-year-old woman, post-op day 1 after right breast cancer surgery. Pathology: a dominant lesion with <strong>three foci of stromal invasion, largest focus 0.2 cm (2 mm)</strong>, ER 90%+, PR 90%+, HER2 0, Ki-67 5%. Sentinel nodes negative (0/2 + 1/1). Discharge diagnosis: <strong>TisN0M0 (stage 0, DCIS)</strong>.</p>
@@ -149,7 +149,7 @@
 <details><summary>Why score 0 on guideline citations for both?</summary>
 <p>The rubric capped a correct-but-uncited answer at 1 point and required a specific 2026 CBCS chapter/page for full credit. Neither model ever cited a chapter or page — they said "mainstream / authoritative / latest guideline" without specifics, so I could not verify they had actually read the source.</p></details>
 <details><summary>Can I reproduce this myself?</summary>
-<p>Yes. The full prompt and 16-item rubric are published at <a href="/clinical-benchmark/framework.md">/clinical-benchmark/framework.md</a>. Paste them into any model, score against the 2026 CBCS guideline, and you'll get your own numbers.</p></details>
+<p>Yes. The full prompt and 16-item rubric are published at <a href="/clinical-benchmark/framework.html">/clinical-benchmark/framework.html</a>. Paste them into any model, score against the 2026 CBCS guideline, and you'll get your own numbers.</p></details>
 <details><summary>Is ChatGLM usable for anything clinical then?</summary>
 <p>Its English output is a genuine asset for reading international literature, but for Chinese clinical decision support it answered in English and was both vague and unstable — not something I'd rely on. DeepSeek fast mode is the better free pick for Chinese-language reasoning, with the caveats above.</p></details>
 </div>
