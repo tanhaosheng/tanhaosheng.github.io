@@ -135,6 +135,8 @@ footer a{color:#a78bfa}
   <li><strong>Model Name：</strong> <code>agnes-2.0-flash</code>——<strong>至关重要</strong>，区分大小写，照抄。错填（比如 <code>agnes-2.0-flashx</code>、<code>Agnes-2.0-Flash</code>、<code>AGNES-2.0-FLASH</code>、<code>agnes-2-flash</code> 等等），调用就会报 404 / model not found / 无响应。</li>
 </ul>
 
+<div class="note" style="background:#fef3c7;border-left:4px solid #f59e0b;padding:12px 16px;border-radius:4px;margin:14px 0;"><strong>🌏 中国大陆用户注意：</strong>如果你在中国大陆，请把 Endpoint 换成国内镜像节点——<code>https://apihub.agnes-ai.cn/v1/chat/completions</code>。默认的 <code>.com/v1</code> 节点在中国大陆境内会报连接超时或无法访问的错误。请严格按照上面的 <code>.cn</code> 地址填写，包括完整的 <code>/v1/chat/completions</code> 后缀。</div>
+
 <div class="warn-box" style="background:#fee2e2;border-left:5px solid #dc2626;padding:14px 18px;border-radius:8px;margin:18px 0;"><strong>⚠️ 模型名三个最容易踩的坑：</strong>
 <ol style="margin:6px 0 0 18px;">
   <li>大小写错误——正确的是全小写 + 数字 + 点 + 横杠，<strong>没有任何大写字母</strong>。</li>
@@ -145,7 +147,7 @@ footer a{color:#a78bfa}
 
 <div class="success-box" style="background:#d1fae5;border-left:5px solid #059669;padding:14px 18px;border-radius:8px;margin:18px 0;"><strong>速记卡片——可以直接复制：</strong>
 <pre style="background:#0f172a;color:#e2e8f0;padding:12px 14px;border-radius:8px;margin:8px 0;font-size:0.95em;line-height:1.5;">Provider : Custom
-Endpoint : https://apihub.agnes-ai.com/v1
+Endpoint : https://apihub.agnes-ai.com/v1          （中国大陆请改用：https://apihub.agnes-ai.cn/v1/chat/completions）
 API Key  : sk-...（从第一步粘贴）
 Model    : agnes-2.0-flash   &lt;-- 严格区分大小写，一字不差</pre>
 </div>
@@ -163,7 +165,7 @@ Model    : agnes-2.0-flash   &lt;-- 严格区分大小写，一字不差</pre>
 
 <div class="note"><strong>💡 日常使用技巧：</strong>配置完成后不需要再回到自定义模型页面。任何一次对话只需打开模型下拉，在最底部选 <code>agnes-2.0-flash</code> 即可。后续要切换回其他模型，同样点这个下拉选别的就行。</div>
 
-<div class="box blue"><strong>🛠️ 终极武器（Ultimate Weapon）：让 WorkBuddy AI 自动配置</strong><br>如果你自己手动配置不了，试试这个：在 WorkBuddy 里选择一个模型（比如 <strong>Kimi K3</strong> 或其他有能力的模型），直接把下面的提示词发给它：<br><br><code style="background:#f3f4f6;padding:12px;border-radius:6px;display:block;margin:10px 0;font-size:.85em;line-height:1.5;">我不会自己配置，帮我完成配置，API-KEY为...，配置agnes-2.0-flash，API base URL为：https://apihub.agnes-ai.com/v1。你帮我完全搞定，不要我插手。</code><br><br>大多数情况下，WorkBuddy AI 可以成功完成配置，或修复使用中遇到的 bug 或不稳定的情况。</div>
+<div class="box blue"><strong>🛠️ 终极武器（Ultimate Weapon）：让 WorkBuddy AI 自动配置</strong><br>如果你自己手动配置不了，试试这个：在 WorkBuddy 里选择一个模型（比如 <strong>Kimi K3</strong> 或其他有能力的模型），直接把下面的提示词发给它：<br><br><code style="background:#f3f4f6;padding:12px;border-radius:6px;display:block;margin:10px 0;font-size:.85em;line-height:1.5;">我不会自己配置，帮我完成配置，API-KEY为...，配置agnes-2.0-flash，API base URL为：https://apihub.agnes-ai.com/v1（若你在中国大陆，请改用 https://apihub.agnes-ai.cn/v1/chat/completions）。你帮我完全搞定，不要我插手。</code><br><br>大多数情况下，WorkBuddy AI 可以成功完成配置，或修复使用中遇到的 bug 或不稳定的情况。</div>
 
 <div class="success" style="border-left-color:#7c3aed;background:#f5f3ff;"><strong>🔑 关键好处——积分为 0 也能用：</strong>一旦配置成功，你就能在 WorkBuddy 里用 Agnes 模型<strong>做实际的任务，即使你 WorkBuddy 账户的积分为 0</strong>。因为 Agnes 是通过它自己的免费 API Key 来调用的，它不会消耗 WorkBuddy 内置的积分额度。也就是说：配置一完成的瞬间，你就拥有了一个能干活儿的模型，跟你账户里还剩多少额度无关。</div>
 

@@ -140,6 +140,8 @@ footer a{color:#a78bfa}
   <li><strong>Model Name:</strong> <code>agnes-2.0-flash</code> — <strong>critical</strong>. It must be spelled exactly as shown, case-sensitive. If you type it wrong (e.g., <code>agnes-2.0-flashx</code>, <code>Agnes-2.0-Flash</code>, <code>AGNES-2.0-FLASH</code>, <code>agnes-2-flash</code>, or anything else), the API call will return an error and the model will not respond.</li>
 </ul>
 
+<div class="note" style="background:#fef3c7;border-left:4px solid #f59e0b;padding:12px 16px;border-radius:4px;margin:14px 0;"><strong>🌏 Mainland China users:</strong> If you are in mainland China, use the domestic mirror endpoint instead — <code>https://apihub.agnes-ai.cn/v1/chat/completions</code>. The default <code>.com/v1</code> endpoint will throw a connection/timeout error from inside China. Use the <code>.cn</code> URL exactly as shown, including the full <code>/v1/chat/completions</code> suffix.</div>
+
 <div class="warn-box" style="background:#fee2e2;border-left:5px solid #dc2626;padding:14px 18px;border-radius:8px;margin:18px 0;"><strong>⚠️ The three landmines for Model Name:</strong>
 <ol style="margin:6px 0 0 18px;">
   <li>Wrong case — every character is lowercase + digits + dots + dashes. There is no uppercase letter in the correct name.</li>
@@ -150,7 +152,7 @@ footer a{color:#a78bfa}
 
 <div class="success-box" style="background:#d1fae5;border-left:5px solid #059669;padding:14px 18px;border-radius:8px;margin:18px 0;"><strong>Quick reference card — copy this block:</strong>
 <pre style="background:#0f172a;color:#e2e8f0;padding:12px 14px;border-radius:8px;margin:8px 0;font-size:0.95em;line-height:1.5;">Provider : Custom
-Endpoint : https://apihub.agnes-ai.com/v1
+Endpoint : https://apihub.agnes-ai.com/v1          (mainland China: https://apihub.agnes-ai.cn/v1/chat/completions)
 API Key  : sk-... (paste from Step 1)
 Model    : agnes-2.0-flash   &lt;-- exact, case-sensitive</pre>
 </div>
@@ -168,7 +170,7 @@ Model    : agnes-2.0-flash   &lt;-- exact, case-sensitive</pre>
 
 <div class="note"><strong>💡 Daily use tip:</strong> Once configured, you don't need to revisit the custom-models page. Just open any chat and pick <code>agnes-2.0-flash</code> from the bottom of the model list. To switch back to another model later, click the same selector and choose a different one.</div>
 
-<div class="box blue"><strong>🛠️ Ultimate Weapon (终极武器): Automatic configuration by WorkBuddy AI</strong><br>If you can't configure it manually, try this: In WorkBuddy, select a model like <strong>Kimi K3</strong> (or another capable model) and paste this prompt directly:<br><br><code style="background:#f3f4f6;padding:12px;border-radius:6px;display:block;margin:10px 0;font-size:.85em;line-height:1.5;">I can't configure the model myself. Help me set it up completely. Here are the details:<br>• Model name: agnes-2.0-flash<br>• API Base URL: https://apihub.agnes-ai.com/v1<br>• API Key: [your-key-here]<br><br>Please configure this for me completely — I don't need to handle any details.</code><br><br>Most of the time, WorkBuddy's AI agent can successfully configure the model or fix any bugs/unstable situations. This is a fail-safe option when manual configuration fails.</div>
+<div class="box blue"><strong>🛠️ Ultimate Weapon (终极武器): Automatic configuration by WorkBuddy AI</strong><br>If you can't configure it manually, try this: In WorkBuddy, select a model like <strong>Kimi K3</strong> (or another capable model) and paste this prompt directly:<br><br><code style="background:#f3f4f6;padding:12px;border-radius:6px;display:block;margin:10px 0;font-size:.85em;line-height:1.5;">I can't configure the model myself. Help me set it up completely. Here are the details:<br>• Model name: agnes-2.0-flash<br>• API Base URL: https://apihub.agnes-ai.com/v1 (if you are in mainland China, use https://apihub.agnes-ai.cn/v1/chat/completions instead)<br>• API Key: [your-key-here]<br><br>Please configure this for me completely — I don't need to handle any details.</code><br><br>Most of the time, WorkBuddy's AI agent can successfully configure the model or fix any bugs/unstable situations. This is a fail-safe option when manual configuration fails.</div>
 
 <div class="success" style="border-left-color:#7c3aed;background:#f5f3ff;"><strong>🔑 Key benefit — works even at 0 credits:</strong> Once Agnes is configured, you can use it to do real tasks inside WorkBuddy <strong>even when your WorkBuddy account balance is 0</strong>. Because Agnes is called through its own free API key, it does not consume WorkBuddy's built-in credits. In other words: the moment setup succeeds, you get a working model for everyday jobs regardless of your remaining quota.</div>
 
