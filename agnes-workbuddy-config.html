@@ -81,15 +81,34 @@ footer a{color:#a78bfa}
 <p><strong>Key point:</strong> Agnes is designed as an API-accessible AI service — you can use it programmatically via API calls, not just through a web interface. This makes it especially useful for developers and users who want to integrate the model into their own workflows or applications, at zero cost.</p>
 
 <h2>Step 1: Register on Agnes and get your API Key</h2>
-<p>Start by visiting the <a href="https://agnes.ai/" target="_blank" rel="noopener">Agnes website</a> (you'll need to verify the current URL as platforms sometimes change). Once there:</p>
-<ol>
-  <li>Create an account with your email address.</li>
-  <li>After registration, navigate to the API Keys section in your user dashboard.</li>
-  <li>Generate a new API key. Give it a meaningful label (e.g., "WorkBuddy config") so you can identify it later.</li>
-  <li>Carefully copy the API key. It's typically shown only once — if you lose it, you'll need to regenerate it.</li>
-</ol>
+<p>Start by visiting the Agnes platform and signing in. You can register with an email account or quickly sign in with Google / GitHub:</p>
 
-<div class="note"><strong>Tip:</strong> Store your API key in a password manager or secure text file. Never share it publicly, and avoid committing it to version control.</div>
+<div class="cta-box" style="background:linear-gradient(135deg,#fef3c7,#fde68a);border-left:5px solid #f59e0b;padding:18px 22px;border-radius:8px;margin:18px 0;">
+  <div style="font-size:1.15em;font-weight:700;color:#7c2d12;margin-bottom:8px;">👉 Agnes 官网 / Sign-up page</div>
+  <a href="https://platform.agnes-ai.com/login" target="_blank" rel="noopener" style="font-size:1.05em;color:#1d4ed8;text-decoration:underline;word-break:break-all;">https://platform.agnes-ai.com/login</a>
+</div>
+
+<p>The login page supports email registration, plus one-tap sign-in via Google and GitHub:</p>
+
+<p style="text-align:center;margin:14px 0;"><img src="/assets/agnes-login.png" alt="Agnes login &amp; sign-up page: email/password fields, Google and GitHub one-click sign-in" style="max-width:100%;height:auto;border:1px solid #e5e7eb;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.08);" loading="lazy"></p>
+
+<p>Once you're signed in, open the <strong>设置 → API 密钥</strong> (Settings → API Keys) section in the left sidebar:</p>
+
+<p style="text-align:center;margin:14px 0;"><img src="/assets/agnes-api-key-page.png" alt="Agnes dashboard: Settings → API Keys section with 'Create new key' button highlighted in red" style="max-width:100%;height:auto;border:1px solid #e5e7eb;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.08);" loading="lazy"></p>
+
+<p>Click the black <strong>"创建新的密钥"</strong> (Create new key) button. A small modal pops up asking for a name:</p>
+
+<p style="text-align:center;margin:14px 0;"><img src="/assets/agnes-create-key.png" alt="Create new key modal: name field accepts any name; Cancel/Save buttons" style="max-width:100%;height:auto;border:1px solid #e5e7eb;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.08);" loading="lazy"></p>
+
+<p>Give it any name you like — <strong>the name doesn't matter functionally</strong>. You can use something like <code>workbuddy</code>, <code>my-laptop</code>, or <code>tan-home</code>. Pick whatever helps you remember where you used this key. Then hit <strong>保存</strong> (Save).</p>
+
+<p>Agnes will show the generated key <strong>once</strong>, masked in the middle, with a copy icon on the right. Copy it immediately and store it somewhere safe (password manager / encrypted note):</p>
+
+<p style="text-align:center;margin:14px 0;"><img src="/assets/agnes-copy-key.png" alt="Generated API key displayed once with masked middle section, copy icon circled in red on the right" style="max-width:100%;height:auto;border:1px solid #e5e7eb;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.08);" loading="lazy"></p>
+
+<div class="warn-box" style="background:#fee2e2;border-left:5px solid #dc2626;padding:14px 18px;border-radius:8px;margin:18px 0;"><strong>⚠️ Critical:</strong> The full key is shown only at this moment. If you close the modal without copying, you'll have to delete the old one and generate a new key. Don't paste it into public chats or commit it to a public repo — treat it like a password.</div>
+
+<p style="text-align:center;color:#6b7280;font-size:.85em;"><em>Recap of Step 1: visit platform.agnes-ai.com/login → sign in → Settings → API Keys → create new key (any name) → save → copy the key.</em></p>
 
 <h2>Step 2: Configure the custom model in WorkBuddy</h2>
 <p>Log in to your WorkBuddy account and navigate to the custom model configuration page. Here's what you need to fill in:</p>

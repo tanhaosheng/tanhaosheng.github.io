@@ -76,15 +76,34 @@ footer a{color:#a78bfa}
 <p><strong>关键特性：</strong>Agnes 定位为 API 驱动的 AI 服务——你可以完全通过 API 调用它，而不仅仅是通过网页界面。这使得它特别适合需要把 AI 能力集成到自己的工作流或应用程序中的用户，而且 API 调用也是免费的。</p>
 
 <h2>第一步：在 Agnes 注册并获取 API Key</h2>
-<p>访问 <a href="https://agnes.ai/" target="_blank" rel="noopener">Agnes 网站</a>（请注意确认当前的网址，因为平台有时可能会变更）。</p>
-<ol>
-  <li>使用电子邮件地址创建一个账户。</li>
-  <li>登录后，前往仪表板中的 API Keys 区域。</li>
-  <li>生成一个新的 API Key。给它起一个有意义的标签（例如 "WorkBuddy 配置"），以便日后识别。</li>
-  <li>仔细复制 API Key。它通常只显示一次——如果丢失了，你需要重新生成。</li>
-</ol>
+<p>访问 Agnes 平台，注册或登录你的账号。支持邮箱注册，也可以用 Google / GitHub 一键登录：</p>
 
-<div class="note"><strong>提示：</strong>将你的 API Key 保存在密码管理器或安全的文本文件中。切勿公开分享，也避免提交到版本控制系统。</div>
+<div class="cta-box" style="background:linear-gradient(135deg,#fef3c7,#fde68a);border-left:5px solid #f59e0b;padding:18px 22px;border-radius:8px;margin:18px 0;">
+  <div style="font-size:1.15em;font-weight:700;color:#7c2d12;margin-bottom:8px;">👉 Agnes 官网 / 注册登录入口</div>
+  <a href="https://platform.agnes-ai.com/login" target="_blank" rel="noopener" style="font-size:1.05em;color:#1d4ed8;text-decoration:underline;word-break:break-all;">https://platform.agnes-ai.com/login</a>
+</div>
+
+<p>登录页面支持邮箱注册，也可以用 Google 和 GitHub 一键登录：</p>
+
+<p style="text-align:center;margin:14px 0;"><img src="/assets/agnes-login.png" alt="Agnes 登录注册页：邮箱密码字段、Google 和 GitHub 一键登录按钮" style="max-width:100%;height:auto;border:1px solid #e5e7eb;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.08);" loading="lazy"></p>
+
+<p>登录后，在左侧菜单进入 <strong>设置 → API 密钥</strong>：</p>
+
+<p style="text-align:center;margin:14px 0;"><img src="/assets/agnes-api-key-page.png" alt="Agnes 仪表板：设置 → API 密钥页面，红圈标注「创建新的密钥」按钮" style="max-width:100%;height:auto;border:1px solid #e5e7eb;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.08);" loading="lazy"></p>
+
+<p>点黑色的 <strong>"创建新的密钥"</strong> 按钮，弹出小窗让你填一个名称：</p>
+
+<p style="text-align:center;margin:14px 0;"><img src="/assets/agnes-create-key.png" alt="创建新密钥弹窗：名称字段，红字标注「any name is OK」（名字随便取）" style="max-width:100%;height:auto;border:1px solid #e5e7eb;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.08);" loading="lazy"></p>
+
+<p><strong>名字随便取，名字本身不影响功能</strong>。你可以写成 <code>workbuddy</code>、<code>my-laptop</code> 或 <code>家里台式机</code>，只要能帮你记起这把 key 是用在哪台设备就行。然后点 <strong>保存</strong>。</p>
+
+<p>Agnes 会一次性把生成好的完整 key 显示给你看（中间自动用马赛克遮挡），右侧有复制图标。立刻把它复制下来，存进密码管理器或加密备忘里：</p>
+
+<p style="text-align:center;margin:14px 0;"><img src="/assets/agnes-copy-key.png" alt="生成的 API key 一次性显示，中间被打码，右侧红圈标注复制按钮" style="max-width:100%;height:auto;border:1px solid #e5e7eb;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.08);" loading="lazy"></p>
+
+<div class="warn-box" style="background:#fee2e2;border-left:5px solid #dc2626;padding:14px 18px;border-radius:8px;margin:18px 0;"><strong>⚠️ 重要提醒：</strong>完整 key 只在这一刻显示一次。如果你没复制就关了弹窗，需要删掉旧的、重新生成一把新的。也别把它贴进公开聊天或提交到公开仓库——等同于密码处理。</div>
+
+<p style="text-align:center;color:#6b7280;font-size:.85em;"><em>第一步回顾：访问 platform.agnes-ai.com/login → 登录 → 设置 → API 密钥 → 创建新密钥（名字随便取） → 保存 → 复制 key。</em></p>
 
 <h2>第二步：在 WorkBuddy 中配置自定义模型</h2>
 <p>登录你的 WorkBuddy 账户，进入自定义模型配置页面。需要填写的内容如下：</p>
