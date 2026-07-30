@@ -1,0 +1,191 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Model Reviews — Free AI Model Hands-on Tests (V1 → V5) - AI Tool Stack</title><meta name="description" content="The full Model Reviews series — reproducible hands-on tests of free AI models on a real anonymized post-op breast cancer case. V1: ChatGLM vs DeepSeek (5/100 vs 50/100). V2: 4-model showdown. V3: 3 models, 3 wrappers, 1 LVI read (V4 Flash 34, Kimi K3 27, Grok 14). Scored against 2026 CBCS / CSCO 2024 / NCCN 2025."><meta name="robots" content="index, follow"><link rel="canonical" href="https://tanhaosheng.asia/model-reviews">
+<link rel="alternate" hreflang="en" href="https://tanhaosheng.asia/model-reviews">
+<link rel="alternate" hreflang="zh" href="https://tanhaosheng.asia/zh/model-reviews">
+<link rel="alternate" hreflang="x-default" href="https://tanhaosheng.asia/model-reviews"><meta property="og:title" content="Model Reviews — Free AI Model Hands-on Tests (V1 → V5)"><meta property="og:description" content="Hands-on, signed, reproducible tests of free AI models on a real anonymized breast cancer case. V1 → V5 in order. Scored against 2026 CBCS / CSCO 2024 / NCCN 2025."><meta property="og:type" content="website"><meta property="og:url" content="https://tanhaosheng.asia/model-reviews"><meta property="og:image" content="https://tanhaosheng.asia/assets/og-ai-tools.jpg"><meta property="og:locale" content="en_US"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Model Reviews — Free AI Model Hands-on Tests (V1 → V5)"><meta name="twitter:description" content="V1 → V5 ordered, scored on the same anonymized case. Free AI models in clinical decision-making."><!-- AdSense --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3090420115329103" crossorigin="anonymous"></script><!-- Google Analytics 4 --><script async src="https://www.googletagmanager.com/gtag/js?id=G-NE8DYNMNYZ"></script><script>(function(){const gaId="G-NE8DYNMNYZ";window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',gaId);})();</script><style>:root{--primary:#6c3ce1;--primary-dark:#4f2db5;--accent:#f59e0b;--bg:#f5f7fa;--text:#1a1a2e;--text-light:#6b7280;--border:#e5e7eb;--card:#fff}*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--text);max-width:860px;margin:0 auto;padding:0 20px;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;font-size:18px;line-height:1.75}a{color:var(--primary);text-decoration:none}h1{color:var(--primary);margin:28px 0 14px;font-size:30px;line-height:1.25}h2{color:var(--primary-dark);margin:32px 0 12px;font-size:22px;padding-bottom:6px;border-bottom:2px solid var(--primary)}h3{color:var(--primary-dark);margin:20px 0 8px;font-size:17px}p{margin-bottom:14px}ul,ol{margin:0 0 16px 22px}li{margin-bottom:7px}table{border-collapse:collapse;width:100%;margin:18px 0;font-size:15px}th,td{border:1px solid var(--border);text-align:left;padding:10px 11px}th{background:#f3f4f6;font-weight:600}tr:nth-child(2n){background:#f9fafb}nav{z-index:100;background:linear-gradient(135deg,#6c3ce1 0%,#4f2db5 100%);position:sticky;top:0;box-shadow:0 2px 12px #6c3ce140}nav .nav-inner{max-width:900px;margin:0 auto;display:flex;overflow-x:auto}nav a{color:#ffffffe6;white-space:nowrap;padding:14px 16px;font-size:15px;font-weight:500;text-decoration:none}nav a:hover,nav a.active{color:#fff;background:#ffffff26}.article-byline{font-size:14px;color:#6b7280;margin:0 0 16px;padding:10px 14px;background:#f8fafc;border-left:3px solid #2563eb;border-radius:6px}.article-byline a{font-weight:600}.series-badge{display:inline-block;background:#ede9fe;color:var(--primary-dark);border:1px solid #c4b5fd;border-radius:999px;padding:4px 12px;font-size:13px;font-weight:700;margin-bottom:14px}.box{border-left:4px solid var(--accent);background:#fff3cd;border-radius:4px;margin:18px 0;padding:16px}.takeaways{background:var(--card);border:1px solid var(--border);border-radius:8px;margin:18px 0;padding:16px 22px}.takeaways h3{margin-top:0}.pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12.5px;font-weight:600}.pill.green{background:#dcfce7;color:#15803d}.pill.red{background:#fee2e2;color:#b91c1c}.pill.amber{background:#fef3c7;color:#b45309}.pill.blue{background:#dbeafe;color:#1e40af}.pill.gray{background:#e5e7eb;color:#374151}.pill.violet{background:#ede9fe;color:#5b21b6}.miss{border-left:4px solid #dc2626;background:#fef2f2;border-radius:4px;padding:12px 14px;margin:12px 0;font-size:15px}.win-note{border-left:4px solid #16a34a;background:#f0fdf4;border-radius:4px;padding:12px 14px;margin:12px 0;font-size:15px}.verdict{border:2px solid var(--primary);background:#f5f3ff;border-radius:10px;padding:16px;margin:18px 0;font-size:16px}.note{border-left:4px solid #8b5cf6;background:#f5f3ff;border-radius:6px;padding:13px 16px;margin:16px 0;font-size:15px}.zh{border-left:4px solid #06b6d4;background:#ecfeff;border-radius:6px;padding:13px 16px;margin:16px 0;font-size:15px;line-height:1.75}.faq details{border:1px solid var(--border);border-radius:8px;padding:10px 14px;margin:10px 0;background:#fff}.faq summary{cursor:pointer;font-weight:600;font-size:16px}.faq p{margin:10px 0 0}.review-card{border:1px solid var(--border);border-radius:14px;padding:18px 22px;margin:18px 0;background:#fff;box-shadow:0 2px 8px #0000000d;position:relative;overflow:hidden}.review-card .vtag{display:inline-block;background:var(--primary);color:#fff;font-weight:800;font-size:13px;padding:3px 10px;border-radius:6px;letter-spacing:1px;margin-bottom:6px}.review-card .vtag.pending{background:#94a3b8}.review-card .vtag.future{background:#cbd5e1;color:#475569}.review-card h3{margin-top:4px;margin-bottom:4px;font-size:20px;line-height:1.3}.review-card .sub{color:#6b7280;font-size:14px;margin-bottom:10px}.review-card .verdict-line{font-size:14.5px;color:#374151;margin:6px 0 10px;line-height:1.55}.review-card .actions{margin-top:8px}.review-card .actions a{display:inline-block;background:#f3f4f6;border:1px solid #d1d5db;border-radius:8px;padding:5px 12px;font-size:13.5px;font-weight:600;margin-right:6px;margin-bottom:4px}.review-card .actions a:hover{background:#e0e7ff;border-color:#6366f1}.review-card .badge-row{margin:8px 0 6px;font-size:13px}.review-card .badge-row .pill{margin-right:4px}.rank-table th{background:#ede9fe;color:var(--primary-dark)}.mt-banner{background:#fef3c7;color:#92400e;border-bottom:1px solid #fcd34d;padding:9px 16px;font:600 13px/1.5 system-ui,sans-serif;text-align:center}.mt-banner a{color:#92400e;font-weight:700}.reviews-hero{background:linear-gradient(135deg,#6c3ce1 0%,#4f2db5 60%,#2d1b69 100%);color:#fff;border-radius:14px;margin:24px auto 24px;padding:26px 26px;box-shadow:0 6px 28px #6c3ce133}.reviews-hero h1{color:#fff;margin:0 0 6px;font-size:1.9em;line-height:1.2}.reviews-hero .sub-zh{opacity:.9;margin-bottom:10px;font-size:1.05em}.reviews-hero .creds{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}.reviews-hero .creds span{background:#ffffff26;border:1px solid #ffffff40;border-radius:20px;padding:3px 11px;font-size:.83em;font-weight:500}
+</style>
+<style>
+#lang-switcher{position:fixed;top:10px;right:12px;z-index:99999;background:#fff;border:1px solid #d1d5db;border-radius:10px;padding:5px 9px;box-shadow:0 2px 10px rgba(0,0,0,.15);font:600 13px/1.3 system-ui,sans-serif;display:flex;align-items:center;gap:6px}
+#lang-switcher label{font-size:15px;cursor:default}
+#lang-switcher select{border:none;background:transparent;font:600 13px system-ui,sans-serif;cursor:pointer;outline:none;max-width:130px}
+#lang-switcher select:focus{outline:2px solid #6366f1}
+#lang-switcher option:disabled{color:#bbb}
+</style>
+</head><body><div id="lang-switcher"><label for="lang-select">🌐</label><select id="lang-select"><option value="en" selected>English</option><option value="zh" disabled>中文 (pending)</option><option value="es" disabled>Español</option><option value="fr" disabled>Français</option><option value="ar" disabled>العربية</option><option value="ja" disabled>日本語</option><option value="ko" disabled>한국어</option><option value="ru" disabled>Русский</option><option value="hi" disabled>हिन्दी</option></select></div><nav><div class="nav-inner"><a href="/" class>🏠 Home</a><a href="/model-reviews" class="active">🧪 Model Reviews</a><a href="/clinical-benchmark/" >📊 Benchmark Data</a><a href="/about" class>About</a></div></nav><div style="background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:10px;margin:14px auto;padding:10px 16px;max-width:900px;font:600 13px/1.6 system-ui,sans-serif;">⚠️ <strong>Affiliate Disclosure / 利益披露:</strong> This page may contain affiliate or promotional links. If you sign up or subscribe through such a link, I may earn a commission — but it <strong>never increases your price</strong> and <strong>never changes my independent conclusions</strong>. See the <a href="/affiliate-disclosure" style="color:#1e3a8a;text-decoration:underline;">Affiliate Disclosure</a> page.</div>
+
+<div class="reviews-hero">
+  <h1>Model Reviews — Free AI Models on a Real Clinical Case</h1>
+  <div class="sub-zh">原创实测系列：免费 AI 模型在真实匿名乳腺癌病例上的可复现实测（按版本顺序排序）</div>
+  <div class="creds">
+    <span>🧪 Hands-on · signed</span>
+    <span>📋 2026 CBCS / CSCO 2024 / NCCN 2025</span>
+    <span>🔁 Reproducible · open rubric</span>
+    <span>🩺 Author: breast / thyroid surgeon, MD/PhD</span>
+  </div>
+</div>
+
+<div class="article-byline">By <a href="https://tanhaosheng.asia/about">Tan Haosheng</a> · 副主任医师 / 医学博士 (Associate Chief Physician, MD/PhD) · Index updated 2026-07-31</div>
+<div class="series-badge">📚 原创实测 / Hands-on Review series · 5-part plan, 3 published</div>
+
+<div class="box">
+<strong>What this series is.</strong> A planned <strong>5-part hands-on review</strong> of free AI models on the same anonymized post-op breast cancer case (and one follow-up case). Every test uses the same prompt, the same scoring rubric, and the same reference standard (<strong>2026 CBCS / CSCO 2024 / NCCN 2025</strong>). Each part is signed, reproducible, and discloses the wrapper (chat interface, system prompt, mode) the model was used in. The point is not to crown a winner — it is to <em>separate the model from the wrapper, the model from the parameter count, and the model from the marketing</em>.
+</div>
+
+<div class="zh">
+<strong>本系列是什么。</strong> 计划 <b>5 篇</b>、用同一份匿名乳腺癌术后病例跑免费 AI 模型的横向实测。同一句提示、同一份评分表、同一份参考标准（<b>2026 CBCS / CSCO 2024 / NCCN 2025</b>），每篇都署名、可复现、披露模型走的是哪个 wrapper（聊天界面 / 系统提示 / 模式）。目的不是评出"最强模型"，而是把 <b>模型 vs 包装器、模型 vs 参数规模、模型 vs 营销话术</b> 这三件事拆开。
+</div>
+
+<h2>The reviews, in order</h2>
+<p>Read top-to-bottom: each part builds on the one before it. V1 introduces the rubric. V2 expands to four models on the same trap-case. V3 isolates the wrapper (and adds a frontier foreign model). V4 and V5 will close the loop on the web-version runs and the "best free model for clinicians" question.</p>
+
+<div class="review-card">
+  <span class="vtag">V3 · LATEST</span>
+  <h3><a href="/agent-vs-web-isolation">Same Model, Three Wrappers: 3 Models, 9 Runs, 1 LVI Read</a></h3>
+  <div class="sub">Hands-on Review 3 of 5 · Published 2026-07-30, updated 2026-07-31 · ~15 min read</div>
+  <div class="badge-row">
+    <span class="pill violet">DeepSeek V4 Flash</span>
+    <span class="pill violet">Kimi K3 (~2.8T params)</span>
+    <span class="pill violet">Grok 4.5 fast (X.com built-in)</span>
+    <span class="pill gray">3 wrappers</span>
+  </div>
+  <div class="verdict-line">
+    <strong>Headline:</strong> three different models, three different wrappers, <em>the same LVI-read failure</em>. V4 Flash (WorkBuddy agent) median <strong>34 / 100</strong>, Kimi K3 (WorkBuddy agent) median <strong>27 / 100</strong>, Grok 4.5 fast (X.com built-in, Fast mode) median <strong>14 / 100</strong>. Grok down-staged a confirmed pT1bN0M0 IA cancer with 3-focus LVI to <em>TisN0M0 / Stage 0</em> in all 3 runs, and picked Tamoxifen twice for a 60-year-old postmenopausal patient (should be an AI). The wrapper is not rescuing a weak model — the model is the variable.
+  </div>
+  <div class="actions">
+    <a href="/agent-vs-web-isolation">→ Read full review</a>
+    <a href="/clinical-benchmark/">📊 See scoring rubric</a>
+  </div>
+</div>
+
+<div class="review-card">
+  <span class="vtag">V2</span>
+  <h3><a href="/four-models-clinical-showdown">4 Free AI Models on One Breast Cancer Case — A Surgeon's Extended Test</a></h3>
+  <div class="sub">Hands-on Review 2 of 5 · Published 2026-07-30 · ~18 min read</div>
+  <div class="badge-row">
+    <span class="pill violet">DeepSeek V4 Pro</span>
+    <span class="pill violet">Doubao (豆包)</span>
+    <span class="pill violet">DeepSeek web (fast)</span>
+    <span class="pill violet">ChatGLM 5.2</span>
+  </div>
+  <div class="verdict-line">
+    <strong>Headline:</strong> 4 free models, same anonymized trap-case (a 0.2 cm microinvasive / Tis staging trap), same 16-item / 100-pt rubric. <strong>DeepSeek V4 Pro (WorkBuddy agent) 50 / 100</strong> — the only one to catch the staging trap. Doubao 41, DeepSeek web (fast) 28, ChatGLM 5.2 only <strong>5 / 100</strong>. The first signal that <em>model choice matters more than which model is "free"</em>.
+  </div>
+  <div class="actions">
+    <a href="/four-models-clinical-showdown">→ Read full review</a>
+    <a href="/clinical-benchmark/">📊 See scoring rubric</a>
+  </div>
+</div>
+
+<div class="review-card">
+  <span class="vtag">V1</span>
+  <h3><a href="/chatglm-vs-deepseek-clinical-hands-on">ChatGLM vs DeepSeek on a Chinese Clinical Case — Hands-on Test</a></h3>
+  <div class="sub">Hands-on Review 1 of 5 · Published 2026-07-29 · ~10 min read</div>
+  <div class="badge-row">
+    <span class="pill violet">ChatGLM 5</span>
+    <span class="pill violet">DeepSeek V3.x</span>
+  </div>
+  <div class="verdict-line">
+    <strong>Headline:</strong> the first head-to-head on a Chinese breast cancer case. ChatGLM 5 / 100, DeepSeek 50 / 100 — an order-of-magnitude gap on a clinically meaningful prompt. Established the 16-item / 100-pt rubric and the "cite specific guideline section" scoring rule used across the rest of the series.
+  </div>
+  <div class="actions">
+    <a href="/chatglm-vs-deepseek-clinical-hands-on">→ Read full review</a>
+    <a href="/clinical-benchmark/">📊 See scoring rubric</a>
+  </div>
+</div>
+
+<div class="review-card">
+  <span class="vtag pending">V4 · PENDING</span>
+  <h3>Web Direct Runs — V4 Flash / V4 Pro / Kimi K3 (Same Case, No Wrapper)</h3>
+  <div class="sub">Hands-on Review 4 of 5 · planned, same Part 3 case (0.6 cm + LVI) · ~12 min read est.</div>
+  <div class="badge-row">
+    <span class="pill gray">DeepSeek V4 Flash — web</span>
+    <span class="pill gray">DeepSeek V4 Pro — web</span>
+    <span class="pill gray">Kimi K3 — web</span>
+  </div>
+  <div class="verdict-line">
+    <strong>What this will answer.</strong> The Part 3 wrapper-isolation experiment is half-done: agent runs are in for V4 Flash, Kimi K3, and Grok, but the matching <em>web-direct</em> runs are still missing. Once those land, the "model vs wrapper" question has a hard number: agent minus web = the wrapper's contribution.
+  </div>
+  <div class="actions">
+    <a href="/agent-vs-web-isolation#pending">→ See pending list in V3</a>
+  </div>
+</div>
+
+<div class="review-card">
+  <span class="vtag future">V5 · PLANNED</span>
+  <h3>The Best Free AI Model for Clinicians in 2026 — Final Verdict</h3>
+  <div class="sub">Hands-on Review 5 of 5 · planned · ~15 min read est.</div>
+  <div class="badge-row">
+    <span class="pill gray">All reviewed models</span>
+    <span class="pill gray">All wrappers</span>
+    <span class="pill gray">All cases</span>
+  </div>
+  <div class="verdict-line">
+    <strong>What this will close.</strong> A single ranked recommendation for a clinician or researcher who needs a free AI model for a real clinical decision-support task, with the caveats spelled out and a "do not use for X" list for each model. Built on the V1–V4 evidence, not vibes.
+  </div>
+</div>
+
+<h2>Cross-review leaderboard (all published parts)</h2>
+<table class="rank-table">
+<tr><th>Rank</th><th>Model</th><th>Wrapper</th><th>Case</th><th>Score (median)</th><th>Stage trap caught?</th><th>LVI handled?</th></tr>
+<tr><td>1</td><td>DeepSeek V4 Pro</td><td>WorkBuddy agent</td><td>V2 case (0.2 cm Tis trap)</td><td><strong>50 / 100</strong></td><td><span class="pill green">YES</span></td><td>— (no LVI on V2 case)</td></tr>
+<tr><td>2</td><td>豆包 Doubao</td><td>Mobile web</td><td>V2 case (0.2 cm Tis trap)</td><td><strong>41 / 100</strong></td><td><span class="pill red">NO</span></td><td>— (no LVI on V2 case)</td></tr>
+<tr><td>3</td><td>DeepSeek V4 Flash</td><td>WorkBuddy agent</td><td>V3 case (0.6 cm + LVI)</td><td><strong>34 / 100</strong></td><td>N/A</td><td><span class="pill amber">PARTIAL</span> (2/3 runs)</td></tr>
+<tr><td>4</td><td>DeepSeek web (fast)</td><td>Web direct</td><td>V2 case (0.2 cm Tis trap)</td><td><strong>28 / 100</strong></td><td><span class="pill red">NO</span></td><td>— (no LVI on V2 case)</td></tr>
+<tr><td>5</td><td>Kimi K3 (~2.8T params)</td><td>WorkBuddy agent</td><td>V3 case (0.6 cm + LVI)</td><td><strong>27 / 100</strong></td><td>N/A</td><td><span class="pill red">NO</span> (mis-classified as invasion, 3/3)</td></tr>
+<tr><td>6</td><td>Grok 4.5 fast</td><td>X.com built-in (Fast)</td><td>V3 case (0.6 cm + LVI)</td><td><strong>14 / 100</strong></td><td>N/A</td><td><span class="pill red">NO</span> (down-staged to TisN0M0 / Stage 0, 3/3)</td></tr>
+<tr><td>7</td><td>ChatGLM 5.2</td><td>Web direct</td><td>V2 case (0.2 cm Tis trap)</td><td><strong>5 / 100</strong></td><td><span class="pill red">NO</span></td><td>— (no LVI on V2 case)</td></tr>
+</table>
+<div class="note">
+<strong>How to read this table.</strong> V2 and V3 use <em>different cases</em> and <em>different rubric sizes</em> (16-item for V2, 10-item for V3), so the absolute numbers are not directly comparable across cases. Within a case (V2 by itself, V3 by itself), the ordering is meaningful. The whole point of V4 — when it lands — is to make cross-case comparison fair by re-scoring the agent winners on the same web-direct surface.
+</div>
+
+<h2>Methodology (same across all reviews)</h2>
+<ul>
+  <li><strong>One anonymized case at a time.</strong> Real post-op breast cancer pathology, scrubbed of patient identifiers, with the staging trap and the lymphovascular-invasion feature written into the case on purpose.</li>
+  <li><strong>One prompt.</strong> An image of the case report + <em>"Next therapy ?"</em> (V3) or a 16-item structured question (V2). Same prompt, same image, every run.</li>
+  <li><strong>Three independent runs per (model × wrapper) cell.</strong> No cherry-picking, no second-chance regeneration. If a model is confident, the three runs should be near-clones; if it is uncertain, the spread shows up in the median.</li>
+  <li><strong>10-item / 16-item rubric, 100 points.</strong> Items: correct staging, correct biology subtype, correct first-line therapy, correct therapy duration, correct chemo decision, correct radiation decision, correct anti-HER2 decision, correct bone protection, correct handling of LVI / high-risk features, and a hard "cite a specific guideline section" item. <strong>Correct + cited specific section = full points; correct but uncited = half; wrong = 0.</strong></li>
+  <li><strong>Reference standard.</strong> 2026 CBCS / CSCO 2024 / NCCN 2025 consensus. For each item, the "fully correct" answer is documented in the appendix.</li>
+  <li><strong>Open data.</strong> The image, the prompt, the rubric, and the reference answer are all published in the <a href="/clinical-benchmark/">Clinical LLM Benchmark data appendix</a>. Anyone can reproduce the numbers.</li>
+</ul>
+
+<div class="verdict">
+<strong>One-line takeaway across V1–V3.</strong> Free AI models on a real clinical image give wildly different answers, and <em>the model itself is the variable that matters most</em> — the wrapper, the parameter count, and the "free vs paid" framing matter much less than the choice of model. The next two reviews (V4 web-direct, V5 final verdict) will pin that down with same-wrapper numbers.
+</div>
+
+<div class="note">
+⚠️ <strong>Medical disclaimer.</strong> This series is an LLM tool-comparison evaluation. It is <strong>not medical advice</strong>, and model outputs must never be used for real patient decisions. The case is anonymized and used only to demonstrate a testing method.
+</div>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+<details><summary>Why a 5-part series instead of one big comparison?</summary>
+<p>Because the interesting question is not "which model is best on one case" — it is <em>why</em> one model beats another. To answer that, you have to hold the case constant, then vary one variable at a time: model (V1, V2), wrapper (V3, V4), and finally a clinical decision rule (V5). One big table would obscure the cause; five focused reviews expose it.</p></details>
+<details><summary>Why is the same model scored on different cases across reviews?</summary>
+<p>V1 and V2 use a "Tis trap" case (a 0.2 cm microinvasive focus where the report's literal line says "TisN0M0 / Stage 0" but the correct stage is pT1miN0M0 IA — a classic transcription-error trap). V3 uses a different case that has no such trap but adds a multi-feature decision (correct staging + LVI handling + AI duration + bone protection). Different cases = different rubrics = different absolute scores, but within each review the ordering is fair and meaningful.</p></details>
+<details><summary>Can I submit my own run to the series?</summary>
+<p>Yes. The image, prompt, and rubric are public in the <a href="/clinical-benchmark/">data appendix</a>. Run any model, score yourself against the same 10 / 16 items, and email me the screenshot + score. I will add a community-runners section to the appendix and credit the runner. The point of the series is reproducibility, not exclusivity.</p></details>
+<details><summary>What is the "specific guideline section" rule, and why does it cost so many models points?</summary>
+<p>Each model's answer must cite a specific guideline <em>section, table, or page number</em> for the decision to count as fully correct. Citing a guideline by name (e.g., "NCCN 2025" or "CSCO 2024") without a specific location is half credit. Citing nothing is zero on that item. In V1–V3, <em>every</em> model in the series has lost the full 12 / 100 points on this item — across four model families and three wrappers. That is itself a finding: the "I don't cite sections" weakness is a model behavior, not a wrapper behavior.</p></details>
+</div>
+
+<p style="margin-top:24px"><em>This page is the <strong>Model Reviews</strong> index for the planned 5-part hands-on review series. The same rubric, the same reference standard, the same anonymized case across all five parts. New reviews are added at the top.</em></p>
+
+<footer>&copy; 2024-2026 AI Tool Stack<br><a href="/">Home</a> · <a href="/about">About</a> · <a href="/model-reviews">Model Reviews</a> · <a href="/clinical-benchmark/">Clinical Benchmark Data</a> · <a href="/privacy">Privacy</a> · <a href="/affiliate-disclosure">Affiliate Disclosure</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+<div class="page-stats" style="margin-top:10px;font-size:.85em;color:#6b7280;">📊 全站浏览 <span id="busuanzi_value_site_pv">0</span> · 全站独立访客 <span id="busuanzi_value_site_uv">0</span>　|　📄 本页浏览 <span id="busuanzi_value_page_pv">0</span> · 本页独立访客 <span id="busuanzi_value_page_uv">0</span></div><div id="cf-stats" style="margin-top:6px;font-size:.85em;color:#6b7280;display:none;">🌐 Cloudflare 真实IP：全站 <b id="cf-site-pv">–</b> 浏览 / <b id="cf-site-uv">–</b> 唯一IP　|　📄 本页 <b id="cf-page-pv">–</b> 浏览 / <b id="cf-page-uv">–</b> 唯一IP <span style="opacity:.6;">(按IP累计，区别于busuanzi的cookie访客)</span></div>
+</footer>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Model Reviews — Free AI Models on a Real Clinical Case","description":"A 5-part hands-on review series of free AI models on a real anonymized post-op breast cancer case, scored against 2026 CBCS / CSCO 2024 / NCCN 2025. V1 → V5 in order; 3 published (V1, V2, V3), 2 pending (V4 web-direct, V5 final verdict).","url":"https://tanhaosheng.asia/model-reviews","author":{"@type":"Person","name":"Tan Haosheng","alternateName":"谭好升","url":"https://tanhaosheng.asia/about.html","jobTitle":"Associate Chief Physician, Department of Thyroid and Breast Surgery"},"dateModified":"2026-07-31","publisher":{"@type":"Organization","name":"AI Tool Stack"},"hasPart":[{"@type":"Article","name":"V3: Same Model, Three Wrappers (3 Models, 9 Runs, 1 LVI Read)","url":"https://tanhaosheng.asia/agent-vs-web-isolation","datePublished":"2026-07-30"},{"@type":"Article","name":"V2: 4 Free AI Models on One Breast Cancer Case","url":"https://tanhaosheng.asia/four-models-clinical-showdown","datePublished":"2026-07-30"},{"@type":"Article","name":"V1: ChatGLM vs DeepSeek on a Chinese Clinical Case","url":"https://tanhaosheng.asia/chatglm-vs-deepseek-clinical-hands-on","datePublished":"2026-07-29"}]}</script>
+<script>
+(function(){
+  var CODES=['en','zh','es','fr','ar','ja','ko','ru','hi'];
+  function switchLang(l){
+    var p=location.pathname.replace(/^\//,'').split('/');
+    var base=CODES.indexOf(p[0])!==-1?p.slice(1).join('/'):p.join('/');
+    var url=(l==='en'?'/'+base:'/'+l+'/'+base)+(location.search||'');
+    try{localStorage.setItem('pref',l);}catch(e){}
+    location.href=url;
+  }
+  var s=document.getElementById('lang-select');
+  if(s){ s.addEventListener('change',function(){switchLang(this.value);}); }
+})();
+</script>
+</body></html>
