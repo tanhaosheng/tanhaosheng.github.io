@@ -83,7 +83,7 @@ footer a{color:#a78bfa}
 </style>
 </head>
 <body>
-<div id="lang-switcher"><label for="lang-select">🌐</label><select id="lang-select"><option value="en">English</option><option value="zh" selected>中文</option><option value="es" disabled>Español</option><option value="fr" disabled>Français</option><option value="ar" disabled>العربية</option><option value="ja" disabled>日本語</option><option value="ko" disabled>한국어</option><option value="ru" disabled>Русский</option><option value="hi" disabled>हिन्दी</option></select></div>
+<div id="lang-switcher"><label for="lang-select">🌐</label><select id="lang-select"><option value="en">English</option><option value="zh" selected>中文</option></select></div>
 <nav><div class="nav-inner"><a href="/zh/" class="active">🏠 首页</a><a href="/zh/">📰 资讯</a><a href="/zh/">🤖 AI</a><a href="/about">关于</a></div></nav>
 
 <h1>我 2 天生成了 361 篇 AI 文章，然后删掉了 358 篇 —— 这个网站真实的建站过程</h1>
@@ -172,7 +172,7 @@ footer a{color:#a78bfa}
 
 <script>
 (function(){
-  var CODES=['en', 'zh', 'es', 'fr', 'ar', 'ja', 'ko', 'ru', 'hi'];
+  var CODES=['en','zh'];
   function switchLang(l){
     var p=location.pathname.replace(/^\//,'').split('/');
     var base=CODES.indexOf(p[0])!==-1?p.slice(1).join('/'):p.join('/');

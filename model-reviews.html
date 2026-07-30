@@ -10,7 +10,7 @@
 #lang-switcher select:focus{outline:2px solid #6366f1}
 #lang-switcher option:disabled{color:#bbb}
 </style>
-</head><body><div id="lang-switcher"><label for="lang-select">🌐</label><select id="lang-select"><option value="en" selected>English</option><option value="zh" disabled>中文 (pending)</option><option value="es" disabled>Español</option><option value="fr" disabled>Français</option><option value="ar" disabled>العربية</option><option value="ja" disabled>日本語</option><option value="ko" disabled>한국어</option><option value="ru" disabled>Русский</option><option value="hi" disabled>हिन्दी</option></select></div><nav><div class="nav-inner"><a href="/" class>🏠 Home</a><a href="/model-reviews" class="active">🧪 Model Reviews</a><a href="/clinical-benchmark/" >📊 Benchmark Data</a><a href="/about" class>About</a></div></nav><div style="background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:10px;margin:14px auto;padding:10px 16px;max-width:900px;font:600 13px/1.6 system-ui,sans-serif;">⚠️ <strong>Affiliate Disclosure / 利益披露:</strong> This page may contain affiliate or promotional links. If you sign up or subscribe through such a link, I may earn a commission — but it <strong>never increases your price</strong> and <strong>never changes my independent conclusions</strong>. See the <a href="/affiliate-disclosure" style="color:#1e3a8a;text-decoration:underline;">Affiliate Disclosure</a> page.</div>
+</head><body><div id="lang-switcher"><label for="lang-select">🌐</label><select id="lang-select"><option value="en" selected>English</option><option value="zh">中文</option></select></div><nav><div class="nav-inner"><a href="/" class>🏠 Home</a><a href="/model-reviews" class="active">🧪 Model Reviews</a><a href="/clinical-benchmark/" >📊 Benchmark Data</a><a href="/about" class>About</a></div></nav><div style="background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:10px;margin:14px auto;padding:10px 16px;max-width:900px;font:600 13px/1.6 system-ui,sans-serif;">⚠️ <strong>Affiliate Disclosure / 利益披露:</strong> This page may contain affiliate or promotional links. If you sign up or subscribe through such a link, I may earn a commission — but it <strong>never increases your price</strong> and <strong>never changes my independent conclusions</strong>. See the <a href="/affiliate-disclosure" style="color:#1e3a8a;text-decoration:underline;">Affiliate Disclosure</a> page.</div>
 
 <div class="reviews-hero">
   <h1>Model Reviews — Free AI Models on a Real Clinical Case</h1>
@@ -39,16 +39,18 @@
 
 <div class="review-card">
   <span class="vtag">V3 · LATEST</span>
-  <h3><a href="/agent-vs-web-isolation">Same Model, Three Wrappers: 3 Models, 9 Runs, 1 LVI Read</a></h3>
+  <h3><a href="/agent-vs-web-isolation">Same Case, Web vs Agent: 4 Models, 12 Runs — What Is the Agent Wrapper Actually Worth?</a></h3>
   <div class="sub">Hands-on Review 3 of 5 · Published 2026-07-30, updated 2026-07-31 · ~15 min read</div>
   <div class="badge-row">
     <span class="pill violet">DeepSeek V4 Flash</span>
     <span class="pill violet">Kimi K3 (~2.8T params)</span>
+    <span class="pill violet">智谱 GLM 5.2 (WorkBuddy agent)</span>
     <span class="pill violet">Grok 4.5 fast (X.com built-in)</span>
-    <span class="pill gray">3 wrappers</span>
+    <span class="pill gray">4 models × 3 runs</span>
+    <span class="pill amber">✓ corrected 2026-07-31</span>
   </div>
   <div class="verdict-line">
-    <strong>Headline:</strong> three different models, three different wrappers, <em>the same LVI-read failure</em>. V4 Flash (WorkBuddy agent) median <strong>34 / 100</strong>, Kimi K3 (WorkBuddy agent) median <strong>27 / 100</strong>, Grok 4.5 fast (X.com built-in, Fast mode) median <strong>14 / 100</strong>. Grok down-staged a confirmed pT1bN0M0 IA cancer with 3-focus LVI to <em>TisN0M0 / Stage 0</em> in all 3 runs, and picked Tamoxifen twice for a 60-year-old postmenopausal patient (should be an AI). The wrapper is not rescuing a weak model — the model is the variable.
+    <strong>Headline:</strong> the first quantified answer to “does the agent wrapper actually make a model better?” Two models were tested both as a plain web chat and inside the WorkBuddy agent on the same case: <strong>智谱 GLM 5.2 went from 5 / 100 on the web to 44 / 100 in the agent (+39)</strong>, while <strong>DeepSeek’s fast tier went from 28 to 34 (+6)</strong>. The agent raises the floor far more than the ceiling. Part-3 medians: GLM 5.2 <strong>44</strong>, Kimi K3 <strong>40</strong>, V4 Flash <strong>34</strong>, Grok 4.5 fast <strong>14</strong>. Grok copied the report’s own erroneous “TisN0M0” line and called an invasive cancer <em>Stage 0</em> in 3/3 runs, and picked tamoxifen twice for a 60-year-old postmenopausal patient. <em>Includes a published correction: the three foci are interstitial invasion, not lymphovascular invasion — Kimi K3 was re-scored 27 → 40.</em>
   </div>
   <div class="actions">
     <a href="/agent-vs-web-isolation">→ Read full review</a>
@@ -102,7 +104,7 @@
     <span class="pill gray">Kimi K3 — web</span>
   </div>
   <div class="verdict-line">
-    <strong>What this will answer.</strong> The Part 3 wrapper-isolation experiment is half-done: agent runs are in for V4 Flash, Kimi K3, and Grok, but the matching <em>web-direct</em> runs are still missing. Once those land, the "model vs wrapper" question has a hard number: agent minus web = the wrapper's contribution.
+    <strong>What this will answer.</strong> Two of the web-vs-agent pairs are now complete (GLM 5.2: 5 → 44; DeepSeek fast: 28 → 34). Still outstanding are <em>Kimi K3 — web</em> and <em>DeepSeek V4 Pro — web</em>. Kimi is the interesting one: its agent run scored 40 with a fully correct read, so if the web version reads just as well, the +39 seen with GLM 5.2 is a GLM-specific rescue rather than a general agent effect.
   </div>
   <div class="actions">
     <a href="/agent-vs-web-isolation#pending">→ See pending list in V3</a>
@@ -125,22 +127,29 @@
 
 <h2>Cross-review leaderboard (all published parts)</h2>
 <table class="rank-table">
-<tr><th>Rank</th><th>Model</th><th>Wrapper</th><th>Case</th><th>Score (median)</th><th>Stage trap caught?</th><th>LVI handled?</th></tr>
-<tr><td>1</td><td>DeepSeek V4 Pro</td><td>WorkBuddy agent</td><td>V2 case (0.2 cm Tis trap)</td><td><strong>50 / 100</strong></td><td><span class="pill green">YES</span></td><td>— (no LVI on V2 case)</td></tr>
-<tr><td>2</td><td>豆包 Doubao</td><td>Mobile web</td><td>V2 case (0.2 cm Tis trap)</td><td><strong>41 / 100</strong></td><td><span class="pill red">NO</span></td><td>— (no LVI on V2 case)</td></tr>
-<tr><td>3</td><td>DeepSeek V4 Flash</td><td>WorkBuddy agent</td><td>V3 case (0.6 cm + LVI)</td><td><strong>34 / 100</strong></td><td>N/A</td><td><span class="pill amber">PARTIAL</span> (2/3 runs)</td></tr>
-<tr><td>4</td><td>DeepSeek web (fast)</td><td>Web direct</td><td>V2 case (0.2 cm Tis trap)</td><td><strong>28 / 100</strong></td><td><span class="pill red">NO</span></td><td>— (no LVI on V2 case)</td></tr>
-<tr><td>5</td><td>Kimi K3 (~2.8T params)</td><td>WorkBuddy agent</td><td>V3 case (0.6 cm + LVI)</td><td><strong>27 / 100</strong></td><td>N/A</td><td><span class="pill red">NO</span> (mis-classified as invasion, 3/3)</td></tr>
-<tr><td>6</td><td>Grok 4.5 fast</td><td>X.com built-in (Fast)</td><td>V3 case (0.6 cm + LVI)</td><td><strong>14 / 100</strong></td><td>N/A</td><td><span class="pill red">NO</span> (down-staged to TisN0M0 / Stage 0, 3/3)</td></tr>
-<tr><td>7</td><td>ChatGLM 5.2</td><td>Web direct</td><td>V2 case (0.2 cm Tis trap)</td><td><strong>5 / 100</strong></td><td><span class="pill red">NO</span></td><td>— (no LVI on V2 case)</td></tr>
+<tr><th>Rank</th><th>Model</th><th>Wrapper</th><th>Rubric</th><th>Score (median)</th><th>Correct stage?</th><th>3 foci read correctly?</th></tr>
+<tr><td>1</td><td>DeepSeek V4 Pro</td><td>WorkBuddy agent</td><td>V2 (16-item)</td><td><strong>50 / 100</strong></td><td><span class="pill green">YES</span></td><td>— (not scored in V2)</td></tr>
+<tr><td>2</td><td><strong>智谱 GLM 5.2</strong></td><td><strong>WorkBuddy agent</strong></td><td>V3 (10-item)</td><td><strong>44 / 100</strong></td><td><span class="pill green">YES</span> (2/3, flagged the report's own error)</td><td><span class="pill green">YES</span> (3/3)</td></tr>
+<tr><td>3</td><td>豆包 Doubao</td><td>Mobile web</td><td>V2 (16-item)</td><td><strong>41 / 100</strong></td><td><span class="pill red">NO</span></td><td>— (not scored in V2)</td></tr>
+<tr><td>4</td><td>Kimi K3 (~2.8T params)</td><td>WorkBuddy agent</td><td>V3 (10-item)</td><td><strong>40 / 100</strong></td><td><span class="pill green">YES</span> (3/3)</td><td><span class="pill green">YES</span> (3/3)</td></tr>
+<tr><td>5</td><td>DeepSeek V4 Flash</td><td>WorkBuddy agent</td><td>V3 (10-item)</td><td><strong>34 / 100</strong></td><td><span class="pill amber">PARTIAL</span> (1/3)</td><td><span class="pill amber">PARTIAL</span> (1/3; called it LVI in 2/3)</td></tr>
+<tr><td>6</td><td>DeepSeek web, fast mode</td><td>Web direct — no agent</td><td>V2 (16-item)</td><td><strong>28 / 100</strong></td><td><span class="pill red">NO</span></td><td>— (not scored in V2)</td></tr>
+<tr><td>7</td><td>Grok 4.5 fast</td><td>X.com built-in (Fast)</td><td>V3 (10-item)</td><td><strong>14 / 100</strong></td><td><span class="pill red">NO</span> (Stage 0 in 3/3)</td><td><span class="pill red">NO</span></td></tr>
+<tr><td>8</td><td>智谱 ChatGLM 5.2</td><td>Web direct — no agent</td><td>V2 (16-item)</td><td><strong>5 / 100</strong></td><td><span class="pill red">NO</span></td><td>— (not scored in V2)</td></tr>
+</table>
+
+<h3>Same model, web vs agent — the isolated wrapper effect</h3>
+<table class="rank-table">
+<tr><th>Model</th><th>Web (no agent)</th><th>WorkBuddy agent</th><th>Delta</th></tr>
+<tr><td><strong>智谱 GLM 5.2</strong></td><td>5 / 100</td><td><strong>44 / 100</strong></td><td><span class="pill green">+39</span></td></tr>
+<tr><td><strong>DeepSeek V4 Flash / web-fast</strong></td><td>28 / 100</td><td><strong>34 / 100</strong></td><td><span class="pill green">+6</span></td></tr>
 </table>
 <div class="note">
-<strong>How to read this table.</strong> V2 and V3 use <em>different cases</em> and <em>different rubric sizes</em> (16-item for V2, 10-item for V3), so the absolute numbers are not directly comparable across cases. Within a case (V2 by itself, V3 by itself), the ordering is meaningful. The whole point of V4 — when it lands — is to make cross-case comparison fair by re-scoring the agent winners on the same web-direct surface.
-</div>
+<strong>How to read this table.</strong> Every model in the series was tested on the <em>same</em> anonymized case. What differs is the scoring sheet: V2 used a 16-item / 100-point rubric built around a transcription trap, V3 uses a stricter 10-item / 100-point rubric that grades staging precision, correct categorisation of the three foci, endocrine duration and bone protection separately. Cross-rubric ranks are therefore indicative; the clean comparisons are <em>within a rubric</em> and <em>within a model across wrappers</em> (second table). <strong>Correction (2026-07-31):</strong> the three foci in this case are interstitial (stromal) invasion, not lymphovascular invasion — the report explicitly records no LVI and no PNI, and the correct stage is pT1aN0M0, Stage ⅠA. Kimi K3 had been penalised for a mis-read it did not make and is re-scored from 27 to 40. </div>
 
 <h2>Methodology (same across all reviews)</h2>
 <ul>
-  <li><strong>One anonymized case at a time.</strong> Real post-op breast cancer pathology, scrubbed of patient identifiers, with the staging trap and the lymphovascular-invasion feature written into the case on purpose.</li>
+  <li><strong>One anonymized case at a time.</strong> Real post-op breast cancer pathology, scrubbed of patient identifiers, containing a genuine transcription error in the report’s own summary line (“TisN0M0” for what is actually pT1aN0M0 Stage ⅠA) — a trap that exists in the real document, not one I inserted.</li>
   <li><strong>One prompt.</strong> An image of the case report + <em>"Next therapy ?"</em> (V3) or a 16-item structured question (V2). Same prompt, same image, every run.</li>
   <li><strong>Three independent runs per (model × wrapper) cell.</strong> No cherry-picking, no second-chance regeneration. If a model is confident, the three runs should be near-clones; if it is uncertain, the spread shows up in the median.</li>
   <li><strong>10-item / 16-item rubric, 100 points.</strong> Items: correct staging, correct biology subtype, correct first-line therapy, correct therapy duration, correct chemo decision, correct radiation decision, correct anti-HER2 decision, correct bone protection, correct handling of LVI / high-risk features, and a hard "cite a specific guideline section" item. <strong>Correct + cited specific section = full points; correct but uncited = half; wrong = 0.</strong></li>
@@ -176,7 +185,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Model Reviews — Free AI Models on a Real Clinical Case","description":"A 5-part hands-on review series of free AI models on a real anonymized post-op breast cancer case, scored against 2026 CBCS / CSCO 2024 / NCCN 2025. V1 → V5 in order; 3 published (V1, V2, V3), 2 pending (V4 web-direct, V5 final verdict).","url":"https://tanhaosheng.asia/model-reviews","author":{"@type":"Person","name":"Tan Haosheng","alternateName":"谭好升","url":"https://tanhaosheng.asia/about.html","jobTitle":"Associate Chief Physician, Department of Thyroid and Breast Surgery","description":"Tan Haosheng (谭好升), MD/PhD (医学博士), Associate Chief Physician (副主任医师) at Taizhou People's Hospital (泰州市人民医院), specializing in thyroid and breast surgery (甲状腺乳腺外科).","alumniOf":{"@type":"EducationalOrganization","name":"Tsinghua University – Peking Union Medical College / National Cancer Center (清华大学-北京协和医学院 / 国家癌症中心)"},"worksFor":{"@type":"Organization","name":"Taizhou People's Hospital (泰州市人民医院)"}},"dateModified":"2026-07-31","publisher":{"@type":"Organization","name":"AI Tool Stack"},"hasPart":[{"@type":"Article","name":"V3: Same Model, Three Wrappers (3 Models, 9 Runs, 1 LVI Read)","url":"https://tanhaosheng.asia/agent-vs-web-isolation","datePublished":"2026-07-30"},{"@type":"Article","name":"V2: 4 Free AI Models on One Breast Cancer Case","url":"https://tanhaosheng.asia/four-models-clinical-showdown","datePublished":"2026-07-30"},{"@type":"Article","name":"V1: ChatGLM vs DeepSeek on a Chinese Clinical Case","url":"https://tanhaosheng.asia/chatglm-vs-deepseek-clinical-hands-on","datePublished":"2026-07-29"}]}</script>
 <script>
 (function(){
-  var CODES=['en','zh','es','fr','ar','ja','ko','ru','hi'];
+  var CODES=['en','zh'];
   function switchLang(l){
     var p=location.pathname.replace(/^\//,'').split('/');
     var base=CODES.indexOf(p[0])!==-1?p.slice(1).join('/'):p.join('/');

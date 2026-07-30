@@ -9,11 +9,20 @@
 #lang-switcher select:focus{outline:2px solid #6366f1}
 #lang-switcher option:disabled{color:#bbb}
 </style>
-</head><body><div id="lang-switcher"><label for="lang-select">🌐</label><select id="lang-select"><option value="en" selected>English</option><option value="zh">中文</option><option value="es" disabled>Español</option><option value="fr" disabled>Français</option><option value="ar" disabled>العربية</option><option value="ja" disabled>日本語</option><option value="ko" disabled>한국어</option><option value="ru" disabled>Русский</option><option value="hi" disabled>हिन्दी</option></select></div><nav><div class="nav-inner"><a href="/" class>🏠 Home</a><a href="/" class>📰 News</a><a href="/" class>🤖 AI</a><a href="/about" class>About</a></div></nav><div style="background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:10px;margin:14px auto;padding:10px 16px;max-width:900px;font:600 13px/1.6 system-ui,sans-serif;">⚠️ <strong>Affiliate Disclosure / 利益披露:</strong> This page may contain affiliate or promotional links. If you sign up or subscribe through such a link, I may earn a commission — but it <strong>never increases your price</strong> and <strong>never changes my independent conclusions</strong>. See the <a href="/affiliate-disclosure" style="color:#1e3a8a;text-decoration:underline;">Affiliate Disclosure</a> page.</div>
+</head><body><div id="lang-switcher"><label for="lang-select">🌐</label><select id="lang-select"><option value="en" selected>English</option><option value="zh">中文</option></select></div><nav><div class="nav-inner"><a href="/" class>🏠 Home</a><a href="/" class>📰 News</a><a href="/" class>🤖 AI</a><a href="/about" class>About</a></div></nav><div style="background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:10px;margin:14px auto;padding:10px 16px;max-width:900px;font:600 13px/1.6 system-ui,sans-serif;">⚠️ <strong>Affiliate Disclosure / 利益披露:</strong> This page may contain affiliate or promotional links. If you sign up or subscribe through such a link, I may earn a commission — but it <strong>never increases your price</strong> and <strong>never changes my independent conclusions</strong>. See the <a href="/affiliate-disclosure" style="color:#1e3a8a;text-decoration:underline;">Affiliate Disclosure</a> page.</div>
 
 <h1>4 Free AI Models on One Breast Cancer Case — A Surgeon's Extended Test</h1>
 <div class="article-byline">By <a href="https://tanhaosheng.asia/about">Tan Haosheng</a> · 副主任医师 / 医学博士 (Associate Chief Physician, MD/PhD) · 甲状腺乳腺外科 (Thyroid &amp; Breast Surgery), 泰州市人民医院 (Taizhou People's Hospital) · Published 2026-07-30</div>
 <div class="series-badge">🧪 原创实测 #2 / 5 &nbsp;·&nbsp; Hands-on Review 2 of 5 — Extended 4-model showdown</div>
+
+<div class="correction" style="border-left:4px solid #f59e0b;background:#fffbeb;padding:12px 16px;margin:14px 0;border-radius:8px;">
+<strong>⚠️ Correction note (2026-07-31).</strong> Two clarifications that affect how this article should be read, both surfaced while writing <a href="/agent-vs-web-isolation">Part 3</a>:
+<ul style="margin:8px 0 0 0">
+  <li><strong>Part 2 and Part 3 use the same case, not different cases.</strong> Earlier versions of both articles said otherwise. Every model across the series was given the identical anonymized pathology report. What differs between the two articles is the <em>scoring sheet</em> — 16 items here, a stricter 10 items in Part 3 — so scores are comparable within an article but only directional across them.</li>
+  <li><strong>The three small foci (0.05 / 0.06 / 0.2 cm) are interstitial (stromal) invasion, not lymphovascular invasion.</strong> The report explicitly states <em>"未见明确脉管瘤栓及神经侵犯"</em> — no LVI, no perineural invasion. The largest invasive focus is therefore 2 mm and the correct stage is <strong>pT1aN0M0, Stage ⅠA</strong> (Luminal A-like), not pT1b. The report's own <em>"TisN0M0 / Stage 0"</em> summary line is a genuine error in the source document — catching it is exactly what the staging item scores.</li>
+</ul>
+<p style="margin:8px 0 0 0">The 16-item scores in this article are unchanged: this rubric never graded the LVI-vs-interstitial distinction. The score that <em>did</em> change is Kimi K3's in Part 3, re-scored from 27 to 40. Full details in the <a href="/agent-vs-web-isolation">Part 3 correction note</a>.</p>
+</div>
 
 <div class="box">
 <strong>Why this follow-up exists:</strong> My <a href="/chatglm-vs-deepseek-clinical-hands-on">first test</a> pitted DeepSeek web (fast mode) against ChatGLM on a real, anonymized post-op breast cancer case and scored them with a fixed 16-item / 100-point rubric against the 2026 CBCS guideline. Two models were not enough. Readers — and I — wanted to know where <strong>Doubao (豆包)</strong> and the new <strong>DeepSeek V4 Pro inside the WorkBuddy agent</strong> land. So I ran the <em>identical case, identical prompt, identical rubric</em> on all four and put them side by side. Spoiler: only one model caught the single most important error hidden in the record — and it wasn't the one you'd guess.
@@ -185,7 +194,7 @@
 <div class="page-stats" style="margin-top:10px;font-size:.85em;color:#6b7280;">📊 全站浏览 <span id="busuanzi_value_site_pv">0</span> · 全站独立访客 <span id="busuanzi_value_site_uv">0</span>　|　📄 本页浏览 <span id="busuanzi_value_page_pv">0</span> · 本页独立访客 <span id="busuanzi_value_page_uv">0</span></div><div id="cf-stats" style="margin-top:6px;font-size:.85em;color:#6b7280;display:none;">🌐 Cloudflare 真实IP：全站 <b id="cf-site-pv">–</b> 浏览 / <b id="cf-site-uv">–</b> 唯一IP　|　📄 本页 <b id="cf-page-pv">–</b> 浏览 / <b id="cf-page-uv">–</b> 唯一IP <span style="opacity:.6;">(按IP累计，区别于busuanzi的cookie访客)</span></div>
 </footer><script>
 (function(){
-  var CODES=['en','zh','es','fr','ar','ja','ko','ru','hi'];
+  var CODES=['en','zh'];
   function switchLang(l){
     var p=location.pathname.replace(/^\//,'').split('/');
     var base=CODES.indexOf(p[0])!==-1?p.slice(1).join('/'):p.join('/');

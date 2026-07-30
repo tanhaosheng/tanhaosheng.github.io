@@ -51,7 +51,7 @@
 </style>
 
 </head>
-<body><div id="lang-switcher"><label for="lang-select">🌐</label><select id="lang-select"><option value="en" selected>English</option><option value="zh" disabled>中文</option><option value="es" disabled>Español</option><option value="fr" disabled>Français</option><option value="ar" disabled>العربية</option><option value="ja" disabled>日本語</option><option value="ko" disabled>한국어</option><option value="ru" disabled>Русский</option><option value="hi" disabled>हिन्दी</option></select></div>
+<body><div id="lang-switcher"><label for="lang-select">🌐</label><select id="lang-select"><option value="en" selected>English</option><option value="zh">中文</option></select></div>
 <div class="wrap">
   <div class="lang"><span style="color:var(--muted)">中文</span> · <a href="chatglm_report_en.html" style="text-decoration:none;font-weight:600">🇬🇧 English</a></div>
   <h1>ChatGLM 5.2 · 临床决策实测分析报告</h1>
@@ -182,7 +182,7 @@
 </div>
 <script>
 (function(){
-  var CODES=['en', 'zh', 'es', 'fr', 'ar', 'ja', 'ko', 'ru', 'hi'];
+  var CODES=['en','zh'];
   function switchLang(l){
     var p=location.pathname.replace(/^\//,'').split('/');
     var base=CODES.indexOf(p[0])!==-1?p.slice(1).join('/'):p.join('/');
