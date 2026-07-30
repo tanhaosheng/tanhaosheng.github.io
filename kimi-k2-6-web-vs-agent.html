@@ -1,0 +1,226 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Kimi K2.6 in 2026: Same Case, Same Model, Two Wrappers — Web (Standard Thinking) vs WorkBuddy Agent — Hands-on Review 4 of 5 - AI Tool Stack</title><meta name="description" content="Part 4 of the hands-on clinical LLM series: Kimi K2.6 (Moonshot AI) tested as a plain web chat in Kimi Quick / standard thinking mode AND inside the WorkBuddy agent, on the same anonymized post-op breast cancer case. Web median 37/100 across 3 runs (35, 42, 37). Agent runs are pending WorkBuddy testing. Per the rule for this version — only models that have BOTH a web version AND an agent wrapper are scored — Kimi K2.6 is the new addition. The two same-model web-vs-agent pairs from V3 (GLM 5.2 +39, V4 Flash +6) remain the cleanest cross-wrapper evidence. Agent results to be added."><meta name="robots" content="index, follow"><link rel="canonical" href="https://tanhaosheng.asia/kimi-k2-6-web-vs-agent">
+<link rel="alternate" hreflang="en" href="https://tanhaosheng.asia/kimi-k2-6-web-vs-agent">
+<link rel="alternate" hreflang="x-default" href="https://tanhaosheng.asia/kimi-k2-6-web-vs-agent"><meta property="og:title" content="Kimi K2.6 in 2026: Same Case, Same Model, Two Wrappers — Web (Standard Thinking) vs WorkBuddy Agent — Hands-on Review 4 of 5"><meta property="og:description" content="Kimi K2.6 (Moonshot AI), one model, two wrappers, one case. Web (Kimi Quick / standard thinking) median 37/100 across 3 runs. WorkBuddy agent runs pending — to be added. The web answers flagged the report's wrong staging in 1/3 runs and read the 3 foci as stromal invasion in 1/3. Agent will be the comparison that decides whether the wrapper adds anything for Kimi."><meta property="og:type" content="article"><meta property="og:url" content="https://tanhaosheng.asia/kimi-k2-6-web-vs-agent"><meta property="og:image" content="https://tanhaosheng.asia/assets/og-ai-tools.jpg"><meta property="og:locale" content="en_US"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Kimi K2.6: Web (Standard Thinking) vs WorkBuddy Agent — One Model, Two Wrappers"><meta name="twitter:description" content="Web median 37/100 (3 runs: 35, 42, 37). 1/3 runs caught the staging trap, 1/3 runs labelled the 3 foci as stromal invasion, 3/3 chose AI over Tamoxifen. Agent runs pending."><!-- AdSense --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3090420115329103" crossorigin="anonymous"></script><!-- Google Analytics 4 --><script async src="https://www.googletagmanager.com/gtag/js?id=G-NE8DYNMNYZ"></script><script>(function(){const gaId="G-NE8DNYZ";window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',gaId);})();</script><style>:root{--primary:#6c3ce1;--primary-dark:#4f2db5;--accent:#f59e0b;--bg:#f5f7fa;--text:#1a1a2e;--text-light:#6b7280;--border:#e5e7eb;--card:#fff}.*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--text);max-width:820px;margin:0 auto;padding:0 20px;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;font-size:19px;line-height:1.8}a{color:var(--primary);text-decoration:none}a:hover{text-decoration:underline}header,nav,footer{font-family:-apple-system,sans-serif}.nav-inner{display:flex;gap:16px;flex-wrap:wrap;padding:14px 0;border-bottom:1px solid var(--border);margin-bottom:18px}.nav-inner a{color:var(--text);font-weight:600}.article-byline{color:var(--text-light);font-size:14px;margin-bottom:18px;line-height:1.6}.article-byline a{color:var(--primary);font-weight:600}.series-badge{display:inline-block;background:#f0f9ff;color:#0c4a6e;border:1px solid #bae6fd;border-radius:8px;padding:6px 12px;font:600 13px/1.5 system-ui,sans-serif;margin-bottom:14px}h1{font-size:30px;line-height:1.3;margin-bottom:8px}h2{font-size:24px;line-height:1.3;margin-top:32px;margin-bottom:14px;border-bottom:2px solid var(--border);padding-bottom:6px}h3{font-size:20px;margin-top:22px;margin-bottom:10px}.win-note,.miss,.pending,.takeaways,.box,.correction,.note,.faq{font-family:-apple-system,sans-serif;margin:14px 0}.box{background:#fff;border:1px solid var(--border);border-radius:10px;padding:12px 16px}.correction{border-left:4px solid #f59e0b;background:#fffbeb;padding:12px 16px;border-radius:8px}.win-note{border-left:4px solid #16a34a;background:#f0fdf4;padding:10px 14px;border-radius:8px}.miss{border-left:4px solid #b91c1c;background:#fef2f2;padding:10px 14px;border-radius:8px}.pending{border-left:4px solid #6366f1;background:#eef2ff;padding:14px 18px;border-radius:8px}.takeaways{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:14px 18px}.note{background:#f9fafb;border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text-light);font-size:16px}.faq details{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;margin:8px 0}.faq summary{cursor:pointer;font-weight:600;color:var(--primary-dark)}ul,ol{padding-left:24px;margin:10px 0}li{margin:6px 0}table{border-collapse:collapse;width:100%;margin:14px 0;font-size:15px;font-family:-apple-system,sans-serif}th,td{border:1px solid var(--border);padding:8px 10px;text-align:left;vertical-align:top}th{background:#f3f4f6;font-weight:600}.pill{display:inline-block;padding:1px 8px;border-radius:10px;font-size:13px;font-weight:600}.pill.green{background:#dcfce7;color:#15803d}.pill.yellow{background:#fef3c7;color:#92400e}.pill.red{background:#fee2e2;color:#b91c1c}.pill.gray{background:#e5e7eb;color:#6b7280}.zh{background:#f0f9ff;border:1px solid #bae6fd;border-radius:10px;padding:14px 18px;font-family:-apple-system,sans-serif;margin:14px 0}footer{color:var(--text-light);font-size:14px;margin-top:32px;padding-top:14px;border-top:1px solid var(--border);text-align:center}</style>
+<style>
+#lang-switcher{position:fixed;top:10px;right:12px;z-index:99999;background:#fff;border:1px solid #d1d5db;border-radius:10px;padding:5px 9px;box-shadow:0 2px 10px rgba(0,0,0,.15);font:600 13px/1.3 system-ui,sans-serif;display:flex;align-items:center;gap:6px}
+#lang-switcher label{font-size:15px;cursor:default}
+#lang-switcher select{border:none;background:transparent;font:600 13px system-ui,sans-serif;cursor:pointer;outline:none;max-width:130px}
+#lang-switcher select:focus{outline:2px solid #6366f1}
+#lang-switcher option:disabled{color:#bbb}
+</style>
+</head><body><div id="lang-switcher"><label for="lang-select">🌐</label><select id="lang-select"><option value="en" selected>English</option><option value="zh" disabled>中文</option></select></div><nav><div class="nav-inner"><a href="/" class>🏠 Home</a><a href="/" class>📰 News</a><a href="/" class>🤖 AI</a><a href="/about" class>About</a></div></nav><div style="background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:10px;margin:14px auto;padding:10px 16px;max-width:900px;font:600 13px/1.6 system-ui,sans-serif;">⚠️ <strong>Affiliate Disclosure / 利益披露:</strong> This page may contain affiliate or promotional links. If you sign up or subscribe through such a link, I may earn a commission — but it <strong>never increases your price</strong> and <strong>never changes my independent conclusions</strong>. See the <a href="/affiliate-disclosure" style="color:#1e3a8a;text-decoration:underline;">Affiliate Disclosure</a> page.</div>
+
+<h1>Kimi K2.6 in 2026: Same Case, Same Model, Two Wrappers — Web (Standard Thinking) vs WorkBuddy Agent — Hands-on Review 4 of 5</h1>
+<div class="article-byline">By <a href="https://tanhaosheng.asia/about">Tan Haosheng</a> · 副主任医师 / 医学博士 (Associate Chief Physician, MD/PhD) · 甲状腺乳腺外科 (Thyroid &amp; Breast Surgery), 泰州市人民医院 (Taizhou People's Hospital) · Published 2026-07-31</div>
+<div class="series-badge">🧪 原创实测 #4 / 5 &nbsp;·&nbsp; Hands-on Review 4 of 5 — single-model wrapper test. One model (Kimi K2.6), two wrappers, one anonymized case. Web scores in; agent runs pending WorkBuddy testing.</div>
+
+<div class="box">
+<strong>Why this version exists.</strong> In <a href="/agent-vs-web-isolation">Part 3</a> the headline was the web-vs-agent comparison: GLM 5.2 went from <strong>5/100</strong> on the web to <strong>44/100</strong> inside the WorkBuddy agent on the same case (+39), and DeepSeek's fast tier went from <strong>28 → 34</strong> (+6). Two same-model pairs. But the series rule going forward is sharper: <em>only include models that have BOTH a web version AND an agent wrapper</em>, because that's the only configuration where the wrapper effect is isolable. Kimi K2.6 (Moonshot AI) qualifies — Kimi's standard thinking-mode web chat is openly available, and Kimi is one of the models exposed inside the WorkBuddy agent. This article therefore tests <strong>Kimi K2.6 twice</strong>, on the same case, in the two wrappers, three runs each.
+</div>
+
+<div class="pending">
+<strong>Agent runs pending.</strong> This article publishes with <strong>web data only</strong> (median <strong>37 / 100</strong> across 3 runs). The WorkBuddy-agent runs for Kimi K2.6 have not yet been completed at the time of writing — that comparison leg is the entire point of V4 and will be folded in as soon as the data lands (a <span class="pill gray">pending</span> section is reserved below). The web results still stand on their own: they are a clean three-run test of Kimi K2.6 in its default web interface, and they expose two of the failure modes the agent wrapper would have to compensate for.
+</div>
+
+<h2>The single-model wrapper test</h2>
+<p>Up to Part 3, the series was answering two questions at once: <em>"which model?"</em> and <em>"which wrapper?"</em>. The agent-vs-web-isolation article tried to disentangle them by running multiple models through the same wrapper (WorkBuddy) and a few through both wrappers. But mixing those two variables together still left room for confound.</p>
+<p>Part 4 tightens the design. <strong>One model. Two wrappers. Same case, same prompt, three runs each.</strong> That is the cleanest possible wrapper-effect test, and it answers a single, sharp question: <em>does the WorkBuddy agent change what Kimi K2.6 says, and by how much?</em></p>
+
+<h3>What gets included — and what gets excluded</h3>
+<p>Per the rule for this version, only models that exist in <strong>both</strong> a web surface and an agent wrapper are scored. Concretely:</p>
+<ul>
+  <li><strong>Included here:</strong> Kimi K2.6 (web + WorkBuddy agent). Once the agent data lands, the headline number is a single Δ = (agent median) − (web median) on the same case.</li>
+  <li><strong>Excluded:</strong> Grok 4.5 fast — only the X.com web surface was available, not an agent wrapper. Kimi K3 — no web answer has been run on this case yet (it was the agent-only family in V3). DeepSeek V4 Pro — chat.deepseek.com cannot upload images in the free tier at the time of writing, so a like-for-like web test of this case was not possible. ChatGLM — its web default scored 5/100 in Part 2, and the equivalent agent (GLM 5.2 in WorkBuddy) was already tested at 44/100 in V3. Those GLM deltas are cited as <em>cross-wrapper evidence</em> below, not re-run here.</li>
+</ul>
+
+<h2>Methodology</h2>
+<p>Identical to <a href="/agent-vs-web-isolation">Part 3</a>. Same anonymized case-report image (the post-op breast cancer case), same one-line prompt <strong>"Next therapy ?"</strong>, three independent runs each on the Kimi web (standard thinking mode) and three on the WorkBuddy agent. Scoring stays consistent: <strong>correct + cited specific guideline section = full points; correct but uncited (or guideline named only) = half; wrong or missing = 0</strong>.</p>
+<p>This article scores the same <strong>10 decision points</strong> against the <strong>2026 CBCS / CSCO 2024 / NCCN 2025</strong> consensus used in V3. The weights sum to 100.</p>
+
+<h2>The case</h2>
+<p>Same anonymized post-op breast cancer case as Parts 1, 2 and 3:</p>
+<ul>
+  <li><strong>Patient:</strong> 60-year-old, postmenopausal.</li>
+  <li><strong>Surgery:</strong> Right simple mastectomy + sentinel lymph node biopsy (with one para-sentinel node).</li>
+  <li><strong>Pathology:</strong> Invasive carcinoma + low-grade DCIS + intraductal papillary carcinoma components; overall lesion 0.6 cm, within which there are <strong>3 foci of interstitial (stromal) invasion measuring 0.05 / 0.06 / 0.2 cm</strong> — so the <strong>largest invasive focus is 2 mm</strong>. The report states <em>"未见明确脉管瘤栓及神经侵犯"</em>: <strong>no lymphovascular invasion (LVI), no perineural invasion (PNI)</strong>. ER 3+ 90%, PR 3+ 90%, HER2 0, Ki-67 5%, P53 wild-type; margins, nipple, skin and base all negative; sentinel nodes 0/2 plus 0/1 para-sentinel = <strong>0/3</strong>.</li>
+  <li><strong>Contralateral:</strong> Fibroadenoma + adenosis + sclerosing adenosis (benign, follow-up only).</li>
+  <li><strong>Correct stage &amp; subtype:</strong> <strong>pT1aN0M0, Stage IA, Luminal A-like</strong>. (The report's own <em>"TisN0M0 / Stage 0"</em> line is the trap — it under-stages an invasive cancer to 0期.)</li>
+</ul>
+
+<h2>Reference answer (2026 CBCS / CSCO 2024 / NCCN 2025)</h2>
+<ul>
+  <li><strong>Endocrine therapy</strong> — Aromatase inhibitor (letrozole 2.5 mg / anastrozole 1 mg / exemestane 25 mg, daily) for ≥ 5 years; <strong>extend to 7–10 years</strong> as routine postmenopausal HR+ N0 practice (MA.17R, NSABP B-42, ATLAS / aTTom). The extension is <em>not</em> driven by LVI here — there is none.</li>
+  <li><strong>Chemotherapy</strong> — Not routinely indicated (pT1a, N0, Luminal A-like, postmenopausal, Ki-67 5%); Oncotype DX may be ordered for shared decision-making but not required.</li>
+  <li><strong>Post-mastectomy radiation therapy (PMRT)</strong> — Not indicated. This was a mastectomy for T1N0 disease with negative margins; PMRT is reserved for T3–4, positive margins, or ≥ 4 positive nodes. Recommending whole-breast radiotherapy here means the model assumed breast-conserving surgery.</li>
+  <li><strong>Anti-HER2 therapy</strong> — Not indicated (HER2 IHC 0).</li>
+  <li><strong>Bone protection</strong> — Bisphosphonate (zoledronic acid 4 mg IV q6m × 3 years) or denosumab while on AI (ABCSG-12 / AZURE). DEXA scan at baseline and every 1–2 years.</li>
+  <li><strong>Follow-up</strong> — Standard 3–6 month clinic visits, annual contralateral breast imaging, BMD every 1–2 years on AI.</li>
+</ul>
+
+<h2>Kimi K2.6 — web (Kimi Quick, standard thinking mode), 3 runs</h2>
+<p>Three independent runs of Kimi K2.6 on kimi.moonshot.cn / Kimi Quick mode with standard thinking enabled, on the same case image and the same <strong>"Next therapy ?"</strong> prompt. All three answered in English even though the source case and the operator are Chinese — a language choice worth flagging on its own (V3's Kimi K3 runs in WorkBuddy answered in Chinese).</p>
+
+<h3>Run 1 — correct foci, wrong staging, no LVI/PNI addressed</h3>
+<div class="miss">
+<strong>The read.</strong> Recites the case correctly (age, surgery, 0.6 cm overall lesion, three <em>"foci of stromal invasion (0.05cm, 0.06cm, 0.2cm)"</em> — that is the right category for the three foci, used here unprompted). But then accepts the report's <em>"TisN0M0 (Stage 0)"</em> summary line as the staging — without flagging it as a transcription error, and without converting the largest invasive focus (2 mm) to pT1a. <strong>This is the same trap V3 documented in Grok (3/3) and partially in DeepSeek V4 Flash (2/3); Kimi K2.6 in this run walked into it.</strong>
+<br><br>
+<strong>Endocrine.</strong> Correctly chose aromatase inhibitor first line for a postmenopausal patient (letrozole / anastrozole / exemestane for 5 years). Tamoxifen listed as an alternative — correct framing.
+<br><br>
+<strong>What was correct.</strong> Luminal A-like subtype, no chemotherapy (with reasoning — very small tumour, low-grade, ER/PR strongly positive, HER2-negative, low Ki-67, node-negative; Oncotype DX mentioned as an option), no radiation (with criteria — tumour ≤ 5 cm, negative margins, ≤ 3 positive nodes), HER2 = 0 noted (anti-HER2 implication, though not stated explicitly). Bone health: <em>"baseline DEXA scan and calcium / vitamin D supplementation"</em> — monitoring only, no drug.
+<br><br>
+<strong>What was wrong or missing.</strong> Staging: TisN0M0 instead of pT1aN0M0 IA. Lymphovascular invasion and perineural invasion: not mentioned at all (the report explicitly says <em>"未见明确脉管瘤栓及神经侵犯"</em>, and a clinician needs the model to surface that for the patient). Endocrine duration: 5 years only, no extension discussion. Guideline citations: none.
+</div>
+
+<h3>Run 2 — the strongest of the three</h3>
+<div class="win-note">
+<strong>The read.</strong> Same case, but this run goes further. The pathology table explicitly states <em>"Lymphovascular invasion: None identified"</em> and <em>"Perineural invasion: None identified"</em> — both correct. Then the <strong>staging row calls out the discrepancy</strong>: <em>"TisN0M0 (Stage 0) — note: this appears to be a coding issue; with 0.6cm invasive component, it should likely be pT1aN0M0, Stage IA."</em> That is the same class of catch V3's GLM 5.2 made on the same case (catch the report's wrong "Stage 0" line and override it with the measurements). Kimi K2.6 only did it in this one run out of three.
+<br><br>
+<strong>Endocrine.</strong> Aromatase inhibitor for 5 years minimum, with <em>"consider extending to 7–10 years for higher-risk patients"</em> — explicit extension discussion. Tamoxifen as alternative if AI not tolerated. Correct.
+<br><br>
+<strong>What was correct.</strong> Luminal A-like; no chemotherapy (with <em>"absolute benefit would be minimal (<1-2%)"</em> framing); no PMRT (mastectomy + negative margins + low risk); no anti-HER2 (HER2 = 0 explicit); bisphosphonate discussion: <em>"Zoledronic acid or oral bisphosphonates may be considered for bone health and potential reduction in distant recurrence in postmenopausal women on AI therapy"</em>. DEXA + calcium + vitamin D.
+<br><br>
+<strong>What was weaker.</strong> The 0.6 cm framing is given as <em>"(largest invasive focus)"</em> in the patient-summary table — slightly imprecise (the 0.6 cm is the overall lesion including DCIS, not the largest invasive focus, which is 2 mm). The three foci are not explicitly re-labelled as <em>"interstitial invasion"</em> in the analysis — the model denies LVI/PNI but does not positively state what the foci <em>are</em>. No specific guideline section cited.
+</div>
+
+<h3>Run 3 — partial read, conservative plan</h3>
+<div class="miss">
+<strong>The read.</strong> Most detailed pathology table of the three — includes EGFR, E-cadherin, P53 wild-type — and correctly lists <em>"Lymphovascular invasion: None"</em>, <em>"Perineural invasion: None"</em>. But the staging stays at <em>"pTisN0M0 (Stage 0)"</em> in the table, with a hedged note: <em>"This appears to be primarily DCIS with microinversion" / "TisN0M0 suggests the treating team considered this as DCIS with microinvasion rather than true invasive carcinoma."</em> The model then <em>asks</em> whether it should be T1mi (DCIS with microinvasion) or true invasive, but does not commit. That is a more careful read than Run 1, but it stops short of the <strong>pT1aN0M0 IA</strong> answer that the measurements actually support.
+<br><br>
+<strong>Endocrine.</strong> Aromatase inhibitor first line (letrozole / anastrozole / exemestane), Tamoxifen alternative, <em>"typically 5 years, may extend to 7–10 years for high-risk cases, though this patient's risk appears low"</em> — correct.
+<br><br>
+<strong>What was correct.</strong> Luminal A-like; no chemotherapy (framed as <em>"chemotherapy has no role"</em> because of microinvasive foci + ER+/HER2− + low Ki-67 + negative nodes — close, but the framing uses <em>"microinvasive foci"</em> loosely); no PMRT; no anti-HER2 (explicit); brief bone-density mention in the surveillance table.
+<br><br>
+<strong>What was wrong or missing.</strong> Staging: hedged rather than committed; the patient walks away with the wrong impression of her own disease. Bisphosphonate: only monitoring, no drug. No specific guideline section cited.
+</div>
+
+<h3>What the three Kimi K2.6 web runs show</h3>
+<ul>
+  <li><strong>One of three runs caught the staging trap.</strong> Run 2 explicitly overrode the report's <em>"TisN0M0 / Stage 0"</em> line and arrived at <em>"pT1aN0M0, Stage IA"</em>. Run 1 copied it verbatim. Run 3 hedged around it. Average behaviour across three runs: the model <em>can</em> see the trap but doesn't reliably catch it.</li>
+  <li><strong>One of three runs positively labelled the three foci as stromal / interstitial invasion.</strong> Run 1 used <em>"3 foci of stromal invasion"</em> explicitly (correct). Runs 2 and 3 said LVI = None but did not positively name what the foci <em>are</em>. The model has the right category in its vocabulary; it just doesn't deploy it on demand.</li>
+  <li><strong>Endocrine choice is reliable.</strong> 3/3 chose aromatase inhibitor as the first line for a postmenopausal patient (no Tamoxifen mis-picks like Grok 2/3 in V3). Tamoxifen was mentioned as an alternative in all three — that is correct framing, not a wrong pick.</li>
+  <li><strong>English-only output.</strong> All three Kimi K2.6 web runs answered in English even though the case image and the operator are Chinese. V3's Kimi K3 (WorkBuddy agent) answered in Chinese. The agent's system prompt apparently switches the language behaviour — that is one of the more interesting things the wrapper may be doing.</li>
+  <li><strong>Run-to-run variance is real.</strong> Scores 35 / 42 / 37, range 7 points. Lower than V3 GLM 5.2's swing of 19, higher than V3 Kimi K3's 0, and similar to V3 V4 Flash's 15. Kimi K2.6 web is not the consistency model its elder-sibling Kimi K3 was inside the agent — that may also be a wrapper effect.</li>
+</ul>
+
+<h2>The 10-item score sheet — Kimi K2.6 (web, standard thinking)</h2>
+<table>
+<tr><th>Item (max)</th><th>Run 1</th><th>Run 2</th><th>Run 3</th></tr>
+<tr><td>1. Correct staging: pT1aN0M0 IA (10)</td><td><span class="pill red">0</span> (TisN0M0 / Stage 0 — wrong)</td><td><span class="pill green">5</span> (correct, flagged the trap)</td><td><span class="pill red">2</span> (hedged; did not commit)</td></tr>
+<tr><td>2. Recognize Luminal A subtype (8)</td><td><span class="pill green">4</span></td><td><span class="pill green">4</span></td><td><span class="pill green">4</span></td></tr>
+<tr><td>3. AI as first-line endocrine (12)</td><td><span class="pill green">6</span></td><td><span class="pill green">6</span></td><td><span class="pill green">6</span></td></tr>
+<tr><td>4. AI duration ≥ 5y, extension discussed (10)</td><td><span class="pill yellow">3</span> (5y only)</td><td><span class="pill green">5</span> (5y min, consider 7–10y)</td><td><span class="pill green">5</span> (5y, 7–10y for high-risk)</td></tr>
+<tr><td>5. No chemo / explain why (10)</td><td><span class="pill green">5</span></td><td><span class="pill green">5</span></td><td><span class="pill green">5</span></td></tr>
+<tr><td>6. No PMRT for T1–2N0 mastectomy (10)</td><td><span class="pill green">5</span></td><td><span class="pill green">5</span></td><td><span class="pill green">5</span></td></tr>
+<tr><td>7. No anti-HER2 (HER2 0) (8)</td><td><span class="pill yellow">4</span> (HER2 = 0 noted, no anti-HER2 implied)</td><td><span class="pill green">4</span> (explicit: "no benefit from trastuzumab")</td><td><span class="pill green">4</span> (explicit: "no indication for trastuzumab")</td></tr>
+<tr><td>8. Bone protection for postmenop. on AI (10)</td><td><span class="pill yellow">3</span> (DEXA + Ca + VitD, no drug)</td><td><span class="pill green">5</span> (zoledronate / oral bisphosphonate consider)</td><td><span class="pill yellow">3</span> (monitoring only)</td></tr>
+<tr><td>9. 3 foci correctly categorised as interstitial invasion, <em>not</em> LVI (10)</td><td><span class="pill green">5</span> ("3 foci of stromal invasion" — explicit)</td><td><span class="pill yellow">3</span> (LVI/PNI None, no interstitial label)</td><td><span class="pill yellow">3</span> (LVI/PNI None, no interstitial label)</td></tr>
+<tr><td>10. Cite specific guideline section / page (12)</td><td><span class="pill red">0</span></td><td><span class="pill red">0</span></td><td><span class="pill red">0</span></td></tr>
+<tr style="font-weight:700;background:#f3f4f6"><td>Total (100)</td><td>35</td><td>42</td><td>37</td></tr>
+<tr style="font-weight:700;background:#f3f4f6"><td>Median</td><td colspan="3" style="text-align:center"><strong>37 / 100</strong></td></tr>
+</table>
+<p style="font-size:14px;color:#6b7280;">Scoring convention: correct + cited specific guideline section = full marks; correct but uncited (or guideline named only) = half; wrong or missing = 0. Same rule as Parts 1, 2 and 3.</p>
+
+<h2>Kimi K2.6 — WorkBuddy agent, 3 runs <span class="pill gray">pending</span></h2>
+<div class="pending">
+<strong>Reserved for the wrapper-effect comparison.</strong> The agent leg is the second half of the same-model test and has not yet been run at the time of writing. As soon as three independent runs of Kimi K2.6 inside the WorkBuddy agent (same image, same <em>"Next therapy ?"</em> prompt) are completed, this section will be filled in with:
+<ul>
+  <li>three run-by-run write-ups,</li>
+  <li>the same 10-item / 100-point score sheet, and</li>
+  <li>the headline Δ = (agent median) − (web median) on the same case.</li>
+</ul>
+The web median above is <strong>37 / 100</strong>. If the agent lifts Kimi K2.6 substantially, that joins GLM 5.2 (+39) and DeepSeek V4 Flash (+6) as the third same-model pair in the series. If it does not, Kimi K2.6 is the first model where the wrapper added little — which is itself a finding, given the strong-case-of-the-other-Kimi (K3 agent 40/100 in V3).
+</div>
+
+<h2>The headline result — same model, web vs agent <span class="pill gray">pending</span></h2>
+<div class="pending">
+<table>
+<tr><th>Model</th><th>Web version (no agent)</th><th>WorkBuddy agent</th><th>Delta</th></tr>
+<tr><td><strong>Kimi K2.6</strong></td><td><strong>37 / 100</strong> <span style="color:#6b7280">(Kimi Quick / standard thinking)</span></td><td><span class="pill gray">pending</span></td><td><span class="pill gray">Δ pending</span></td></tr>
+</table>
+<p style="font-size:14px;color:#6b7280;">Kimi K2.6 web scores above are from this article (Part 3 10-item rubric). WorkBuddy-agent numbers will be added in V4.1 as soon as the three runs are completed.</p>
+</div>
+
+<h2>Cross-wrapper evidence — what V3 already established</h2>
+<p>V3 ran two models through both the web surface and the WorkBuddy agent on the same case. Those deltas are the only fully clean same-model wrapper evidence in the series to date:</p>
+<table>
+<tr><th>Model</th><th>Web (no agent)</th><th>WorkBuddy agent</th><th>Δ</th></tr>
+<tr><td><strong>智谱 GLM 5.2</strong></td><td>5 / 100 <span style="color:#6b7280">(Part 2 rubric)</span></td><td><strong>44 / 100</strong> <span style="color:#6b7280">(Part 3 rubric)</span></td><td><span class="pill green">+39</span></td></tr>
+<tr><td><strong>DeepSeek V4 Flash / web-fast</strong></td><td>28 / 100 <span style="color:#6b7280">(Part 2 rubric)</span></td><td><strong>34 / 100</strong> <span style="color:#6b7280">(Part 3 rubric)</span></td><td><span class="pill green">+6</span></td></tr>
+<tr><td><strong>Kimi K2.6</strong></td><td>37 / 100 <span style="color:#6b7280">(Part 3 rubric, this article)</span></td><td><span class="pill gray">pending</span></td><td><span class="pill gray">Δ pending</span></td></tr>
+</table>
+<div class="note">
+<strong>What this pattern suggests.</strong> GLM 5.2 had collapsed without scaffolding and gained +39 once wrapped. DeepSeek's fast tier was already competent on the web and gained only +6. Kimi K2.6 web sits between them (37 is closer to DeepSeek fast's 28 than to GLM's 5). If the pattern holds, the agent wrapper's expected contribution for Kimi K2.6 is <strong>small to moderate</strong> — maybe a few points of polish, possibly more on items 8 (bone protection) and 10 (specific guideline section). It is unlikely to deliver the GLM-style +39, because the floor it would be lifting from is already at 37 rather than 5. The cleanest test of that expectation is the three agent runs that are pending.
+</div>
+
+<h2>Pending tests — what V4.1 will fold in</h2>
+<div class="pending">
+<ul>
+  <li><strong>Kimi K2.6 — WorkBuddy agent × 3 runs.</strong> Same case, same prompt, same rubric. The single most important pending number in the series: Δ = (agent median) − 37. Updates both the score sheet above and the leaderboard on the <a href="/model-reviews">Model Reviews</a> page.</li>
+  <li><strong>Re-score Kimi K2.6 web on the Part 2 16-item rubric</strong> — to remove the cross-rubric caveat from any direct comparison with GLM 5.2 web (Part 2 rubric) and DeepSeek fast web (Part 2 rubric). Optional but worth doing.</li>
+  <li><strong>Open across the rest of the eligible model list.</strong> Kimi K3 web direct (kimi.com) is still missing from the grid, as is DeepSeek V4 Pro web direct (no image upload on the free tier at the time of writing). Either of those would extend the wrapper grid to a third or fourth model family.</li>
+</ul>
+</div>
+
+<h2>Preliminary takeaway</h2>
+<div class="takeaways">
+<h3>What this leg (web only) establishes</h3>
+<ul>
+  <li><strong>Kimi K2.6 web (Kimi Quick, standard thinking) sits in the middle of the same-case cohort.</strong> Median 37 / 100 across 3 runs. Below GLM 5.2 agent (44) and Kimi K3 agent (40), above DeepSeek V4 Flash agent (34) and well above Grok 4.5 fast (14). Same case, same prompt.</li>
+  <li><strong>The model has the right vocabulary but doesn't deploy it on demand.</strong> <em>"Stromal invasion"</em> appears unprompted in Run 1; <em>"interstitial invasion"</em> never appears across the three runs even though the report's wording <em>"间质浸润"</em> is the exact category. The trap <em>"TisN0M0 / Stage 0"</em> is correctly identified as an error only in Run 2.</li>
+  <li><strong>Endocrine choice is rock-solid.</strong> 3/3 aromatase inhibitor first line for a postmenopausal patient. This was V3's biggest Grok failure (2/3 tamoxifen); it is not Kimi K2.6's failure mode.</li>
+  <li><strong>Language behaviour differs from V3's Kimi K3 agent.</strong> All three Kimi K2.6 web runs answered in English; V3's Kimi K3 runs in WorkBuddy answered in Chinese. The wrapper is doing something to language choice too — that will become testable once the agent runs land.</li>
+  <li><strong>No specific guideline section anywhere.</strong> Three runs, zero section / page / table citations. Same five-model-family failure noted in V3 (DeepSeek V4 Pro, DeepSeek V4 Flash, Kimi K3, GLM 5.2, Grok 4.5 fast). Kimi K2.6 web makes it six for six.</li>
+</ul>
+<h3>What I cannot yet say (waiting on agent data)</h3>
+<ul>
+  <li>I cannot yet quantify the agent's effect on Kimi K2.6. The web median of 37 is the baseline; the comparison leg is pending.</li>
+  <li>I cannot yet declare whether the agent wrapper's contribution is roughly proportional to the gap between web and a perfect score, or whether it depends on the underlying model family. Two V3 data points (GLM +39, V4 Flash +6) and one V4 pending number (K2.6 Δ) will not be enough to fit a curve.</li>
+  <li>I cannot yet recommend Kimi K2.6 (web) over Kimi K3 (agent) or vice versa, because no like-for-like test of <em>Kimi K3 web</em> exists yet. That is still the missing leg of the whole series.</li>
+</ul>
+</div>
+
+<div class="zh">
+<strong>一句话结论（中文）：</strong> 同一份病例、同一句 "Next therapy?"，V4 在 <b>同一个模型 Kimi K2.6</b> 上做了<b>两套外壳</b>对比：网页版（Kimi 快速 App 标准思考模式）3 次中位 <b>37 / 100</b>（3/3 选 AI 而非他莫昔芬，1/3 看穿病历里的 "TisN0M0 / 0期" 陷阱并改写为 pT1aN0M0 IA，1/3 主动写"3 foci of stromal invasion"把间质浸润说对，3/3 仍不引具体指南章节）；WorkBuddy 智能体版的 3 次留位待测，补齐后会给出 Δ = agent − 37。配合 V3 已有的两组对照（GLM 5.2 +39、DeepSeek V4 Flash +6），V4 想回答的核心问题是：<b>智能体外壳对一个本身中位的模型还能再加多少分？</b>
+<br><br>
+<b>V4 与 V3 的差别：</b>V3 同时跑多个模型在同一外壳下，结论是"模型比外壳重要"；V4 只跑一个模型在两套外壳下，结论（待补）是"对这个具体模型，外壳到底加不加持"。按 V3 的趋势推测：Kimi K2.6 web 已经是 37 分（不像 GLM web 的 5 分那么崩），智能体加持大概率落在<b>个位数到十几分</b>这个区间，不太可能复现 GLM 的 +39。要把这个猜测坐实，需要那 3 次智能体跑分。
+<br><br>
+<b>本页不含的测试：</b>Grok 4.5 fast（只有 X.com 网页版，没有智能体版）、Kimi K3（只有智能体版跑过，网页版没跑）、DeepSeek V4 Pro（网页免费版不能上传图片，所以本病例跑不了）。这三类被规则明确排除——"只针对有网页版和智能体版的模型"。
+</div>
+
+<div class="note">
+⚠️ <strong>Medical disclaimer.</strong> This article is an LLM tool-comparison evaluation. It is <strong>not medical advice</strong>, and model outputs must never be used for real patient decisions. The case is anonymized and used only to demonstrate a testing method.
+</div>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+<details><summary>Why publish the web data now if the agent runs aren't in yet?</summary>
+<p>Because the web data is the baseline, and the series rule for V4 is "only models with both wrappers" — which means the article's headline (Δ = agent − web) cannot be computed until the agent runs land, but the baseline half of that calculation can and should be published as soon as it exists. The web runs are reproducible on kimi.moonshot.cn today; hiding them until the agent data is ready adds no value to anyone reading this. The pending sections are clearly labelled and the article will be updated in place once the agent runs are completed.</p></details>
+<details><summary>Why include Kimi K2.6 if Kimi K3 was already in V3?</summary>
+<p>Because the wrapper-effect test needs the <em>same</em> model in <em>both</em> wrappers. V3's Kimi K3 was tested in the WorkBuddy agent only — there is no Kimi K3 web answer for this case, so the wrapper-effect for the K3 / agent combination cannot be isolated. Kimi K2.6 is the version Moonshot exposes in the Kimi Quick web surface; testing K2.6 in both wrappers gives a clean single-model comparison even though it is a different version from the agent-tested K3. The two Kimi tests together are informative even if they are not directly comparable.</p></details>
+<details><summary>Why doesn't Kimi K2.6 (web) answer in Chinese like Kimi K3 (agent) did?</summary>
+<p>That is one of the open questions the agent runs will help answer. Possible explanations include: (a) Kimi Quick is configured to default to English; (b) the agent's system prompt explicitly asks for Chinese output; (c) the model's behaviour drifts between web and agent surfaces. We won't know which is dominant until the agent runs are scored — if the agent runs answer in Chinese, the wrapper is the lever; if they still answer in English, the model itself is the lever.</p></details>
+<details><summary>Does the WorkBuddy agent wrapper improve Kimi K2.6 the way it improved GLM 5.2?</summary>
+<p>Unknown — that is the headline answer V4 is built to produce. Kimi K2.6 web (37) sits much closer to DeepSeek fast web (28) than to GLM 5.2 web (5). If the wrapper-effect scales with how far the model is below its ceiling, the expected Δ for Kimi K2.6 is modest — somewhere between the V4 Flash +6 and a generous upper bound. But the only honest answer is the three agent runs, and they are pending.</p></details>
+<details><summary>Can I reproduce this myself?</summary>
+<p>Yes — for the web half. Open kimi.moonshot.cn (or the Kimi Quick mobile app), set the mode to <em>standard thinking</em>, paste the same anonymized case-report image, type <em>"Next therapy ?"</em>, and you will get a Kimi K2.6 web answer on this exact case. Score against the 2026 CBCS reference above and you have your own number. The agent half requires a WorkBuddy account. Submit your results and I'll add a community-runners section to the <a href="/clinical-benchmark/">Clinical LLM Benchmark data appendix</a>.</p></details>
+</div>
+
+<p style="margin-top:24px"><em>This is the fourth of a planned 5-part <strong>原创实测 / Hands-on Review</strong> series — real, signed, reproducible tests of AI tools I actually use in clinical and research work. See the full <a href="/model-reviews">Model Reviews</a> index for V1, V2, V3 and the planned Part 5. Next update on this page: <strong>Kimi K2.6 — WorkBuddy agent × 3 runs</strong>, which will complete the wrapper-effect comparison and refresh both the score sheet and the leaderboard.</em></p>
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Kimi K2.6 in 2026: Same Case, Same Model, Two Wrappers — Web (Standard Thinking) vs WorkBuddy Agent","description":"Part 4 of the hands-on clinical LLM series. Kimi K2.6 (Moonshot AI) tested as a plain web chat in Kimi Quick / standard thinking mode and (pending) inside the WorkBuddy agent, on the same anonymized post-op breast cancer case (pT1aN0M0 Stage IA, three foci of interstitial invasion, no lymphovascular invasion), scored on a 10-item / 100-pt rubric against 2026 CBCS / CSCO 2024 / NCCN 2025. Web median 37/100 across 3 runs (R1 35, R2 42, R3 37). WorkBuddy-agent runs pending; Δ = (agent median) − 37 will be added in V4.1. Per the series rule, only models with BOTH a web version AND an agent wrapper are scored in this version; Kimi K2.6 is the new addition. Cross-wrapper deltas from V3 (GLM 5.2 +39, DeepSeek V4 Flash +6) are cited as supporting evidence.","author":{"@type":"Person","name":"Tan Haosheng","alternateName":"谭好升","url":"https://tanhaosheng.asia/about","jobTitle":"Associate Chief Physician, Department of Thyroid and Breast Surgery","description":"Tan Haosheng (谭好升), MD/PhD (医学博士), Associate Chief Physician (副主任医师) at Taizhou People's Hospital (泰州市人民医院), specializing in thyroid and breast surgery (甲状腺乳腺外科).","alumniOf":{"@type":"EducationalOrganization","name":"Tsinghua University – Peking Union Medical College / National Cancer Center (清华大学-北京协和医学院 / 国家癌症中心)"},"worksFor":{"@type":"Organization","name":"Taizhou People's Hospital (泰州市人民医院)"}},"datePublished":"2026-07-31","dateModified":"2026-07-31","publisher":{"@type":"Organization","name":"AI Tool Stack"},"mainEntityOfPage":"https://tanhaosheng.asia/kimi-k2-6-web-vs-agent","image":"https://tanhaosheng.asia/assets/og-ai-tools.jpg"}</script>
+<footer>&copy; 2024-2026 AI Tool Stack<br><a href="/">Home</a> · <a href="/about">About</a> · <a href="/">AI Models &amp; Tools</a> · <a href="/clinical-benchmark/">Clinical Benchmark Data</a> · <a href="/privacy">Privacy</a> · <a href="/affiliate-disclosure">Affiliate Disclosure</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+<div class="page-stats" style="margin-top:10px;font-size:.85em;color:#6b7280;">📊 全站浏览 <span id="busuanzi_value_site_pv">0</span> · 全站独立访客 <span id="busuanzi_value_site_uv">0</span>　|　📄 本页浏览 <span id="busuanzi_value_page_pv">0</span> · 本页独立访客 <span id="busuanzi_value_page_uv">0</span></div><div id="cf-stats" style="margin-top:6px;font-size:.85em;color:#6b7280;display:none;">🌐 Cloudflare 真实IP：全站 <b id="cf-site-pv">–</b> 浏览 / <b id="cf-site-uv">–</b> 唯一IP　|　📄 本页 <b id="cf-page-pv">–</b> 浏览 / <b id="cf-page-uv">–</b> 唯一IP <span style="opacity:.6;">(按IP累计，区别于busuanzi的cookie访客)</span></div>
+</footer><script>
+(function(){
+  var CODES=['en','zh'];
+  function switchLang(l){
+    var p=location.pathname.replace(/^\//,'').split('/');
+    var base=CODES.indexOf(p[0])!==-1?p.slice(1).join('/'):p.join('/');
+    var url=(l==='en'?'/'+base:'/'+l+'/'+base)+(location.search||'');
+    try{localStorage.setItem('pref',l);}catch(e){}
+    location.href=url;
+  }
+  var s=document.getElementById('lang-select');
+  if(s){ s.addEventListener('change',function(){switchLang(this.value);}); }
+})();
+</script></body></html>
