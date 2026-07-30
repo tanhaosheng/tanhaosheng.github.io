@@ -6,14 +6,14 @@
 <title>I Published 361 AI Articles in 2 Days, Then Deleted 358 of Them — How This Site Was Really Built</title>
 <meta name="description" content="A surgeon's honest build log: 4 days from idea to launch with an AI agent — the content-farm trap, the great deletion (361 → 3 articles), the pivot to real hands-on testing, and every lesson learned.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://tanhaosheng.asia/how-i-built-this-site-with-ai.html">
-<link rel="alternate" hreflang="en" href="https://tanhaosheng.asia/how-i-built-this-site-with-ai.html">
-<link rel="alternate" hreflang="zh" href="https://tanhaosheng.asia/zh/how-i-built-this-site-with-ai.html">
-<link rel="alternate" hreflang="x-default" href="https://tanhaosheng.asia/how-i-built-this-site-with-ai.html">
+<link rel="canonical" href="https://tanhaosheng.asia/how-i-built-this-site-with-ai">
+<link rel="alternate" hreflang="en" href="https://tanhaosheng.asia/how-i-built-this-site-with-ai">
+<link rel="alternate" hreflang="zh" href="https://tanhaosheng.asia/zh/how-i-built-this-site-with-ai">
+<link rel="alternate" hreflang="x-default" href="https://tanhaosheng.asia/how-i-built-this-site-with-ai">
 <meta property="og:title" content="I Published 361 AI Articles in 2 Days, Then Deleted 358 of Them">
 <meta property="og:description" content="A surgeon's honest build log: 4 days from idea to launch with an AI agent — the content-farm trap, the great deletion, and the pivot to real hands-on testing.">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://tanhaosheng.asia/how-i-built-this-site-with-ai.html">
+<meta property="og:url" content="https://tanhaosheng.asia/how-i-built-this-site-with-ai">
 <meta property="og:image" content="https://tanhaosheng.asia/assets/og-ai-tools.jpg">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
@@ -84,10 +84,10 @@ footer a{color:#a78bfa}
 </head>
 <body>
 <div id="lang-switcher"><label for="lang-select">🌐</label><select id="lang-select"><option value="en" selected>English</option><option value="zh">中文</option><option value="es" disabled>Español</option><option value="fr" disabled>Français</option><option value="ar" disabled>العربية</option><option value="ja" disabled>日本語</option><option value="ko" disabled>한국어</option><option value="ru" disabled>Русский</option><option value="hi" disabled>हिन्दी</option></select></div>
-<nav><div class="nav-inner"><a href="/index.html" class="active">🏠 Home</a><a href="/index.html">📰 News</a><a href="/index.html">🤖 AI</a><a href="/about.html">About</a></div></nav>
+<nav><div class="nav-inner"><a href="/" class="active">🏠 Home</a><a href="/">📰 News</a><a href="/">🤖 AI</a><a href="/about">About</a></div></nav>
 
 <h1>I Published 361 AI Articles in 2 Days, Then Deleted 358 of Them — How This Site Was Really Built</h1>
-<div class="article-byline">By <a href="https://tanhaosheng.asia/about.html">Tan Haosheng</a> · Associate Chief Physician / MD, PhD · Published 2026-07-30</div>
+<div class="article-byline">By <a href="https://tanhaosheng.asia/about">Tan Haosheng</a> · Associate Chief Physician / MD, PhD · Published 2026-07-30</div>
 <div class="series-badge">📓 Build Log · A true story, mistakes included</div>
 
 <div class="box blue">
@@ -96,7 +96,7 @@ footer a{color:#a78bfa}
 
 <h2>Why a surgeon builds a website at all</h2>
 <p>I've been in clinical practice since 2006. My day job is operating on breast and thyroid cancer patients at Taizhou People's Hospital; my side obsession is squeezing research and paperwork efficiency out of AI tools — on a realistic budget, because most doctors I know won't pay $200/month for model subscriptions.</p>
-<p>Every time I found a genuinely useful (and usually free) AI workflow, I'd share it with colleagues over WeChat, and it would get lost within a week. A website felt like the obvious fix: one permanent place where fellow surgeons could find what actually works. The problem: I don't write code. What I did have was an AI agent (I use WorkBuddy, running Tencent's Hunyuan hy3 model — <a href="/workbuddy-free-agent-hunyuan-hy3-en.html">reviewed here</a>) that could write, edit, and deploy code for me while I described what I wanted in ordinary sentences.</p>
+<p>Every time I found a genuinely useful (and usually free) AI workflow, I'd share it with colleagues over WeChat, and it would get lost within a week. A website felt like the obvious fix: one permanent place where fellow surgeons could find what actually works. The problem: I don't write code. What I did have was an AI agent (I use WorkBuddy, running Tencent's Hunyuan hy3 model — <a href="/workbuddy-free-agent-hunyuan-hy3-en">reviewed here</a>) that could write, edit, and deploy code for me while I described what I wanted in ordinary sentences.</p>
 
 <h2>Phase 1: The trap — 361 articles in 48 hours</h2>
 <p>Here is the embarrassing part, kept in full because it's the most useful part.</p>
@@ -121,11 +121,11 @@ footer a{color:#a78bfa}
 <h2>Phase 3: What replaced the farm — three real things</h2>
 <h3>1. A clinical LLM benchmark only a clinician could run</h3>
 <p>Instead of writing my 362nd generic "Top 10 AI tools" listicle, I asked: what can I test that almost nobody else on the internet can? Answer: <strong>whether free Chinese LLMs can safely interpret a real post-operative breast cancer case</strong>. I designed a 16-item, 100-point scoring rubric against the 2026 CBCS breast cancer guidelines — the same guidelines I use in clinic — including deliberate traps around staging ambiguity and endocrine-therapy indications that I see trip up junior doctors.</p>
-<p>The results were sobering: DeepSeek (free tier) scored a median <strong>28/100</strong> across three runs — consistently wrong in the same three places, but with a reasoning chain worth auditing. ChatGLM 5.2 scored a median <strong>5/100</strong> and answered my Chinese prompts in English. Neither is remotely safe for unsupervised clinical use. Full methodology and all raw transcripts are in the <a href="/clinical-benchmark/index_en.html">benchmark microsite</a> and the <a href="/chatglm-vs-deepseek-clinical-hands-on.html">write-up</a>.</p>
+<p>The results were sobering: DeepSeek (free tier) scored a median <strong>28/100</strong> across three runs — consistently wrong in the same three places, but with a reasoning chain worth auditing. ChatGLM 5.2 scored a median <strong>5/100</strong> and answered my Chinese prompts in English. Neither is remotely safe for unsupervised clinical use. Full methodology and all raw transcripts are in the <a href="/clinical-benchmark/index_en">benchmark microsite</a> and the <a href="/chatglm-vs-deepseek-clinical-hands-on">write-up</a>.</p>
 <h3>2. Hands-on reviews of what I actually use</h3>
-<p>The <a href="/workbuddy-free-agent-hunyuan-hy3-en.html">WorkBuddy free-agent review</a> and the <a href="/agnes-workbuddy-config.html">Agnes free-API configuration guide</a> both come from my own daily setup, with my own screenshots, including the errors I hit. If I haven't used it, it's not on this site.</p>
+<p>The <a href="/workbuddy-free-agent-hunyuan-hy3-en">WorkBuddy free-agent review</a> and the <a href="/agnes-workbuddy-config">Agnes free-API configuration guide</a> both come from my own daily setup, with my own screenshots, including the errors I hit. If I haven't used it, it's not on this site.</p>
 <h3>3. A real name and a real face</h3>
-<p>The old site was anonymous. The new <a href="/about.html">About page</a> carries my full name, my hospital, my degrees, and my clinical background — verifiable by anyone. For a site touching medical topics, this isn't decoration; it's the minimum price of being taken seriously, by readers and by search engines alike.</p>
+<p>The old site was anonymous. The new <a href="/about">About page</a> carries my full name, my hospital, my degrees, and my clinical background — verifiable by anyone. For a site touching medical topics, this isn't decoration; it's the minimum price of being taken seriously, by readers and by search engines alike.</p>
 
 <h2>The technical build, for the curious</h2>
 <p>All of this was implemented by the AI agent through conversation. I never opened a code editor. The stack:</p>
@@ -166,7 +166,7 @@ footer a{color:#a78bfa}
 <div class="box green"><strong>If you take one thing from this post:</strong> AI can build your website in a weekend. What it can't do is give the site a reason to exist. Do the one thing only you can do, publish it under your real name, and delete everything else.</div>
 
 <footer>
-© 2026 Tan Haosheng. All rights reserved. | <a href="/affiliate-disclosure.html">Affiliate Disclosure</a> | <a href="/privacy.html">Privacy Policy</a>
+© 2026 Tan Haosheng. All rights reserved. | <a href="/affiliate-disclosure">Affiliate Disclosure</a> | <a href="/privacy">Privacy Policy</a>
 <div class="page-stats" style="margin-top:10px;font-size:.85em;color:#6b7280;">📊 全站浏览 <span id="busuanzi_value_site_pv">0</span> · 全站独立访客 <span id="busuanzi_value_site_uv">0</span>　|　📄 本页浏览 <span id="busuanzi_value_page_pv">0</span> · 本页独立访客 <span id="busuanzi_value_page_uv">0</span></div><div id="cf-stats" style="margin-top:6px;font-size:.85em;color:#6b7280;display:none;">🌐 Cloudflare 真实IP：全站 <b id="cf-site-pv">–</b> 浏览 / <b id="cf-site-uv">–</b> 唯一IP　|　📄 本页 <b id="cf-page-pv">–</b> 浏览 / <b id="cf-page-uv">–</b> 唯一IP <span style="opacity:.6;">(按IP累计，区别于busuanzi的cookie访客)</span></div>
 </footer>
 
