@@ -1,0 +1,8 @@
+name = "tanhaosheng"
+account_id = "e9a102a7fffffbc3f09f19d39310d79f"
+compatibility_date = "2026-07-29"
+compatibility_flags = ["nodejs_compat"]
+
+[assets]
+directory = "."
+exclude = [".git", ".git/**", ".wrangler", ".wrangler/**", "node_modules", "node_modules/**", ".DS_Store"]
