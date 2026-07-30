@@ -13,7 +13,7 @@
 
 <h1>Same Model, Three Wrappers: 3 Models, 9 Runs, 1 LVI Read — Hands-on Review 3 of 5</h1>
 <div class="article-byline">By <a href="https://tanhaosheng.asia/about">Tan Haosheng</a> · 副主任医师 / 医学博士 (Associate Chief Physician, MD/PhD) · 甲状腺乳腺外科 (Thyroid &amp; Breast Surgery), 泰州市人民医院 (Taizhou People's Hospital) · Published 2026-07-30, updated 2026-07-31</div>
-<div class="series-badge">🧪 原创实测 #3 / 5 &nbsp;·&nbsp; Hands-on Review 3 of 5 — Web vs Agent isolation (now 3 models / 9 runs, web side still pending for the agent trio)</div>
+<div class="series-badge">🧪 原创实测 #3 / 5 &nbsp;·&nbsp; Hands-on Review 3 of 5 — Web vs Agent isolation (now 7 models ranked, web side still pending for the agent trio)</div>
 
 <div class="box">
 <strong>Why this follow-up exists:</strong> In <a href="/four-models-clinical-showdown">Part 2</a>, DeepSeek V4 Pro wrapped in the WorkBuddy agent scored 50/100 — the only model to catch the staging trap. But that score conflates two things: <em>the model</em> and <em>the wrapper</em> (system prompt, tool/MCP context, formatting expectations). Was the WorkBuddy agent helping the model, or was V4 Pro simply that good on its own? This article starts answering that question by testing <strong>DeepSeek V4 Flash</strong> and <strong>Kimi K3</strong> through the WorkBuddy agent, plus <strong>Grok 4.5 fast</strong> through the simpler X.com built-in wrapper, on the same fresh case. The web-version runs for the agent trio — which will tell us the answer to "is the wrapper doing the work?" — are still pending.
@@ -213,6 +213,29 @@ The three Kimi K3 runs are <strong>near-clones</strong> of each other. That cons
 <strong>Caveat:</strong> Part 2 and Part 3 use <em>different cases</em>. Part 2 had a TisN0M0 / 0.2 cm staging trap; Part 3 has no equivalent single-shot trap but adds a multi-feature decision (correct staging + LVI handling + AI duration + bone protection). Scores are not directly comparable across cases. The whole point of this article is to test the <em>same model</em> in <em>two wrappers</em> on the same case — the web runs are the missing half.
 </div>
 
+<h2>Ranked leaderboard — all 7 models tested so far</h2>
+<p>Combining Part 2 and Part 3, here are all seven models ranked by median score. <strong>Read the "Case" column:</strong> Part 2 used a 16-item rubric on a 0.2 cm / Tis-trap case; Part 3 used a 10-item rubric on a 0.6 cm + LVI case. The two rubrics are <em>not</em> the same scale, so the cross-case order is indicative only — the meaningful race is <em>within each case</em> (see the two sub-rankings below).</p>
+<table>
+<tr><th>Rank</th><th>Model (wrapper)</th><th>Case</th><th>Median</th><th>Key failure mode</th></tr>
+<tr><td><strong>#1</strong></td><td>DeepSeek V4 Pro (WorkBuddy agent)</td><td>Part 2</td><td><strong>50 / 100</strong></td><td>Only model in the series to catch a staging trap (but 1/3 runs unstable).</td></tr>
+<tr><td><strong>#2</strong></td><td>豆包 Doubao (mobile web)</td><td>Part 2</td><td><strong>41 / 100</strong></td><td>Missed the trap; answered a Chinese case in English.</td></tr>
+<tr><td><strong>#3</strong></td><td>DeepSeek V4 Flash (WorkBuddy agent)</td><td>Part 3</td><td><strong>34 / 100</strong></td><td>Best of the Part-3 trio; handled LVI partially (2/3 runs).</td></tr>
+<tr><td><strong>#4</strong></td><td>DeepSeek web (fast)</td><td>Part 2</td><td><strong>28 / 100</strong></td><td>Stable but missed the trap and the AI-vs-TAM nuance.</td></tr>
+<tr><td><strong>#5</strong></td><td>Kimi K3 (~2.8T, WorkBuddy agent)</td><td>Part 3</td><td><strong>27 / 100</strong></td><td>Mis-read LVI as three invasive foci in 3/3 runs.</td></tr>
+<tr><td><strong>#6</strong></td><td>Grok 4.5 fast (X.com built-in)</td><td>Part 3</td><td><strong>14 / 100</strong></td><td>Down-staged IA → Stage 0 in 3/3 runs (most dangerous pattern).</td></tr>
+<tr><td><strong>#7</strong></td><td>ChatGLM 5.2 (web)</td><td>Part 2</td><td><strong>5 / 100</strong></td><td>Collapsed on 2/3 runs; near-total miss.</td></tr>
+</table>
+
+<h3>Fair comparison — within each case</h3>
+<table>
+<tr><th>Part 2 case (16-item, Tis trap)</th><th>Median</th><th>Part 3 case (10-item, LVI)</th><th>Median</th></tr>
+<tr><td>🥇 DeepSeek V4 Pro</td><td>50</td><td>🥇 DeepSeek V4 Flash</td><td>34</td></tr>
+<tr><td>🥈 豆包 Doubao</td><td>41</td><td>🥈 Kimi K3</td><td>27</td></tr>
+<tr><td>🥉 DeepSeek web (fast)</td><td>28</td><td>🥉 Grok 4.5 fast</td><td>14</td></tr>
+<tr><td>4️⃣ ChatGLM 5.2</td><td>5</td><td></td><td></td></tr>
+</table>
+<div class="note"><strong>What the ranking actually tells us:</strong> Within Part 2 the order is V4 Pro ≫ Doubao &gt; DeepSeek web ≫ ChatGLM. Within Part 3 the order is V4 Flash &gt; Kimi K3 &gt; Grok 4.5 fast. The cross-case #3 spot for V4 Flash (34) ahead of DeepSeek web (28) is <em>not</em> a real comparison — different case, different rubric. The one pattern that survives every comparison: <strong>no model in this series reliably reads LVI or cites a specific guideline section</strong>, and <strong>the model — not the wrapper — drives most of the score variance</strong>.</div>
+
 <h2>Pending tests — these will answer the actual question</h2>
 <div class="pending">
 To finish the isolation, I still need to run, on the <strong>same Part 3 case</strong>:
@@ -224,7 +247,7 @@ To finish the isolation, I still need to run, on the <strong>same Part 3 case</s
   <li><strong>Grok 4.5 fast — Deep Research / Think mode (x.com premium)</strong> — does the model's "reasoning" mode recover the LVI read, or is the Stage-0 collapse a low-level vision failure? Optional but the most interesting "model upgrade vs model change" experiment in the series.</li>
   <li>Optionally: Doubao web and ChatGLM web on this same case, to check whether the wrapper story holds across model families.</li>
 </ul>
-Already completed in this article: <strong>V4 Flash agent × 3</strong>, <strong>Kimi K3 agent × 3</strong>, and <strong>Grok 4.5 fast (X.com Fast mode) × 3</strong>. Each pending row will be added back into the table above as the runs come in.
+Already completed in this article: <strong>V4 Flash agent × 3</strong>, <strong>Kimi K3 agent × 3</strong>, and <strong>Grok 4.5 fast (X.com Fast mode) × 3</strong>. Each pending row will be added back into the table and the ranked leaderboard above as the runs come in.
 </div>
 
 <h2>Preliminary conclusions (with the obvious caveat that web data is missing)</h2>
@@ -242,7 +265,7 @@ Already completed in this article: <strong>V4 Flash agent × 3</strong>, <strong
 </ul>
 <h3>What I cannot say yet</h3>
 <ul>
-  <li>I cannot rank the model vs the wrapper until web runs land for V4 Flash / V4 Pro / Kimi K3.</li>
+  <li>I cannot yet <em>isolate</em> the wrapper effect (rank the same model in two wrappers) until web runs land for V4 Flash / V4 Pro / Kimi K3. The 7-model leaderboard above ranks <em>different</em> models across two cases — useful for "which model," not yet for "how much the agent adds."</li>
   <li>I cannot say "the agent adds 10 / 20 / X points" because we have no same-model / different-wrapper comparison for those three.</li>
   <li>I cannot claim any of these models is "the best free option" — the case is different and the rubric is different.</li>
   <li>Grok's "Fast" mode is the cheapest of its three modes; if anything, "Think" or "Deep Research" might do better. Until those are run, Grok is represented here by its cheapest public surface only.</li>
