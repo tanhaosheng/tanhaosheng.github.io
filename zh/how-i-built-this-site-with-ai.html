@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我 2 天生成了 361 篇 AI 文章，然后删掉了 358 篇 —— 这个网站真实的建站过程</title>
+<meta name="description" content="一名外科医生的真实建站日志：4 天时间靠 AI 智能体从构思到上线——内容农场的坑、361 篇删到 3 篇的大删减、转向真实实测的全过程与全部教训。">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tanhaosheng.asia/zh/how-i-built-this-site-with-ai.html">
+<link rel="alternate" hreflang="en" href="https://tanhaosheng.asia/how-i-built-this-site-with-ai.html">
+<link rel="alternate" hreflang="zh" href="https://tanhaosheng.asia/zh/how-i-built-this-site-with-ai.html">
+<link rel="alternate" hreflang="x-default" href="https://tanhaosheng.asia/how-i-built-this-site-with-ai.html">
+<meta property="og:title" content="我 2 天生成了 361 篇 AI 文章，然后删掉了 358 篇">
+<meta property="og:description" content="一名外科医生的真实建站日志：内容农场的坑、361 篇删到 3 篇的大删减、转向真实实测的全过程。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tanhaosheng.asia/zh/how-i-built-this-site-with-ai.html">
+<meta property="og:image" content="https://tanhaosheng.asia/assets/og-ai-tools.jpg">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="我 2 天生成了 361 篇 AI 文章，然后删掉了 358 篇">
+<meta name="twitter:description" content="一名外科医生的真实建站日志：内容农场的坑、大删减、转向真实实测的全过程。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "我 2 天生成了 361 篇 AI 文章，然后删掉了 358 篇 —— 这个网站真实的建站过程",
+  "description": "一名外科医生的真实建站日志：4 天时间靠 AI 智能体从构思到上线，内容农场的坑与转向真实实测的全过程。",
+  "datePublished": "2026-07-30",
+  "dateModified": "2026-07-30",
+  "inLanguage": "zh",
+  "author": {"@type": "Person", "name": "谭好升", "url": "https://tanhaosheng.asia/about.html"},
+  "mainEntityOfPage": "https://tanhaosheng.asia/zh/how-i-built-this-site-with-ai.html"
+}
+</script>
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3090420115329103" crossorigin="anonymous"></script>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NE8DYNMNYZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-NE8DYNMNYZ');
+</script>
+<style>
+:root{--primary:#6c3ce1;--primary-dark:#4f2db5;--accent:#f59e0b;--bg:#f5f7fa;--text:#1a1a2e;--text-light:#6b7280;--border:#e5e7eb;--card:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);max-width:820px;margin:0 auto;padding:0 20px;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-size:19px;line-height:1.8}
+a{color:var(--primary);text-decoration:none}
+h1{color:var(--primary);margin:28px 0 14px;font-size:30px;line-height:1.35}
+h2{color:var(--primary-dark);margin:34px 0 12px;font-size:23px;padding-bottom:6px;border-bottom:2px solid var(--accent)}
+h3{color:var(--primary-dark);margin:22px 0 8px;font-size:18px}
+p{margin-bottom:15px}
+ul,ol{margin:0 0 16px 22px}
+li{margin-bottom:7px}
+table{border-collapse:collapse;width:100%;margin:18px 0;font-size:15px}
+th,td{border:1px solid var(--border);text-align:left;padding:10px 11px}
+th{background:#f3f4f6;font-weight:600}
+tr:nth-child(2n){background:#f9fafb}
+nav{z-index:100;background:linear-gradient(135deg,#6c3ce1 0%,#4f2db5 100%);position:sticky;top:0;box-shadow:0 2px 12px #6c3ce140}
+nav .nav-inner{max-width:900px;margin:0 auto;display:flex;overflow-x:auto}
+nav a{color:#ffffffe6;white-space:nowrap;padding:14px 16px;font-size:15px;font-weight:500;text-decoration:none}
+nav a:hover,nav a.active{color:#fff;background:#ffffff26}
+.article-byline{font-size:14px;color:#6b7280;margin:0 0 16px;padding:10px 14px;background:#f8fafc;border-left:3px solid #2563eb;border-radius:6px}
+.article-byline a{font-weight:600}
+.series-badge{display:inline-block;background:#ede9fe;color:#4f2db5;border:1px solid #c4b5fd;border-radius:999px;padding:4px 12px;font-size:13px;font-weight:700;margin-bottom:14px}
+.box{border-left:4px solid var(--accent);background:#fff3cd;border-radius:4px;margin:18px 0;padding:16px}
+.box.blue{border-left-color:#2563eb;background:#eff6ff}
+.box.red{border-left-color:#dc2626;background:#fee2e2}
+.box.green{border-left-color:#059669;background:#ecfdf5}
+.quote{border-left:4px solid #6c3ce1;background:#f5f3ff;border-radius:4px;margin:18px 0;padding:16px 20px;color:#4f2db5;font-weight:600}
+.timeline{border-left:3px solid #c4b5fd;margin:18px 0 18px 8px;padding-left:22px}
+.timeline .tl-item{margin-bottom:18px;position:relative}
+.timeline .tl-item::before{content:"";position:absolute;left:-29px;top:8px;width:11px;height:11px;border-radius:50%;background:#6c3ce1}
+.timeline .tl-date{font-weight:700;color:#4f2db5;font-size:15px}
+.note{background:#fff7ed;border-left:4px solid #f59e0b;padding:12px 16px;border-radius:4px;margin:18px 0;font-size:15px}
+footer{color:#fff;text-align:center;background:#1a1a2e;margin-top:50px;padding:30px 20px;font-size:15px}
+footer a{color:#a78bfa}
+#lang-switcher{position:fixed;top:10px;right:12px;z-index:99999;background:#fff;border:1px solid #d1d5db;border-radius:10px;padding:5px 9px;box-shadow:0 2px 10px rgba(0,0,0,.15);font:600 13px/1.3 system-ui,sans-serif;display:flex;align-items:center;gap:6px}
+#lang-switcher label{font-size:15px;cursor:default}
+#lang-switcher select{border:none;background:transparent;font:600 13px system-ui,sans-serif;cursor:pointer;outline:none;max-width:130px}
+#lang-switcher option:disabled{color:#bbb}
+</style>
+</head>
+<body>
+<div id="lang-switcher"><label for="lang-select">🌐</label><select id="lang-select"><option value="en">English</option><option value="zh" selected>中文</option><option value="es" disabled>Español</option><option value="fr" disabled>Français</option><option value="ar" disabled>العربية</option><option value="ja" disabled>日本語</option><option value="ko" disabled>한국어</option><option value="ru" disabled>Русский</option><option value="hi" disabled>हिन्दी</option></select></div>
+<nav><div class="nav-inner"><a href="/zh/index.html" class="active">🏠 首页</a><a href="/zh/index.html">📰 资讯</a><a href="/zh/index.html">🤖 AI</a><a href="/about.html">关于</a></div></nav>
+
+<h1>我 2 天生成了 361 篇 AI 文章，然后删掉了 358 篇 —— 这个网站真实的建站过程</h1>
+<div class="article-byline">作者：<a href="https://tanhaosheng.asia/about.html">谭好升</a> · 副主任医师 / 医学博士 · 发布于 2026-07-30</div>
+<div class="series-badge">📓 建站日志 · 真实记录，包括所有踩过的坑</div>
+
+<div class="box blue">
+<strong>一句话版本：</strong>我是甲状腺乳腺外科医生，不是程序员。2026 年 7 月 26 日到 30 日，四天时间，我靠着用大白话指挥一个 AI 智能体，从「想做个网站」走到了「自有域名、多语言、真实上线」。中间我犯了 AI 时代最典型的错误——批量生成了 361 篇没人需要的文章，被人一针见血地评价为「教科书式的 AI 内容农场」，然后几乎全部删掉，围绕三件我亲手做过的事重建了整个网站。这篇文章就是这个过程的诚实记录。
+</div>
+
+<h2>一个外科医生为什么要建网站</h2>
+<p>我 2006 年进入临床，日常工作是在泰州市人民医院给甲状腺、乳腺肿瘤患者做手术；工作之外我一直在琢磨怎么用 AI 工具提高科研和文书效率——而且必须便宜，因为我认识的大多数医生不会为模型订阅每月花一两百美元。</p>
+<p>每次找到一个真正好用（通常还免费）的 AI 工作流，我就发到微信群里分享给同事，然后不出一周就沉底找不到了。建个网站是显而易见的解法：一个固定的地方，让同行医生能找到真正有用的东西。问题是我不会写代码。我有的是一个 AI 智能体（我用的是 WorkBuddy，跑腾讯混元 hy3 模型，<a href="/workbuddy-free-agent-hunyuan-hy3.html">实测在这里</a>），它可以替我写代码、改代码、部署上线，我只需要用普通的中文句子描述我想要什么。</p>
+
+<h2>第一阶段：掉坑——48 小时 361 篇文章</h2>
+<p>下面是丢人的部分。我完整保留它，因为它恰恰是最有用的部分。</p>
+<p>我的第一反应和所有 AI 时代的建站者一样：<em>页面越多 = 流量越多 = 广告收入越多</em>。智能体一分钟就能生成一篇带完整 SEO 优化的文章，那就让它生成呗。批量脚本源源不断地产出金融、保险、加密货币、SaaS、VPN、固态硬盘评测——这些领域我既没有专业知识，说实话也毫无兴趣。到 7 月 27 日，网站已经有 <strong>361 篇文章、390 个 HTML 文件</strong>，每篇都带规范的 meta 标签、结构化数据、内链和广告位。表面上看，这是个像模像样的网站。看着数字往上涨，确实特别有成就感。</p>
+<p>但它一文不值。原因有两个，我是后来才真正弄懂的。</p>
+<h3>原因一：这些文章在撒谎</h3>
+<p>批量生成的评测文里写着「我们用 6 周时间实测了 8 款工具」——描述的是从未发生过的测试，配着编造的百分比和星级评分。当我真正把几篇放在一起读的时候，发现不同文章里连编造的句子都是逐字重复的。某个深夜复盘时，我写下了后来统领这个网站一切内容的原则：</p>
+<div class="quote">没做过的事，不要写「我们做了」。只是查了资料，就写「基于公开资料整理」。前者叫欺诈，后者叫研究。一字之差，信任天壤之别。</div>
+<h3>原因二：Google 早就看穿了这套把戏</h3>
+<p>7 月 28 日，我收到一份毫不留情的独立评估。结论：<strong>「典型的 AI 内容农场」</strong>——3 天内发布 110+ 篇文章、统一的模板骨架、虚假的第一人称实测声明、匿名运营。在 Google 的 Helpful Content 系统和 Scaled Content Abuse（规模化内容滥用）政策之下，这样的站不是排名差，而是<em>根本不会有排名</em>。</p>
+<div class="box red"><strong>残酷的算术：</strong>361 篇文章 × 0 信任 = 0。三篇有真实实验、真实截图、真实署名的文章，比一千篇生成的文章更值钱。没有「以量取胜」的后门，2026 年这个漏洞已经被彻底焊死了。</div>
+
+<h2>第二阶段：大删减</h2>
+<p>解法不是修改，而是删除——分三轮，一轮比一轮狠：</p>
+<ul>
+<li><strong>第一轮（7 月 28 日）：</strong>内容审计，保留 117 篇和新定位（「AI 工具选型」）还算沾边的，砍掉 244 篇离题的——所有金融、加密货币、保险、房地产的填充内容全部清除。</li>
+<li><strong>第二轮（7 月 29 日凌晨）：</strong>标准更严：哪些页面有我亲手操作的真实截图？只有 10 篇过关，又删了 110 篇。</li>
+<li><strong>第三轮（7 月 29 日晚）：</strong>最终标准——<em>只留我本人做过、且拿得出证据的东西</em>。剩下 <strong>3 篇</strong>：一个临床 LLM 评测、一篇模型实测、一篇配置指南。其余全部下线（git 历史里留着，可恢复，但不在线上）。</li>
+</ul>
+<p>亲手删掉花了两天做出来的 358 个页面，感觉很荒诞。但这是整个项目里最正确的一个决定。</p>
+
+<h2>第三阶段：取代内容农场的，是三件真实的事</h2>
+<h3>1. 一个只有临床医生才做得了的 LLM 评测</h3>
+<p>与其写第 362 篇千篇一律的「十大 AI 工具」，我问了自己一个问题：有什么测试是几乎只有我能做的？答案：<strong>免费中文大模型能不能安全地解读一份真实的乳腺癌术后病例</strong>。我对照 2026 版 CBCS 乳腺癌诊治指南——就是我每周在门诊用的那本指南——设计了 16 项、满分 100 分的评分标准，里面埋了分期歧义、内分泌治疗适应证等我平时看年轻医生栽跟头的「陷阱题」。</p>
+<p>结果发人深省：DeepSeek（免费档）三轮测试中位数 <strong>28/100</strong>——在同样三个地方稳定地犯错，但推理链有核对价值；ChatGLM 5.2 中位数只有 <strong>5/100</strong>，而且用英文回答我的中文提问。两者都远达不到临床可独立采信的门槛。完整方法学和全部原始回答都在<a href="/clinical-benchmark/">评测微站</a>和<a href="/chatglm-vs-deepseek-clinical-hands-on.html">长文报告</a>里。</p>
+<h3>2. 只评测我真正在用的东西</h3>
+<p><a href="/workbuddy-free-agent-hunyuan-hy3.html">WorkBuddy 免费智能体实测</a>和 <a href="/zh/agnes-workbuddy-config.html">Agnes 免费 API 配置指南</a>都来自我自己每天在用的配置，截图全是我自己的，连我踩过的报错都写在里面。我没用过的东西，这个网站上不会有。</p>
+<h3>3. 真名实姓，真实身份</h3>
+<p>旧站是匿名的。新的<a href="/about.html">关于页面</a>放上了我的全名、医院、学历和临床履历——任何人都可以核实。对一个涉及医学话题的网站来说，这不是装饰，而是被读者和搜索引擎认真对待的最低门槛。</p>
+
+<h2>技术实现（给好奇的人）</h2>
+<p>以上所有东西都是 AI 智能体通过对话完成的，我从头到尾没打开过代码编辑器。技术栈：</p>
+<table>
+<thead><tr><th>层级</th><th>选择</th><th>原因</th></tr></thead>
+<tbody>
+<tr><td>页面</td><td>纯静态 HTML（最初用 Astro 搭骨架）</td><td>没有服务器、没有数据库，没有可被攻击或需要维护的东西</td></tr>
+<tr><td>托管</td><td>GitHub Pages → <strong>Cloudflare Pages</strong></td><td>7 月 29 日迁移；git push 后约 60 秒自动部署，免费</td></tr>
+<tr><td>域名</td><td>tanhaosheng.asia</td><td>自有域名（AdSense 的硬性要求；旧的 *.github.io 已 301 跳转过来）</td></tr>
+<tr><td>多语言</td><td>英文为主 + 8 个机器翻译首页，带诚实的免责横幅</td><td>完整 hreflang；文章在我能人工审校之前只保留中英双语</td></tr>
+<tr><td>统计</td><td>Cloudflare Web Analytics + 不蒜子计数器</td><td>无 cookie；页脚就能看到实时计数</td></tr>
+<tr><td>搜索</td><td>Google Search Console，sitemap + 逐页请求收录</td><td>7 月 30 日提交——就是本文发布的这一天</td></tr>
+</tbody>
+</table>
+
+<h2>完整时间线</h2>
+<div class="timeline">
+<div class="tl-item"><div class="tl-date">7 月 26 日</div>产生建站想法。AI 智能体在 GitHub Pages 上搭起泛主题的「AI Tool Stack」门户，对 238 个页面批量注入 SEO。第一次尝到「以量取胜」的甜头。</div>
+<div class="tl-item"><div class="tl-date">7 月 27 日</div>内容农场巅峰：361 篇文章 / 390 个 HTML，绝大多数由脚本生成。深夜，我发现生成的文章在声称从未发生过的测试。</div>
+<div class="tl-item"><div class="tl-date">7 月 28 日</div>独立评估落锤：「教科书式 AI 内容农场，不可能有排名」。战略重置：砍掉 244 篇，重新定位为外科医生视角的 AI 工具选型指南，写下「去 AI 化」方法论铁律（禁止虚构实测、禁止模板腔、每篇必须独一无二）。</div>
+<div class="tl-item"><div class="tl-date">7 月 29 日</div>删到只剩核心。完成临床 LLM 评测（DeepSeek 28/100 vs ChatGLM 5/100）。用真实履历重建关于页。加 9 语言切换器。迁移到 Cloudflare Pages + 自有域名 tanhaosheng.asia。</div>
+<div class="tl-item"><div class="tl-date">7 月 30 日</div>Google Search Console 验证通过，提交 sitemap，核心页面逐一请求收录。发布这篇建站日志——本站第一篇「元文章」。</div>
+</div>
+
+<h2>六条教训，学费是 358 个被删掉的页面</h2>
+<ol>
+<li><strong>AI 智能体消灭的是技术门槛，不是判断力门槛。</strong>造出 390 个页面用了两天；知道该留哪 3 篇，靠的是二十年的职业积累。</li>
+<li><strong>「数量」是一个笑着害你的陷阱。</strong>看着文章数往上涨感觉像是在进步——这是 AI 辅助创作里最有诱惑力的死胡同。</li>
+<li><strong>绝不让 AI 替你声称你没有的经验。</strong>没测过却写「我们实测了」，那不叫营销，叫撒谎——而且读者和排名系统识别这种谎言的能力越来越强。</li>
+<li><strong>你的独家优势是那件只有你能做的事。</strong>我的是拿着每周都在临床用的指南给大模型的肿瘤学回答打分。你的可能是别的什么——但绝不会是「生成文章比别人快」。</li>
+<li><strong>删除要狠，但留好 git 历史。</strong>每一刀都可逆，才敢下狠刀。</li>
+<li><strong>先上线，再当众修。</strong>这个站是带着瑕疵上线的——机翻首页明确标注了待审校，小的 SEO bug 在后续提交里逐个修掉。诚实的更新日志，胜过虚假的完美。</li>
+</ol>
+
+<h2>接下来做什么</h2>
+<p>计划刻意保持很小：完成实测系列剩下的四篇（同一病例测付费 API 模型、扩展多瘤种），每篇都拿真实数据认真做。每周一个像样的测试，胜过每天生成 180 篇文章——这句话的前后两半，我现在都有了亲身证据。</p>
+
+<div class="box green"><strong>如果这篇文章只留下一句话：</strong>AI 可以用一个周末帮你建好网站，但它给不了这个网站存在的理由。做那件只有你能做的事，用真名发布，其余的全部删掉。</div>
+
+<footer>
+© 2026 谭好升 保留所有权利 | <a href="/affiliate-disclosure.html">联盟披露</a> | <a href="/privacy.html">隐私政策</a>
+<div class="page-stats" style="margin-top:10px;font-size:.85em;color:#6b7280;">📊 全站浏览 <span id="busuanzi_value_site_pv">0</span> · 全站独立访客 <span id="busuanzi_value_site_uv">0</span>　|　📄 本页浏览 <span id="busuanzi_value_page_pv">0</span> · 本页独立访客 <span id="busuanzi_value_page_uv">0</span></div><div id="cf-stats" style="margin-top:6px;font-size:.85em;color:#6b7280;display:none;">🌐 Cloudflare 真实IP：全站 <b id="cf-site-pv">–</b> 浏览 / <b id="cf-site-uv">–</b> 唯一IP　|　📄 本页 <b id="cf-page-pv">–</b> 浏览 / <b id="cf-page-uv">–</b> 唯一IP <span style="opacity:.6;">(按IP累计，区别于busuanzi的cookie访客)</span></div>
+</footer>
+
+<script>
+(function(){
+  var CODES=['en', 'zh', 'es', 'fr', 'ar', 'ja', 'ko', 'ru', 'hi'];
+  function switchLang(l){
+    var p=location.pathname.replace(/^\//,'').split('/');
+    var base=CODES.indexOf(p[0])!==-1?p.slice(1).join('/'):p.join('/');
+    var url=(l==='en'?'/'+base:'/'+l+'/'+base)+(location.search||'');
+    try{localStorage.setItem('pref',l);}catch(e){}
+    location.href=url;
+  }
+  var s=document.getElementById('lang-select');
+  if(s){ s.addEventListener('change',function(){switchLang(this.value);}); }
+})();
+</script>
+<script async defer src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script>
+// cf-stats-fetch
+(function(){
+  try {
+    var box = document.getElementById("cf-stats");
+    if (!box) return;
+    var p = location.pathname;
+    fetch("/api/stats?path=" + encodeURIComponent(p) + "&track=1", {cache:"no-store"})
+      .then(function(r){return r.json();})
+      .then(function(d){
+        if (!d || d.ok === false) return;
+        document.getElementById("cf-site-pv").textContent = d.sitePV;
+        document.getElementById("cf-site-uv").textContent = d.siteUV;
+        document.getElementById("cf-page-pv").textContent = d.pagePV;
+        document.getElementById("cf-page-uv").textContent = d.pageUV;
+        box.style.display = "block";
+      })
+      .catch(function(){});
+  } catch(e){}
+})();
+</script>
+</body>
+</html>

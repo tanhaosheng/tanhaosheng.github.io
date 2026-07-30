@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Published 361 AI Articles in 2 Days, Then Deleted 358 of Them — How This Site Was Really Built</title>
+<meta name="description" content="A surgeon's honest build log: 4 days from idea to launch with an AI agent — the content-farm trap, the great deletion (361 → 3 articles), the pivot to real hands-on testing, and every lesson learned.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tanhaosheng.asia/how-i-built-this-site-with-ai.html">
+<link rel="alternate" hreflang="en" href="https://tanhaosheng.asia/how-i-built-this-site-with-ai.html">
+<link rel="alternate" hreflang="zh" href="https://tanhaosheng.asia/zh/how-i-built-this-site-with-ai.html">
+<link rel="alternate" hreflang="x-default" href="https://tanhaosheng.asia/how-i-built-this-site-with-ai.html">
+<meta property="og:title" content="I Published 361 AI Articles in 2 Days, Then Deleted 358 of Them">
+<meta property="og:description" content="A surgeon's honest build log: 4 days from idea to launch with an AI agent — the content-farm trap, the great deletion, and the pivot to real hands-on testing.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tanhaosheng.asia/how-i-built-this-site-with-ai.html">
+<meta property="og:image" content="https://tanhaosheng.asia/assets/og-ai-tools.jpg">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="I Published 361 AI Articles in 2 Days, Then Deleted 358 of Them">
+<meta name="twitter:description" content="A surgeon's honest build log: the content-farm trap, the great deletion, and the pivot to real hands-on testing.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "I Published 361 AI Articles in 2 Days, Then Deleted 358 of Them — How This Site Was Really Built",
+  "description": "A surgeon's honest build log: 4 days from idea to launch with an AI agent — the content-farm trap, the great deletion, and the pivot to real hands-on testing.",
+  "datePublished": "2026-07-30",
+  "dateModified": "2026-07-30",
+  "inLanguage": "en",
+  "author": {"@type": "Person", "name": "Tan Haosheng", "url": "https://tanhaosheng.asia/about.html"},
+  "mainEntityOfPage": "https://tanhaosheng.asia/how-i-built-this-site-with-ai.html"
+}
+</script>
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3090420115329103" crossorigin="anonymous"></script>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NE8DYNMNYZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-NE8DYNMNYZ');
+</script>
+<style>
+:root{--primary:#6c3ce1;--primary-dark:#4f2db5;--accent:#f59e0b;--bg:#f5f7fa;--text:#1a1a2e;--text-light:#6b7280;--border:#e5e7eb;--card:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);max-width:820px;margin:0 auto;padding:0 20px;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;font-size:19px;line-height:1.8}
+a{color:var(--primary);text-decoration:none}
+h1{color:var(--primary);margin:28px 0 14px;font-size:30px;line-height:1.25}
+h2{color:var(--primary-dark);margin:34px 0 12px;font-size:23px;padding-bottom:6px;border-bottom:2px solid var(--accent)}
+h3{color:var(--primary-dark);margin:22px 0 8px;font-size:18px}
+p{margin-bottom:15px}
+ul,ol{margin:0 0 16px 22px}
+li{margin-bottom:7px}
+table{border-collapse:collapse;width:100%;margin:18px 0;font-size:15px}
+th,td{border:1px solid var(--border);text-align:left;padding:10px 11px}
+th{background:#f3f4f6;font-weight:600}
+tr:nth-child(2n){background:#f9fafb}
+nav{z-index:100;background:linear-gradient(135deg,#6c3ce1 0%,#4f2db5 100%);position:sticky;top:0;box-shadow:0 2px 12px #6c3ce140}
+nav .nav-inner{max-width:900px;margin:0 auto;display:flex;overflow-x:auto}
+nav a{color:#ffffffe6;white-space:nowrap;padding:14px 16px;font-size:15px;font-weight:500;text-decoration:none}
+nav a:hover,nav a.active{color:#fff;background:#ffffff26}
+.article-byline{font-size:14px;color:#6b7280;margin:0 0 16px;padding:10px 14px;background:#f8fafc;border-left:3px solid #2563eb;border-radius:6px}
+.article-byline a{font-weight:600}
+.series-badge{display:inline-block;background:#ede9fe;color:#4f2db5;border:1px solid #c4b5fd;border-radius:999px;padding:4px 12px;font-size:13px;font-weight:700;margin-bottom:14px}
+.box{border-left:4px solid var(--accent);background:#fff3cd;border-radius:4px;margin:18px 0;padding:16px}
+.box.blue{border-left-color:#2563eb;background:#eff6ff}
+.box.red{border-left-color:#dc2626;background:#fee2e2}
+.box.green{border-left-color:#059669;background:#ecfdf5}
+.quote{border-left:4px solid #6c3ce1;background:#f5f3ff;border-radius:4px;margin:18px 0;padding:16px 20px;font-style:italic;color:#4f2db5}
+.timeline{border-left:3px solid #c4b5fd;margin:18px 0 18px 8px;padding-left:22px}
+.timeline .tl-item{margin-bottom:18px;position:relative}
+.timeline .tl-item::before{content:"";position:absolute;left:-29px;top:8px;width:11px;height:11px;border-radius:50%;background:#6c3ce1}
+.timeline .tl-date{font-weight:700;color:#4f2db5;font-size:15px}
+.note{background:#fff7ed;border-left:4px solid #f59e0b;padding:12px 16px;border-radius:4px;margin:18px 0;font-size:15px}
+footer{color:#fff;text-align:center;background:#1a1a2e;margin-top:50px;padding:30px 20px;font-size:15px}
+footer a{color:#a78bfa}
+#lang-switcher{position:fixed;top:10px;right:12px;z-index:99999;background:#fff;border:1px solid #d1d5db;border-radius:10px;padding:5px 9px;box-shadow:0 2px 10px rgba(0,0,0,.15);font:600 13px/1.3 system-ui,sans-serif;display:flex;align-items:center;gap:6px}
+#lang-switcher label{font-size:15px;cursor:default}
+#lang-switcher select{border:none;background:transparent;font:600 13px system-ui,sans-serif;cursor:pointer;outline:none;max-width:130px}
+#lang-switcher option:disabled{color:#bbb}
+</style>
+</head>
+<body>
+<div id="lang-switcher"><label for="lang-select">🌐</label><select id="lang-select"><option value="en" selected>English</option><option value="zh">中文</option><option value="es" disabled>Español</option><option value="fr" disabled>Français</option><option value="ar" disabled>العربية</option><option value="ja" disabled>日本語</option><option value="ko" disabled>한국어</option><option value="ru" disabled>Русский</option><option value="hi" disabled>हिन्दी</option></select></div>
+<nav><div class="nav-inner"><a href="/index.html" class="active">🏠 Home</a><a href="/index.html">📰 News</a><a href="/index.html">🤖 AI</a><a href="/about.html">About</a></div></nav>
+
+<h1>I Published 361 AI Articles in 2 Days, Then Deleted 358 of Them — How This Site Was Really Built</h1>
+<div class="article-byline">By <a href="https://tanhaosheng.asia/about.html">Tan Haosheng</a> · Associate Chief Physician / MD, PhD · Published 2026-07-30</div>
+<div class="series-badge">📓 Build Log · A true story, mistakes included</div>
+
+<div class="box blue">
+<strong>The short version:</strong> I'm a breast &amp; thyroid surgeon, not a web developer. In four days — July 26 to July 30, 2026 — I went from "I want a website" to a live, multilingual site on my own domain, built almost entirely by directing an AI agent in plain Chinese. Along the way I made the single most common mistake of the AI era (mass-producing 361 articles nobody needed), got bluntly told my site was a "textbook AI content farm," deleted almost everything, and rebuilt it around three pieces of work I actually did with my own hands. This post is the honest log of that process.
+</div>
+
+<h2>Why a surgeon builds a website at all</h2>
+<p>I've been in clinical practice since 2006. My day job is operating on breast and thyroid cancer patients at Taizhou People's Hospital; my side obsession is squeezing research and paperwork efficiency out of AI tools — on a realistic budget, because most doctors I know won't pay $200/month for model subscriptions.</p>
+<p>Every time I found a genuinely useful (and usually free) AI workflow, I'd share it with colleagues over WeChat, and it would get lost within a week. A website felt like the obvious fix: one permanent place where fellow surgeons could find what actually works. The problem: I don't write code. What I did have was an AI agent (I use WorkBuddy, running Tencent's Hunyuan hy3 model — <a href="/workbuddy-free-agent-hunyuan-hy3-en.html">reviewed here</a>) that could write, edit, and deploy code for me while I described what I wanted in ordinary sentences.</p>
+
+<h2>Phase 1: The trap — 361 articles in 48 hours</h2>
+<p>Here is the embarrassing part, kept in full because it's the most useful part.</p>
+<p>My first instinct was the same one every AI-era site builder seems to have: <em>more pages = more traffic = more ad revenue</em>. The agent could generate a complete, SEO-optimized article in under a minute. So I let it. Batch scripts produced articles on finance, insurance, crypto, SaaS, VPNs, SSDs — topics I have no expertise in and, frankly, no interest in. By July 27 the site had <strong>361 articles across 390 HTML files</strong>, each with proper meta tags, structured data, internal links, and ad slots. On paper it looked like a real website. It was extraordinarily satisfying to watch the numbers grow.</p>
+<p>It was also completely worthless, for two reasons I only understood later.</p>
+<h3>Reason 1: The articles lied</h3>
+<p>The generated reviews said things like "We tested 8 tools over 6 weeks" — describing tests that never happened, with made-up percentages and star ratings. When I actually read a batch of them side by side, they even reused the same fabricated sentences across different articles. At some point during a late-night review session I wrote down the principle that now governs everything on this site:</p>
+<div class="quote">If you didn't do it, don't write "We did." If you only read about it, write "compiled from public sources." The first is fraud; the second is research. One word of difference, a world of difference in trust.</div>
+<h3>Reason 2: Google has seen this movie before</h3>
+<p>On July 28 I received a blunt independent assessment of the site. Verdict: a <strong>"typical AI content farm"</strong> — 110+ articles published within 3 days, identical template skeletons, fake first-person testing claims, anonymous operation. Under Google's Helpful Content system and its Scaled Content Abuse policy, a site like that doesn't rank poorly. It doesn't rank <em>at all</em>.</p>
+<div class="box red"><strong>The uncomfortable math:</strong> 361 articles × 0 trust = 0. Three articles with real experiments, real screenshots, and a real name attached are worth more than a thousand generated ones. There is no volume workaround, and in 2026 the loophole is firmly closed.</div>
+
+<h2>Phase 2: The great deletion</h2>
+<p>The fix was not editing. It was deletion — in three rounds, each more radical than the last:</p>
+<ul>
+<li><strong>Round 1 (July 28):</strong> A content audit kept 117 articles vaguely related to the new focus ("AI tool selection") and cut 244 off-topic ones — all the finance, crypto, insurance, and real-estate filler.</li>
+<li><strong>Round 2 (July 29, 00:30):</strong> A harder look. Which pages had actual screenshots of things I'd done? Ten survived. One hundred and ten more deleted.</li>
+<li><strong>Round 3 (July 29, evening):</strong> The final standard — <em>only work I personally performed and can prove</em>. That left <strong>three</strong>: a clinical LLM benchmark, one hands-on model review, and one configuration guide. Everything else was unpublished (kept recoverable in git history, but off the live site).</li>
+</ul>
+<p>Deleting 358 pages that took two days to create felt absurd. It was also the single best decision of the whole project.</p>
+
+<h2>Phase 3: What replaced the farm — three real things</h2>
+<h3>1. A clinical LLM benchmark only a clinician could run</h3>
+<p>Instead of writing my 362nd generic "Top 10 AI tools" listicle, I asked: what can I test that almost nobody else on the internet can? Answer: <strong>whether free Chinese LLMs can safely interpret a real post-operative breast cancer case</strong>. I designed a 16-item, 100-point scoring rubric against the 2026 CBCS breast cancer guidelines — the same guidelines I use in clinic — including deliberate traps around staging ambiguity and endocrine-therapy indications that I see trip up junior doctors.</p>
+<p>The results were sobering: DeepSeek (free tier) scored a median <strong>28/100</strong> across three runs — consistently wrong in the same three places, but with a reasoning chain worth auditing. ChatGLM 5.2 scored a median <strong>5/100</strong> and answered my Chinese prompts in English. Neither is remotely safe for unsupervised clinical use. Full methodology and all raw transcripts are in the <a href="/clinical-benchmark/index_en.html">benchmark microsite</a> and the <a href="/chatglm-vs-deepseek-clinical-hands-on.html">write-up</a>.</p>
+<h3>2. Hands-on reviews of what I actually use</h3>
+<p>The <a href="/workbuddy-free-agent-hunyuan-hy3-en.html">WorkBuddy free-agent review</a> and the <a href="/agnes-workbuddy-config.html">Agnes free-API configuration guide</a> both come from my own daily setup, with my own screenshots, including the errors I hit. If I haven't used it, it's not on this site.</p>
+<h3>3. A real name and a real face</h3>
+<p>The old site was anonymous. The new <a href="/about.html">About page</a> carries my full name, my hospital, my degrees, and my clinical background — verifiable by anyone. For a site touching medical topics, this isn't decoration; it's the minimum price of being taken seriously, by readers and by search engines alike.</p>
+
+<h2>The technical build, for the curious</h2>
+<p>All of this was implemented by the AI agent through conversation. I never opened a code editor. The stack:</p>
+<table>
+<thead><tr><th>Layer</th><th>Choice</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>Pages</td><td>Static HTML (originally scaffolded with Astro)</td><td>No server, no database, nothing to hack or maintain</td></tr>
+<tr><td>Hosting</td><td>GitHub Pages → <strong>Cloudflare Pages</strong></td><td>Migrated July 29; git push = auto-deploy in ~60 seconds, free</td></tr>
+<tr><td>Domain</td><td>tanhaosheng.asia</td><td>Own domain (a requirement for AdSense; the old *.github.io now 301-redirects here)</td></tr>
+<tr><td>Languages</td><td>English primary + 8 machine-translated homepages, honest disclaimer banner</td><td>Full hreflang; articles stay English/Chinese until I can review a translation</td></tr>
+<tr><td>Analytics</td><td>Cloudflare Web Analytics + busuanzi counters</td><td>Cookie-free; you can see the live counters in the footer below</td></tr>
+<tr><td>Search</td><td>Google Search Console, sitemap + per-page indexing requests</td><td>Submitted July 30 — the day this post went live</td></tr>
+</tbody>
+</table>
+
+<h2>The whole timeline</h2>
+<div class="timeline">
+<div class="tl-item"><div class="tl-date">July 26</div>Site idea. AI agent scaffolds a generic "AI Tool Stack" portal on GitHub Pages. Batch SEO injection across 238 pages. First taste of the volume trap.</div>
+<div class="tl-item"><div class="tl-date">July 27</div>Peak content farm: 361 articles / 390 HTML files, most generated by script. Late at night, I catch the generated articles claiming tests that never happened.</div>
+<div class="tl-item"><div class="tl-date">July 28</div>Independent assessment: "textbook AI content farm, will not rank." Strategic reset: cut 244 articles, reposition as a surgeon's AI tool-selection guide, write a De-AI methodology with hard rules (no fabricated testing, no template voice, every article unique).</div>
+<div class="tl-item"><div class="tl-date">July 29</div>Delete down to the core. Run the clinical LLM benchmark (DeepSeek 28/100 vs ChatGLM 5/100). Rebuild About with real credentials. Add 9-language switcher. Migrate to Cloudflare Pages + custom domain tanhaosheng.asia.</div>
+<div class="tl-item"><div class="tl-date">July 30</div>Google Search Console verified, sitemap submitted, core pages requested for indexing. This build log published — the site's first "meta" article.</div>
+</div>
+
+<h2>Six lessons, paid for in deleted pages</h2>
+<ol>
+<li><strong>An AI agent collapses the technical barrier, not the judgment barrier.</strong> Building 390 pages took two days. Knowing which 3 to keep took a professional lifetime.</li>
+<li><strong>Volume is a trap with a smiling face.</strong> Watching the article count climb feels like progress. It's the most seductive dead end in AI-assisted publishing.</li>
+<li><strong>Never let AI claim experience you don't have.</strong> "We tested" without testing is not marketing, it's lying — and both readers and ranking systems are increasingly good at detecting it.</li>
+<li><strong>Your unfair advantage is whatever only you can do.</strong> Mine is scoring an LLM's oncology answers against guidelines I apply in clinic every week. Yours is something else — but it's not "generating articles faster."</li>
+<li><strong>Delete without mercy, but keep git history.</strong> Every cut was reversible, which made radical cuts psychologically possible.</li>
+<li><strong>Ship, then fix in public.</strong> This site went live imperfect — machine-translated homepages flagged as such, small SEO bugs patched in later commits. An honest changelog beats a fake polish.</li>
+</ol>
+
+<h2>What's next</h2>
+<p>The plan is deliberately small: the remaining four articles in the hands-on series (paid-API models on the same clinical case, multi-cancer-type expansion), each done properly with real data. One good test per week beats 180 generated articles per day. I now have proof of both halves of that statement.</p>
+
+<div class="box green"><strong>If you take one thing from this post:</strong> AI can build your website in a weekend. What it can't do is give the site a reason to exist. Do the one thing only you can do, publish it under your real name, and delete everything else.</div>
+
+<footer>
+© 2026 Tan Haosheng. All rights reserved. | <a href="/affiliate-disclosure.html">Affiliate Disclosure</a> | <a href="/privacy.html">Privacy Policy</a>
+<div class="page-stats" style="margin-top:10px;font-size:.85em;color:#6b7280;">📊 全站浏览 <span id="busuanzi_value_site_pv">0</span> · 全站独立访客 <span id="busuanzi_value_site_uv">0</span>　|　📄 本页浏览 <span id="busuanzi_value_page_pv">0</span> · 本页独立访客 <span id="busuanzi_value_page_uv">0</span></div><div id="cf-stats" style="margin-top:6px;font-size:.85em;color:#6b7280;display:none;">🌐 Cloudflare 真实IP：全站 <b id="cf-site-pv">–</b> 浏览 / <b id="cf-site-uv">–</b> 唯一IP　|　📄 本页 <b id="cf-page-pv">–</b> 浏览 / <b id="cf-page-uv">–</b> 唯一IP <span style="opacity:.6;">(按IP累计，区别于busuanzi的cookie访客)</span></div>
+</footer>
+
+<script>
+(function(){
+  var CODES=['en', 'zh', 'es', 'fr', 'ar', 'ja', 'ko', 'ru', 'hi'];
+  function switchLang(l){
+    var p=location.pathname.replace(/^\//,'').split('/');
+    var base=CODES.indexOf(p[0])!==-1?p.slice(1).join('/'):p.join('/');
+    var url=(l==='en'?'/'+base:'/'+l+'/'+base)+(location.search||'');
+    try{localStorage.setItem('pref',l);}catch(e){}
+    location.href=url;
+  }
+  var s=document.getElementById('lang-select');
+  if(s){ s.addEventListener('change',function(){switchLang(this.value);}); }
+})();
+</script>
+<script async defer src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script>
+// cf-stats-fetch
+(function(){
+  try {
+    var box = document.getElementById("cf-stats");
+    if (!box) return;
+    var p = location.pathname;
+    fetch("/api/stats?path=" + encodeURIComponent(p) + "&track=1", {cache:"no-store"})
+      .then(function(r){return r.json();})
+      .then(function(d){
+        if (!d || d.ok === false) return;
+        document.getElementById("cf-site-pv").textContent = d.sitePV;
+        document.getElementById("cf-site-uv").textContent = d.siteUV;
+        document.getElementById("cf-page-pv").textContent = d.pagePV;
+        document.getElementById("cf-page-uv").textContent = d.pageUV;
+        box.style.display = "block";
+      })
+      .catch(function(){});
+  } catch(e){}
+})();
+</script>
+</body>
+</html>
