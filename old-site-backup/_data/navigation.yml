@@ -1,9 +1,0 @@
-main:
-  - title: "Home"
-    url: /
-  - title: "Data Browser"
-    url: /data-browser/
-  - title: "Downloads"
-    url: /downloads/
-  - title: "How to Cite"
-    url: /cite/
