@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>AI Agents for Medical Research Writing — Real Surgeon-Tested Cases · AI Tool Stack</title>
-<meta name="description" content="First-hand case studies of WorkBuddy Hy3 (an AI agent) evaluating real scientific manuscripts and single-cell data for a surgeon-researcher. What the agent got right, what it caught that the surgeon missed, and where it pushed back. Two manuscripts reviewed against real scRNA-seq data in 22 minutes total. Replicable methodology, reproducible transcripts.">
+<meta name="description" content="First-hand case studies of an AI agent (WorkBuddy Hy3) put to work on a practising surgeon-researcher's own research workload. What the agent handled unaided, where it pushed back, and where it failed — scored against a fixed rubric. All scientific content is withheld; only agent behaviour is reported.">
 <meta name="author" content="Tan Haosheng, MD, PhD">
-<meta name="keywords" content="AI for scientific writing, AI agent medical research, AI manuscript review, AI single-cell analysis, surgeon AI tools, WorkBuddy Hy3, clinical AI agent">
+<meta name="keywords" content="AI for scientific writing, AI agent medical research, AI manuscript review, AI research assistant, surgeon AI tools, WorkBuddy Hy3, clinical AI agent">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="article:published_time" content="2026-07-31">
 <meta name="article:modified_time" content="2026-07-31">
@@ -14,7 +14,7 @@
 <link rel="canonical" href="https://tanhaosheng.asia/agents-for-research/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AI Agents for Medical Research Writing — Real Surgeon-Tested Cases">
-<meta property="og:description" content="First-hand case studies of WorkBuddy Hy3 evaluating real scientific manuscripts and single-cell data. What the agent caught, where it pushed back, what it missed. Replicable methodology.">
+<meta property="og:description" content="First-hand case studies of an AI agent working on a surgeon-researcher's real research tasks. What it caught, where it pushed back, what it missed. Behaviour reported, science withheld.">
 <meta property="og:url" content="https://tanhaosheng.asia/agents-for-research/">
 <meta property="og:site_name" content="AI Tool Stack">
 <meta property="og:image" content="https://tanhaosheng.asia/assets/og-cover.png">
@@ -22,7 +22,7 @@
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AI Agents for Medical Research Writing — Real Surgeon-Tested Cases">
-<meta name="twitter:description" content="First-hand case studies of WorkBuddy Hy3 evaluating real scientific manuscripts. Reproducible methodology, honest assessment.">
+<meta name="twitter:description" content="First-hand case studies of an AI agent on real research tasks. Reproducible methodology, honest assessment, no unpublished science disclosed.">
 <meta name="twitter:image" content="https://tanhaosheng.asia/assets/og-cover.png">
 <link rel="alternate" hreflang="en" href="https://tanhaosheng.asia/agents-for-research/">
 <link rel="alternate" hreflang="x-default" href="https://tanhaosheng.asia/agents-for-research/">
@@ -111,7 +111,7 @@ footer .credits{font-size:13px;color:#94a3b8;margin-top:14px}
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   "name": "AI Agents for Medical Research Writing — Real Surgeon-Tested Cases",
-  "description": "First-hand case studies of an AI agent (WorkBuddy Hy3) evaluating a real breast cancer single-cell dataset and two of the surgeon's own scientific manuscripts.",
+  "description": "First-hand case studies of an AI agent (WorkBuddy Hy3) working on a practising surgeon-researcher's real research tasks, scored against a fixed behavioural rubric. No unpublished scientific content is disclosed.",
   "url": "https://tanhaosheng.asia/agents-for-research/",
   "author": {
     "@type": "Person",
@@ -130,8 +130,9 @@ footer .credits{font-size:13px;color:#94a3b8;margin-top:14px}
     "@type": "ItemList",
     "itemListElement": [
       {"@type": "ListItem", "position": 1, "name": "Methodology — How to test AI agents on research tasks", "url": "https://tanhaosheng.asia/agents-for-research/methodology"},
-      {"@type": "ListItem", "position": 2, "name": "Case 1 — KLRB1 + breast cancer single-cell RNA-seq", "url": "https://tanhaosheng.asia/agents-for-research/case-klrb1"},
-      {"@type": "ListItem", "position": 3, "name": "Case 2 — MHC-II / NK co-culture cross-tumor validation", "url": "https://tanhaosheng.asia/agents-for-research/case-mhc2"}
+      {"@type": "ListItem", "position": 2, "name": "Case 1 — Reading the data, checking a draft", "url": "https://tanhaosheng.asia/agents-for-research/case-1"},
+      {"@type": "ListItem", "position": 3, "name": "Case 2 — The mismatch trap", "url": "https://tanhaosheng.asia/agents-for-research/case-2"},
+      {"@type": "ListItem", "position": 4, "name": "Case 3 — From raw data to a research plan", "url": "https://tanhaosheng.asia/agents-for-research/case-3"}
     ]
   }
 }
@@ -145,7 +146,7 @@ footer .credits{font-size:13px;color:#94a3b8;margin-top:14px}
   <div class="hero-grid">
     <div class="hero-left">
       <h1>AI Agents for Medical Research Writing</h1>
-      <p class="hero-sub">Real surgeon-tested cases: I gave an AI agent my own single-cell data and two of my own manuscripts. This section documents exactly what it caught, what it got wrong, and what it refused to be hand-wavy about — all reproducible, no marketing.</p>
+      <p class="hero-sub">Real surgeon-tested cases. I put an AI agent to work on my own research workload and scored how it behaved: what it worked out unaided, what it got wrong, and what it refused to be hand-wavy about. Behaviour is reported in full; the underlying science is not.</p>
       <p class="byline">By <strong style="color:#fff">Tan Haosheng, MD, PhD</strong> · Associate Chief Physician · Last reviewed 2026-07-31</p>
     </div>
     <aside class="hero-card">
@@ -170,25 +171,35 @@ footer .credits{font-size:13px;color:#94a3b8;margin-top:14px}
   <div style="flex:1 1 170px;background:#f3f0ff;border:1px solid #ddd4ff;border-radius:12px;padding:16px 18px">
     <div style="font:800 26px/1.1 system-ui;color:#4f2db5">18:05</div>
     <div style="font:600 13px system-ui;color:#4f2db5;margin-top:4px">Case 1 — first prompt</div>
-    <div style="font:400 12.5px/1.5 system-ui;color:#6b7280;margin-top:6px">Two scRNA-seq samples parsed, sorted-vs-unsorted identified, full manuscript cross-check. One shot, no retries.</div>
+    <div style="font:400 12.5px/1.5 system-ui;color:#6b7280;margin-top:6px">Two unlabelled samples parsed and told apart from the data alone, plus a full draft cross-check. One shot, no retries.</div>
   </div>
   <div style="flex:1 1 170px;background:#f3f0ff;border:1px solid #ddd4ff;border-radius:12px;padding:16px 18px">
     <div style="font:800 26px/1.1 system-ui;color:#4f2db5">~4:00</div>
     <div style="font:600 13px system-ui;color:#4f2db5;margin-top:4px">Case 2 — follow-up</div>
-    <div style="font:400 12.5px/1.5 system-ui;color:#6b7280;margin-top:6px">Second, deliberately mismatched manuscript checked against the same already-loaded data.</div>
+    <div style="font:400 12.5px/1.5 system-ui;color:#6b7280;margin-top:6px">A deliberately mismatched second draft checked against the same already-loaded data.</div>
   </div>
   <div style="flex:1 1 170px;background:linear-gradient(135deg,#6c3ce1,#4f2db5);border-radius:12px;padding:16px 18px;color:#fff">
     <div style="font:800 26px/1.1 system-ui">~22 min</div>
     <div style="font:600 13px system-ui;margin-top:4px;opacity:.92">Total, both manuscripts</div>
-    <div style="font:400 12.5px/1.5 system-ui;margin-top:6px;opacity:.85">For comparison: doing this analysis by hand takes me the better part of two working days.</div>
+    <div style="font:400 12.5px/1.5 system-ui;margin-top:6px;opacity:.85">For comparison: doing the same work by hand takes me the better part of two working days.</div>
   </div>
 </div>
 
+<div class="callout" style="background:#f0f9ff;border-color:#bae6fd">
+  <h3 style="color:#075985">Read this first — what is and isn't published here</h3>
+  <p style="margin:.4em 0">Every case on this page comes from <strong>unpublished work in progress</strong>. So this section reports the <strong>agent's behaviour only</strong>: how it approached the task, whether it guessed or asked, whether it pushed back, and how long it took.</p>
+  <ul>
+    <li><strong>Withheld entirely</strong>: the research question, the hypotheses, any conclusion, any figure, any number, any gene, any disease context, any file or sample identifier.</li>
+    <li><strong>Published</strong>: the protocol, the rubric, the wall-clock timings, the agent's <em>behavioural</em> pass/fail per dimension, and a small number of fully-redacted illustrative screenshots that show only that output was produced — not what it said.</li>
+    <li><strong>Why</strong>: peer review comes first. These pages exist to answer "can an agent do this kind of work", not to preprint anything.</li>
+  </ul>
+</div>
+
 <h2>Why this section exists</h2>
-<p>The "AI for X" discourse is mostly testimonials. I wanted measurements on <em>my own</em> work, with the prompts saved and the transcripts kept. Two things forced this section into existence:</p>
+<p>The "AI for X" discourse is mostly testimonials. I wanted measurements on <em>my own</em> work, with the prompts saved and the runs recorded. Two things forced this section into existence:</p>
 <ol>
-  <li><strong>I forgot which sample was CD45-sorted.</strong> A real analysis can't start until you know what's in front of you — and that's exactly where AI agents tend to silently guess. I tested whether an agent would ask, fail, or hallucinate.</li>
-  <li><strong>I had an unrelated draft lying around.</strong> A NK-co-culture paper about HNSCC and thyroid cancer, sitting next to a breast-cancer scRNA-seq dataset. I deliberately attached both to the same analysis session and watched whether the agent noticed the data didn't match the paper's claims.</li>
+  <li><strong>I could not remember how one of my own samples had been prepared.</strong> A real analysis can't start until you know what's in front of you — and that's exactly where AI agents tend to silently guess. I tested whether an agent would ask, work it out, or hallucinate.</li>
+  <li><strong>I had a draft from a different line of work lying around.</strong> I deliberately attached it to a dataset it had nothing to do with, and watched whether the agent noticed the mismatch or generated a confident cross-validation anyway.</li>
 </ol>
 
 <h2>What's here (start anywhere)</h2>
@@ -200,36 +211,38 @@ footer .credits{font-size:13px;color:#94a3b8;margin-top:14px}
     <p>The protocol I use for every case: prompt, data, evaluation criteria, what counts as a pass, what counts as a hallucination, and the four failure modes I watch for.</p>
     <span class="meta">Read first · 5 min</span>
   </a>
-  <a class="card" href="/agents-for-research/case-klrb1">
+  <a class="card" href="/agents-for-research/case-1">
     <span class="kicker">Case 1 · 18 min 05 s, one shot</span>
-    <h3>KLRB1 + breast cancer single-cell RNA-seq</h3>
-    <p>Two anonymized breast cancer samples + my own KLRB1/BRCA manuscript. Did the agent identify the CD45-sorted sample correctly? Did the scRNA-seq data support my manuscript claims — or contradict them?</p>
-    <span class="meta">Reproducible transcript · ~12 min read</span>
+    <h3>Reading the data, checking a draft</h3>
+    <p>Two unlabelled samples handed over, plus a draft of my own. Could the agent tell the samples apart from the data itself — and did it hold the draft to the data, or just agree with me?</p>
+    <span class="meta">Behavioural verdict · ~7 min read</span>
   </a>
-  <a class="card" href="/agents-for-research/case-mhc2">
+  <a class="card" href="/agents-for-research/case-2">
     <span class="kicker">Case 2 · trap test · 4 min</span>
-    <h3>MHC-II / NK co-culture — cross-tumor validation</h3>
-    <p>The "unrelated paper" test. I dropped in a draft about HNSCC + thyroid NK co-culture on top of the breast-cancer dataset. Does the agent notice the mismatch, or does it fabricate?</p>
-    <span class="meta">Reproducible transcript · ~10 min read</span>
+    <h3>The mismatch trap</h3>
+    <p>The "wrong paper" test. I attached a draft from a completely different line of work on top of the same dataset. Does the agent notice that the data cannot speak to that draft — or does it manufacture a validation?</p>
+    <span class="meta">Behavioural verdict · ~6 min read</span>
   </a>
-  <a class="card" href="/agents-for-research/case-writing-plan">
+  <a class="card" href="/agents-for-research/case-3">
     <span class="kicker">Case 3 · forward look · one prompt</span>
-    <h3>From raw matrix to a publication plan</h3>
-    <p>Same data, no manuscript to defend. I asked the agent to propose what can actually be written and where it would go. Five routes, journal tiers, and an honest n=1 ceiling — a different capability from Cases 1–2.</p>
-    <span class="meta">Reproducible transcript · ~11 min read</span>
+    <h3>From raw data to a research plan</h3>
+    <p>Same data, no draft to defend. I asked the agent to propose what could realistically be written and where it could go. A different capability from Cases 1–2: originating a plan rather than auditing one.</p>
+    <span class="meta">Behavioural verdict · ~8 min read</span>
   </a>
 </div>
 
 <h2>Headline findings (so you can skim)</h2>
+<p style="font-size:.95rem;color:#6b7280;margin-top:-.4em">Behavioural results only. What the agent <em>concluded</em> scientifically is deliberately not reported.</p>
 <table class="find-table">
-  <thead><tr><th>Test point</th><th>Agent's result</th><th>Verdict</th></tr></thead>
+  <thead><tr><th>Test point</th><th>What the agent did</th><th>Verdict</th></tr></thead>
   <tbody>
-    <tr><td>Identify CD45-sorted vs unsorted sample</td><td>THS_2 = CD45 (immune 95.7%, PTPRC+ 71.2%); THS_1 = unsorted (immune 34.1%)</td><td><span class="tag">Correct</span></td></tr>
-    <tr><td>Does scRNA-seq support my KLRB1/BRCA conclusions?</td><td>Partial. KLRB1-in-lymphocytes supported; "KLRB1 reflects armed cytotoxic infiltration" not supported at single-cell level; TIGIT⁺PRF1⁻ signature runs the other way; CD4⁺ memory T as PVR/NECTIN2 source not supported.</td><td><span class="tag warn">Partial / needs softening</span></td></tr>
-    <tr><td>Does scRNA-seq support the unrelated MHC-II/LAG-3 paper?</td><td>LAG-3 enrichment in cytotoxic T/NK confirmed (2.3×); MHC-II co-linearity and STAT1 correlations far weaker than paper claims. Agent flagged tumor-type mismatch.</td><td><span class="tag warn">Partial / cite carefully</span></td></tr>
-    <tr><td>Did the agent notice the data-paper mismatch?</td><td>Yes — explicitly flagged wrong cancer type, single patient, no NK-pressure pairing.</td><td><span class="tag">Correct</span></td></tr>
+    <tr><td>Work out how two unlabelled samples differed, using the data alone</td><td>Derived the distinction from the data itself and stated it with the supporting evidence, instead of asking me or picking one at random. I knew the ground truth; it matched.</td><td><span class="tag">Correct</span></td></tr>
+    <tr><td>Hold my own draft to the data rather than agreeing with me</td><td>Went through the draft claim by claim and separated the ones the data could carry from the ones it could not. It contradicted parts of my own text to my face rather than validating everything.</td><td><span class="tag">Pushed back — as it should</span></td></tr>
+    <tr><td>Handle a draft the data has no business validating</td><td>Refused to treat the exercise as a validation. Named the specific structural reasons the dataset could not answer that draft's question before producing anything else.</td><td><span class="tag">Correct</span></td></tr>
+    <tr><td>Avoid the classic statistical traps</td><td>Distinguished per-cell from aggregated analysis rather than reporting one as the other, and accounted for technical depth before calling anything enriched.</td><td><span class="tag">Passed</span></td></tr>
     <tr><td>Wall-clock time, one shot each</td><td>Case 1: <strong>18 min 05 s</strong>. Case 2 (follow-up prompt, same session): <strong>~4 min</strong>. <strong>~22 minutes total</strong> — no re-prompting, no retries, no hand-holding.</td><td><span class="tag">Fast</span></td></tr>
-    <tr><td>Can the agent originate a research plan, not just check one?</td><td>Case 3: reconstructed HER2&#8315;/HR&#8315; identity from CNV, proposed a cold/immune-excluded TME write-up, and returned five routes with journal tiers — while refusing to inflate a single-case dataset.</td><td><span class="tag">Yes, with honest scoping</span></td></tr>
+    <tr><td>Originate a research plan, not just audit one</td><td>Case 3: produced several concrete, differentiated directions with realistic ambition levels — and led with the ceiling imposed by the dataset's size rather than burying it.</td><td><span class="tag">Yes, with honest scoping</span></td></tr>
+    <tr><td>Where it was weakest</td><td>It is only as good as the framing it is given: with a vague prompt it will happily produce a well-organised answer to the wrong question. It also cannot know what it was not shown, and does not always say so unprompted.</td><td><span class="tag warn">Needs a domain expert in the loop</span></td></tr>
   </tbody>
 </table>
 
@@ -239,17 +252,18 @@ footer .credits{font-size:13px;color:#94a3b8;margin-top:14px}
     <li><strong>Not a benchmark</strong>. I'm not ranking agents. WorkBuddy Hy3 is the only one I tested under this protocol so far. See <a href="/model-reviews">/model-reviews</a> for cross-model LLM benchmarks.</li>
     <li><strong>Not a recommendation</strong>. The findings are mine and reproducible. Your data, your manuscript, your statistical power — your call.</li>
     <li><strong>Not medical advice</strong>. The cases are about research methodology, not clinical decisions. Anything a surgeon would act on needs a human pathologist, a human radiologist, and a tumor board.</li>
+    <li><strong>Not a preprint</strong>. No hypothesis, result, figure or data point from any unpublished study appears anywhere in this section, in any form.</li>
   </ul>
 </div>
 
 <h2>About the author (so you can weigh this)</h2>
-<p>I am <strong>Tan Haosheng (谭好升)</strong>, Associate Chief Physician in the Department of Thyroid &amp; Breast Surgery at Taizhou People's Hospital (泰州市人民医院), MD/PhD trained at Peking Union Medical College / Tsinghua / National Cancer Center. I have 20+ years of clinical practice and 10+ SCI-indexed publications, with active research in breast cancer immunology and tumor-infiltrating lymphocyte biology.</p>
-<p>That puts me in a useful position for this kind of test: I can read a transcript and tell whether the agent is making a defensible statistical claim or hand-waving through one. I am not a computational biologist by training, so I am also exactly the kind of person who would benefit from an agent doing the scRNA-seq plumbing for me.</p>
+<p>I am <strong>Tan Haosheng (谭好升)</strong>, Associate Chief Physician in the Department of Thyroid &amp; Breast Surgery at Taizhou People's Hospital (泰州市人民医院), MD/PhD trained at Peking Union Medical College / Tsinghua / National Cancer Center. I have 20+ years of clinical practice and 10+ SCI-indexed publications in surgical oncology.</p>
+<p>That puts me in a useful position for this kind of test: I can read an agent's output and tell whether it is making a defensible statistical claim or hand-waving through one. I am not a computational biologist by training, so I am also exactly the kind of person who would benefit from an agent doing the data plumbing for me.</p>
 <p>Full credentials and disclosures: <a href="/about">/about</a>.</p>
 
 <div class="nl-block">
   <h3>Get the next case study by email</h3>
-  <p style="margin:.4em 0 .6em">One case study every few weeks — the prompt, the transcript, the verdict, and what I changed in the manuscript. No filler.</p>
+  <p style="margin:.4em 0 .6em">One case study every few weeks — the task, the protocol, the rubric score, and an honest verdict on the agent. No filler.</p>
   <form action="https://buttondown.email/tanhaosheng" method="post" target="_blank">
     <input type="email" name="email" placeholder="you@hospital.com" required>
     <button type="submit">Subscribe</button>
@@ -265,7 +279,7 @@ footer .credits{font-size:13px;color:#94a3b8;margin-top:14px}
   <p><strong>Tan Haosheng, MD, PhD</strong> · Associate Chief Physician, Thyroid &amp; Breast Surgery · Taizhou People's Hospital</p>
   <p style="margin:.4em 0"><a href="/">Home</a> · <a href="/model-reviews">Model Reviews</a> · <a href="/agents-for-research/">Agents for Research</a> · <a href="/clinical-benchmark/">Clinical Benchmark</a> · <a href="/about">About</a> · <a href="/contact">Contact</a> · <a href="/privacy">Privacy</a></p>
   <p class="credits">Content on this page is informational and research-methodology focused. It is not medical advice, not a substitute for clinical judgment, and not a substitute for peer review.</p>
-  <p class="credits">Single-cell RNA-seq analyses referenced here were run on my own de-identified patient samples under the supervision of my institution. Linked manuscripts are my own work; the unpublished MHC-II draft is intentionally summarized, not quoted.</p>
+  <p class="credits">All analyses referenced here were run on my own de-identified patient samples under the supervision of my institution. The underlying work is unpublished and under active preparation: no hypothesis, result, figure, number or identifier from it is disclosed on this site in any form. Screenshots are fully redacted and illustrative only.</p>
 </div>
 </footer>
 

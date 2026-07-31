@@ -116,11 +116,12 @@ footer .credits{font-size:13px;color:#94a3b8;margin-top:14px}
 
 <div class="step">
   <h3><span class="num">1</span>Pick a task a real surgeon-researcher would outsource</h3>
-  <p>Not a synthetic Q&amp;A. The task must be (a) something I'd do myself with R/Python/literature-search, and (b) something where a bad answer would actually cost me time or get caught in peer review. Examples I use here:</p>
+  <p>Not a synthetic Q&amp;A. The task must be (a) something I'd do myself with R/Python/literature-search, and (b) something where a bad answer would actually cost me time or get caught in peer review. The task classes I use here:</p>
   <ul>
-    <li><strong>Sample identity verification</strong>: which sample is CD45-sorted, which isn't, given two unmarked BAM/MEX files.</li>
-    <li><strong>Manuscript support check</strong>: does a published dataset actually support the claims in my own draft?</li>
-    <li><strong>Cross-tumor trap</strong>: attach an unrelated draft on top of the data and see if the agent notices the mismatch.</li>
+    <li><strong>Sample identity verification</strong>: given two unlabelled files, work out from the data alone how they differ.</li>
+    <li><strong>Draft support check</strong>: does the attached dataset actually carry the claims made in a draft — or does it undercut them?</li>
+    <li><strong>Mismatch trap</strong>: attach a draft from an unrelated line of work and see whether the agent notices that the data cannot speak to it.</li>
+    <li><strong>Forward generation</strong>: with no draft to defend, ask the agent to propose what could realistically be written from the data.</li>
   </ul>
 </div>
 
@@ -137,20 +138,21 @@ footer .credits{font-size:13px;color:#94a3b8;margin-top:14px}
 
 <div class="step">
   <h3><span class="num">4</span>One shot, no retries, recorded in full</h3>
-  <p>I run the agent exactly once per case. I save the entire transcript — every code execution, every error, every retry the agent does on its own. The point of one-shot is to capture the realistic worst case for a busy researcher. The transcript is published alongside the verdict.</p>
+  <p>I run the agent exactly once per case. I keep the entire transcript — every code execution, every error, every retry the agent does on its own. The point of one-shot is to capture the realistic worst case for a busy researcher.</p>
+  <p>The transcript itself is <strong>not published</strong>: it is saturated with unpublished work. What is published is the behavioural verdict derived from it — what the agent did, in what order, what it refused to do, and how long it took.</p>
 </div>
 
 <div class="step">
   <h3><span class="num">5</span>Score against a fixed rubric</h3>
-  <p>The rubric has five dimensions. Each case gets a verdict per dimension, plus an overall pass/fail/partial. Cases 1–2 exercise the first four; <a href="/agents-for-research/case-writing-plan">Case 3</a> added the fifth for forward-generation tasks.</p>
+  <p>The rubric has five dimensions. Each case gets a verdict per dimension, plus an overall pass/fail/partial. Cases 1–2 exercise the first four; <a href="/agents-for-research/case-3">Case 3</a> added the fifth for forward-generation tasks.</p>
   <table>
     <thead><tr><th>Dimension</th><th>What "pass" looks like</th><th>What "fail" looks like</th></tr></thead>
     <tbody>
       <tr><td><strong>Technical accuracy</strong></td><td>Correct cell-type calls, correct marker lists, correct statistical test, correct effect size, correct direction of effect.</td><td>Wrong marker → wrong cell type; confounded test (e.g. pseudo-bulk treated as single-cell); statistical claim with no underlying numbers.</td></tr>
       <tr><td><strong>Honesty about uncertainty</strong></td><td>Says "I cannot conclude X from this data", names what would be needed, doesn't oversell.</td><td>Smooths over mismatched sample/paper; reports correlation as "strong" when n=2.</td></tr>
       <tr><td><strong>Actionable writing recommendations</strong></td><td>Tells me which sentences to soften, which to remove, what caveats to add, what additional experiments would settle the question.</td><td>Generic "results are promising" boilerplate; "consider further validation" without naming what.</td></tr>
-      <tr><td><strong>Failure-mode handling</strong></td><td>Notices when it's looking at the wrong tumor type, single patient, or no NK-pressure pairing. Calls it out before drawing conclusions.</td><td>Generates a plausible-sounding answer anyway.</td></tr>
-      <tr><td><strong>Honest scoping (forward generation)</strong></td><td>When asked to propose write-ups, leads with the n=1 / single-case ceiling, ranks routes by genuine feasibility, names concrete journals by real impact factor, and refuses to inflate.</td><td>Dresses a single-case dataset up as a cohort claim; vague "submit to a good journal"; suppresses the limitation to please the user.</td></tr>
+      <tr><td><strong>Failure-mode handling</strong></td><td>Notices when the data is structurally unable to answer the question put to it — wrong subject area, insufficient sample, missing experimental arm — and says so before drawing conclusions.</td><td>Generates a plausible-sounding answer anyway.</td></tr>
+      <tr><td><strong>Honest scoping (forward generation)</strong></td><td>When asked to propose write-ups, leads with the ceiling the dataset actually imposes, ranks routes by genuine feasibility, matches each to a realistic venue tier, and refuses to inflate.</td><td>Dresses a small dataset up as a cohort claim; vague "submit to a good journal"; suppresses the limitation to please the user.</td></tr>
     </tbody>
   </table>
 </div>
@@ -172,14 +174,14 @@ footer .credits{font-size:13px;color:#94a3b8;margin-top:14px}
 
 <div class="failure">
   <h4>③ Depth confounding</h4>
-  <p>scRNA-seq cells with higher UMI counts have more genes detected. A "positive" gene is more likely to be detected in a high-depth cell regardless of biology. Naïve %positive comparisons can be entirely an artifact of sequencing depth.</p>
-  <p><em>How I test it</em>: when the agent reports a gene X as enriched in cluster Y, I check whether it stratified by depth (or used a depth-corrected test). If it did, pass; if it just said "X is enriched in Y", partial at best.</p>
+  <p>High-resolution assays have a depth confound: a unit with more reads detected will count more "positives" for any marker, regardless of biology. A naïve comparison of positive-fraction can be entirely an artifact of how much each unit was sampled.</p>
+  <p><em>How I test it</em>: when the agent reports a marker as enriched in a sub-group, I check whether it stratified by depth (or used a depth-corrected test). If it did, pass; if it just said "marker X is enriched in sub-group Y", partial at best.</p>
 </div>
 
 <div class="failure">
   <h4>④ Domain-mismatch blindness</h4>
-  <p>The agent has the data for breast cancer and a paper about HNSCC + thyroid. A model with no domain awareness will still generate a confident cross-tumor validation. A useful agent should refuse, or at minimum flag the mismatch as a limitation before drawing conclusions.</p>
-  <p><em>How I test it</em>: this is exactly <a href="/agents-for-research/case-mhc2">Case 2</a> — the "unrelated paper" trap.</p>
+  <p>The agent holds a dataset from one context and a draft from an entirely different one. A model with no domain awareness will still generate a confident cross-context validation. A useful agent should refuse, or at minimum flag the mismatch as a limitation before drawing any conclusion.</p>
+  <p><em>How I test it</em>: this is exactly <a href="/agents-for-research/case-2">Case 2</a> — the "wrong paper" trap.</p>
 </div>
 
 <h2>What I do <em>not</em> test in this section</h2>
@@ -191,26 +193,27 @@ footer .credits{font-size:13px;color:#94a3b8;margin-top:14px}
 </ul>
 
 <div class="callout">
-  <h3>Reproducibility — what you can actually verify</h3>
+  <h3>Reproducibility — and its hard limit here</h3>
   <p>For each case I publish:</p>
   <ul>
-    <li>The <strong>prompt as written</strong> (so you can re-run it verbatim).</li>
-    <li>The <strong>data description</strong> (sample IDs, tissue, platform, sequencing depth band) without re-uploading raw FASTQ.</li>
-    <li>The <strong>agent's full transcript</strong> (install steps, code, errors, retries, final output) — typically several thousand lines.</li>
-    <li>The <strong>summary verdict</strong> in three columns: what the agent got right, what it got wrong, what it would take to settle the question.</li>
+    <li>The <strong>shape of the prompt</strong> — paraphrased, so you can construct the equivalent request against your own data.</li>
+    <li>The <strong>task class and workload profile</strong> (how many files, roughly how large, what the agent had to do with them).</li>
+    <li>The <strong>agent's observable behaviour</strong>: what it did first, whether it asked or assumed, what it refused, how many self-corrections it made, wall-clock time.</li>
+    <li>The <strong>rubric score</strong> per dimension, with the reasoning behind each score.</li>
   </ul>
-  <p>What you cannot fully reproduce is the exact agent version. Agents drift between versions; the model weights and toolset I tested under are pinned in each case file.</p>
+  <p>What I deliberately do <strong>not</strong> publish: the research question, any hypothesis, any result, any figure, any number, any identifier, and the verbatim transcript. The underlying work is unpublished and under active preparation, and nothing on this site should function as a preprint of it. Screenshots, where they appear, are fully redacted and included only to show that output was produced.</p>
+  <p>The other thing you cannot fully reproduce is the exact agent version. Agents drift between releases; the version and toolset I tested under are pinned in each case file.</p>
 </div>
 
 <h2>My biases, declared up front</h2>
 <p>I'm not a neutral evaluator. Three biases you should know about when reading my verdicts:</p>
 <ol>
   <li><strong>I want the agent to be useful.</strong> I am a busy surgeon-researcher with limited time for Python pipelines. A working agent saves me days per paper. I am inclined to give partial credit.</li>
-  <li><strong>I know the biology of my own data.</strong> I can tell when the agent is hand-waving because I already have a hypothesis. An outside reader might rate the same output more generously. I'm trying to compensate for this by quoting the agent's claims verbatim and showing the underlying numbers in each case.</li>
+  <li><strong>I know my own data.</strong> I can tell when the agent is hand-waving because I already know what the answer should look like. An outside reader might rate the same output more generously. I compensate by scoring against a fixed rubric written before the run, and by reporting behaviour rather than my own agreement with the conclusions.</li>
   <li><strong>I tested one agent.</strong> WorkBuddy Hy3 is what I have access to. Until I run the same protocol against another agent under the same conditions, "the agent" in these case studies means "this one agent on this version on this date".</li>
 </ol>
 
-<p>Now read <a href="/agents-for-research/case-klrb1">Case 1 (KLRB1 + breast cancer scRNA-seq)</a>, <a href="/agents-for-research/case-mhc2">Case 2 (MHC-II cross-tumor trap)</a>, or <a href="/agents-for-research/case-writing-plan">Case 3 (raw matrix → publication plan)</a>.</p>
+<p>Now read <a href="/agents-for-research/case-1">Case 1 — reading the data, checking a draft</a>, <a href="/agents-for-research/case-2">Case 2 — the mismatch trap</a>, or <a href="/agents-for-research/case-3">Case 3 — from raw data to a research plan</a>.</p>
 
 <div class="nl-block">
   <h3>Get the next case study by email</h3>
@@ -229,6 +232,7 @@ footer .credits{font-size:13px;color:#94a3b8;margin-top:14px}
   <p><strong>Tan Haosheng, MD, PhD</strong> · Associate Chief Physician, Thyroid &amp; Breast Surgery · Taizhou People's Hospital</p>
   <p style="margin:.4em 0"><a href="/">Home</a> · <a href="/model-reviews">Model Reviews</a> · <a href="/agents-for-research/">Agents for Research</a> · <a href="/clinical-benchmark/">Clinical Benchmark</a> · <a href="/about">About</a> · <a href="/contact">Contact</a> · <a href="/privacy">Privacy</a></p>
   <p class="credits">Methodology is research-methodology documentation. It is not a substitute for IRB protocol, statistical consulting, or domain expert review.</p>
+  <p class="credits">The underlying studies referenced by these cases are unpublished and under active preparation. No hypothesis, result, figure, number or identifier from them is disclosed here in any form; only the agent's observable behaviour is reported.</p>
 </div>
 </footer>
 

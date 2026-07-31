@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Case 3 — From raw data to a research plan · AI Tool Stack</title>
+<meta name="description" content="A surgeon's real hands-on test of an AI agent as a forward planner: given raw data, what could realistically be written and where could it go? Behaviour and timing only — no scientific result is disclosed.">
+<meta name="author" content="Tan Haosheng, MD, PhD">
+<meta name="keywords" content="AI agent research planning, AI forward planning, agent honest scoping, surgeon AI tools, WorkBuddy Hy3">
+<meta name="robots" content="index,follow">
+<meta name="article:author" content="Tan Haosheng">
+<meta name="article:published_time" content="2026-07-31">
+<meta name="article:modified_time" content="2026-07-31">
+<link rel="canonical" href="https://tanhaosheng.asia/agents-for-research/case-3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Case 3 — From raw data to a research plan">
+<meta property="og:description" content="Real surgeon-tested: given raw data, what could realistically be written and where could it go? Behaviour and timing only — no science disclosed.">
+<meta property="og:url" content="https://tanhaosheng.asia/agents-for-research/case-3">
+<meta property="og:image" content="https://tanhaosheng.asia/assets/og-cover.png">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Case 3 — From raw data to a research plan">
+<meta name="twitter:description" content="Real surgeon-tested: given raw data, what could realistically be written and where could it go? Behaviour and timing only.">
+<meta name="twitter:image" content="https://tanhaosheng.asia/assets/og-cover.png">
+<link rel="alternate" hreflang="en" href="https://tanhaosheng.asia/agents-for-research/case-3">
+<link rel="alternate" hreflang="x-default" href="https://tanhaosheng.asia/agents-for-research/case-3">
+
+<!--SITE-NAV-CSS-->
+<style>
+nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1 0%,#4f2db5 100%);box-shadow:0 2px 12px rgba(108,60,225,.25)}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 18px;flex-wrap:wrap}
+.nav-inner a{color:#fff;text-decoration:none;font:600 14px/system-ui;padding:6px 8px;border-radius:8px;white-space:nowrap}
+.nav-inner a:hover{background:rgba(255,255,255,.16)}
+.nav-inner a.active{background:rgba(255,255,255,.22)}
+#site-search{flex:1;min-width:140px;max-width:320px;margin-left:auto;padding:8px 12px;border:1px solid rgba(255,255,255,.4);border-radius:999px;background:rgba(255,255,255,.95);color:#1f2937;font:500 14px system-ui}
+#site-search::placeholder{color:#6b7280}
+#search-results{position:absolute;top:100%;right:18px;width:min(360px,92vw);background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.18);padding:8px;z-index:1001;max-height:60vh;overflow:auto}
+#search-results a{display:block;padding:8px 10px;border-radius:8px;color:#1f2937;text-decoration:none;font:500 14px system-ui}
+#search-results a:hover{background:#f3f0ff}
+#search-results mark{background:#fde68a;color:#1f2937}
+</style>
+
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font:16px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#1f2937;background:#f7f8fb}
+a{color:#4f2db5;text-decoration:none}a:hover{text-decoration:underline}
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+h1,h2,h3{line-height:1.25;color:#111827;margin:1.4em 0 .6em}
+h1{font-size:2rem}h2{font-size:1.5rem}h3{font-size:1.2rem}
+code{background:#eef0f7;padding:2px 6px;border-radius:6px;font-size:.9em}
+blockquote{border-left:4px solid #6c3ce1;margin:1em 0;padding:.4em 1em;background:#f3f0ff;color:#374151}
+main{padding:32px 0}
+.series-nav{font:600 13px system-ui;color:#6b7280;margin:18px 0 -8px}
+.series-nav a{color:#4f2db5;text-decoration:none;margin-right:6px}
+.lede{font-size:1.1rem;color:#374151;margin:0 0 1.4em;max-width:42em}
+.prompt-box{background:#f9fafb;border:1px solid #d1d5db;border-radius:12px;padding:14px 18px;margin:14px 0;font:500 14px/1.6 ui-monospace,Menlo,Consolas,monospace;color:#1f2937;white-space:pre-wrap}
+.cta{display:inline-block;background:#4f2db5;color:#fff;font-weight:700;padding:12px 22px;border-radius:999px;text-decoration:none}
+.cta:hover{background:#3f229a;text-decoration:none}
+.callout{background:#f0f9ff;border:1px solid #bae6fd;border-radius:14px;padding:18px 22px;margin:24px 0}
+.callout h3{margin-top:0;color:#075985}
+.meta-row{display:flex;gap:14px;flex-wrap:wrap;color:#6b7280;font:600 13px system-ui;margin:.2em 0 1.4em}
+.meta-row span{background:#f3f0ff;color:#4f2db5;padding:4px 10px;border-radius:999px}
+figure.sc{margin:26px 0;background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:16px 18px 14px;box-shadow:0 1px 3px rgba(15,23,42,.05)}
+figure.sc img{width:100%;height:auto;display:block;border-radius:10px}
+figure.sc figcaption{font-size:13.5px;line-height:1.65;color:#4b5563;margin-top:12px}
+figure.sc figcaption b{color:#1f2937}
+.fig-flag{display:inline-block;font:700 10.5px/1 system-ui;letter-spacing:.05em;text-transform:uppercase;background:#f5f3ff;color:#6d28d9;border:1px solid #ddd4ff;padding:5px 10px;border-radius:999px;margin-bottom:10px}
+.data-policy{background:#fffbeb;border:1px solid #fcd34d;border-left:5px solid #f59e0b;border-radius:14px;padding:16px 20px;margin:24px 0}
+.data-policy h3{margin:0 0 .45em;color:#92400e;font-size:1.05rem}
+.data-policy p{margin:.45em 0;color:#78350f;font-size:14.5px;line-height:1.66}
+.behaviour-list{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:18px 22px;margin:18px 0}
+.behaviour-list h3{margin-top:0;color:#4f2db5;font-size:1.05rem}
+.behaviour-list ul{margin:.4em 0 .4em 1.2em}
+.behaviour-list li{margin:.35em 0}
+footer{background:#0f172a;color:#cbd5e1;padding:36px 20px;margin-top:48px}
+footer .container{max-width:1100px;margin:0 auto;padding:0 20px}
+footer a{color:#a5b4fc;text-decoration:none}
+footer a:hover{text-decoration:underline}
+footer .credits{font-size:13px;color:#94a3b8;margin-top:14px}
+@media(max-width:760px){.nav-inner{gap:8px}}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "name": "Case 3 — From raw data to a research plan",
+  "headline": "Case 3 — From raw data to a research plan",
+  "description": "A surgeon's real hands-on test of an AI agent as a forward planner: given raw data, what could realistically be written and where could it go? Behaviour and timing only — no scientific result is disclosed.",
+  "author": {"@type": "Person", "name": "Tan Haosheng", "honorificSuffix": "MD, PhD"},
+  "publisher": {"@type": "Person", "name": "Tan Haosheng"},
+  "datePublished": "2026-07-31",
+  "dateModified": "2026-07-31",
+  "inLanguage": "en",
+  "isPartOf": {"@type": "CollectionPage", "name": "AI Agents for Medical Research Writing", "url": "https://tanhaosheng.asia/agents-for-research/"}
+}
+</script>
+</head>
+
+<body>
+<nav aria-label="Primary"><div class="nav-inner"><a href="/">🏠 Home</a><a href="/model-reviews">🔬 Model Reviews</a><a href="/agents-for-research/" class="active">🤖 Agents for Research</a><a href="/clinical-benchmark/">📊 Benchmark</a><a href="/about">About</a><input id="site-search" type="search" placeholder="Search…" aria-label="Search this site"><div id="search-results" aria-live="polite"></div></div></nav>
+
+<main>
+<div class="container">
+
+<p class="series-nav"><a href="/">Home</a> › <a href="/agents-for-research/">Agents for Research</a> › <strong>Case 3</strong></p>
+
+<h1>Case 3 — From raw data to a research plan</h1>
+<p style="color:#6b7280;font:600 13px system-ui">By Tan Haosheng, MD, PhD · Last reviewed 2026-07-31</p>
+<p class="meta-row"><span>Task type · forward planning</span><span>~15 min wall-clock</span><span>WorkBuddy Hy3</span><span>One prompt</span></p>
+
+<p class="lede">Cases 1 and 2 had me checking work that already existed. This case flips it: no draft to defend, no manuscript to audit. The prompt is "here is the data, what can I realistically write from it?" A different kind of test — origination, not validation.</p>
+
+<div class="data-policy">
+  <h3>⚠️ About this page</h3>
+  <p>The underlying dataset is <strong>unpublished</strong>. This page reports <em>only</em> the agent's observable behaviour: what kinds of directions it proposed, how it scoped the dataset's ceiling, and how long it took. The science stays out of frame.</p>
+</div>
+
+<h2>The task, paraphrased</h2>
+<div class="prompt-box">Here is the dataset. Don't try to validate any specific claim — tell me what could realistically be written from this, and where it could go. Be honest about what this data can and cannot support.</div>
+<p>One prompt. No pre-structured output format. The agent had to invent the framework, then fill it in.</p>
+
+<h2>What the agent did (behaviour only)</h2>
+<div class="behaviour-list">
+  <h3>Observable sequence</h3>
+  <ul>
+    <li>Opened with the dataset's ceiling before proposing anything: <em>single patient, single batch, limited resolution — name that first</em>.</li>
+    <li>Returned several differentiated directions rather than one "best" answer — different scopes, different ambition levels, different data demands.</li>
+    <li>For each direction, named what additional data or work would be required before it could be written, and roughly what tier of venue would fit.</li>
+    <li>Did not inflate the scope to look more useful. Marked which directions would not be publishable without external data and said so.</li>
+    <li>Refused to round the single-case dataset into a cohort claim.</li>
+  </ul>
+  <p style="margin-top:.8em;color:#6b7280;font-size:14px">No direction's substance, tier or venue is disclosed on this page. The figure below is illustrative only.</p>
+</div>
+
+<figure class="sc">
+  <span class="fig-flag">Agent output window · illustrative · text &amp; values removed</span>
+  <img src="/assets/sc/agent-output-a-blurred.png" alt="A blurred snapshot of the agent's output window, shown only to indicate that structured output was produced" loading="lazy" width="1639" height="679">
+  <figcaption><b>Why this image is blurred.</b> Same principle as the other cases: every label, axis, value and word has been removed at the pixel level. What you are looking at is only the <em>shape</em> of the agent's output — that it produced structured text — not what it said.</figcaption>
+</figure>
+
+<h2>Time vs. my normal workflow</h2>
+<p>For me, "what should I write next?" is the most expensive question of all — usually a week of half-formed thoughts before any commitment. The agent produced a ranked short list in one prompt.</p>
+
+<figure class="sc">
+  <span class="fig-flag">Time saved · 3 tasks</span>
+  <img src="/assets/sc/agent-efficiency-chart.svg" alt="Bar chart comparing manual workflow time vs. one WorkBuddy Hy3 agent run for three research tasks" loading="lazy" width="920" height="480">
+  <figcaption><b>Manual workflow vs. one WorkBuddy agent run, per task.</b> The Task 3 column is the forward-planning run from this case. Manual time for this category is the most variable of the three; the figure shows a typical-week estimate.</figcaption>
+</figure>
+
+<div class="callout">
+  <h3>What this case is — and isn't</h3>
+  <ul style="margin:.4em 0 .4em 1.2em">
+    <li><strong>Is</strong>: a record that an AI agent can produce differentiated, honestly-scoped forward plans from raw data without inflating them.</li>
+    <li><strong>Isn't</strong>: a substitute for editorial judgment, statistical consultation, or a domain mentor who knows the literature.</li>
+  </ul>
+</div>
+
+<p style="text-align:center;margin:32px 0"><a class="cta" href="/agents-for-research/methodology">Read the methodology behind all three cases →</a></p>
+
+</div>
+</main>
+
+<footer>
+<div class="container">
+  <p><strong>Tan Haosheng, MD, PhD</strong> · Associate Chief Physician, Thyroid &amp; Breast Surgery · Taizhou People's Hospital</p>
+  <p style="margin:.4em 0"><a href="/">Home</a> · <a href="/model-reviews">Model Reviews</a> · <a href="/agents-for-research/">Agents for Research</a> · <a href="/clinical-benchmark/">Clinical Benchmark</a> · <a href="/about">About</a> · <a href="/contact">Contact</a> · <a href="/privacy">Privacy</a></p>
+  <p class="credits">No hypothesis, conclusion, or data point from any unpublished work is disclosed on this page; the only image shown is a fully blurred, illustrative snapshot of the agent's output window.</p>
+</div>
+</footer>
+
+<!--ENHANCE-JS-->
+<script>
+let _pfReady = false;
+async function loadPagefind() {
+  if (_pfReady) return; _pfReady = true;
+  try {
+    const m = await import('/pagefind/pagefind.js');
+    await m.options({ excerptLength: 30 });
+    window._pf = m;
+  } catch(e) { console.warn('pagefind load failed', e); }
+}
+const sb = document.getElementById('site-search');
+const sr = document.getElementById('search-results');
+if (sb && sr) {
+  let t;
+  sb.addEventListener('input', () => {
+    clearTimeout(t);
+    const q = sb.value.trim();
+    if (!q) { sr.innerHTML=''; sr.style.display='none'; return; }
+    t = setTimeout(async () => {
+      if (!window._pf) await loadPagefind();
+      if (!window._pf) return;
+      const r = await window._pf.search(q);
+      if (!r.results.length) { sr.innerHTML='<div style="padding:8px;color:#6b7280">No results</div>'; sr.style.display='block'; return; }
+      const top = r.results.slice(0, 8);
+      const html = await Promise.all(top.map(async x => {
+        const d = await x.data();
+        return `<a href="${d.url}">${d.meta?.title || d.url}<br><small style="color:#6b7280">${(d.excerpt||'').replace(/<[^>]*>/g,'').slice(0,140)}</small></a>`;
+      }));
+      sr.innerHTML = html.join('');
+      sr.style.display = 'block';
+    }, 180);
+  });
+  sb.addEventListener('blur', () => setTimeout(()=>{ sr.style.display='none'; }, 200));
+  sb.addEventListener('focus', () => { if (sr.innerHTML) sr.style.display='block'; });
+}
+</script>
+</body>
+</html>
