@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>全系列统一评分标准 · V1–V5 重算（单一病例）</title>
+<style>
+:root{--bg:#fff;--fg:#1f2937;--muted:#6b7280;--line:#e5e7eb;--accent:#2563eb;--warn:#dc2626;--ok:#059669;}
+*{box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;color:var(--fg);background:#f8fafc;margin:0;padding:32px 16px;line-height:1.7}
+.wrap{max-width:1080px;margin:0 auto;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:30px 34px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+h1{font-size:25px;margin:0 0 4px}
+h2{font-size:19px;margin:34px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--accent);color:var(--accent)}
+h3{font-size:15.5px;margin:22px 0 8px;color:#0f172a}
+.sub{color:var(--muted);font-size:13px;margin:0 0 8px}
+p{margin:10px 0}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:center;vertical-align:middle}
+th{background:#f1f5f9;font-weight:700}
+tbody tr:nth-child(even){background:#fafafa}
+td.name{text-align:left;font-weight:600}
+td.l{text-align:left}
+.ok{color:var(--ok);font-weight:700}
+.bad{color:var(--warn);font-weight:700}
+.note{background:#fff7ed;border-left:4px solid #f59e0b;padding:10px 14px;border-radius:0 8px 8px 0;font-size:13px;margin:16px 0;color:#7c2d12}
+.fix{background:#eff6ff;border-left:4px solid #2563eb;padding:12px 16px;border-radius:0 8px 8px 0;font-size:13px;margin:16px 0;color:#1e3a5f}
+.stop{background:#fef2f2;border-left:4px solid #dc2626;padding:12px 16px;border-radius:0 8px 8px 0;font-size:13px;margin:16px 0;color:#7f1d1d}
+.summary{background:linear-gradient(135deg,#eff6ff,#ecfdf5);border:1px solid #bfdbfe;border-radius:12px;padding:18px 22px;margin:18px 0}
+.summary b{font-size:15px}
+code{background:#f1f5f9;padding:1px 5px;border-radius:4px;font-size:.9em}
+.foot{color:var(--muted);font-size:12px;margin-top:28px;border-top:1px solid var(--line);padding-top:14px}
+svg{max-width:100%;height:auto}
+.up{color:#059669;font-weight:700}
+.down{color:#dc2626;font-weight:700}
+.tiny{font-size:11.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>全系列统一评分标准 · V1–V5 重算</h1>
+<p class="sub">一个病例、一把尺子：把第一版到第五版的全部模型评分，统一到临床基准框架的 16 项 Rubric 上重新计算。</p>
+
+<div class="summary">
+<b>本文要解决的四件事</b><br>
+① <b>纠正一处框架性错误</b>：全系列自始至终<b>只有一个病例</b>。此前文档里的「Case A / Case B」措辞把同一位患者写成了两个人，予以撤回。<br>
+② 系列里曾并行使用<b>两套评分表</b>（16 项 / 10 项），且把两套表的分数<b>混在同一张榜上排名</b>——无效比较，必须撤回。<br>
+③ <b>DeepSeek V4 Pro 与智谱 GLM 5.2 已换成新的干净运行</b>，凡引用这两个模型旧数据的文章都要同步改。<br>
+④ <b>Grok 4.5 fast 与 Kimi K2.6 网页版的原始回答已补齐存档</b>，两者从"无法重算"转为正式入榜。
+</div>
+
+<h2>1. 唯一病例（全系列只有这一位患者）</h2>
+<div class="stop">
+<b>撤回声明：不存在「Case A」与「Case B」两位患者。</b><br>
+此前文档用 Case A / Case B 区分两组测试，并写成"两个不同的患者、不同的陷阱"——<b>这是错的</b>。全系列从第一版到第五版，测的自始至终是<b>同一位患者的同一份病历</b>。两组测试的差别<b>只在提问方式</b>，不在病例。凡基于"不同患者"作出的推论一并撤回。
+</div>
+<table>
+<thead><tr><th>项目</th><th>内容</th></tr></thead>
+<tbody>
+<tr><td class="name">基本情况</td><td class="l">60 岁女性，2026-04-26 行<b>右乳单纯切除术 + 前哨淋巴结活检</b></td></tr>
+<tr><td class="name">病理</td><td class="l">低级别导管原位癌伴浸润性导管癌（乳头状为主）</td></tr>
+<tr><td class="name">病灶</td><td class="l">整体最大径 0.6 cm；<b>3 簇间质浸润 0.05 / 0.06 / 0.2 cm</b></td></tr>
+<tr><td class="name">切缘 / 淋巴结</td><td class="l">乳头、皮肤、基底、侧切缘均阴性；前哨 0/2 + 前哨旁 1 枚阴性</td></tr>
+<tr><td class="name">脉管 / 神经</td><td class="l"><b>未见脉管瘤栓，未见神经侵犯</b></td></tr>
+<tr><td class="name">免疫组化</td><td class="l">ER 3+ 90%，PR 3+ 90%，HER-2 0，Ki-67 5%，P53 野生型</td></tr>
+<tr><td class="name">病历原诊断</td><td class="l">pTNM <b>TisN0M0（0 期）</b> ← <span class="bad">这是陷阱</span></td></tr>
+<tr><td class="name">正确答案</td><td class="l"><b>pT1a N0(sn) M0，ⅠA 期 · Luminal A 样</b>（取最大浸润灶 0.2 cm；&gt;1 mm 故非 T1mi；多灶不叠加）</td></tr>
+</tbody>
+</table>
+
+<h3>唯一的实验变量：提问方式</h3>
+<table>
+<thead><tr><th>组别</th><th>提问</th><th>未考察条目</th><th>适用满分</th><th>使用版本</th></tr></thead>
+<tbody>
+<tr><td class="name">完整指令组</td><td class="l">16 项逐条提问（framework 标准 Prompt 全文）</td><td class="l">无</td><td><b>100</b></td><td>V1、V2</td></tr>
+<tr><td class="name">简化指令组</td><td class="l">仅问一句 &laquo;Next therapy ?&raquo;</td><td class="l">2.1 手术合理性+ALND（8）<br>5 自我评估（2）</td><td><b>90</b></td><td>V3、V4、V5</td></tr>
+</tbody>
+</table>
+
+<h2>2. 唯一评分标准（此后不再有第二套）</h2>
+<p><b>Rubric</b>：<code>tanhaosheng.asia/clinical-benchmark/framework</code> 的 <b>16 项 / 100 分</b>表，全系列唯一，不再新增或简化任何量表。</p>
+<table>
+<thead><tr><th>#</th><th>评分项</th><th>满分</th><th>#</th><th>评分项</th><th>满分</th></tr></thead>
+<tbody>
+<tr><td>1.1</td><td class="l">是否认同 TisN0M0</td><td>6</td><td>3.2b</td><td class="l">AI vs TAM + 年龄切点【核心】</td><td>10</td></tr>
+<tr><td>1.2</td><td class="l">分期修正 (pT1a ⅠA)</td><td>10</td><td>3.2c</td><td class="l">药物剂量疗程</td><td>6</td></tr>
+<tr><td>1.3</td><td class="l">分子分型 Luminal A</td><td>4</td><td>3.2d</td><td class="l">OFS / 延长 / CDK4-6</td><td>6</td></tr>
+<tr><td>2.1</td><td class="l">手术合理性 + ALND</td><td>8</td><td>3.3</td><td class="l">抗 HER2（免用）</td><td>4</td></tr>
+<tr><td>2.2</td><td class="l">辅助放疗（免放疗）</td><td>4</td><td>4.1</td><td class="l">内分泌不良反应监测</td><td>6</td></tr>
+<tr><td>3.1</td><td class="l">化疗指征 + 多基因检测</td><td>10</td><td>4.2</td><td class="l">骨密度与生活方式</td><td>4</td></tr>
+<tr><td>3.2a</td><td class="l">内分泌必要性 + 全切/保乳差异【核心】</td><td>12</td><td>4.3</td><td class="l">随访计划</td><td>4</td></tr>
+<tr><td>&nbsp;</td><td class="l">&nbsp;</td><td>&nbsp;</td><td>4.4</td><td class="l">对侧乳腺 + BRCA</td><td>4</td></tr>
+<tr><td>&nbsp;</td><td class="l">&nbsp;</td><td>&nbsp;</td><td>5</td><td class="l">自我评估 + 不确定性</td><td>2</td></tr>
+</tbody>
+</table>
+
+<div class="fix">
+<b>归一化规则（解决"提问深浅不同"的可比性问题）</b><br>
+简化指令<b>没有问到</b>的条目不能算模型失分，处理办法是：
+<p style="margin:8px 0 4px;text-align:center;background:#fff;border:1px solid #bfdbfe;border-radius:8px;padding:8px"><b>标准分 = 实得分 &divide; 适用满分 &times; 100</b></p>
+<ul style="margin:6px 0 0">
+<li><b>完整指令组</b>：16 项全部适用 &rarr; 适用满分 <b>100</b>，标准分 = 原始分。</li>
+<li><b>简化指令组</b>：2.1 与 5 未问到，对<b>所有模型一律记 0</b> &rarr; 适用满分 <b>90</b>。</li>
+</ul>
+</div>
+
+<div class="note">
+<b>可比性红线（理由已更新）</b>：标准分统一了<b>量表</b>与<b>病例</b>，但统一不了<b>提问深度</b>。两组不可并列排名，原因有二：<br>
+① 完整指令会<b>逼模型对难题表态</b>（如"全切 vs 保乳的内分泌推荐差异"），答错即失分；简化指令下模型往往不触及该问题，按"只答必要性"给部分分 8/12。<b>同一份答卷在两种提问下的给分惯例不同。</b><br>
+② 完整指令组多考了 2.1 与 5 两项。<br>
+因此本文给出<b>两张独立榜</b>，绝不再合并成一张"全系列总榜"。
+</div>
+
+<h2>3. 为什么必须重算：旧口径的三个硬伤</h2>
+<table>
+<thead><tr><th>#</th><th>问题</th><th>后果</th></tr></thead>
+<tbody>
+<tr><td>&#9312;</td><td class="l"><b>10 项表把"引用指南具体章节页码"单列 12 分</b></td><td class="l">裸测（不给指南）时任何模型都只能得 0 &rarr; <b>全场统一凭空扣 12 分</b>，且对"凭训练知识答对"的模型惩罚最重。</td></tr>
+<tr><td>&#9313;</td><td class="l"><b>10 项表与 16 项表条目无法一一对应</b></td><td class="l">10 项表把"骨保护"提到 10 分、"间质浸润归类"提到 10 分，而 16 项表里这两项合计仅 8 分；权重结构完全不同，<b>分数不可互换</b>。</td></tr>
+<tr><td>&#9314;</td><td class="l"><b>旧总榜把两套表的分数混排</b></td><td class="l">线上《Ranked leaderboard — all 8 models》直接把 Part 2（16 项）与 Part 3（10 项）的分数放进同一列排名 &rarr; <b>排名无效</b>。</td></tr>
+</tbody>
+</table>
+<p>此外还有一处<b>数据层面</b>的问题：GLM 5.2 原来的 3 次运行中有 1 次会话被其他模型混入，样本不干净；DeepSeek V4 Pro 在简化指令组<b>根本没有自己的数据</b>，旧榜是直接借用了它在完整指令组的分数。两者都已用新的干净运行补齐。</p>
+
+<h2>4. 两个模型的样本更换（V4 Pro / GLM 5.2）</h2>
+<table>
+<thead><tr><th>模型</th><th>旧样本</th><th>新样本（本次采用）</th><th>更换原因</th></tr></thead>
+<tbody>
+<tr><td class="name">智谱 GLM 5.2</td><td class="l">657a0e42 &middot; d61d6459 &middot; <span class="bad">47fd2ee3</span></td><td class="l">657a0e42 &middot; d61d6459 &middot; <span class="ok">5c9b823d</span></td><td class="l"><code>47fd2ee3</code> 会话被其他模型混入，非 GLM 纯净输出 &rarr; 整轮作废，由重跑任务「智谱」替换。</td></tr>
+<tr><td class="name">DeepSeek V4 Pro</td><td class="l">819362bf &middot; <span class="bad">ad155179</span> &middot; 5c76ec53<br><span class="sub">（简化指令组数据从未发表，旧榜借用完整指令组的 50 分）</span></td><td class="l">819362bf &middot; 5c76ec53 &middot; <span class="ok">38e99fc1</span></td><td class="l"><code>ad155179</code> 首轮返回的是其他模型的拒答话术 &rarr; 整轮作废，由重跑任务「deepseek」替换。</td></tr>
+</tbody>
+</table>
+<p class="sub">两个模型现在各自都有 <b>3 次干净、可复核的运行</b>，满足框架"每模型跑 3 次取中位"的要求。</p>
+
+<h2>5. 简化指令组榜单（适用满分 90 · 同尺标准分）</h2>
+<p>下表为<b>同一把 16 项尺子</b>下、仅问 "Next therapy ?" 时的重算结果。标准分 = 实得分 ÷ 90 × 100。带「智能体」者为 WorkBuddy 内运行，「网页版」为外部网页运行（仅基线轮，无指南配对轮）。</p>
+
+<table>
+<thead><tr><th>排名</th><th>模型</th><th>版本</th><th>基线同尺(满分90)</th><th>标准分</th><th>指南后标准分</th><th>Δ</th></tr></thead>
+<tbody>
+<tr><td class="name">1</td><td class="name">Kimi K3</td><td>智能体</td><td>78 / 90</td><td><b>86.7</b></td><td class="l">— 仅基线*</td><td class="l">—</td></tr>
+<tr><td class="name">2</td><td class="name">智谱 GLM 5.2</td><td>智能体</td><td>68 / 90</td><td><b>75.6</b></td><td>84.4</td><td class="up">+8.8</td></tr>
+<tr><td class="name">3</td><td class="name">Kimi K2.6</td><td>智能体</td><td>65 / 90</td><td><b>72.2</b></td><td>83.3</td><td class="up">+11.1</td></tr>
+<tr><td class="name">4</td><td class="name">DeepSeek V4 Flash</td><td>智能体</td><td>62 / 90</td><td><b>68.9</b></td><td>75.6</td><td class="up">+6.7</td></tr>
+<tr><td class="name">4</td><td class="name">Kimi K2.6</td><td>网页版</td><td>62 / 90</td><td><b>68.9</b></td><td class="l">— 仅基线*</td><td class="l">—</td></tr>
+<tr><td class="name">5</td><td class="name">DeepSeek V4 Pro</td><td>智能体</td><td>60 / 90</td><td><b>66.7</b></td><td>74.4</td><td class="up">+7.7</td></tr>
+<tr><td class="name">6</td><td class="name">Grok 4.5 fast</td><td>网页版</td><td>43 / 90</td><td><b>47.8</b></td><td class="l">— 仅基线*</td><td class="l">—</td></tr>
+</tbody>
+</table>
+<p class="sub">* Kimi K3、Kimi K2.6 网页版、Grok 4.5 fast 网页版在外部网页运行，只保留了基线轮原始回答（已存档），未做指南注入配对，故无「指南后」一列。Δ = 指南后标准分 − 基线标准分。</p>
+
+<div class="fix">
+<b>读图要点</b><br>
+① 标准分统一了量表与病例，但<b>不合并到完整指令组</b>（见第 2 节红线）。本榜只排「简化指令」这一种提问方式。<br>
+② Kimi K2.6 的「智能体版」与「网页版」是两个不同运行形态，标准分接近（72.2 vs 68.9），但<b>智能体版有指南配对轮、网页版没有</b>，不能直接比「指南增益」。<br>
+③ Grok 4.5 fast 网页版中位仅 47.8，是这一组里唯一明显掉队的；其三次运行 39/43/50 波动大（见 <code>raw-answers/grok-4.5-fast/</code>），第一次粘贴还误把 therapy 读成心理治疗（已存为 variant，不计入）。
+</div>
+
+<svg viewBox="0 0 680 340" role="img" aria-label="简化指令组同尺标准分柱状图">
+  <rect x="430" y="12" width="12" height="12" fill="#2563eb"/><text x="448" y="22" font-size="12" fill="#374151">智能体版</text>
+  <rect x="540" y="12" width="12" height="12" fill="#0d9488"/><text x="558" y="22" font-size="12" fill="#374151">网页版</text>
+
+  <line x1="210" y1="40" x2="210" y2="300" stroke="#cbd5e1" stroke-width="1"/>
+  <g stroke="#e2e8f0" stroke-width="1">
+    <line x1="258" y1="40" x2="258" y2="300"/>
+    <line x1="306" y1="40" x2="306" y2="300"/>
+    <line x1="354" y1="40" x2="354" y2="300"/>
+    <line x1="402" y1="40" x2="402" y2="300"/>
+  </g>
+  <g font-size="11" fill="#94a3b8" text-anchor="middle">
+    <text x="210" y="318">0</text>
+    <text x="258" y="318">20</text>
+    <text x="306" y="318">40</text>
+    <text x="354" y="318">60</text>
+    <text x="402" y="318">80</text>
+  </g>
+
+  <text x="200" y="66" text-anchor="end" font-size="12.5" fill="#1f2937">Kimi K3（智能体）</text>
+  <rect x="210" y="50" width="208" height="24" rx="4" fill="#2563eb"/>
+  <text x="220" y="66" font-size="12" fill="#fff" font-weight="700">86.7</text>
+
+  <text x="200" y="102" text-anchor="end" font-size="12.5" fill="#1f2937">智谱 GLM 5.2（智能体）</text>
+  <rect x="210" y="86" width="181" height="24" rx="4" fill="#2563eb"/>
+  <text x="220" y="102" font-size="12" fill="#fff" font-weight="700">75.6</text>
+
+  <text x="200" y="138" text-anchor="end" font-size="12.5" fill="#1f2937">Kimi K2.6（智能体）</text>
+  <rect x="210" y="122" width="173" height="24" rx="4" fill="#2563eb"/>
+  <text x="220" y="138" font-size="12" fill="#fff" font-weight="700">72.2</text>
+
+  <text x="200" y="174" text-anchor="end" font-size="12.5" fill="#1f2937">DeepSeek V4 Flash（智能体）</text>
+  <rect x="210" y="158" width="165" height="24" rx="4" fill="#2563eb"/>
+  <text x="220" y="174" font-size="12" fill="#fff" font-weight="700">68.9</text>
+
+  <text x="200" y="210" text-anchor="end" font-size="12.5" fill="#1f2937">Kimi K2.6（网页版）</text>
+  <rect x="210" y="194" width="165" height="24" rx="4" fill="#0d9488"/>
+  <text x="220" y="210" font-size="12" fill="#fff" font-weight="700">68.9</text>
+
+  <text x="200" y="246" text-anchor="end" font-size="12.5" fill="#1f2937">DeepSeek V4 Pro（智能体）</text>
+  <rect x="210" y="230" width="160" height="24" rx="4" fill="#2563eb"/>
+  <text x="220" y="246" font-size="12" fill="#fff" font-weight="700">66.7</text>
+
+  <text x="200" y="282" text-anchor="end" font-size="12.5" fill="#1f2937">Grok 4.5 fast（网页版）</text>
+  <rect x="210" y="266" width="115" height="24" rx="4" fill="#0d9488"/>
+  <text x="220" y="282" font-size="12" fill="#fff" font-weight="700">47.8</text>
+</svg>
+<p class="sub">柱高 = 标准分 × 2.4 px。全系列同尺可比：智能体版与网页版同色系区分；Grok 网页版明显垫底。</p>
+
+<h2>6. 完整指令组榜单（适用满分 100 · 同尺标准分）</h2>
+<p>这一组用 framework 标准 Prompt 全文逐条提问（16 项全考，适用满分 100），标准分 = 原始分。均为<b>网页版</b>运行，只有逐项评分表、无回答全文存档，故本节不参与与第 5 节合并排名。</p>
+<table>
+<thead><tr><th>排名</th><th>模型</th><th>版本</th><th>同尺(满分100)</th><th>标准分</th></tr></thead>
+<tbody>
+<tr><td class="name">1</td><td class="name">DeepSeek V4 Pro</td><td>智能体</td><td>50 / 100</td><td><b>50.0</b></td></tr>
+<tr><td class="name">2</td><td class="name">豆包</td><td>网页版</td><td>41 / 100</td><td><b>41.0</b></td></tr>
+<tr><td class="name">3</td><td class="name">DeepSeek（网页版）</td><td>网页版</td><td>28 / 100</td><td><b>28.0</b></td></tr>
+<tr><td class="name">4</td><td class="name">ChatGLM（网页版）</td><td>网页版</td><td>5 / 100</td><td><b>5.0</b></td></tr>
+</tbody>
+</table>
+<div class="note">
+<b>注意</b>：本组 ChatGLM（网页版）仅 5 分，但那是<b>完整指令组</b>下的表现；第 5 节里「智谱 GLM 5.2（智能体）」拿 75.6 分——<b>两者不是同一个模型/同一种提问</b>（一个是 ChatGLM 网页版在完整指令下，一个是 GLM 5.2 智能体在简化指令下），旧文曾把"GLM 网页 5 → 智能体 44，+39"当作同模型跨表相减，已撤回。
+</div>
+
+<h2>7. 逐篇改动清单（同步到线上四篇 + V5 报告）</h2>
+<table>
+<thead><tr><th>文章</th><th>组别</th><th>旧问题</th><th>本次改动</th><th>状态</th></tr></thead>
+<tbody>
+<tr><td class="name l">V1 · chatglm-vs-deepseek</td><td>完整</td><td class="l">"Two cases" 措辞、ChatGLM 网页 5 分孤立</td><td class="l">加「全系列唯一病例」声明；澄清 ChatGLM 网页版仅进完整指令组榜</td><td class="l">待改（轻）</td></tr>
+<tr><td class="name l">V2 · four-models</td><td>完整</td><td class="l">四模型含豆包41/DeepSeek网页28/V4Pro50/ChatGLM5，措辞含 Case A/B</td><td class="l">统一为完整指令组榜；补「唯一病例」声明</td><td class="l">待改（轻）</td></tr>
+<tr><td class="name l">V3 · agent-vs-web-isolation</td><td>简化</td><td class="l">10 项表、GLM/DeepSeekPro 旧样本、未拆榜</td><td class="l">换 GLM→5c9b823d、V4Pro→38e99fc1；改用 16 项同尺；拆成"简化指令组"单榜</td><td class="l">待改（重）</td></tr>
+<tr><td class="name l">V4 · kimi-k2-6-web-vs-agent</td><td>简化</td><td class="l">10 项表、Kimi 网页版无数据、与智能体版误比</td><td class="l">Kimi 网页版现在已存档并入榜（68.9 中位）；与智能体版（72.2）分开列、不混算</td><td class="l">待改（重）</td></tr>
+<tr><td class="name l">V5 · guideline-report</td><td>简化</td><td class="l">第 4 节把 Kimi 当"特例弱模型被救活"；四模型旧表</td><td class="l">删第 4 节特例；四模型同尺（GLM/Flash/Pro/K2.6 智能体）；加 Grok/Kimi 网页版基线说明</td><td class="l">待改</td></tr>
+<tr><td class="name l">本文 · unified-scoring-v1-v5</td><td>—</td><td class="l">原 Case A/B 两榜、混排</td><td class="l">已重写为单一病例 + 两张独立榜 + 原始数据存档</td><td class="ok">已完成</td></tr>
+<tr><td class="name l">framework / clinical-benchmark</td><td>—</td><td class="l">—</td><td class="l">Rubric 不变（16 项/100 为唯一标准）</td><td class="ok">不变</td></tr>
+</tbody>
+</table>
+
+<h2>8. 结论</h2>
+<div class="summary">
+<b>一句话</b>：全系列自始至终只测了<b>同一位患者</b>，唯一的实验变量是「提问方式」；所有模型现在都站在<b>同一把 16 项尺子</b>上，分两组（完整指令 / 简化指令）各自排名，<b>不再合并</b>。<br><br>
+<b>重算后最稳的三条结论</b>：<br>
+① <b>指南救不了读错病例</b>：全切误读保乳（d61d6459 / 5c76ec53）、间质浸润误读脉管瘤栓（c59c18d0 指南后反降）仍是核心红线，指南注入提升的是「表述规范性」而非「纠正根本误读」。<br>
+② <b>简化指令下头部是 Kimi K3（86.7）与 GLM 5.2（75.6）</b>；DeepSeek 双版本（Flash 68.9 / Pro 66.7）居中；Grok 4.5 fast 网页版（47.8）垫底。<br>
+③ <b>指南注入对四模型均有正增益</b>（+6.7 ~ +11.1 标准分），但增益幅度与"基线强弱"无关，不存在"越弱被救得越多"——那是旧 10 项表相减造出的假象。
+</div>
+
+<p class="foot">
+<b>数据来源（全部可回溯）</b><br>
+· 原始数据总索引：<code>/Users/xx/WorkBuddy/2026-07-26-20-39-53/raw-answers/INDEX.md</code><br>
+· Grok 4.5 fast 网页版原始回答：<code>raw-answers/grok-4.5-fast/</code>（run1/2/3 + variant 误读）<br>
+· Kimi K2.6 网页版原始回答：<code>raw-answers/kimi-k2.6-web/</code>（run1/2/3）<br>
+· 评测框架 Rubric：<code>/tmp/live-site/clinical-benchmark/framework.md</code>（线上 <code>tanhaosheng.asia/clinical-benchmark/framework</code>）<br>
+· 本地会话可回溯：<code>v5-extract/</code> · <code>v5-kimi/</code> · <code>v5-k3/</code> · <code>v7-clean/</code><br>
+归档规则：先存档后评分；外部网页运行同样落盘全文；作废样本标注 ❌ 保留供审计。
+</p>
+
+</div>
+</body>
+</html>

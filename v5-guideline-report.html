@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>指南注入实测 · V5（四模型同尺对比）</title>
+<style>
+:root{--bg:#fff;--fg:#1f2937;--muted:#6b7280;--line:#e5e7eb;--accent:#2563eb;--warn:#dc2626;--ok:#059669;}
+*{box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;color:var(--fg);background:#f8fafc;margin:0;padding:32px 16px;line-height:1.7}
+.wrap{max-width:1080px;margin:0 auto;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:30px 34px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+h1{font-size:25px;margin:0 0 4px}
+h2{font-size:19px;margin:34px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--accent);color:var(--accent)}
+h3{font-size:15.5px;margin:22px 0 8px;color:#0f172a}
+.sub{color:var(--muted);font-size:13px;margin:0 0 8px}
+p{margin:10px 0}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:center;vertical-align:middle}
+th{background:#f1f5f9;font-weight:700}
+tbody tr:nth-child(even){background:#fafafa}
+td.name{text-align:left;font-weight:600}
+.ok{color:var(--ok);font-weight:700}
+.bad{color:var(--warn);font-weight:700}
+.note{background:#fff7ed;border-left:4px solid #f59e0b;padding:10px 14px;border-radius:0 8px 8px 0;font-size:13px;margin:16px 0;color:#7c2d12}
+.fix{background:#eff6ff;border-left:4px solid #2563eb;padding:12px 16px;border-radius:0 8px 8px 0;font-size:13px;margin:16px 0;color:#1e3a5f}
+.summary{background:linear-gradient(135deg,#eff6ff,#ecfdf5);border:1px solid #bfdbfe;border-radius:12px;padding:18px 22px;margin:18px 0}
+.summary b{font-size:15px}
+code{background:#f1f5f9;padding:1px 5px;border-radius:4px;font-size:.9em}
+.foot{color:var(--muted);font-size:12px;margin-top:28px;border-top:1px solid var(--line);padding-top:14px}
+svg{max-width:100%;height:auto}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>指南注入实测 · V5（四模型同尺对比）</h1>
+<p class="sub">验证假设：医生把专业临床指南发给大模型 → 模型据此制定更准确的后续治疗方案。<br>四个模型同一起跑线、同一套题、同一把尺子、同一种配对设计。</p>
+
+<div class="summary">
+<b>一句话结论</b><br>
+在<b>完全统一的评分标尺</b>下，注入 2026 CBCS 指南后，四个模型的提升幅度高度一致——<b>+6 ~ +10 分</b>，没有任何一个模型出现"被指南救活"的戏剧性跃升。指南的作用是<b>稳定的细节精校</b>（AI 疗程不延长、免多基因检测、CDK4/6 无指征、随访间隔），而<b>不是</b>能力补足。指南<b>无法修正模型对病例本身的误读</b>（把"全切"误读为"保乳"→错荐放疗、把"3簇间质浸润"误读为"脉管瘤栓"→错判中危）。
+</div>
+
+<h2>0. 实验设计（四模型完全对等）</h2>
+<p>四个模型采用<b>完全相同</b>的设计：同一乳腺癌病例、同一简化指令、<b>3 次独立运行</b>、<b>同一会话内前后配对</b>（第 1 轮不给指南 → 第 2 轮注入 2026 CBCS 指南原文），唯一变量 = 是否注入指南。每个模型取<b>中位分</b>。<b>没有对照组、没有参照系、没有任何模型被预设为强或弱。</b></p>
+<table>
+<thead><tr><th>模型</th><th>3 次运行 (session)</th><th>接口</th><th>配对方式</th></tr></thead>
+<tbody>
+<tr><td class="name">DeepSeek V4 Pro</td><td>819362bf · 5c76ec53 · 38e99fc1</td><td>agent</td><td>会话内前后配对</td></tr>
+<tr><td class="name">DeepSeek V4 Flash</td><td>c59c18d0 · 5020ef10 · 7582ed5c</td><td>agent</td><td>会话内前后配对</td></tr>
+<tr><td class="name">智谱 GLM 5.2</td><td>657a0e42 · d61d6459 · 5c9b823d</td><td>agent</td><td>会话内前后配对</td></tr>
+<tr><td class="name">Kimi K2.6</td><td>1d51fbee · ca275469 · 55a7cc11</td><td>agent</td><td>会话内前后配对</td></tr>
+</tbody>
+</table>
+
+<div class="fix">
+<b>本版方法学修正：全系列统一到唯一评分表</b><br>
+本系列早期文章曾并行使用过两套评分表——临床基准框架的 <b>16 项 / 100 分</b>表，以及一套 <b>10 项 / 100 分</b>简化表。两套表<b>不可相互比较</b>，也不可混在同一张榜上排名：
+<ul style="margin:8px 0 4px">
+<li>10 项表里单独有一项<b>"引用指南具体章节页码"占 12 分</b>——在不给指南的裸测中，任何模型都只能得 0 分，等于全场统一扣 12 分。</li>
+<li>10 项表的"骨保护 10 分""间质浸润归类 10 分"等权重，与 16 项表的条目<b>无法一一对应</b>。</li>
+<li>由此产生的跨表分差<b>是量表造成的假象，不是能力差距</b>。凡基于跨表相减得出的结论一律撤回。</li>
+</ul>
+本版<b>四个模型全部从原始会话记录重新提取回答，用同一份 16 项表重新打分</b>，任何模型都不设对照组、不做特例处理。
+</div>
+
+<h2>1. 评分方法（唯一标尺 · 四模型一致）</h2>
+<ul>
+<li><b>工具</b>：临床基准框架 <code>clinical-benchmark/framework</code> 的 <b>16 项 / 100 分</b> Rubric，四个模型使用<b>同一份</b>。</li>
+<li><b>统一上限 90</b>：本实验的简化指令未要求"手术合理性 + ALND（2.1，8 分）"与"自我评估 + 不确定性（5，2 分）"，因此这两项在<b>全部四个模型、全部 24 段回答</b>中一律记 0——<b>满分上限 90，无一例外</b>。其余 14 项按实际作答给分（含 4.4 对侧乳腺 + BRCA，未作答记 0）。</li>
+<li><b>核心题</b>：3.2a「内分泌必要性 <u>与全切/保乳差异</u>」12 分（须同时答出必要性与术式差异，只答必要性最高 8 分）；3.2b「AI vs TAM + 年龄切点」10 分。</li>
+<li><b>关键判定锚点</b>：浸润灶取最大单灶 <b>0.2 cm → pT1a</b>（非 0.6 cm DCIS 总体径线 → pT1b）；Tis 必须否决；低危 Luminal A → 豁免化疗 / AI 5 年 / 免放疗 / 不延长 / 无 CDK4/6 指征。</li>
+<li><b>配对与统计</b>：同一会话的基线段与指南段用同一把尺子分别打分；每模型 3 次运行取<b>中位数</b>，提升 = 指南中位 − 基线中位。</li>
+</ul>
+
+<h2>2. 全量评分矩阵（四模型 · 同尺 · 中位）</h2>
+<table>
+<thead><tr><th>模型 / 样本</th><th>无指南<br>基线</th><th>有指南<br>增强</th><th>提升</th><th>残留问题（指南未修正）</th></tr></thead>
+<tbody>
+<tr><td class="name" colspan="5" style="background:#eef2ff;font-weight:700;color:#3730a3">DeepSeek V4 Pro（中位 60 → 67，+7）</td></tr>
+<tr><td class="name">819362bf</td><td>58</td><td>67</td><td class="ok">+9</td><td>T 分期用 0.6cm→pT1b（应 pT1a）；未做 3.2a 全切/保乳区分</td></tr>
+<tr><td class="name">5c76ec53</td><td>60</td><td>66</td><td class="ok">+6</td><td><span class="bad">全切误读为保乳 → 错荐放疗（两轮均错）</span></td></tr>
+<tr><td class="name">38e99fc1</td><td>66</td><td>71</td><td class="ok">+5</td><td>T 分期仍 pT1b；指南主要补"延长→不延长"细节</td></tr>
+
+<tr><td class="name" colspan="5" style="background:#eef2ff;font-weight:700;color:#3730a3">DeepSeek V4 Flash（中位 62 → 68，+6）</td></tr>
+<tr><td class="name">c59c18d0</td><td>62</td><td class="bad">53</td><td class="bad">−9</td><td><span class="bad">"3簇间质浸润"误读为"脉管瘤栓3灶"→错判中危；指南轮反而考虑化疗</span></td></tr>
+<tr><td class="name">5020ef10</td><td>72</td><td>76</td><td class="ok">+4</td><td>pT1a 正确；指南修正"延长 7-10 年→不延长"</td></tr>
+<tr><td class="name">7582ed5c</td><td>58</td><td>68</td><td class="ok">+10</td><td>T 分期用 0.6cm→pT1b</td></tr>
+
+<tr><td class="name" colspan="5" style="background:#eef2ff;font-weight:700;color:#3730a3">智谱 GLM 5.2（中位 68 → 76，+8）</td></tr>
+<tr><td class="name">657a0e42</td><td>72</td><td>76</td><td class="ok">+4</td><td>pT1a(mi) 正确；指南修正"延长"</td></tr>
+<tr><td class="name">d61d6459</td><td>58</td><td>67</td><td class="ok">+9</td><td><span class="bad">全切误读为保乳 → 错荐放疗（两轮均错）</span></td></tr>
+<tr><td class="name">5c9b823d</td><td>68</td><td>82</td><td class="ok">+14</td><td>指南补全核心题 3.2a 区分 + 修正"延长"；T 仍 pT1b</td></tr>
+
+<tr><td class="name" colspan="5" style="background:#eef2ff;font-weight:700;color:#3730a3">Kimi K2.6（中位 65 → 75，+10）</td></tr>
+<tr><td class="name">1d51fbee</td><td class="bad">0</td><td>75</td><td>—</td><td><span class="bad">基线轮直接拒答（"outside the scope of my capabilities"）→ 稳定性红旗</span>；指南轮漏答抗 HER2</td></tr>
+<tr><td class="name">ca275469</td><td>65</td><td>76</td><td class="ok">+11</td><td>基线未承诺终期；指南轮 pT1a 标签对但推导错（称 0.6cm 属 T1a）</td></tr>
+<tr><td class="name">55a7cc11</td><td>68</td><td>74</td><td class="ok">+6</td><td>T 分期用 0.6cm→pT1b；随访把肿瘤标志物列为常规</td></tr>
+</tbody>
+</table>
+<p class="sub">Kimi 基线三次为 0 / 65 / 68 → 中位 <b>65</b>；指南三次为 75 / 76 / 74 → 中位 <b>75</b>。取中位正是为了让「1 次拒答」这类离群值不污染结论，同时该拒答仍作为稳定性缺陷单独记录（见第 4 节 ④）。</p>
+
+<h2>3. 四模型同尺对比图</h2>
+<svg viewBox="0 0 680 310" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+<line x1="70" y1="30" x2="70" y2="270" stroke="#94a3b8" stroke-width="1"/>
+<line x1="70" y1="270" x2="650" y2="270" stroke="#94a3b8" stroke-width="1"/>
+<!-- gridlines: scale 2.4px/pt, base y=270 -->
+<line x1="70" y1="270" x2="650" y2="270" stroke="#e2e8f0"/><text x="58" y="274" font-size="10" fill="#94a3b8" text-anchor="end">0</text>
+<line x1="70" y1="222" x2="650" y2="222" stroke="#eef2f7"/><text x="58" y="226" font-size="10" fill="#94a3b8" text-anchor="end">20</text>
+<line x1="70" y1="174" x2="650" y2="174" stroke="#eef2f7"/><text x="58" y="178" font-size="10" fill="#94a3b8" text-anchor="end">40</text>
+<line x1="70" y1="126" x2="650" y2="126" stroke="#eef2f7"/><text x="58" y="130" font-size="10" fill="#94a3b8" text-anchor="end">60</text>
+<line x1="70" y1="78" x2="650" y2="78" stroke="#eef2f7"/><text x="58" y="82" font-size="10" fill="#94a3b8" text-anchor="end">80</text>
+<line x1="70" y1="30" x2="650" y2="30" stroke="#eef2f7"/><text x="58" y="34" font-size="10" fill="#94a3b8" text-anchor="end">100</text>
+
+<!-- legend -->
+<rect x="430" y="14" width="14" height="10" fill="#93c5fd"/><text x="448" y="23" font-size="10" fill="#475569">基线(无指南)</text>
+<rect x="540" y="14" width="14" height="10" fill="#2563eb"/><text x="558" y="23" font-size="10" fill="#475569">指南增强</text>
+
+<!-- V4 Pro 60->67 -->
+<rect x="128" y="126" width="36" height="144" fill="#93c5fd"/>
+<rect x="172" y="109" width="36" height="161" fill="#2563eb"/>
+<text x="146" y="120" font-size="10" fill="#1e40af" text-anchor="middle">60</text>
+<text x="190" y="103" font-size="10" fill="#1e40af" text-anchor="middle">67</text>
+<text x="146" y="288" font-size="10" fill="#475569" text-anchor="middle">V4 Pro</text>
+<text x="146" y="20" font-size="11" font-weight="700" fill="#1e40af" text-anchor="middle">+7</text>
+
+<!-- V4 Flash 62->68 -->
+<rect x="258" y="121" width="36" height="149" fill="#93c5fd"/>
+<rect x="302" y="107" width="36" height="163" fill="#2563eb"/>
+<text x="276" y="115" font-size="10" fill="#1e40af" text-anchor="middle">62</text>
+<text x="320" y="101" font-size="10" fill="#1e40af" text-anchor="middle">68</text>
+<text x="276" y="288" font-size="10" fill="#475569" text-anchor="middle">V4 Flash</text>
+<text x="276" y="20" font-size="11" font-weight="700" fill="#1e40af" text-anchor="middle">+6</text>
+
+<!-- GLM 5.2 68->76 -->
+<rect x="388" y="107" width="36" height="163" fill="#93c5fd"/>
+<rect x="432" y="88" width="36" height="182" fill="#2563eb"/>
+<text x="406" y="101" font-size="10" fill="#1e40af" text-anchor="middle">68</text>
+<text x="450" y="82" font-size="10" fill="#1e40af" text-anchor="middle">76</text>
+<text x="406" y="288" font-size="10" fill="#475569" text-anchor="middle">GLM 5.2</text>
+<text x="406" y="20" font-size="11" font-weight="700" fill="#1e40af" text-anchor="middle">+8</text>
+
+<!-- Kimi 65->75 -->
+<rect x="518" y="114" width="36" height="156" fill="#93c5fd"/>
+<rect x="562" y="90" width="36" height="180" fill="#2563eb"/>
+<text x="536" y="108" font-size="10" fill="#1e40af" text-anchor="middle">65</text>
+<text x="580" y="84" font-size="10" fill="#1e40af" text-anchor="middle">75</text>
+<text x="536" y="288" font-size="10" fill="#475569" text-anchor="middle">Kimi K2.6</text>
+<text x="536" y="20" font-size="11" font-weight="700" fill="#1e40af" text-anchor="middle">+10</text>
+</svg>
+<p class="sub">全部 8 根柱子用<b>同一条标尺</b>绘制（2.4 px/分，0 = 底部，100 = 顶部），四个模型<b>同一配色、同一权重</b>，无对照组样式。柱高与第 2 节中位分严格一一对应：基线 GLM 68 &gt; Kimi 65 &gt; Flash 62 &gt; Pro 60；指南后 GLM 76 &gt; Kimi 75 &gt; Flash 68 &gt; Pro 67。四条提升幅度落在 <b>+6 ~ +10</b> 的窄区间内。</p>
+
+<h2>4. 四个关键失败模式（指南均未修复）</h2>
+<div class="note">
+<b>① 全切 → 保乳 误读（最危险）</b><br>
+<code>5c76ec53</code>(V4 Pro) 与 <code>d61d6459</code>(GLM) 把"右乳单纯切除"误读为"保乳术"，两轮都据此<b>错荐放疗</b>。指南注入后仍然错（指南反被用来"论证"保乳需放疗）。这违背"全切 + pN0 免放疗"原则——指南解决"按什么治"，修不了"读错术式"。
+</div>
+<div class="note">
+<b>② 间质浸润 → 脉管瘤栓 误读（指南放大错误）</b><br>
+<code>c59c18d0</code>(V4 Flash) 把"3 簇间质浸润 (0.05/0.06/0.2cm)"误读为"LVI 脉管瘤栓 3 灶阳性"，错判中危。基线尚能"不化疗"，指南轮反而依此"可考虑化疗"（62→53，<b>唯一一个不升反降的样本</b>）。指南在此成了错误判读的"背书"。
+</div>
+<div class="note">
+<b>③ T 分期标签漂移（跨模型普遍）</b><br>
+四个模型都出现过把 0.6 cm（DCIS 总体径线）当 T 分期径线 → 写 pT1b；正确应取 0.2 cm 浸润灶 → <b>pT1a</b>。Kimi 指南轮虽写对 pT1a 标签，推导却是"0.6cm 属于 T1a（≤1cm）"——<b>标签对、依据错</b>。该错误不改变本例治疗决策，但属需医生把关的硬伤。
+</div>
+<div class="note">
+<b>④ 拒答型稳定性缺陷（Kimi 特有）</b><br>
+<code>1d51fbee</code> 基线轮直接返回 <code>This topic is currently outside the scope of my capabilities</code>，3 次运行中 <b>1 次首轮拒答（33%）</b>。注入指南 PDF 后同一会话恢复正常并给出 75 分答案。这是可用性风险而非能力风险，但在临床场景下同样致命。
+</div>
+
+<h2>5. 回答时间与积分消耗</h2>
+<table>
+<thead><tr><th>任务</th><th>模型</th><th>无指南耗时</th><th>有指南耗时</th><th>整轮积分<br>(session 合计)</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td class="name">819362bf</td><td>v4-pro</td><td>~10s</td><td>~60s</td><td>12.66</td><td>解析 244 页 PDF</td></tr>
+<tr><td class="name">5c76ec53</td><td>v4-pro</td><td>~10s</td><td>~55s</td><td>13.81</td><td></td></tr>
+<tr><td class="name">38e99fc1</td><td>v4-pro</td><td>~4s</td><td>~52s</td><td>10.57</td><td></td></tr>
+<tr><td class="name">c59c18d0</td><td>v4-flash</td><td>~8s</td><td>~55s</td><td>5.08</td><td></td></tr>
+<tr><td class="name">5020ef10</td><td>v4-flash</td><td>~8s</td><td>~50s</td><td>4.17</td><td></td></tr>
+<tr><td class="name">7582ed5c</td><td>v4-flash</td><td>~8s</td><td>~55s</td><td>4.38</td><td></td></tr>
+<tr><td class="name">657a0e42</td><td>glm-5.2</td><td>~10s</td><td>~120s</td><td>105.72</td><td>全场最贵</td></tr>
+<tr><td class="name">d61d6459</td><td>glm-5.2</td><td>~10s</td><td>~110s</td><td>74.64</td><td></td></tr>
+<tr><td class="name">5c9b823d</td><td>glm-5.2</td><td>~5s</td><td>~137s</td><td>82.37</td><td></td></tr>
+<tr><td class="name">1d51fbee</td><td>kimi-k2.6</td><td>~82s</td><td>~84s</td><td>25.84</td><td>基线轮含拒答与重试，耗时失真</td></tr>
+<tr><td class="name">ca275469</td><td>kimi-k2.6</td><td>~5s</td><td>~40s</td><td>16.43</td><td></td></tr>
+<tr><td class="name">55a7cc11</td><td>kimi-k2.6</td><td>~8s</td><td>~92s</td><td>20.58</td><td></td></tr>
+</tbody>
+</table>
+<p class="sub">成本梯度（整轮 session 合计）：<b>DeepSeek V4 Flash 4–5 分 &lt; V4 Pro 11–14 分 &lt; Kimi K2.6 16–26 分 &lt; GLM 5.2 75–106 分</b>。GLM 约为 V4 Flash 的 <b>15–25 倍</b>，而两者指南后中位分仅差 8 分（76 vs 68）。<b>按"每分钱买到的分数"算，DeepSeek 系列性价比最高；Kimi 居中且分数接近 GLM，是本轮的性价比黑马。</b>耗时上，指南轮因需解析 244 页 PDF 普遍 40–140s，基线轮仅 4–10s。</p>
+
+<h2>6. 对"终极测试"设想的最终验证</h2>
+<p>你的设想——<b>"医生把手头专业指南发给大模型，让它据此制定更准确的后续方案"</b>——在四模型同尺数据下得到如下结论：</p>
+<table>
+<thead><tr><th>维度</th><th>结论</th></tr></thead>
+<tbody>
+<tr><td class="name">提升幅度</td><td>✅ 四模型一致 <b>+6 ~ +10 分</b>（Pro +7 / Flash +6 / GLM +8 / Kimi +10）。指南是<b>稳定有效</b>的增强手段，但幅度温和、无戏剧性反转。</td></tr>
+<tr><td class="name">提升来自哪里</td><td>集中在<b>指南表格能直接查到的规则</b>：不延长内分泌、无 CDK4/6 指征、低危免多基因检测、绝经后 AI 优先、随访间隔。</td></tr>
+<tr><td class="name">事实判读层</td><td>❌ 指南<b>修不了</b>模型对病例的误读（术式、浸润性质、T 分期）。误读会在指南"背书"下更顽固甚至更错（唯一负增长样本即源于此）。</td></tr>
+<tr><td class="name">临床安全</td><td>⚠️ 全切/保乳误读导致错荐放疗是<b>真实风险</b>；Kimi 33% 首轮拒答是<b>可用性风险</b>。术式与放疗指征必须由医生最终把关。</td></tr>
+<tr><td class="name">选型建议</td><td>四模型指南后分数区间仅 67–76，差距小于成本差距（4–106 积分，25 倍）。<b>做"指南增强"工作流，DeepSeek V4 Flash 性价比最优；追求最高分选 GLM 5.2；Kimi K2.6 是分数接近 GLM、成本仅 1/4 的折中选择（需容忍偶发拒答）。</b></td></tr>
+</tbody>
+</table>
+
+<div class="summary" style="margin-top:24px">
+<b>实验结论</b>：在四模型完全对等的设计与唯一标尺下，指南注入是一个<b>可靠但温和的增强器（+6 ~ +10 分）</b>，其价值在于把"记忆中的临床规则"替换为"可查证的指南条款"，而<b>不改变模型读病例的能力</b>。<br>
+<b>本版撤回的旧结论</b>：上一版基于错误标尺得出的"指南杠杆 = 基线越弱收益越大（Kimi +37）"<b>不成立</b>——那个 +37 是两套评分表相减的产物。在同一把尺子下，四个模型的基线（60–68）与提升（+6~+10）都高度接近，<b>不存在"弱模型被救活"的现象</b>。
+</div>
+
+<p class="foot">
+数据来源：WorkBuddy 本地 <code>~/.workbuddy/workbuddy.db</code>（sessions / session_usage）+ <code>projects/*/&lt;session&gt;.jsonl</code> 原始会话记录，全部 24 段回答均从原文提取后人工逐项打分。评分 Rubric：<code>tanhaosheng.asia/clinical-benchmark/framework</code>（16 项 / 100，本实验统一上限 90）。<br>
+模型标识说明：Kimi 三次运行在会话记录中的 message 级 model 字段均为 <code>kimi-k2.6</code>。另有 3 次 07-30 的 <code>kimi-k3-1</code> 运行（<code>6e9b135f</code> / <code>13067526</code> / <code>47a56d49</code>）<b>只有基线轮、没有指南配对轮</b>，无法进入本文的"配对提升"实验，故不在本表；其基线回答已按同一份 16 项表重新打分（74 / 78 / 84，中位 <b>78</b>），收录于《全系列统一评分标准》一文的 简化指令组（简化指令）基线榜。<br>
+本报告为 AI 选型评估，<b>不构成任何临床建议</b>；模型输出不可用于真实患者决策。
+</p>
+</div>
+</body>
+</html>
