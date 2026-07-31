@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>AI Agents for Medical Research Writing — Real Surgeon-Tested Cases · AI Tool Stack</title>
-<meta name="description" content="First-hand case studies of WorkBuddy Hy3 (an AI agent) evaluating real scientific manuscripts and single-cell data for a surgeon-researcher. What the agent got right, what it caught that the surgeon missed, and where it pushed back. Replicable methodology, reproducible transcripts.">
+<meta name="description" content="First-hand case studies of WorkBuddy Hy3 (an AI agent) evaluating real scientific manuscripts and single-cell data for a surgeon-researcher. What the agent got right, what it caught that the surgeon missed, and where it pushed back. Two manuscripts reviewed against real scRNA-seq data in 22 minutes total. Replicable methodology, reproducible transcripts.">
 <meta name="author" content="Tan Haosheng, MD, PhD">
 <meta name="keywords" content="AI for scientific writing, AI agent medical research, AI manuscript review, AI single-cell analysis, surgeon AI tools, WorkBuddy Hy3, clinical AI agent">
 <meta name="robots" content="index,follow,max-image-preview:large">
@@ -166,6 +166,24 @@ footer .credits{font-size:13px;color:#94a3b8;margin-top:14px}
 
 <p class="lede">I've spent 20+ years in thyroid and breast surgery and 10+ years publishing in oncology. In July 2026 I started asking a sharp question: <strong>can a general-purpose AI agent, with one prompt, do work I'd actually trust to inform a manuscript I'm about to submit?</strong> These case studies are my honest answer — including the parts where the agent pushed back on my own draft.</p>
 
+<div style="display:flex;gap:14px;flex-wrap:wrap;margin:1.6em 0 2em">
+  <div style="flex:1 1 170px;background:#f3f0ff;border:1px solid #ddd4ff;border-radius:12px;padding:16px 18px">
+    <div style="font:800 26px/1.1 system-ui;color:#4f2db5">18:05</div>
+    <div style="font:600 13px system-ui;color:#4f2db5;margin-top:4px">Case 1 — first prompt</div>
+    <div style="font:400 12.5px/1.5 system-ui;color:#6b7280;margin-top:6px">Two scRNA-seq samples parsed, sorted-vs-unsorted identified, full manuscript cross-check. One shot, no retries.</div>
+  </div>
+  <div style="flex:1 1 170px;background:#f3f0ff;border:1px solid #ddd4ff;border-radius:12px;padding:16px 18px">
+    <div style="font:800 26px/1.1 system-ui;color:#4f2db5">~4:00</div>
+    <div style="font:600 13px system-ui;color:#4f2db5;margin-top:4px">Case 2 — follow-up</div>
+    <div style="font:400 12.5px/1.5 system-ui;color:#6b7280;margin-top:6px">Second, deliberately mismatched manuscript checked against the same already-loaded data.</div>
+  </div>
+  <div style="flex:1 1 170px;background:linear-gradient(135deg,#6c3ce1,#4f2db5);border-radius:12px;padding:16px 18px;color:#fff">
+    <div style="font:800 26px/1.1 system-ui">~22 min</div>
+    <div style="font:600 13px system-ui;margin-top:4px;opacity:.92">Total, both manuscripts</div>
+    <div style="font:400 12.5px/1.5 system-ui;margin-top:6px;opacity:.85">For comparison: doing this analysis by hand takes me the better part of two working days.</div>
+  </div>
+</div>
+
 <h2>Why this section exists</h2>
 <p>The "AI for X" discourse is mostly testimonials. I wanted measurements on <em>my own</em> work, with the prompts saved and the transcripts kept. Two things forced this section into existence:</p>
 <ol>
@@ -183,13 +201,13 @@ footer .credits{font-size:13px;color:#94a3b8;margin-top:14px}
     <span class="meta">Read first · 5 min</span>
   </a>
   <a class="card" href="/agents-for-research/case-klrb1">
-    <span class="kicker">Case 1 · 18 min one-shot</span>
+    <span class="kicker">Case 1 · 18 min 05 s, one shot</span>
     <h3>KLRB1 + breast cancer single-cell RNA-seq</h3>
     <p>Two anonymized breast cancer samples + my own KLRB1/BRCA manuscript. Did the agent identify the CD45-sorted sample correctly? Did the scRNA-seq data support my manuscript claims — or contradict them?</p>
     <span class="meta">Reproducible transcript · ~12 min read</span>
   </a>
   <a class="card" href="/agents-for-research/case-mhc2">
-    <span class="kicker">Case 2 · trap test</span>
+    <span class="kicker">Case 2 · trap test · 4 min</span>
     <h3>MHC-II / NK co-culture — cross-tumor validation</h3>
     <p>The "unrelated paper" test. I dropped in a draft about HNSCC + thyroid NK co-culture on top of the breast-cancer dataset. Does the agent notice the mismatch, or does it fabricate?</p>
     <span class="meta">Reproducible transcript · ~10 min read</span>
@@ -204,7 +222,7 @@ footer .credits{font-size:13px;color:#94a3b8;margin-top:14px}
     <tr><td>Does scRNA-seq support my KLRB1/BRCA conclusions?</td><td>Partial. KLRB1-in-lymphocytes supported; "KLRB1 reflects armed cytotoxic infiltration" not supported at single-cell level; TIGIT⁺PRF1⁻ signature runs the other way; CD4⁺ memory T as PVR/NECTIN2 source not supported.</td><td><span class="tag warn">Partial / needs softening</span></td></tr>
     <tr><td>Does scRNA-seq support the unrelated MHC-II/LAG-3 paper?</td><td>LAG-3 enrichment in cytotoxic T/NK confirmed (2.3×); MHC-II co-linearity and STAT1 correlations far weaker than paper claims. Agent flagged tumor-type mismatch.</td><td><span class="tag warn">Partial / cite carefully</span></td></tr>
     <tr><td>Did the agent notice the data-paper mismatch?</td><td>Yes — explicitly flagged wrong cancer type, single patient, no NK-pressure pairing.</td><td><span class="tag">Correct</span></td></tr>
-    <tr><td>Wall-clock time, one shot</td><td>~18 minutes for both cases, end to end.</td><td><span class="tag">Fast</span></td></tr>
+    <tr><td>Wall-clock time, one shot each</td><td>Case 1: <strong>18 min 05 s</strong>. Case 2 (follow-up prompt, same session): <strong>~4 min</strong>. <strong>~22 minutes total</strong> — no re-prompting, no retries, no hand-holding.</td><td><span class="tag">Fast</span></td></tr>
   </tbody>
 </table>
 

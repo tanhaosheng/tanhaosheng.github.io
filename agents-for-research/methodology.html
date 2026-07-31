@@ -183,7 +183,7 @@ footer .credits{font-size:13px;color:#94a3b8;margin-top:14px}
 
 <h2>What I do <em>not</em> test in this section</h2>
 <ul>
-  <li><strong>Speed benchmarks</strong>: I report wall-clock time but I do not optimize for it. A 5-minute answer that's wrong is worse than an 18-minute answer that's right.</li>
+  <li><strong>Speed benchmarks</strong>: I report wall-clock time but I do not optimize for it. A 5-minute answer that's wrong is worse than an 18-minute answer that's right. For the record, Case 1 took <strong>18 min 05 s</strong> from prompt to final report and Case 2 took <strong>~4 min</strong> as a follow-up in the same session — roughly <strong>22 minutes total</strong>. The follow-up is faster because the dataset is already loaded and parsed; treat first-run and follow-up timings as different measurements and never average them.</li>
   <li><strong>Hallucinated citations</strong>: the agent's training-data cutoff is not in scope for this section. I test on real attached files, not on the agent's recall.</li>
   <li><strong>UI / UX / latency</strong>: this is a research methodology section, not a product review.</li>
   <li><strong>Multi-agent orchestration</strong>: I run one agent per case. Multi-agent routing is a separate (and interesting) question.</li>
