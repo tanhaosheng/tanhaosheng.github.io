@@ -19,7 +19,7 @@
       <link>https://tanhaosheng.asia/agent-vs-web-isolation</link>
       <guid>https://tanhaosheng.asia/agent-vs-web-isolation</guid>
       <description>Part 3: 4 models × 3 runs on one breast-cancer case — web vs WorkBuddy agent. Agent raises the floor, not the ceiling (16-item/100 rubric).</description>
-      <pubDate>Thu, 30 Jul 2026 12:00:00 +0000</pubDate>
+      <pubDate>Fri, 31 Jul 2026 12:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Configuring Agnes in WorkBuddy: Free Agent | AI Tool Stack</title>
@@ -33,21 +33,21 @@
       <link>https://tanhaosheng.asia/chatglm-vs-deepseek-clinical-hands-on</link>
       <guid>https://tanhaosheng.asia/chatglm-vs-deepseek-clinical-hands-on</guid>
       <description>A surgeon's hands-on test of ChatGLM 5.2 vs DeepSeek on a real anonymized post-op breast-cancer case, scored with the 16-item/100 rubric against 2026 CBCS. ChatGLM 5/100; DeepSeek 28/100.</description>
-      <pubDate>Wed, 29 Jul 2026 12:00:00 +0000</pubDate>
+      <pubDate>Fri, 31 Jul 2026 12:00:00 +0000</pubDate>
     </item>
     <item>
       <title>4 Free AI Models on One Breast Cancer Case | AI Tool Stack</title>
       <link>https://tanhaosheng.asia/four-models-clinical-showdown</link>
       <guid>https://tanhaosheng.asia/four-models-clinical-showdown</guid>
       <description>4 free AI models on one anonymized post-op breast-cancer case, scored with the 16-item/100 rubric. Only DeepSeek V4 Pro caught the staging trap (50/100); Doubao 41; DeepSeek web 28; ChatGLM 5.</description>
-      <pubDate>Thu, 30 Jul 2026 12:00:00 +0000</pubDate>
+      <pubDate>Fri, 31 Jul 2026 12:00:00 +0000</pubDate>
     </item>
     <item>
       <title>How I Built This Site With an AI Agent | AI Tool Stack</title>
       <link>https://tanhaosheng.asia/how-i-built-this-site-with-ai</link>
       <guid>https://tanhaosheng.asia/how-i-built-this-site-with-ai</guid>
       <description>A surgeon's honest build log: 4 days from idea to launch with an AI agent — the content-farm trap, the great deletion (361 → 3 articles), the pivot to real hands-on testing, and every lesson learned.</description>
-      <pubDate>Thu, 30 Jul 2026 12:00:00 +0000</pubDate>
+      <pubDate>Fri, 31 Jul 2026 12:00:00 +0000</pubDate>
     </item>
     <item>
       <title>AI Tool Stack — Clinical LLM Benchmark &amp; AI Tools for Surgeons</title>
@@ -74,7 +74,6 @@
       <title>Site Map — AI Tool Stack</title>
       <link>https://tanhaosheng.asia/sitemap</link>
       <guid>https://tanhaosheng.asia/sitemap</guid>
-      <description>Full index of all pages on AI Tool Stack — free AI model hands-on tests and clinical LLM benchmarks by Dr. Tan Haosheng.</description>
       <pubDate>Fri, 31 Jul 2026 12:00:00 +0000</pubDate>
     </item>
     <item>
@@ -96,14 +95,14 @@
       <link>https://tanhaosheng.asia/workbuddy-free-agent-hunyuan-hy3-en</link>
       <guid>https://tanhaosheng.asia/workbuddy-free-agent-hunyuan-hy3-en</guid>
       <description>A screenshot-driven walkthrough by Tan Haosheng on WorkBuddy (Tencent): sign-up, WeChat login, the credits system, where Hunyuan hy3 fits, and the model-picker UI.</description>
-      <pubDate>Mon, 27 Jul 2026 12:00:00 +0000</pubDate>
+      <pubDate>Fri, 31 Jul 2026 12:00:00 +0000</pubDate>
     </item>
     <item>
       <title>WorkBuddy 免费运行 Agent（混元 hy3）实测：注册、积分机制与首批流程 - AI Tool Stack</title>
       <link>https://tanhaosheng.asia/workbuddy-free-agent-hunyuan-hy3</link>
       <guid>https://tanhaosheng.asia/workbuddy-free-agent-hunyuan-hy3</guid>
       <description>作者 Tan Haosheng 在 WorkBuddy（workbuddy.cn）实操的全记录。详细拆解注册、微信登录、积分机制（任务/签到）、混元 hy3 模型定位与首页/下载页界面。后续段落（建 Agent / 跑任务 / 积分消耗 / 产出物）随流程补全。</description>
-      <pubDate>Sun, 26 Jul 2026 12:00:00 +0000</pubDate>
+      <pubDate>Fri, 31 Jul 2026 12:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Free-Model Clinical LLM Leaderboard | AI Tool Stack</title>
@@ -173,14 +172,14 @@
       <link>https://tanhaosheng.asia/zh/four-models-clinical-showdown</link>
       <guid>https://tanhaosheng.asia/zh/four-models-clinical-showdown</guid>
       <description>一位外科医生的扩展实测：4 个免费 AI 模型跑同一个脱敏术后乳腺癌病例，用同一套 16 项/100 分标准对照 2026 CBCS 指南评分。仅 DeepSeek V4 Pro 识破分期陷阱（50/100）。</description>
-      <pubDate>Thu, 30 Jul 2026 12:00:00 +0000</pubDate>
+      <pubDate>Fri, 31 Jul 2026 12:00:00 +0000</pubDate>
     </item>
     <item>
       <title>我 2 天生成了 361 篇 AI 文章，然后删掉了 358 篇 —— 这个网站真实的建站过程</title>
       <link>https://tanhaosheng.asia/zh/how-i-built-this-site-with-ai</link>
       <guid>https://tanhaosheng.asia/zh/how-i-built-this-site-with-ai</guid>
       <description>一名外科医生的真实建站日志：4 天时间靠 AI 智能体从构思到上线——内容农场的坑、361 篇删到 3 篇的大删减、转向真实实测的全过程与全部教训。</description>
-      <pubDate>Thu, 30 Jul 2026 12:00:00 +0000</pubDate>
+      <pubDate>Fri, 31 Jul 2026 12:00:00 +0000</pubDate>
     </item>
     <item>
       <title>AI Tool Stack — 🛠️ AI 工具栈</title>
@@ -259,5 +258,5 @@
       <description>Clinical LLM Benchmark · Hub. Clinical LLM benchmarking for surgeons by Tan Haosheng, MD PhD.</description>
       <pubDate>Fri, 31 Jul 2026 12:00:00 +0000</pubDate>
     </item>
-  <channel>
+  </channel>
 </rss>
