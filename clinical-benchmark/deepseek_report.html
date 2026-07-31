@@ -74,8 +74,7 @@ nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1
   <p class="sub">框架 v1.0 · 乳腺癌术后病例解读 + 后续辅助治疗建议 · 参考 2026 CBCS Version 2026.1.0</p>
 
   <div class="note">
-    <b>方法说明（关于"为什么用文字版"）：</b> 本次评测输入为<b>纯文字版病历</b>（PDF 指南摘要 + 病历文字），而非图片。
-    原因：DeepSeek 专家模式不支持图片输入，故采用文字输入以保证两模型输入完全一致、对比公平。
+    <b>方法说明（关于输入形式 · 已更正）：</b> 本次评测实际输入为<b>门诊病例脱敏截图（图片）</b>——一张同时包含病历与任务的截图，两个模型收到同一张图。本报告原称「因 DeepSeek 专家模式不支持图片输入，故采用文字输入」；据测试作者更正，该表述不准确，特此更正。
     两个模型均为免费档（DeepSeek 网页快速模式 / 智谱清言 ChatGLM 5.2），零成本。
   </div>
 
@@ -187,7 +186,7 @@ nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1
   </div>
 
   <p class="foot">
-    数据局限：仅 1 例、仅文字输入、仅免费档、每模型 3 次。本报告为内部 LLM 选型评估，<b>不构成任何临床建议</b>，模型输出不可用于真实患者决策。
+    数据局限：仅 1 例、输入为门诊病例脱敏截图（图片）、仅免费档、每模型 3 次。本报告为内部 LLM 选型评估，<b>不构成任何临床建议</b>，模型输出不可用于真实患者决策。
     完整原始回答见 <a href="deepseek_answers.html">deepseek_answers.html</a>。
   </p>
 </div>

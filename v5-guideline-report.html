@@ -74,6 +74,7 @@ svg{max-width:100%;height:auto}
 本版<b>四个模型全部从原始会话记录重新提取回答，用同一份 16 项表重新打分</b>，任何模型都不设对照组、不做特例处理。
 </div>
 
+<p style="background:#fff7ed;border-left:4px solid #f59e0b;padding:10px 14px;border-radius:0 8px 8px 0;font-size:13px;margin:14px 0;color:#7c2d12"><b>输入形式：</b>本系列全部实测的输入均为<b>一张门诊病例的脱敏截图</b>（病例 + 16 项问题在同一张图内），模型从图片中读取。因此下文各模型的「读错病例」（全切↔保乳、间质浸润↔脉管瘤栓等）属于<b>视觉/OCR 失败</b>，而非临床知识缺失——这也是指南注入无法纠正此类错误的根因。</p>
 <h2>1. 评分方法（唯一标尺 · 四模型一致）</h2>
 <ul>
 <li><b>工具</b>：临床基准框架 <code>clinical-benchmark/framework</code> 的 <b>16 项 / 100 分</b> Rubric，四个模型使用<b>同一份</b>。</li>

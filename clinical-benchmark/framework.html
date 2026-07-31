@@ -71,7 +71,8 @@ nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1
 <table><thead><tr><th>维度</th><th>评估要点</th></tr></thead><tbody><tr><td>任务复杂度</td><td>中等（不是知识问答，而是结构化临床决策推理）</td></tr><tr><td>答案可校验性</td><td>高（指南明确，可逐条对照）</td></tr><tr><td>失败代价敏感性</td><td>高（LLM 临床错误可能误导决策）</td></tr><tr><td>真实性</td><td>真实病例，仅脱敏</td></tr><tr><td>区分度</td><td>高（多数 LLM 在「微浸润分期」「全切后内分泌是否必要」两题上答案差异巨大）</td></tr></tbody></table>
 <p><strong>预期</strong>：DeepSeek 快速模式速度快但深度可能浅；ChatGLM 长文本结构化推理可能更稳。具体以实测为准。</p>
 <hr>
-<h2>1. 标准化输入 Prompt（两个模型一字不差地粘贴）</h2>
+<h2>1. 标准化输入（一张门诊病例截图，两个模型收到同一张图）</h2>
+<blockquote style="border-left:4px solid #f59e0b;background:#fff7ed;padding:10px 14px;border-radius:0 8px 8px 0;font-size:13px;color:#7c2d12"><strong>输入形式（重要更正）：</strong>以上 §1 全部内容（病例 + 16 项问题）在实测中以<strong>一张门诊病例的脱敏截图</strong>形式输入；两个模型收到的是同一张图片。下方文字为该截图内容的转录，供复现与逐条核对。模型需从图片中读取信息——若模型「读错病例内容」，属于<strong>视觉/OCR 能力局限</strong>，而非临床知识缺失。这正是部分模型在微浸润分期、术式判读上出错的根因。</blockquote>
 <pre><code>你是为一位中国外科医生服务的临床决策助手。你的回答必须严格基于
 2026 版《中国抗癌协会乳腺癌诊治指南与规范》（CBCS Version 2026.1.0），
 不要使用更早版本或国外指南替代。回答时必须分点、结构化、明确写出

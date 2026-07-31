@@ -200,7 +200,7 @@ nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1
 <details><summary>有一次 V4 Pro 推荐了放疗，这不是大错吗？</summary>
 <p>是，而且严重：全切 + 切缘阴性 + N0 本无放疗指征，那次还把术式误称"保乳"。我按 V4 Pro 实质最优回答计分，但把不一致性显著标出——同一 prompt 既返回优秀方案也返回危险方案。这种不稳定性正是为何此处无一模型获准单独使用。</p></details>
 <details><summary>我能自己复现吗？</summary>
-<p>能。完整 prompt 与 16 项 rubric 已发布于 <a href="/clinical-benchmark/framework">/clinical-benchmark/framework.html</a>。粘贴进任意模型，对照 2026 CBCS 指南评分，你就能得到自己的数字。</p></details>
+<p>能。完整 prompt（病例 + 16 项 rubric）已作为截图内容的转录发布于 <a href="/clinical-benchmark/framework">/clinical-benchmark/framework.html</a>。实测中模型收到的是图片；把文字版粘贴进任意模型，即可对照 2026 CBCS 指南复现评分。</p></details>
 </div>
 
 <p style="margin-top:24px"><em>这是计划中的 5 篇<strong>原创实测 / Hands-on Review</strong>系列第 2 篇——真实、署名、可复现的 AI 工具实测，皆为我临床与科研中真在用的工具。下一篇：隔离 V4 Pro 的提升究竟来自模型本身还是 WorkBuddy 智能体。</em></p>
@@ -266,7 +266,7 @@ nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1
       "name": "我能自己复现吗？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "能。完整 prompt 与 16 项 rubric 已发布于 /clinical-benchmark/framework.html。粘贴进任意模型，对照 2026 CBCS 指南评分，你就能得到自己的数字。"
+        "text": "能。完整 prompt（病例 + 16 项 rubric）已作为截图内容的转录发布于 /clinical-benchmark/framework.html。实测中模型收到的是图片；把文字版粘贴进任意模型，即可对照 2026 CBCS 指南复现评分。"
       }
     }
   ]

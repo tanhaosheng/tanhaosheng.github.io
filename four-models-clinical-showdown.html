@@ -190,7 +190,7 @@ nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1
 
 <h2>Limitations</h2>
 <ul>
-  <li>One case, text-only input, free tiers only, three runs per model (V4 Pro: one refusal + two strong + one flawed).</li>
+  <li>One case, image input &mdash; a single screenshot of the de-identified outpatient medical record (case + the 16 questions in one image), free tiers only, three runs per model (V4 Pro: one refusal + two strong + one flawed). Models had to read the image visually; &ldquo;misreading the case&rdquo; reflects vision/OCR limits, not clinical knowledge.</li>
   <li>Doubao was tested on mobile web; DeepSeek V4 Pro inside the WorkBuddy agent — the agent wrapper may contribute to the better staging catch, which I cannot yet separate from the base model.</li>
   <li>Scores are one surgeon's interpretation of a fixed rubric; the framework is published so you can disagree and re-score.</li>
 </ul>
@@ -216,7 +216,7 @@ nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1
 <details><summary>One V4 Pro run recommended radiation — isn't that a big error?</summary>
 <p>Yes, it's serious: post-mastectomy with negative margins and N0 has no radiation indication, and the run wrongly called the surgery "breast-conserving." I scored V4 Pro on its best substantive answer but flag the inconsistency prominently — the same prompt returned both an excellent plan and a dangerous one. That instability is exactly why no model here is certified for solo use.</p></details>
 <details><summary>Can I reproduce this myself?</summary>
-<p>Yes. The full prompt and 16-item rubric are published at <a href="/clinical-benchmark/framework">/clinical-benchmark/framework.html</a>. Paste them into any model, score against the 2026 CBCS guideline, and you'll get your own numbers.</p></details>
+<p>Yes. The full prompt (case + 16-item rubric) is published at <a href="/clinical-benchmark/framework">/clinical-benchmark/framework.html</a> as a transcription of the screenshot. In the real test the model received the image; paste the text version into any model to reproduce the scoring against the 2026 CBCS guideline.</p></details>
 </div>
 
 <p style="margin-top:24px"><em>This is the second of a planned 5-part <strong>原创实测 / Hands-on Review</strong> series — real, signed, reproducible tests of AI tools I actually use in clinical and research work. Next up: isolate whether the V4 Pro gain comes from the model or the WorkBuddy agent.</em></p>
@@ -282,7 +282,7 @@ nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1
       "name": "Can I reproduce this myself?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. The full prompt and 16-item rubric are published at /clinical-benchmark/framework.html. Paste them into any model, score against the 2026 CBCS guideline, and you'll get your own numbers."
+        "text": "Yes. The full prompt (case + 16-item rubric) is published at /clinical-benchmark/framework.html as a transcription of the screenshot. In the real test the model received the image; paste the text version into any model to reproduce the scoring against the 2026 CBCS guideline."
       }
     }
   ]

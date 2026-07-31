@@ -71,7 +71,8 @@ nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1
 <table><thead><tr><th>Dimension</th><th>Evaluation focus</th></tr></thead><tbody><tr><td>Task complexity</td><td>Medium (not a knowledge Q&amp;A, but structured clinical decision reasoning)</td></tr><tr><td>Answer verifiability</td><td>High (guideline is explicit, can be checked item by item)</td></tr><tr><td>Failure-cost sensitivity</td><td>High (an LLM clinical error may mislead decisions)</td></tr><tr><td>Authenticity</td><td>Real case, de-identified only</td></tr><tr><td>Discrimination</td><td>High (most LLMs diverge sharply on &quot;microinvasion staging&quot; and &quot;whether endocrine is needed after mastectomy&quot;)</td></tr></tbody></table>
 <p><strong>Expectation</strong>: DeepSeek Fast is fast but may be shallow; a long-context model may reason more stably. Actual results from benchmark.</p>
 <hr>
-<h2>1. Standardized Input Prompt (paste verbatim into both models)</h2>
+<h2>1. Standardized Input &mdash; one outpatient-record screenshot, same image to both models</h2>
+<blockquote><strong>Input form (important correction):</strong> In the actual test, all of &sect;1 (the case + the 16 questions) was provided as <strong>a single screenshot of the de-identified outpatient medical record</strong>; both models received the same image. The text below is a transcription of that screenshot, for reproduction and item-by-item checking. Models had to read the information from the image &mdash; when a model "misreads the case," that is a <strong>vision/OCR limitation</strong>, not a gap in clinical knowledge. This is exactly why some models erred on microinvasion staging and procedure interpretation.</blockquote>
 <pre><code>You are a clinical-decision assistant serving a Chinese surgeon. Your answer MUST be
 strictly based on the 2026 Chinese Anti-Cancer Association Breast Cancer Diagnosis &amp;
 Treatment Guideline (CBCS Version 2026.1.

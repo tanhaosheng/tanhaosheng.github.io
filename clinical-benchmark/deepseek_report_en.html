@@ -75,8 +75,7 @@ nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1
   <p class="sub">Framework v1.0 · Post-operative breast cancer case interpretation + adjuvant therapy recommendations · Reference: 2026 CBCS Version 2026.1.0</p>
 
   <div class="note">
-    <b>Method note (why text-only input):</b> This benchmark used <b>plain-text case notes</b> (PDF guideline summary + case text), not images.
-    Reason: DeepSeek's Expert mode does not accept images, so text input was used to keep both models' inputs identical for a fair comparison.
+    <b>Correction (input modality):</b> This report originally stated the case was provided as plain text because DeepSeek's Expert mode could not read images. Per the test author's correction, the actual input across the whole series &mdash; including this DeepSeek/ChatGLM comparison &mdash; was a single screenshot of the de-identified outpatient medical record. The "text-only" statement was inaccurate and is retracted.
     Both models are on the free tier (DeepSeek web Fast mode / Zhipu ChatGLM 5.2), at zero cost.
   </div>
 
@@ -187,7 +186,7 @@ nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1
   </div>
 
   <p class="foot">
-    Data limitations: 1 case only, text input only, free tier only, 3 runs per model. This report is an internal LLM选型 evaluation, <b>not clinical advice</b>, and model output must not be used for real patient decisions.
+    Data limitations: 1 case only, image input (a screenshot of the de-identified outpatient medical record), free tier only, 3 runs per model. This report is an internal LLM选型 evaluation, <b>not clinical advice</b>, and model output must not be used for real patient decisions.
     Full raw answers in <a href="deepseek_answers.html">deepseek_answers.html</a>.
   </p>
 </div>

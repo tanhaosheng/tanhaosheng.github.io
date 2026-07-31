@@ -75,7 +75,7 @@ nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1
 <h2>How I tested it (so you can reproduce it)</h2>
 <p>I built a fixed framework so the comparison is fair and re-runnable:</p>
 <ul>
-  <li><strong>One case, one prompt.</strong> A single anonymized case summary + a 16-part task list, pasted <em>verbatim</em> into both models. Same input, no image (DeepSeek's expert mode doesn't accept images, so text kept it even).</li>
+  <li><strong>One case, one prompt.</strong> A single anonymized outpatient-record screenshot (case + 16-part task list in one image) was shown to both models. Note: this DeepSeek-vs-ChatGLM comparison originally stated text was used because DeepSeek's expert mode could not read images; per the author's correction, the actual input across the series &mdash; including this pair &mdash; was the screenshot image.</li>
   <li><strong>Graded against 2026 CBCS.</strong> A 16-item / 100-point rubric keyed to the 2026 CBCS guideline (Version 2026.1.0) — staging, surgery, radiotherapy, chemo, endocrine therapy, safety, follow-up, and self-assessment.</li>
   <li><strong>3 runs each, take the median.</strong> If the spread between best and worst run was ≥8 points, the model is flagged "unstable."</li>
   <li><strong>The citation rule.</strong> A correct answer that did <em>not</em> cite a specific 2026 CBCS chapter/page was capped at 1 point (out of 2). If I can't verify it actually read the guideline, I won't credit it for having done so.</li>
@@ -159,7 +159,7 @@ nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1
 
 <h2>Limitations</h2>
 <ul>
-  <li>One case, text-only input, free tiers only, three runs per model.</li>
+  <li>One case, image (screenshot of the outpatient record) input, free tiers only, three runs per model.</li>
   <li>I did not test DeepSeek's deeper "reasoning" mode (if offered) or any paid API — that's a candidate for a later review in this series.</li>
   <li>Scoring is one surgeon's interpretation of a fixed rubric; the framework is published so you can disagree and re-score.</li>
 </ul>
@@ -183,7 +183,7 @@ nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1
 <details><summary>Why score 0 on guideline citations for both?</summary>
 <p>The rubric capped a correct-but-uncited answer at 1 point and required a specific 2026 CBCS chapter/page for full credit. Neither model ever cited a chapter or page — they said "mainstream / authoritative / latest guideline" without specifics, so I could not verify they had actually read the source.</p></details>
 <details><summary>Can I reproduce this myself?</summary>
-<p>Yes. The full prompt and 16-item rubric are published at <a href="/clinical-benchmark/framework">/clinical-benchmark/framework.html</a>. Paste them into any model, score against the 2026 CBCS guideline, and you'll get your own numbers.</p></details>
+<p>Yes. The full prompt (case + 16-item rubric) is published at <a href="/clinical-benchmark/framework">/clinical-benchmark/framework.html</a> as a transcription of the screenshot. In the real test the model received the image; paste the text version into any model to reproduce the scoring against the 2026 CBCS guideline.</p></details>
 <details><summary>Is ChatGLM usable for anything clinical then?</summary>
 <p>Its English output is a genuine asset for reading international literature, but for Chinese clinical decision support it answered in English and was both vague and unstable — not something I'd rely on. DeepSeek fast mode is the better free pick for Chinese-language reasoning, with the caveats above.</p></details>
 </div>
@@ -245,7 +245,7 @@ nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1
       "name": "Can I reproduce this myself?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. The full prompt and 16-item rubric are published at /clinical-benchmark/framework.html. Paste them into any model, score against the 2026 CBCS guideline, and you'll get your own numbers."
+        "text": "Yes. The full prompt (case + 16-item rubric) is published at /clinical-benchmark/framework.html as a transcription of the screenshot. In the real test the model received the image; paste the text version into any model to reproduce the scoring against the 2026 CBCS guideline."
       }
     },
     {
