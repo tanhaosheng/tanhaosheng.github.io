@@ -33,7 +33,66 @@
 
 
 <link rel="alternate" hreflang="x-default" href="https://tanhaosheng.asia/about">
-ENHANCE_CSSENHANCE_CSS</head><body><div id="lang-switcher"><label for="lang-select">🌐</label><select id="lang-select"><option value="en">English</option><option value="zh" selected>中文</option></select></div><div class="mt-banner">⚠️ 本页为<strong>机器翻译</strong>，<strong>待专业审校</strong>。英文版为权威原文。 <a href="/about">English</a></div><nav><div class="nav-inner"><a href="/">🏠 首页</a><a href="/">📰 新闻</a><a href="/">🤖 AI</a><a href="/about" class="active">关于</a><input id="site-search" type="search" placeholder="Search…" aria-label="Search this site"><div id="search-results" aria-live="polite"></div></div></nav>
+ENHANCE_CSSENHANCE_CSS<!--SITE-NAV-CSS-->
+<style>
+nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1 0%,#4f2db5 100%);box-shadow:0 2px 12px rgba(108,60,225,.25)}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 18px;flex-wrap:wrap}
+.nav-inner a{color:#fff;text-decoration:none;font:600 14px/1 system-ui,sans-serif;padding:6px 8px;border-radius:8px;white-space:nowrap}
+.nav-inner a:hover{background:rgba(255,255,255,.16)}
+.nav-inner a.active{background:rgba(255,255,255,.22)}
+#site-search{flex:1;min-width:140px;max-width:320px;margin-left:auto;padding:8px 12px;border:1px solid rgba(255,255,255,.4);border-radius:999px;background:rgba(255,255,255,.95);color:#1f2937;font:500 14px system-ui,sans-serif}
+#site-search::placeholder{color:#6b7280}
+#search-results{position:absolute;top:100%;right:18px;width:min(360px,92vw);background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.18);padding:8px;z-index:1001;max-height:60vh;overflow:auto}
+#search-results a{display:block;padding:8px 10px;border-radius:8px;color:#1f2937;text-decoration:none;font:500 14px system-ui}
+#search-results a:hover{background:#f3f0ff}
+#search-results mark{background:#fde68a;color:#1f2937}
+</style>
+
+<!--BASE-THEME-FALLBACK-->
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font:16px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#1f2937;background:#f7f8fb}
+a{color:#4f2db5;text-decoration:none}a:hover{text-decoration:underline}
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+h1,h2,h3{line-height:1.25;color:#111827;margin:1.4em 0 .6em}
+h1{font-size:2rem}h2{font-size:1.5rem}h3{font-size:1.2rem}
+img{max-width:100%;height:auto;border-radius:10px}
+code{background:#eef0f7;padding:2px 6px;border-radius:6px;font-size:.9em}
+pre{background:#0f172a;color:#e2e8f0;padding:16px;border-radius:12px;overflow:auto}
+pre code{background:none;color:inherit;padding:0}
+blockquote{border-left:4px solid #6c3ce1;margin:1em 0;padding:.4em 1em;background:#f3f0ff;color:#374151}
+table{border-collapse:collapse;width:100%;margin:1em 0}
+th,td{border:1px solid #e5e7eb;padding:8px 10px;text-align:left}
+hr{border:none;border-top:1px solid #e5e7eb;margin:2em 0}
+main,.content{padding:32px 0}
+.hero{background:linear-gradient(135deg,#1e1b4b 0%,#312e81 55%,#4f2db5 100%);color:#e2e8f0;padding:64px 20px 56px}
+.hero-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.4fr .9fr;gap:36px;align-items:center}
+.hero-left h1{color:#fff;font-size:2.4rem;margin:0 0 .3em}
+.top-journal-banner{display:inline-block;background:linear-gradient(90deg,#f59e0b,#ef4444);color:#fff;font:700 13px/1 system-ui;padding:6px 12px;border-radius:999px;margin-bottom:14px}
+.hero-sub{font-size:1.05rem;color:#cbd5e1;margin:.6em 0 1em;max-width:36em}
+.byline{color:#cbd5e1;font:600 14px system-ui;margin-bottom:18px}
+.cta{display:inline-block;background:#fff;color:#4f2db5;font-weight:700;padding:12px 22px;border-radius:999px;text-decoration:none}
+.cta:hover{text-decoration:none;opacity:.92}
+.hero-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:18px;padding:22px;text-align:center}
+.hero-photo{width:128px;height:128px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,.5);margin:0 auto 12px;display:block}
+.hero-name{color:#fff;font:700 1.15rem system-ui;margin:.2em 0}
+.hero-cred{color:#cbd5e1;font-size:14px}
+.trust-badges{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px}
+.trust-badges span{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#e2e8f0;font:600 12px system-ui;padding:5px 10px;border-radius:999px}
+.nl-block{background:#f3f0ff;border:1px solid #ddd6fe;border-radius:16px;padding:22px 24px;margin:32px 0;text-align:center}
+.nl-block h3{margin-top:0;color:#4f2db5}
+.nl-block form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.nl-block input[type=email]{padding:11px 14px;border:1px solid #cbbcf6;border-radius:999px;min-width:260px;font-size:15px}
+.nl-block button{background:#4f2db5;color:#fff;border:none;padding:11px 22px;border-radius:999px;font-weight:700;cursor:pointer}
+.nl-note{font-size:13px;color:#6b7280;margin-top:10px}
+.viz-block{margin:28px 0;text-align:center}
+.viz-block img{max-width:100%;border:1px solid #e5e7eb;border-radius:12px;background:#fff;padding:8px}
+.viz-block figcaption{font-size:13px;color:#6b7280;margin-top:8px}
+.zh .hero,.hero{z-index:1}
+@media(max-width:760px){.hero-grid{grid-template-columns:1fr}.nav-inner{gap:8px}}
+</style>
+</head><body><div id="lang-switcher"><label for="lang-select">🌐</label><select id="lang-select"><option value="en">English</option><option value="zh" selected>中文</option></select></div><div class="mt-banner">⚠️ 本页为<strong>机器翻译</strong>，<strong>待专业审校</strong>。英文版为权威原文。 <a href="/about">English</a></div><nav><div class="nav-inner"><a href="/">🏠 首页</a><a href="/">📰 新闻</a><a href="/">🤖 AI</a><a href="/about" class="active">关于</a><input id="site-search" type="search" placeholder="Search…" aria-label="Search this site"><div id="search-results" aria-live="polite"></div></div></nav>
 
 <div class="author-hero">
   <h1>Dr. Tan Haosheng &nbsp;<span style="font-size:.6em;opacity:.85">谭好升</span></h1>

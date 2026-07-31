@@ -9,7 +9,21 @@
 #lang-switcher select:focus{outline:2px solid #6366f1}
 #lang-switcher option:disabled{color:#bbb}
 </style>
-ENHANCE_CSSENHANCE_CSS</head><body><div id="lang-switcher"><label for="lang-select">🌐</label><select id="lang-select"><option value="en">English</option><option value="zh" selected>中文</option></select></div><nav><div class="nav-inner"><a href="/zh/" class>🏠 首页</a><a href="/zh/" class>📰 资讯</a><a href="/zh/" class>🤖 AI</a><a href="/about" class>关于</a><input id="site-search" type="search" placeholder="Search…" aria-label="Search this site"><div id="search-results" aria-live="polite"></div></div></nav><div style="background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:10px;margin:14px auto;padding:10px 16px;max-width:900px;font:600 13px/1.6 system-ui,sans-serif;">⚠️ <strong>利益披露 / Affiliate Disclosure：</strong> 本页可能含联盟或推广链接。若通过此类链接注册或订阅，我可能获得佣金——但<strong>不会增加你的价格</strong>，也<strong>不会改变我的独立结论</strong>。详见<a href="/affiliate-disclosure" style="color:#1e3a8a;text-decoration:underline;">利益披露页</a>。</div>
+ENHANCE_CSSENHANCE_CSS<!--SITE-NAV-CSS-->
+<style>
+nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1 0%,#4f2db5 100%);box-shadow:0 2px 12px rgba(108,60,225,.25)}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 18px;flex-wrap:wrap}
+.nav-inner a{color:#fff;text-decoration:none;font:600 14px/1 system-ui,sans-serif;padding:6px 8px;border-radius:8px;white-space:nowrap}
+.nav-inner a:hover{background:rgba(255,255,255,.16)}
+.nav-inner a.active{background:rgba(255,255,255,.22)}
+#site-search{flex:1;min-width:140px;max-width:320px;margin-left:auto;padding:8px 12px;border:1px solid rgba(255,255,255,.4);border-radius:999px;background:rgba(255,255,255,.95);color:#1f2937;font:500 14px system-ui,sans-serif}
+#site-search::placeholder{color:#6b7280}
+#search-results{position:absolute;top:100%;right:18px;width:min(360px,92vw);background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.18);padding:8px;z-index:1001;max-height:60vh;overflow:auto}
+#search-results a{display:block;padding:8px 10px;border-radius:8px;color:#1f2937;text-decoration:none;font:500 14px system-ui}
+#search-results a:hover{background:#f3f0ff}
+#search-results mark{background:#fde68a;color:#1f2937}
+</style>
+</head><body><div id="lang-switcher"><label for="lang-select">🌐</label><select id="lang-select"><option value="en">English</option><option value="zh" selected>中文</option></select></div><nav><div class="nav-inner"><a href="/zh/" class>🏠 首页</a><a href="/zh/" class>📰 资讯</a><a href="/zh/" class>🤖 AI</a><a href="/about" class>关于</a><input id="site-search" type="search" placeholder="Search…" aria-label="Search this site"><div id="search-results" aria-live="polite"></div></div></nav><div style="background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:10px;margin:14px auto;padding:10px 16px;max-width:900px;font:600 13px/1.6 system-ui,sans-serif;">⚠️ <strong>利益披露 / Affiliate Disclosure：</strong> 本页可能含联盟或推广链接。若通过此类链接注册或订阅，我可能获得佣金——但<strong>不会增加你的价格</strong>，也<strong>不会改变我的独立结论</strong>。详见<a href="/affiliate-disclosure" style="color:#1e3a8a;text-decoration:underline;">利益披露页</a>。</div>
 
 <nav class="series-nav" aria-label="Series" style="max-width:900px;margin:18px auto 0;font:600 13px/1.6 system-ui,sans-serif;display:flex;align-items:center;gap:8px;flex-wrap:wrap;"><a href="/" style="color:#6b7280;text-decoration:none;">🏠 首页</a><span style="color:#c4b5fd;">›</span><a href="/model-reviews" style="color:#6c3ce1;text-decoration:none;font-weight:700;">🧪 模型实测系列</a><span style="color:#c4b5fd;">›</span><a href="/clinical-benchmark/" style="color:#6c3ce1;text-decoration:none;">📊 基准数据</a></nav>
 <h1>4 个免费 AI 模型同测一个乳腺癌病例 — 一位外科医生的扩展实测</h1>

@@ -40,8 +40,23 @@ li{margin:6px 0}
 .meta div{margin:4px 0}
 .meta b{color:#0f172a}
 </style>
-ENHANCE_CSSENHANCE_CSS</head>
+ENHANCE_CSSENHANCE_CSS<!--SITE-NAV-CSS-->
+<style>
+nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1 0%,#4f2db5 100%);box-shadow:0 2px 12px rgba(108,60,225,.25)}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 18px;flex-wrap:wrap}
+.nav-inner a{color:#fff;text-decoration:none;font:600 14px/1 system-ui,sans-serif;padding:6px 8px;border-radius:8px;white-space:nowrap}
+.nav-inner a:hover{background:rgba(255,255,255,.16)}
+.nav-inner a.active{background:rgba(255,255,255,.22)}
+#site-search{flex:1;min-width:140px;max-width:320px;margin-left:auto;padding:8px 12px;border:1px solid rgba(255,255,255,.4);border-radius:999px;background:rgba(255,255,255,.95);color:#1f2937;font:500 14px system-ui,sans-serif}
+#site-search::placeholder{color:#6b7280}
+#search-results{position:absolute;top:100%;right:18px;width:min(360px,92vw);background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.18);padding:8px;z-index:1001;max-height:60vh;overflow:auto}
+#search-results a{display:block;padding:8px 10px;border-radius:8px;color:#1f2937;text-decoration:none;font:500 14px system-ui}
+#search-results a:hover{background:#f3f0ff}
+#search-results mark{background:#fde68a;color:#1f2937}
+</style>
+</head>
 <body>
+<nav aria-label="Primary"><div class="nav-inner"><a href="/" class="active">🏠 Home</a><a href="/model-reviews">🧪 Model Reviews</a><a href="/clinical-benchmark/">📊 Benchmark</a><a href="/about">About</a><input id="site-search" type="search" placeholder="Search…" aria-label="Search this site"><div id="search-results" aria-live="polite"></div></div></nav>
 <div class="wrap">
 <nav class="series-nav" aria-label="Breadcrumb" style="font:600 13px/1.6 system-ui,sans-serif;display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px;"><a href="/" style="color:#6b7280;text-decoration:none;">🏠 Home</a><span style="color:#cbd5e1;">›</span><a href="/model-reviews" style="color:#6c3ce1;text-decoration:none;font-weight:700;">🧪 Model Reviews</a><span style="color:#cbd5e1;">›</span><span style="color:#374151;">📊 Benchmark Data</span></nav>
 <div class="topbar"><a href="index_en.html">← Back to benchmark home</a><span><a href="framework.html">🇨🇳 中文</a></span></div>
