@@ -264,7 +264,7 @@ if (sb && sr) {
       const top = r.results.slice(0, 8);
       const html = await Promise.all(top.map(async x => {
         const d = await x.data();
-        return `<a href="${d.url}">${d.meta?.title || d.url}<br><small style="color:#6b7280">${(d.excerpt||'').replace(/<[^>]*>/g,'').slice(0,140)}</small></a>`;
+        return `<a href="${d.url || '#'}">${d.meta?.title || d.url}<br><small style="color:#6b7280">${(d.excerpt||'').replace(/<[^>]*>/g,'').slice(0,140)}</small></a>`;
       }));
       sr.innerHTML = html.join('');
       sr.style.display = 'block';
