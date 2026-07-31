@@ -219,4 +219,44 @@
   } catch(e){}
 })();
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "DeepSeek V4 Pro 一定比 DeepSeek 网页版强吗？还是 WorkBuddy 智能体的功劳？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "好问题，我暂时无法完全拆开。V4 Pro 是跑在 WorkBuddy 智能体内部的，智能体的系统提示/上下文可能也促成了更好的分期识别。本系列后续我会单独测\"裸\"V4 Pro（无智能体）来隔离这个效应。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "豆包为什么用英语回答？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "和首测 ChatGLM 同样的表现——尽管 prompt 与病历全中文，模型默认切到英文。对中文临床使用是真实的可用性减分，不过它没拉低豆包的临床得分（rubric 评的是准确性，不是语言）。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "有一次 V4 Pro 推荐了放疗，这不是大错吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "是，而且严重：全切 + 切缘阴性 + N0 本无放疗指征，那次还把术式误称\"保乳\"。我按 V4 Pro 实质最优回答计分，但把不一致性显著标出——同一 prompt 既返回优秀方案也返回危险方案。这种不稳定性正是为何此处无一模型获准单独使用。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "我能自己复现吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "能。完整 prompt 与 16 项 rubric 已发布于 /clinical-benchmark/framework.html。粘贴进任意模型，对照 2026 CBCS 指南评分，你就能得到自己的数字。"
+      }
+    }
+  ]
+}
+</script>
 </body></html>

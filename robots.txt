@@ -3,18 +3,18 @@ Allow: /
 
 Sitemap: https://tanhaosheng.asia/sitemap.xml
 
-# Block AI training crawlers
+# Allow AI answer engines to crawl & cite this site (Generative Engine Optimization, 2026)
 User-agent: GPTBot
-Disallow: /
+Allow: /
 
-User-agent: Claude-Web
-Disallow: /
+User-agent: ClaudeBot
+Allow: /
 
-User-agent: anthropic-ai
-Disallow: /
-
-User-agent: CCBot
-Disallow: /
+User-agent: PerplexityBot
+Allow: /
 
 User-agent: Google-Extended
-Disallow: /
+Allow: /
+
+User-agent: CCBot
+Allow: /
