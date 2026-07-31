@@ -9,17 +9,11 @@
   <url>
     <loc>https://tanhaosheng.asia/affiliate-disclosure</loc>
     <lastmod>2026-08-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://tanhaosheng.asia/agent-vs-web-isolation</loc>
-    <lastmod>2026-08-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tanhaosheng.asia/agents-for-research/</loc>
+    <loc>https://tanhaosheng.asia/agent-vs-web-isolation</loc>
     <lastmod>2026-08-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -43,6 +37,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://tanhaosheng.asia/agents-for-research/index</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://tanhaosheng.asia/agents-for-research/methodology</loc>
     <lastmod>2026-08-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -56,12 +56,6 @@
   </url>
   <url>
     <loc>https://tanhaosheng.asia/chatglm-vs-deepseek-clinical-hands-on</loc>
-    <lastmod>2026-08-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://tanhaosheng.asia/clinical-benchmark/</loc>
     <lastmod>2026-08-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -115,6 +109,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://tanhaosheng.asia/clinical-benchmark/index</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://tanhaosheng.asia/clinical-benchmark/index_en</loc>
     <lastmod>2026-08-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -123,14 +123,8 @@
   <url>
     <loc>https://tanhaosheng.asia/contact</loc>
     <lastmod>2026-08-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://tanhaosheng.asia/feed.xml</loc>
-    <lastmod>2026-08-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tanhaosheng.asia/four-models-clinical-showdown</loc>
@@ -145,13 +139,19 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://tanhaosheng.asia/index</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://tanhaosheng.asia/kimi-k2-6-web-vs-agent</loc>
     <lastmod>2026-08-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tanhaosheng.asia/leaderboard/</loc>
+    <loc>https://tanhaosheng.asia/leaderboard/index</loc>
     <lastmod>2026-08-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -165,14 +165,14 @@
   <url>
     <loc>https://tanhaosheng.asia/privacy</loc>
     <lastmod>2026-08-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tanhaosheng.asia/sitemap</loc>
     <lastmod>2026-08-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tanhaosheng.asia/unified-scoring-v1-v5</loc>
@@ -187,19 +187,13 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tanhaosheng.asia/workbuddy-free-agent-hunyuan-hy3</loc>
-    <lastmod>2026-08-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://tanhaosheng.asia/workbuddy-free-agent-hunyuan-hy3-en</loc>
     <lastmod>2026-08-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tanhaosheng.asia/zh/</loc>
+    <loc>https://tanhaosheng.asia/workbuddy-free-agent-hunyuan-hy3</loc>
     <lastmod>2026-08-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -235,9 +229,9 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tanhaosheng.asia/</loc>
+    <loc>https://tanhaosheng.asia/zh/index</loc>
     <lastmod>2026-08-01</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>

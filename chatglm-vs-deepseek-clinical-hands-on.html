@@ -52,17 +52,6 @@ nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1
 </div>
 
 <div class="viz-block" id="viz-block">
-  <figure style="margin:22px 0;">
-    <div class="note" style="border-left:4px solid #f59e0b;background:#fff7ed;margin:14px 0;padding:10px 14px;border-radius:0 8px 8px 0;font-size:13px;color:#7c2d12">
-<strong>&#128206; Note (2026-07-31):</strong> The original &ldquo;web vs agent&rdquo; chart compared scores across two different rubrics. Those deltas are retired. See <a href="/unified-scoring-v1-v5">Unified Scoring &mdash; V1 to V5</a> for the re-scored, same-rubric numbers.
-</div>
-
-    <figcaption style="font-size:13px;color:#64748b;margin-top:8px;">Figure 1 — Web chat vs WorkBuddy agent, identical case. Same rubric, same guideline (2026 CBCS).</figcaption>
-  </figure>
-  <figure style="margin:22px 0;">
-    <img src="/assets/charts/wrapper-delta.svg" alt="Bar chart of agent-wrapper lift in points: GLM 5.2 +39, Kimi K2.6 +9, DeepSeek V4 Flash +6. A higher web baseline means a smaller wrapper gain — the agent raises the floor, not the ceiling." style="width:100%;height:auto;border:1px solid #e5e7eb;border-radius:12px;">
-    <figcaption style="font-size:13px;color:#64748b;margin-top:8px;">Figure 2 — The agent wrapper lifts the score, but less so when the web baseline is already high.</figcaption>
-  </figure>
 </div><h2>Why I ran this test</h2>
 <p>I work at a public hospital. My department's software budget does not stretch to GPT-4-class subscriptions, and I suspect most of my colleagues are in the same boat. What I <em>do</em> have is free web access to a handful of Chinese LLMs. So the practical question isn't "which model is theoretically best" — it's <strong>"which free model is still useful for the clinical-adjacent reasoning I actually do?"</strong></p>
 <p>I picked a task that is hard, checkable, and high-stakes: <strong>reading a post-op pathology report and recommending next-step adjuvant therapy</strong> for an early breast cancer case. If a model can't handle this, it can't be a decision aid. If it handles it but can't show its work, I still can't trust it. Two free models went head-to-head:</p>
@@ -222,7 +211,12 @@ nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "FAQPage",
+  "@type": "<div class="guideline-links" style="margin:20px 0;padding:16px;background:#f0f9ff;border-radius:8px;font-size:14px;">
+  <strong>Authoritative Guidelines Referenced:</strong><br>
+  • <a href="https://www.cscbronc.org/guideline" target="_blank" rel="noopener noreferrer">2026 CBCS Guideline</a><br>
+  • <a href="https://www.nccn.org/guidelines/guidelines-detail?category=1&id=1452" target="_blank" rel="noopener noreferrer">NCCN Breast Cancer Guidelines</a><br>
+</div>
+FAQPage",
   "mainEntity": [
     {
       "@type": "Question",

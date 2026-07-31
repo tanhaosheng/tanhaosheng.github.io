@@ -47,14 +47,6 @@ nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1
 </div>
 
 <div class="viz-block" id="viz-block">
-  <figure style="margin:22px 0;">
-    <img src="/assets/charts/web-vs-agent.svg" alt="Grouped bar chart: the same anonymized breast-cancer case scored 0-100 with a 16-item rubric vs 2026 CBCS. GLM 5.2 web 5 vs agent 44; DeepSeek V4 Flash web 28 vs agent 34; Kimi K2.6 web 37 vs agent 46. The agent wrapper raises every model's floor." style="width:100%;height:auto;border:1px solid #e5e7eb;border-radius:12px;">
-    <figcaption style="font-size:13px;color:#64748b;margin-top:8px;">Figure 1 — Web chat vs WorkBuddy agent, identical case. Same rubric, same guideline (2026 CBCS).</figcaption>
-  </figure>
-  <figure style="margin:22px 0;">
-    <img src="/assets/charts/wrapper-delta.svg" alt="Bar chart of agent-wrapper lift in points: the original GLM 5.2 / Kimi K2.6 / V4 Flash web-vs-agent gains (now retired). A higher web baseline means a smaller wrapper gain — the agent raises the floor, not the ceiling." style="width:100%;height:auto;border:1px solid #e5e7eb;border-radius:12px;">
-    <figcaption style="font-size:13px;color:#64748b;margin-top:8px;">Figure 2 — The agent wrapper lifts the score, but less so when the web baseline is already high.</figcaption>
-  </figure>
 </div><h2>The single-model wrapper test</h2>
 <p>Up to Part 3, the series was answering two questions at once: <em>"which model?"</em> and <em>"which wrapper?"</em>. The agent-vs-web-isolation article tried to disentangle them by running multiple models through the same wrapper (WorkBuddy) and a few through both wrappers. But mixing those two variables together still left room for confound.</p>
 <p>Part 4 tightens the design. <strong>One model. Two wrappers. Same case, same prompt, three runs each.</strong> That is the cleanest possible wrapper-effect test, and it answers a single, sharp question: <em>does the WorkBuddy agent change what Kimi K2.6 says, and by how much?</em></p>
