@@ -8,3 +8,6 @@ directory = "."
 # NOTE: Wrangler 4.x does NOT support an "exclude" key here. It is silently
 # ignored (only a warning), which previously caused .git/ to be uploaded
 # publicly. Exclusions are handled by the .assetsignore file in this directory.
+# Serve /404.html (status 404) for unmatched paths; without this the site
+# returned a 404 with an EMPTY body.
+not_found_handling = "404-page"
