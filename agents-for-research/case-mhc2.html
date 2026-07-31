@@ -79,6 +79,15 @@ main{padding:32px 0}
 .callout{background:#fff7ed;border:1px solid #fed7aa;border-radius:14px;padding:18px 22px;margin:24px 0}
 .callout h3{margin-top:0;color:#9a3412}
 .meta-row{display:flex;gap:14px;flex-wrap:wrap;color:#6b7280;font:600 13px system-ui;margin:.2em 0 1.4em}
+figure.sc{margin:26px 0;background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:16px 18px 14px;box-shadow:0 1px 3px rgba(15,23,42,.05)}
+figure.sc img{width:100%;height:auto;display:block;border-radius:10px}
+figure.sc figcaption{font-size:13.5px;line-height:1.65;color:#4b5563;margin-top:12px}
+figure.sc figcaption b{color:#1f2937}
+.fig-flag{display:inline-block;font:700 10.5px/1 system-ui;letter-spacing:.05em;text-transform:uppercase;background:#f5f3ff;color:#6d28d9;border:1px solid #ddd4ff;padding:5px 10px;border-radius:999px;margin-bottom:10px}
+.data-policy{background:#fffbeb;border:1px solid #fcd34d;border-left:5px solid #f59e0b;border-radius:14px;padding:16px 20px;margin:24px 0}
+.data-policy h3{margin:0 0 .45em;color:#92400e;font-size:1.05rem}
+.data-policy p{margin:.45em 0;color:#78350f;font-size:14.5px;line-height:1.66}
+.data-policy p:last-child{margin-bottom:0}
 .meta-row span{background:#f3f0ff;color:#4f2db5;padding:4px 10px;border-radius:999px}
 .nl-block{background:#f3f0ff;border:1px solid #ddd6fe;border-radius:16px;padding:22px 24px;margin:32px 0;text-align:center}
 .nl-block h3{margin-top:0;color:#4f2db5}
@@ -132,6 +141,14 @@ footer .credits{font-size:13px;color:#94a3b8;margin-top:14px}
 
 <p class="lede">The single-cell dataset is the same breast-cancer samples from <a href="/agents-for-research/case-klrb1">Case 1</a>. The paper is different on purpose. It's an NK co-culture study on head-and-neck squamous cell carcinoma and thyroid cancer — co-culture with NK cells, MHC-II upregulation, LAG-3 inhibition. Wrong tumor. Wrong immune-pressure design. Wrong everything to validate against breast-cancer scRNA-seq. I gave the agent the same data and this second paper, with one short follow-up prompt. It answered in <strong>about 4 minutes</strong> — faster than Case 1 because the dataset was already parsed in the same session, so this run measures reasoning and cross-checking, not data loading. This case tests failure mode ④ — domain-mismatch blindness.</p>
 
+<div class="data-policy">
+  <h3>&#9888;&#65039; About the numbers and figures on this page</h3>
+  <p>The single-cell dataset behind this case supports a manuscript that <strong>has not been submitted yet</strong>. I am not free to publish the underlying values, and I am not going to pretend otherwise.</p>
+  <p>So: every figure below was <strong>redrawn from the real analysis with the values deliberately perturbed</strong>, and the numbers quoted in the text are rounded to low precision. What is preserved is the <em>direction, ranking and rough magnitude</em> of each effect &mdash; which is the part that matters for judging what the AI agent did. What is not preserved is any exact value.</p>
+  <p>Read the charts as <strong>illustrations of a pattern, not as data</strong>. Once the manuscript is published I will swap in the unmodified figures and link the real tables.</p>
+</div>
+
+
 <h2>The prompt I gave the agent (verbatim)</h2>
 <div class="prompt-box">10-MHC-II.docx 这篇文章的结论支持吗？</div>
 <p>That's the entire second prompt. The first session had already loaded the breast-cancer data and the KLRB1 manuscript. I just dropped the MHC-II paper in and asked: does this one's conclusions get supported?</p>
@@ -140,7 +157,7 @@ footer .credits{font-size:13px;color:#94a3b8;margin-top:14px}
 <table>
   <tr><th>Item</th><th>Detail</th></tr>
   <tr><td>scRNA-seq data</td><td>Same as Case 1 — two breast-cancer tumor biopsies, one patient. No NK co-culture arm.</td></tr>
-  <tr><td>Manuscript</td><td>HNSCC + thyroid cancer NK co-culture. Core thesis: tumor cells under NK pressure upregulate MHC-II; MHC-II binds LAG-3 on T/NK; result is NK inhibition. Quantitative claims include MHC-II gene co-linearity (ρ=0.78–0.93) and STAT1/CIITA correlation with MHC-II (ρ=0.30–0.34).</td></tr>
+  <tr><td>Manuscript</td><td>HNSCC + thyroid cancer NK co-culture. Core thesis: tumor cells under NK pressure upregulate MHC-II; MHC-II binds LAG-3 on T/NK; result is NK inhibition. Quantitative claims include tight MHC-II gene co-linearity (correlations in the high 0.7–0.9 band) and a moderate STAT1/CIITA correlation with MHC-II (around 0.3).</td></tr>
   <tr><td>Manuscript status</td><td>Draft. I do not quote the manuscript here; only summarize the agent's assessment.</td></tr>
   <tr><td>What "pass" looks like</td><td>Agent identifies that the data and paper are mismatched, restricts its evaluation to <em>cross-tumor</em> claims, and flags which quantitative numbers would transfer and which would not.</td></tr>
   <tr><td>What "fail" looks like</td><td>Agent generates a confident paragraph claiming the breast-cancer data "supports" the HNSCC + thyroid co-culture conclusion.</td></tr>
@@ -162,33 +179,53 @@ footer .credits{font-size:13px;color:#94a3b8;margin-top:14px}
 
 <div class="find-block support">
   <h3>✓ LAG-3⁺ cells have ~2.3× the cytotoxic score of LAG-3⁻ cells</h3>
-  <p>LAG3⁺ cell cytotoxic-score mean: <strong>0.754</strong>. LAG3⁻: <strong>0.326</strong>. Ratio 2.31×. P-value ≈ 0. Depth-corrected OR = 2.281, P = 1.2×10⁻³¹.</p>
-  <p>Effectors enriched in LAG3⁺: GZMB OR 4.14, NKG7 OR 4.17, CD8A OR 3.63, GNLY OR 2.60.</p>
+  <p>LAG3⁺ cells carry roughly <strong>2.3× the cytotoxic score</strong> of LAG3⁻ cells. The gap survives depth correction (odds ratio a little above 2) and the p-value is far past any reasonable threshold — this is not a marginal effect.</p>
+  <p>Every individual effector moves the same way, and the strong ones move hard: GZMB and NKG7 both around a 4-fold enrichment, CD8A close behind, GNLY around 2.5-fold.</p>
   <p>Sub-compartment distribution of LAG3⁺ cells: CD8⁺ effector/exhausted T 17.9% &gt; proliferating T 10.7% ≈ NKT-like γδ T 10.2% &gt;&gt; CD4⁺ memory T 5.9% &gt; Treg 2.2%. Same ranking pattern the paper reports.</p>
 </div>
 
 <div class="find-block partial">
   <h3>△ But the effect-size correlation is much weaker than the paper's</h3>
-  <p>Within-cell-type LAG3 vs cytotoxicity score: Spearman ρ = <strong>0.211</strong>. The paper reports ρ = 0.62 in its dataset. The agent noted that the 2.3× ratio matches in direction but the continuous correlation magnitude is much smaller in this breast-cancer data — consistent with the cross-tumor caveat, but also consistent with sample-size and depth-distribution differences. The agent did <strong>not</strong> claim this is a refutation.</p>
+  <p>Within cell type, though, the continuous LAG3-versus-cytotoxicity correlation is weak — roughly <strong>a third</strong> of what the paper reports in its own dataset. The agent noted that the 2.3× ratio matches in direction but the continuous correlation magnitude is much smaller in this breast-cancer data — consistent with the cross-tumor caveat, but also consistent with sample-size and depth-distribution differences. The agent did <strong>not</strong> claim this is a refutation.</p>
+
+<figure class="sc">
+  <span class="fig-flag">Illustrative &middot; values perturbed</span>
+  <img src="/assets/sc/fig6-lag3-cytotoxic.png" alt="LAG-3 positive versus negative T cells across cytotoxic genes" loading="lazy" width="1600" height="800">
+  <figcaption><b>The part that survived the tumour-type mismatch.</b> Every cytotoxic gene the paper cares about is enriched in LAG-3-positive cells, in the same rank order, in a completely different cancer. That is the kind of agreement worth one sentence in a discussion section &mdash; and the agent said exactly that, rather than inflating it into validation.</figcaption>
+</figure>
+
 </div>
 
 <h2>Result 2 — Tumor-cell MHC-II expression</h2>
 <div class="find-block support">
   <h3>✓ Epithelial tumor cells do express MHC-II, and MHC-I is intact</h3>
-  <p>MHC-II on tumor epithelium: HLA-DRA 47.4%, CD74 66.5% positivity.</p>
-  <p>MHC-I on tumor epithelium: HLA-B 79.2%, HLA-C 72.6%, B2M 86.0% — consistent with the paper's claim that MHC-I is not downregulated in this setting.</p>
-  <p>But myeloid cells have higher MHC-II than epithelium (HLA-DRA 99.5% positivity in myeloid). Tumor-cell MHC-II mean expression is roughly 1/9 of myeloid MHC-II. The agent flagged this asymmetry explicitly.</p>
+  <p>MHC-II is detectable on tumour epithelium — HLA-DRA in roughly half of epithelial cells, CD74 in about two thirds.</p>
+  <p>MHC-I is clearly intact — HLA-B, HLA-C and B2M are all positive in the large majority of epithelial cells, consistent with the paper's claim that MHC-I is not downregulated in this setting.</p>
+  <p>But myeloid cells are essentially all MHC-II positive, and their mean MHC-II expression is close to an order of magnitude above the tumour epithelium. The agent flagged this asymmetry explicitly rather than letting the epithelial signal stand on its own.</p>
 </div>
 
 <div class="find-block contradict">
   <h3>✗ MHC-II gene co-linearity is much weaker than the paper reports</h3>
-  <p>The paper claims tight co-expression among MHC-II genes (ρ 0.78–0.93). In this breast-cancer data, intra-epithelial MHC-II gene Spearman ρ has median <strong>0.167</strong> (range 0.083–0.236) — about 1/5 of the paper's value. Only within myeloid cells does the correlation approach the paper's number (median 0.696, still below the paper's 0.78–0.93 range).</p>
+  <p>The paper claims tight co-expression among MHC-II genes. In this breast-cancer data the intra-epithelial correlation is roughly <strong>one fifth</strong> of that. Only inside myeloid cells does it climb toward the paper's range, and even there it stays below it.</p>
   <p>The agent's interpretation: tight MHC-II co-linearity is a <em>myeloid</em> signature, not a tumor-epithelial signature. The paper's claim, if validated in HNSCC + thyroid, may not generalize to epithelial cells in breast cancer.</p>
 </div>
 
 <div class="find-block contradict">
   <h3>✗ STAT1 / CIITA drive MHC-II — correlation is far weaker here</h3>
-  <p>The paper reports STAT1 ↔ MHC-II ρ ≈ 0.30–0.34 and CIITA involvement. In the breast-cancer data, STAT1's highest correlation with MHC-II components is <strong>0.138</strong>; CIITA, the canonical MHC-II master regulator, only reaches ~0.05. Both are far below the paper's claim.</p>
+  <p>The paper reports a moderate STAT1 ↔ MHC-II correlation plus CIITA involvement. In the breast-cancer data, STAT1's best correlation with any MHC-II component is <strong>under half</strong> the paper's figure, and CIITA — the canonical MHC-II master regulator — is close to nothing. Both fall well short.</p>
+
+<figure class="sc">
+  <span class="fig-flag">Illustrative &middot; values perturbed</span>
+  <img src="/assets/sc/fig7-mhc2-source.png" alt="MHC-II expression across epithelial, myeloid, T, endothelial and fibroblast compartments" loading="lazy" width="1600" height="800">
+  <figcaption><b>The part that did not survive.</b> The paper's MHC-II co-regulation argument needs tumour epithelium to be the source. Here the MHC-II signal is overwhelmingly myeloid, with epithelium near the floor. Any epithelial co-expression measured on top of that is mostly reading a macrophage programme &mdash; so the agent ruled this dataset out as support.</figcaption>
+</figure>
+
+<figure class="sc">
+  <span class="fig-flag">Agent screenshot &middot; mosaic'd</span>
+  <img src="/assets/sc/shot-mhciilag3.png" alt="MHC-II / LAG-3 validation plot, the agent's own figure, mosaic'd" loading="lazy" width="1600" height="800">
+  <figcaption><b>What the agent actually plotted.</b> The agent's own MHC-II / LAG-3 validation figure, mosaic'd so the unpublished values are unreadable. The pattern &mdash; myeloid-dominated MHC-II, weak epithelium &mdash; is what it used to reject the paper's co-regulation claim.</figcaption>
+</figure>
+
 </div>
 
 <h2>Writing recommendations</h2>
@@ -232,7 +269,8 @@ footer .credits{font-size:13px;color:#94a3b8;margin-top:14px}
 
 <p style="text-align:center;margin:32px 0">
   <a class="cta" style="display:inline-block;background:#fff;color:#4f2db5;font-weight:700;padding:12px 22px;border-radius:999px;text-decoration:none;border:1px solid #4f2db5;margin-right:8px" href="/agents-for-research/case-klrb1">← Back to Case 1 (KLRB1)</a>
-  <a class="cta" style="display:inline-block;background:#4f2db5;color:#fff;font-weight:700;padding:12px 22px;border-radius:999px;text-decoration:none" href="/agents-for-research/methodology">Methodology →</a>
+  <a class="cta" style="display:inline-block;background:#4f2db5;color:#fff;font-weight:700;padding:12px 22px;border-radius:999px;text-decoration:none;margin-right:8px" href="/agents-for-research/case-writing-plan">Case 3 — publication plan →</a>
+  <a class="cta" style="display:inline-block;background:#fff;color:#4f2db5;font-weight:700;padding:12px 22px;border-radius:999px;text-decoration:none;border:1px solid #4f2db5" href="/agents-for-research/methodology">Methodology →</a>
 </p>
 
 <div class="nl-block">

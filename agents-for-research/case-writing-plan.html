@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Case 3 — From raw matrix to a publication plan: the agent as writing-director · AI Tool Stack</title>
+<meta name="description" content="A surgeon's third test of WorkBuddy Hy3: same de-identified breast-cancer single-cell data, but this time asked to propose what can actually be written from it and where it would go. Five writing routes, journal targeting, honest n=1 scoping. Figures perturbed — manuscript unpublished.">
+<meta name="author" content="Tan Haosheng, MD, PhD">
+<meta name="keywords" content="single-cell RNA-seq writing plan, HR- HER2+ breast cancer, myCAF immune exclusion, AI agent publication strategy, scRNA-seq TME, surgeon AI research">
+<meta name="robots" content="index,follow">
+<meta name="article:author" content="Tan Haosheng">
+<meta name="article:published_time" content="2026-07-31">
+<meta name="article:modified_time" content="2026-07-31">
+<link rel="canonical" href="https://tanhaosheng.asia/agents-for-research/case-writing-plan">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Case 3 — From raw matrix to a publication plan: the agent as writing-director">
+<meta property="og:description" content="Same data, forward look. The agent proposed five write-ups, picked journals by real impact factor, and refused to over-claim. A different capability from Cases 1-2.">
+<meta property="og:url" content="https://tanhaosheng.asia/agents-for-research/case-writing-plan">
+<meta property="og:image" content="https://tanhaosheng.asia/assets/og-cover.png">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Case 3 — From raw matrix to a publication plan">
+<meta name="twitter:description" content="The agent proposed five write-ups, picked journals by IF, and scoped honestly to n=1. A different test from Cases 1-2.">
+<meta name="twitter:image" content="https://tanhaosheng.asia/assets/og-cover.png">
+<link rel="alternate" hreflang="en" href="https://tanhaosheng.asia/agents-for-research/case-writing-plan">
+<link rel="alternate" hreflang="x-default" href="https://tanhaosheng.asia/agents-for-research/case-writing-plan">
+
+<!--SITE-NAV-CSS-->
+<style>
+nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1 0%,#4f2db5 100%);box-shadow:0 2px 12px rgba(108,60,225,.25)}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 18px;flex-wrap:wrap}
+.nav-inner a{color:#fff;text-decoration:none;font:600 14px/1 system-ui,sans-serif;padding:6px 8px;border-radius:8px;white-space:nowrap}
+.nav-inner a:hover{background:rgba(255,255,255,.16)}
+.nav-inner a.active{background:rgba(255,255,255,.22)}
+#site-search{flex:1;min-width:140px;max-width:320px;margin-left:auto;padding:8px 12px;border:1px solid rgba(255,255,255,.4);border-radius:999px;background:rgba(255,255,255,.95);color:#1f2937;font:500 14px system-ui,sans-serif}
+#site-search::placeholder{color:#6b7280}
+#search-results{position:absolute;top:100%;right:18px;width:min(360px,92vw);background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.18);padding:8px;z-index:1001;max-height:60vh;overflow:auto}
+#search-results a{display:block;padding:8px 10px;border-radius:8px;color:#1f2937;text-decoration:none;font:500 14px system-ui}
+#search-results a:hover{background:#f3f0ff}
+#search-results mark{background:#fde68a;color:#1f2937}
+</style>
+
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font:16px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#1f2937;background:#f7f8fb}
+a{color:#4f2db5;text-decoration:none}a:hover{text-decoration:underline}
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+h1,h2,h3{line-height:1.25;color:#111827;margin:1.4em 0 .6em}
+h1{font-size:2rem}h2{font-size:1.5rem}h3{font-size:1.2rem}
+code{background:#eef0f7;padding:2px 6px;border-radius:6px;font-size:.9em}
+pre{background:#0f172a;color:#e2e8f0;padding:16px;border-radius:12px;overflow:auto;font-size:13px;line-height:1.55}
+pre code{background:none;color:inherit;padding:0}
+blockquote{border-left:4px solid #6c3ce1;margin:1em 0;padding:.4em 1em;background:#f3f0ff;color:#374151}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.95rem}
+th,td{border:1px solid #e5e7eb;padding:9px 12px;text-align:left;vertical-align:top}
+th{background:#f3f0ff;color:#4f2db5;font-weight:700}
+tr:nth-child(even) td{background:#faf9ff}
+hr{border:none;border-top:1px solid #e5e7eb;margin:2em 0}
+main{padding:32px 0}
+.series-nav{font:600 13px system-ui;color:#6b7280;margin:18px 0 -8px}
+.series-nav a{color:#4f2db5;text-decoration:none;margin-right:6px}
+.lede{font-size:1.1rem;color:#374151;margin:0 0 1.4em;max-width:42em}
+.tag{display:inline-block;font:700 11px/1 system-ui;padding:4px 8px;border-radius:999px;margin-right:4px;text-transform:uppercase;letter-spacing:.04em}
+.tag.good{background:#dcfce7;color:#166534}
+.tag.warn{background:#fef3c7;color:#92400e}
+.tag.bad{background:#fee2e2;color:#991b1b}
+.tag.info{background:#dbeafe;color:#1e40af}
+.find-block{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:18px 22px;margin:16px 0}
+.find-block h3{margin-top:0;color:#4f2db5;font-size:1.1rem}
+.find-block p{margin:.4em 0;color:#374151}
+.find-block ul{margin:.4em 0 .4em 1.2em}
+.find-block li{margin:.3em 0}
+.find-block.support{border-left:4px solid #16a34a}
+.find-block.contradict{border-left:4px solid #ea580c}
+.find-block.partial{border-left:4px solid #ca8a04}
+.find-block.soften{border-left:4px solid #4f2db5}
+.prompt-box{background:#f9fafb;border:1px solid #d1d5db;border-radius:12px;padding:14px 18px;margin:14px 0;font:500 14px/1.6 ui-monospace,Menlo,Consolas,monospace;color:#1f2937;white-space:pre-wrap}
+.quote{font:500 14px/1.65 system-ui;color:#374151;background:#faf9ff;border-left:3px solid #6c3ce1;padding:10px 16px;margin:.6em 0}
+.callout{background:#fff7ed;border:1px solid #fed7aa;border-radius:14px;padding:18px 22px;margin:24px 0}
+.callout h3{margin-top:0;color:#9a3412}
+.lessons li{margin:.4em 0}
+.nl-block{background:#f3f0ff;border:1px solid #ddd6fe;border-radius:16px;padding:22px 24px;margin:32px 0;text-align:center}
+.nl-block h3{margin-top:0;color:#4f2db5}
+.nl-block form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.nl-block input[type=email]{padding:11px 14px;border:1px solid #cbbcf6;border-radius:999px;min-width:260px;font-size:15px}
+.nl-block button{background:#4f2db5;color:#fff;border:none;padding:11px 22px;border-radius:999px;font-weight:700;cursor:pointer}
+.nl-note{font-size:13px;color:#6b7280;margin-top:10px}
+.meta-row{display:flex;gap:14px;flex-wrap:wrap;color:#6b7280;font:600 13px system-ui;margin:.2em 0 1.4em}
+figure.sc{margin:26px 0;background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:16px 18px 14px;box-shadow:0 1px 3px rgba(15,23,42,.05)}
+figure.sc img{width:100%;height:auto;display:block;border-radius:10px}
+figure.sc figcaption{font-size:13.5px;line-height:1.65;color:#4b5563;margin-top:12px}
+figure.sc figcaption b{color:#1f2937}
+.fig-flag{display:inline-block;font:700 10.5px/1 system-ui;letter-spacing:.05em;text-transform:uppercase;background:#f5f3ff;color:#6d28d9;border:1px solid #ddd4ff;padding:5px 10px;border-radius:999px;margin-bottom:10px}
+.data-policy{background:#fffbeb;border:1px solid #fcd34d;border-left:5px solid #f59e0b;border-radius:14px;padding:16px 20px;margin:24px 0}
+.data-policy h3{margin:0 0 .45em;color:#92400e;font-size:1.05rem}
+.data-policy p{margin:.45em 0;color:#78350f;font-size:14.5px;line-height:1.66}
+.data-policy p:last-child{margin-bottom:0}
+.meta-row span{background:#f3f0ff;color:#4f2db5;padding:4px 10px;border-radius:999px}
+footer{background:#0f172a;color:#cbd5e1;padding:36px 20px;margin-top:48px}
+footer .container{max-width:1100px;margin:0 auto;padding:0 20px}
+footer a{color:#a5b4fc;text-decoration:none}
+footer a:hover{text-decoration:underline}
+footer .credits{font-size:13px;color:#94a3b8;margin-top:14px}
+@media(max-width:760px){.nav-inner{gap:8px}}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "name": "Case 3 — From raw matrix to a publication plan: the agent as writing-director",
+  "headline": "Case 3 — From raw matrix to a publication plan: the agent as writing-director",
+  "description": "A surgeon's third test of WorkBuddy Hy3 on de-identified breast-cancer single-cell RNA-seq: the agent proposes what can be written and where, with journal targeting and honest n=1 scoping.",
+  "author": {"@type": "Person", "name": "Tan Haosheng", "honorificSuffix": "MD, PhD"},
+  "publisher": {"@type": "Person", "name": "Tan Haosheng"},
+  "datePublished": "2026-07-31",
+  "dateModified": "2026-07-31",
+  "inLanguage": "en",
+  "isPartOf": {"@type": "CollectionPage", "name": "AI Agents for Medical Research Writing", "url": "https://tanhaosheng.asia/agents-for-research/"},
+  "about": [
+    {"@type": "MedicalCondition", "name": "Breast cancer"},
+    {"@type": "Gene", "name": "ERBB2"},
+    {"@type": "Gene", "name": "KLRB1"}
+  ]
+}
+</script>
+</head>
+
+<body>
+<nav aria-label="Primary"><div class="nav-inner"><a href="/">🏠 Home</a><a href="/model-reviews">🔬 Model Reviews</a><a href="/agents-for-research/" class="active">🤖 Agents for Research</a><a href="/clinical-benchmark/">📊 Benchmark</a><a href="/about">About</a><input id="site-search" type="search" placeholder="Search…" aria-label="Search this site"><div id="search-results" aria-live="polite"></div></div></nav>
+
+<main>
+<div class="container">
+
+<p class="series-nav"><a href="/">Home</a> › <a href="/agents-for-research/">Agents for Research</a> › <strong>Case 3 — Raw matrix → publication plan</strong></p>
+
+<h1>Case 3 — From raw matrix to a publication plan</h1>
+<p class="byline" style="color:#6b7280;font:600 13px system-ui">By Tan Haosheng, MD, PhD · Last reviewed 2026-07-31</p>
+<p class="meta-row"><span>Forward-looking</span><span>One prompt</span><span>WorkBuddy Hy3</span><span>1 patient · 2 samples</span><span>5 routes + journal targets</span></p>
+
+<p class="lede">Same two de-identified breast-cancer samples, same single patient. This time I did <strong>not</strong> ask "which one was sorted" and I did <strong>not</strong> ask "does my manuscript hold." I asked the agent to read the raw matrix and tell me, as a researcher who has to publish, <em>what could actually be written from this, and where would it go.</em> That is the capability Cases 1 and 2 never exercised: looking forward, not just catching mistakes.</p>
+
+<div class="data-policy">
+  <h3>&#9888;&#65039; About the numbers and figures on this page</h3>
+  <p>The single-cell dataset behind this case supports a manuscript that <strong>has not been submitted yet</strong>. I am not free to publish the underlying values, and I am not going to pretend otherwise.</p>
+  <p>So: every figure below was <strong>redrawn from the real analysis with the values deliberately perturbed</strong>, and the numbers quoted in the text are rounded to low precision. What is preserved is the <em>direction, ranking and rough magnitude</em> of each effect &mdash; which is the part that matters for judging what the AI agent did. What is not preserved is any exact value.</p>
+  <p>Read the charts as <strong>illustrations of a pattern, not as data</strong>. Once the manuscript is published I will swap in the unmodified figures and link the real tables.</p>
+</div>
+
+
+<h2>The prompt I gave the agent (verbatim)</h2>
+<div class="prompt-box">这两个乳腺癌单细胞样本（一个 CD45 分选、一个未分选，同一患者）的原始数据在 /Users/xx/Desktop/SCI/单细胞测序/results 下面。请你做一份完整的分析，重点告诉我：这份数据本身能支撑写什么文章？如果要做，往哪些期刊投比较现实？可行性怎么样？请诚实评估，不要为了迎合我而夸大。</div>
+<p>Again, plain language. No scaffold, no "list five bullet points" instruction. The one constraint I added &mdash; "don't inflate it to please me" &mdash; is the whole point of this case.</p>
+
+<h2>Setup</h2>
+<table>
+  <tr><th>Item</th><th>Detail</th></tr>
+  <tr><td>Samples</td><td>Two breast-cancer tumour biopsies, single patient, same surgical specimen. One CD45-sorted, one unsorted (anonymized THS_1 / THS_2).</td></tr>
+  <tr><td>Platform</td><td>DNBelab C4 (single-cell 3' RNA-seq, MGI).</td></tr>
+  <tr><td>Scale</td><td>Roughly 5,000 and 6,300 quality-passed cells respectively &mdash; enough for landscape description, not for population claims.</td></tr>
+  <tr><td>Goal</td><td>From the raw matrix alone, propose concrete, publishable write-ups and realistic target journals. Honest scoping required.</td></tr>
+  <tr><td>Manuscript status</td><td>Under analysis, not yet submitted. The agent never saw a draft to flatter.</td></tr>
+</table>
+
+<h2>Result 1 — The agent's read of the tumour's identity</h2>
+<p>Before proposing anything, the agent reconstructed the tumour subtype from the data. Its conclusion: <strong>an HER2-driven, hormone-receptor-negative breast cancer</strong>, with the HER2 amplification visible directly at single-cell resolution.</p>
+
+<table>
+  <tr><th>Signal</th><th>Agent's read</th></tr>
+  <tr><td>CNV</td><td>A <span class="tag info">focal 17q12 spike</span> in tumour cells only &mdash; the ERBB2 amplicon shows up as one narrow peak above a flat genome, while CAF and immune reference stay at zero.</td></tr>
+  <tr><td>Hormone axis</td><td>ESR1 and PGR essentially silent across epithelial clusters &mdash; read as ER/PR-negative, i.e. HR&#8315;.</td></tr>
+  <tr><td>Co-amplification</td><td>The 17q12 amplicon genes travel together, while other chr17 loci do not &mdash; consistent with focal, not whole-arm, gain.</td></tr>
+  <tr><td>Proliferation</td><td>Low MKI67/TOP2A &mdash; a non-proliferating phenotype, which the agent flagged as possibly chemo-resistant and targeted-therapy-responsive (hedged, not asserted).</td></tr>
+</table>
+
+<figure class="sc">
+  <span class="fig-flag">Agent screenshot &middot; mosaic'd</span>
+  <img src="/assets/sc/shot-cnv.png" alt="Single-cell CNV profile, the agent's own figure, mosaic'd" loading="lazy" width="1600" height="800">
+  <figcaption><b>The tumour's fingerprint, as the agent plotted it.</b> One locus &mdash; the ERBB2 amplicon &mdash; towers in tumour cells while the rest of the genome stays flat; CAF and immune references carry no signal. A direct screenshot of the agent's CNV figure, mosaic'd so the unpublished values are unreadable. The agent used it to call HER2 amplification before any clinical label.</figcaption>
+</figure>
+
+<figure class="sc">
+  <span class="fig-flag">Agent screenshot &middot; mosaic'd</span>
+  <img src="/assets/sc/shot-umap.png" alt="UMAP clustering, the agent's own figure, mosaic'd" loading="lazy" width="1600" height="800">
+  <figcaption><b>How the two samples separate.</b> The agent's UMAP coloured by cell class: the CD45-sorted sample collapses onto immune clusters, the unsorted one spreads across epithelium, stroma and immune. Mosaic'd screenshot of the agent's own output.</figcaption>
+</figure>
+
+<p>This is the "reverse" of Case 1. There, the agent checked my claims against data. Here, it generated the conclusion from data with no claim handed to it. Same rigor, opposite direction.</p>
+
+<h2>Result 2 — The microenvironment it proposed writing about</h2>
+<p>The agent's headline finding for the TME: <strong>a cold, immune-excluded phenotype</strong>. The suppressive and barrier programmes are loud; antigen presentation and interferon are silent. It organized the evidence into a single phenotype chart.</p>
+
+<figure class="sc">
+  <span class="fig-flag">Agent screenshot &middot; mosaic'd</span>
+  <img src="/assets/sc/shot-caf.png" alt="CAF subtype heatmap, the agent's own figure, mosaic'd" loading="lazy" width="1600" height="800">
+  <figcaption><b>The stromal barrier, as the agent drew it.</b> A CAF-subtype heatmap where the myCAF programme (COL11A1 / POSTN / LRRC15) lights up and the iCAF programme stays silent &mdash; the physical-plus-biochemical wall the agent flagged. Screenshot of the agent's figure, mosaic'd.</figcaption>
+</figure>
+
+<div class="find-block support">
+  <h3>✓ The four pillars it pulled out</h3>
+  <ul>
+    <li><strong>myCAF barrier, iCAF absent.</strong> COL11A1 / POSTN / LRRC15 high; the classic recruiting iCAF genes (CXCL12, IL6) near zero. A physical-plus-biochemical wall.</li>
+    <li><strong>SPP1&#8314; TAM dominant.</strong> The macrophage programme scores strongly positive and, the agent noted, is the kind of stromal signature repeatedly tied to immunotherapy resistance in 2023&ndash;2024 Nature/Cell papers.</li>
+    <li><strong>Dendritic cells essentially missing.</strong> The cDC signature is at the floor &mdash; which the agent read as "naive T-cell priming has no stage to happen on."</li>
+    <li><strong>Treg, not exhaustion.</strong> Roughly a quarter of T cells are Treg; classic exhaustion markers (PDCD1, LAG3, HAVCR2) are near zero. Suppression, not exhaustion, is the dominant mode.</li>
+  </ul>
+</div>
+
+<figure class="sc">
+  <span class="fig-flag">Agent screenshot &middot; mosaic'd</span>
+  <img src="/assets/sc/shot-immune.png" alt="Immune landscape scores, the agent's own figure, mosaic'd" loading="lazy" width="1600" height="800">
+  <figcaption><b>Immune landscape scores.</b> Barrier and suppressive programmes sit high; antigen presentation and interferon sit low &mdash; the agent's read of a cold, exclusionary microenvironment. Screenshot of the agent's output, mosaic'd.</figcaption>
+</figure>
+
+<h2>Result 3 — The method twist it refused to waste</h2>
+<p>The agent noticed something Cases 1&ndash;2 used but never framed as a paper: the CD45 sort is a built-in <strong>environmental-RNA cleaner</strong>, and it demonstrably does <em>not</em> distort the immune landscape.</p>
+
+<figure class="sc">
+  <span class="fig-flag">Agent screenshot &middot; mosaic'd</span>
+  <img src="/assets/sc/shot-comp.png" alt="Cell composition, the agent's own figure, mosaic'd" loading="lazy" width="1600" height="800">
+  <figcaption><b>Composition: immune enrichment, and the ambient-RNA tell.</b> The sorted sample is almost purely immune; the unsorted one still carries epithelium and stroma. The agent also read the epithelial-gene signal inside immune cells as environmental RNA &mdash; the clue that CD45 sorting cleans the data. Mosaic'd screenshot of the agent's figure.</figcaption>
+</figure>
+
+<table>
+  <tr><th>Method claim</th><th>Evidence the agent cited</th></tr>
+  <tr><td>CD45 sort removes ambient RNA</td><td>Epithelial-gene positivity inside immune cells drops from near-universal to roughly a fifth-to-half after sorting.</td></tr>
+  <tr><td>CD45 sort does not bias the immune landscape</td><td>Immune composition correlates almost perfectly (rank correlation &gt; 0.96) between the sorted and unsorted samples.</td></tr>
+</table>
+
+<h2>Result 4 — The five write-ups and where they'd go</h2>
+<p>This is the part I actually asked for. The agent returned a table of five routes with feasibility and target journals &mdash; and a hard honesty statement up front.</p>
+
+<div class="callout">
+  <h3>The constraint it led with</h3>
+  <p>One patient, two samples can only sustain a <strong>Letter / Brief Report / Case Report / Methods Note</strong>. Anything pan-cohort needs more samples. The agent refused to dress this up as more than it is &mdash; exactly the instruction I gave it, and the behaviour I was testing.</p>
+</div>
+
+<table>
+  <tr><th>Route</th><th>Scientific question</th><th>Feasibility</th><th>Target journals (by typical IF)</th></tr>
+  <tr><td><strong>A. Single-case scRNA + clinical integration</strong></td><td>"One HR&#8315; HER2&#8314; breast cancer, fully mapped"</td><td>Doable now; needs paired clinical pathology</td><td><span class="tag good">JITC / npj Breast Cancer / Breast Cancer Res</span> (IF 4&ndash;10)</td></tr>
+  <tr><td><strong>B. Methods: CD45 sort vs unsorted</strong></td><td>Does sorting distort or clean? (the fig. 11 story)</td><td>Doable now; clean, low-risk</td><td><span class="tag info">Brief Bioinform / BMC Biol / Sci Rep</span> (IF 4&ndash;6)</td></tr>
+  <tr><td><strong>C. Borrow data: HR&#8315; HER2&#8314; meta-analysis</strong></td><td>"Exclusionary microenvironment across public HER2&#8314; scRNA"</td><td>Needs 2&ndash;3 public datasets merged</td><td><span class="tag good">Cell Reports Med / JITC / Front Immunol</span> (IF 5&ndash;14)</td></tr>
+  <tr><td><strong>D. Feature: myCAF barrier vs T-cell trap</strong></td><td>"LRRC15&#8314; myCAF walls off T cells"</td><td>Needs spatial / mIF validation</td><td><span class="tag warn">Cancer Discov / Cell Reports Med</span> (IF 10+)</td></tr>
+  <tr><td><strong>E. AI benchmark (your lane)</strong></td><td>"Can an LLM judge ICI response from scRNA?"</td><td>Uses this dataset as ground truth</td><td><span class="tag info">JMIR / npj Digital Medicine</span> (IF 5&ndash;12)</td></tr>
+</table>
+
+<p>The agent's recommended path was <strong>D + C combined</strong>: add spatial transcriptomics and multiplex immunofluorescence to the same sample to nail the myCAF barrier, then merge 2&ndash;3 public HER2&#8314; datasets for a small-cohort integrative analysis. It named a concrete candidate title and a realistic journal ladder (a 3&ndash;4 IF entry, up to a 7&ndash;10 IF option). It also gave the low-cost version: skip new experiments, go straight to route C, draft in 1&ndash;2 weeks.</p>
+
+<h2>Score against the methodology rubric</h2>
+<table>
+  <tr><th>Dimension</th><th>Score</th><th>Why</th></tr>
+  <tr><td>Technical accuracy</td><td><span class="tag good">Pass</span></td><td>Correctly reconstructed HER2&#8315;/HR&#8315; identity from CNV + expression; identified the real biological signatures (myCAF, SPP1&#8314; TAM, Treg, DC absence).</td></tr>
+  <tr><td>Honest scoping (new dimension)</td><td><span class="tag good">Pass</span></td><td>Refused to inflate a single-case dataset into a cohort claim; led with the n=1 limitation; ranked routes by genuine feasibility.</td></tr>
+  <tr><td>Actionable output</td><td><span class="tag good">Pass</span></td><td>Five routes with journal tiers and a recommended combo plus a no-new-experiment fallback. Not vague "future work."</td></tr>
+  <tr><td>Failure-mode handling</td><td><span class="tag good">Pass</span></td><td>Did not over-claim immunotherapy resistance (no clinical endpoint); flagged DC absence as needing flow confirmation.</td></tr>
+</table>
+
+<h2>What this case taught me about AI agents</h2>
+<ul class="lessons">
+  <li><strong>Forward generation is a separate skill from contradiction-hunting.</strong> An agent that catches your errors (Case 1) is not automatically one that can originate a research plan. This case tested the second, and it held.</li>
+  <li><strong>The honesty instruction actually worked.</strong> I told it not to flatter me, and it led with the n=1 ceiling instead of burying it. The cheapest way to get a useful plan is to explicitly forbid the agent from pleasing you.</li>
+  <li><strong>Journal targeting from real impact factors beats "submit to a good journal."</strong> Concrete tiers (4&ndash;6, 5&ndash;14, 10+) turned a vague ambition into a ladder I can actually climb.</li>
+  <li><strong>A method footnote can be a paper.</strong> The CD45-sort-as-cleaner observation (Result 3) was the lowest-effort, lowest-risk route &mdash; and the agent surfaced it without prompting.</li>
+</ul>
+
+<div class="callout">
+  <h3>Limitations of this case</h3>
+  <ul>
+    <li>One patient, two samples. Every biological claim is "this case," not "breast cancer."</li>
+    <li>Platform and pipeline are single-vendor; signatures are only as good as the annotation.</li>
+    <li>DC absence and the myCAF barrier need orthogonal validation (flow, spatial) before any strong claim.</li>
+    <li>I cannot publish the underlying values here (manuscript unpublished); figures are perturbed illustrations by policy.</li>
+  </ul>
+</div>
+
+<p style="text-align:center;margin:32px 0"><a class="cta" style="display:inline-block;background:#4f2db5;color:#fff;font-weight:700;padding:12px 22px;border-radius:999px;text-decoration:none" href="/agents-for-research/methodology">Read the methodology &amp; full rubric →</a></p>
+
+<div class="nl-block">
+  <h3>Get the next case study by email</h3>
+  <form action="https://buttondown.email/tanhaosheng" method="post" target="_blank">
+    <input type="email" name="email" placeholder="you@hospital.com" required>
+    <button type="submit">Subscribe</button>
+  </form>
+  <p class="nl-note">Powered by Buttondown.</p>
+</div>
+
+</div>
+</main>
+
+<footer>
+<div class="container">
+  <p><strong>Tan Haosheng, MD, PhD</strong> · Associate Chief Physician, Thyroid &amp; Breast Surgery · Taizhou People's Hospital</p>
+  <p style="margin:.4em 0"><a href="/">Home</a> · <a href="/model-reviews">Model Reviews</a> · <a href="/agents-for-research/">Agents for Research</a> · <a href="/clinical-benchmark/">Clinical Benchmark</a> · <a href="/about">About</a> · <a href="/contact">Contact</a> · <a href="/privacy">Privacy</a></p>
+  <p class="credits">scRNA-seq samples are my own de-identified patient data. The manuscript referenced here is unpublished; all figures are perturbed illustrations by policy, not the underlying data.</p>
+</div>
+</footer>
+
+<!--ENHANCE-JS-->
+<script>
+let _pfReady = false;
+async function loadPagefind() {
+  if (_pfReady) return; _pfReady = true;
+  try {
+    const m = await import('/pagefind/pagefind.js');
+    await m.options({ excerptLength: 30 });
+    window._pf = m;
+  } catch(e) { console.warn('pagefind load failed', e); }
+}
+const sb = document.getElementById('site-search');
+const sr = document.getElementById('search-results');
+if (sb && sr) {
+  let t;
+  sb.addEventListener('input', () => {
+    clearTimeout(t);
+    const q = sb.value.trim();
+    if (!q) { sr.innerHTML=''; sr.style.display='none'; return; }
+    t = setTimeout(async () => {
+      if (!window._pf) await loadPagefind();
+      if (!window._pf) return;
+      const r = await window._pf.search(q);
+      if (!r.results.length) { sr.innerHTML='<div style="padding:8px;color:#6b7280">No results</div>'; sr.style.display='block'; return; }
+      const top = r.results.slice(0, 8);
+      const html = await Promise.all(top.map(async x => {
+        const d = await x.data();
+        return `<a href="${d.url}">${d.meta?.title || d.url}<br><small style="color:#6b7280">${(d.excerpt||'').replace(/<[^>]*>/g,'').slice(0,140)}</small></a>`;
+      }));
+      sr.innerHTML = html.join('');
+      sr.style.display = 'block';
+    }, 180);
+  });
+  sb.addEventListener('blur', () => setTimeout(()=>{ sr.style.display='none'; }, 200));
+  sb.addEventListener('focus', () => { if (sr.innerHTML) sr.style.display='block'; });
+}
+</script>
+</body>
+</html>

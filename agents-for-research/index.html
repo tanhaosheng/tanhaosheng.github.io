@@ -212,6 +212,12 @@ footer .credits{font-size:13px;color:#94a3b8;margin-top:14px}
     <p>The "unrelated paper" test. I dropped in a draft about HNSCC + thyroid NK co-culture on top of the breast-cancer dataset. Does the agent notice the mismatch, or does it fabricate?</p>
     <span class="meta">Reproducible transcript · ~10 min read</span>
   </a>
+  <a class="card" href="/agents-for-research/case-writing-plan">
+    <span class="kicker">Case 3 · forward look · one prompt</span>
+    <h3>From raw matrix to a publication plan</h3>
+    <p>Same data, no manuscript to defend. I asked the agent to propose what can actually be written and where it would go. Five routes, journal tiers, and an honest n=1 ceiling — a different capability from Cases 1–2.</p>
+    <span class="meta">Reproducible transcript · ~11 min read</span>
+  </a>
 </div>
 
 <h2>Headline findings (so you can skim)</h2>
@@ -223,6 +229,7 @@ footer .credits{font-size:13px;color:#94a3b8;margin-top:14px}
     <tr><td>Does scRNA-seq support the unrelated MHC-II/LAG-3 paper?</td><td>LAG-3 enrichment in cytotoxic T/NK confirmed (2.3×); MHC-II co-linearity and STAT1 correlations far weaker than paper claims. Agent flagged tumor-type mismatch.</td><td><span class="tag warn">Partial / cite carefully</span></td></tr>
     <tr><td>Did the agent notice the data-paper mismatch?</td><td>Yes — explicitly flagged wrong cancer type, single patient, no NK-pressure pairing.</td><td><span class="tag">Correct</span></td></tr>
     <tr><td>Wall-clock time, one shot each</td><td>Case 1: <strong>18 min 05 s</strong>. Case 2 (follow-up prompt, same session): <strong>~4 min</strong>. <strong>~22 minutes total</strong> — no re-prompting, no retries, no hand-holding.</td><td><span class="tag">Fast</span></td></tr>
+    <tr><td>Can the agent originate a research plan, not just check one?</td><td>Case 3: reconstructed HER2&#8315;/HR&#8315; identity from CNV, proposed a cold/immune-excluded TME write-up, and returned five routes with journal tiers — while refusing to inflate a single-case dataset.</td><td><span class="tag">Yes, with honest scoping</span></td></tr>
   </tbody>
 </table>
 

@@ -87,6 +87,15 @@ main{padding:32px 0}
 .nl-block button{background:#4f2db5;color:#fff;border:none;padding:11px 22px;border-radius:999px;font-weight:700;cursor:pointer}
 .nl-note{font-size:13px;color:#6b7280;margin-top:10px}
 .meta-row{display:flex;gap:14px;flex-wrap:wrap;color:#6b7280;font:600 13px system-ui;margin:.2em 0 1.4em}
+figure.sc{margin:26px 0;background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:16px 18px 14px;box-shadow:0 1px 3px rgba(15,23,42,.05)}
+figure.sc img{width:100%;height:auto;display:block;border-radius:10px}
+figure.sc figcaption{font-size:13.5px;line-height:1.65;color:#4b5563;margin-top:12px}
+figure.sc figcaption b{color:#1f2937}
+.fig-flag{display:inline-block;font:700 10.5px/1 system-ui;letter-spacing:.05em;text-transform:uppercase;background:#f5f3ff;color:#6d28d9;border:1px solid #ddd4ff;padding:5px 10px;border-radius:999px;margin-bottom:10px}
+.data-policy{background:#fffbeb;border:1px solid #fcd34d;border-left:5px solid #f59e0b;border-radius:14px;padding:16px 20px;margin:24px 0}
+.data-policy h3{margin:0 0 .45em;color:#92400e;font-size:1.05rem}
+.data-policy p{margin:.45em 0;color:#78350f;font-size:14.5px;line-height:1.66}
+.data-policy p:last-child{margin-bottom:0}
 .meta-row span{background:#f3f0ff;color:#4f2db5;padding:4px 10px;border-radius:999px}
 footer{background:#0f172a;color:#cbd5e1;padding:36px 20px;margin-top:48px}
 footer .container{max-width:1100px;margin:0 auto;padding:0 20px}
@@ -131,7 +140,18 @@ footer .credits{font-size:13px;color:#94a3b8;margin-top:14px}
 <p class="byline" style="color:#6b7280;font:600 13px system-ui">By Tan Haosheng, MD, PhD · Last reviewed 2026-07-31</p>
 <p class="meta-row"><span>One-shot</span><span>18 min 05 s wall-clock</span><span>WorkBuddy Hy3</span><span>2 samples · 1 patient</span><span>Reproducible transcript</span></p>
 
-<p class="lede">Two anonymized breast-cancer single-cell samples sit on my laptop. I genuinely forgot which one was CD45-sorted and which one wasn't. I attached both, plus my own KLRB1/BRCA manuscript, and gave one prompt. This is what the agent did in <strong>18 minutes 5 seconds</strong>, first try — including the three places where it caught me over-claiming.</p>
+<p class="lede">Two anonymized breast-cancer single-cell samples sit on my laptop.
+
+
+ I genuinely forgot which one was CD45-sorted and which one wasn't. I attached both, plus my own KLRB1/BRCA manuscript, and gave one prompt. This is what the agent did in <strong>18 minutes 5 seconds</strong>, first try — including the three places where it caught me over-claiming.</p>
+
+<div class="data-policy">
+  <h3>&#9888;&#65039; About the numbers and figures on this page</h3>
+  <p>The single-cell dataset behind this case supports a manuscript that <strong>has not been submitted yet</strong>. I am not free to publish the underlying values, and I am not going to pretend otherwise.</p>
+  <p>So: every figure below was <strong>redrawn from the real analysis with the values deliberately perturbed</strong>, and the numbers quoted in the text are rounded to low precision. What is preserved is the <em>direction, ranking and rough magnitude</em> of each effect &mdash; which is the part that matters for judging what the AI agent did. What is not preserved is any exact value.</p>
+  <p>Read the charts as <strong>illustrations of a pattern, not as data</strong>. Once the manuscript is published I will swap in the unmodified figures and link the real tables.</p>
+</div>
+
 
 <h2>The prompt I gave the agent (verbatim)</h2>
 <div class="prompt-box">/Users/xx/Desktop/SCI/单细胞测序/results 这个目录下面有我的乳腺癌癌灶单细胞测序的数据。一共有两个样本。一个是CD 45分选的，一个是没有CD 45分选的。我记不清哪个是哪个了。你帮我分析一下。
@@ -155,10 +175,17 @@ footer .credits{font-size:13px;color:#94a3b8;margin-top:14px}
 
 <table>
   <tr><th>Sample</th><th>Verdict</th><th>Evidence</th></tr>
-  <tr><td><strong>THS_2</strong></td><td><span class="tag good">CD45-sorted</span></td><td>Immune-cell total 95.7%; PTPRC⁺ rate 71.2%. Tumor-epithelial and stromal markers essentially absent in QC-passed cells.</td></tr>
-  <tr><td><strong>THS_1</strong></td><td><span class="tag good">Unsorted</span></td><td>Immune 34.1%, epithelium 35.1%, fibroblasts 22.7%. Mixed tumor microenvironment as expected.</td></tr>
+  <tr><td><strong>THS_2</strong></td><td><span class="tag good">CD45-sorted</span></td><td>Immune-cell total above 95%; PTPRC⁺ rate around 70%. Tumor-epithelial and stromal markers essentially absent in QC-passed cells.</td></tr>
+  <tr><td><strong>THS_1</strong></td><td><span class="tag good">Unsorted</span></td><td>Immune roughly a third, epithelium roughly a third, fibroblasts around a fifth. Mixed tumor microenvironment as expected.</td></tr>
 </table>
 <p>This is the failure mode I worried about most. The agent did not guess. It picked from the data, named which was which, and showed its work.</p>
+
+<figure class="sc">
+  <span class="fig-flag">Illustrative &middot; values perturbed</span>
+  <img src="/assets/sc/fig1-sorting-call.png" alt="Lineage marker positivity in the two samples, showing one is immune-dominated" loading="lazy" width="1600" height="800">
+  <figcaption><b>How the call was made.</b> Marker positivity across the two samples. One is almost entirely immune; the other still carries epithelium and fibroblast signal. No prior label was given to the agent &mdash; the separation is read straight off the expression matrix, which is why the answer is checkable rather than guessed.</figcaption>
+</figure>
+
 
 <h2>Result 2 — Does scRNA-seq support the KLRB1 manuscript?</h2>
 <p>The agent's verdict: <strong>partial support, three of the manuscript's central claims need rewriting.</strong></p>
@@ -166,28 +193,61 @@ footer .credits{font-size:13px;color:#94a3b8;margin-top:14px}
 <h3>What the agent confirmed</h3>
 <div class="find-block support">
   <h3>✓ KLRB1 is a lymphocyte marker in this tumor</h3>
-  <p>KLRB1 expression is concentrated in T/NK lineage cells; epithelial and stromal expression is near zero. CD4⁺ memory T cells have the highest KLRB1⁺ proportion within the T compartment (42.3%). This is consistent with the manuscript's broad framing that KLRB1 biology here is set by the immune compartment.</p>
+  <p>KLRB1 expression is concentrated in T/NK lineage cells; epithelial and stromal expression is near zero. CD4⁺ memory T cells have the highest KLRB1⁺ proportion within the T compartment (on the order of 40%). This is consistent with the manuscript's broad framing that KLRB1 biology here is set by the immune compartment.</p>
 </div>
+
+<figure class="sc">
+  <span class="fig-flag">Illustrative &middot; values perturbed</span>
+  <img src="/assets/sc/fig2-klrb1-lineage.png" alt="KLRB1 positivity by cell lineage and share of all KLRB1-positive cells" loading="lazy" width="1600" height="800">
+  <figcaption><b>Confirmed, but not the way I framed it.</b> KLRB1 is a lymphocyte gene here &mdash; that part held. What did not hold is the implicit NK framing: the overwhelming majority of KLRB1-positive cells in this tumour are T cells, and NK cells contribute only a sliver. That distinction changes how the mechanism paragraph has to be written.</figcaption>
+</figure>
+
+<figure class="sc">
+  <span class="fig-flag">Agent screenshot &middot; mosaic'd</span>
+  <img src="/assets/sc/shot-klrb1.png" alt="KLRB1 distribution, the agent's own figure, mosaic'd" loading="lazy" width="1600" height="800">
+  <figcaption><b>What the agent actually plotted.</b> The agent's own KLRB1-distribution figure, mosaic'd so the unpublished values are unreadable. The pattern &mdash; KLRB1 concentrated in lymphocytes, sparse elsewhere &mdash; is what it used to push back on my NK framing.</figcaption>
+</figure>
+
 
 <h3>What the agent pushed back on</h3>
 
 <div class="find-block contradict">
   <h3>✗ "KLRB1 reflects armed cytotoxic infiltration" — not supported at single-cell level</h3>
-  <p>Within individual T/NK cells, KLRB1 expression is essentially uncorrelated with the cytotoxic effectors PRF1, GZMB, and NKG7 (Spearman ρ ≈ 0). The agent then did something I would not have thought to ask for: it re-ran the same correlation after aggregating by (cell type × sample) into pseudo-bulk. Suddenly ρ jumped to 0.73–0.91.</p>
+  <p>Within individual T/NK cells, KLRB1 expression is essentially uncorrelated with the cytotoxic effectors PRF1, GZMB, and NKG7 (Spearman ρ ≈ 0). The agent then did something I would not have thought to ask for: it re-ran the same correlation after aggregating by (cell type × sample) into pseudo-bulk. Suddenly ρ jumped above 0.7.</p>
   <p>The agent's interpretation: the strong KLRB1-PRF1 correlation seen in bulk data (e.g. TCGA, ρ=0.78) is almost entirely driven by <em>cell-type composition differences</em>, not by KLRB1⁺ cells themselves being high-PRF1 cells. After depth correction, KLRB1⁺ T/NK cells had no detectable difference in PRF1 or GZMB; NKG7 and CD8A were actually <em>lower</em>.</p>
   <p><strong>This is the strongest single contribution from the agent on this case</strong> — the kind of confounder I would have written the paper around without noticing.</p>
 </div>
 
+<figure class="sc">
+  <span class="fig-flag">Illustrative &middot; values perturbed</span>
+  <img src="/assets/sc/fig3-composition-artefact.png" alt="Within-cell correlation near zero versus high pseudo-bulk correlation" loading="lazy" width="1600" height="800">
+  <figcaption><b>The confounder, in one chart.</b> Inside individual cells, KLRB1 does not track the cytotoxic effectors at all. Average the same cells into pseudo-bulk and a strong correlation appears out of nowhere. The bulk signal my manuscript leaned on is cell-type composition wearing a costume.</figcaption>
+</figure>
+
+<figure class="sc">
+  <span class="fig-flag">Illustrative &middot; values perturbed</span>
+  <img src="/assets/sc/fig4-depth-correction.png" alt="Forest plot of crude versus depth-corrected odds ratios for effector genes" loading="lazy" width="1600" height="800">
+  <figcaption><b>And then depth correction moved it further.</b> Cells with more KLRB1 detected are simply cells that were sequenced more deeply, so almost everything looks up-regulated in them. Correcting for depth pushes the cytotoxic markers to the wrong side of 1 &mdash; the opposite of the claim I was about to publish.</figcaption>
+</figure>
+
+
 <div class="find-block contradict">
   <h3>✗ "TIGIT⁺PRF1⁻ activated but inhibited" signature — direction runs the other way</h3>
   <p>The manuscript's central mechanism: cells near CD4⁺ memory T cells that are KLRB1⁺ show TIGIT up, PRF1 down — read as a brake being applied.</p>
-  <p>Single-cell co-expression shows the opposite. Within KLRB1⁺ cells, the TIGIT⁺ subset has <em>higher</em> PRF1 positivity (depth-corrected OR=1.75, P=0.005) and <em>higher</em> NKG7 (OR=1.67). TIGIT only correlates with activation markers (NKG7, IFNG) when restricted to the CD4⁺ memory T subset — i.e. it behaves like an activation marker in this dataset, not an inhibitory one.</p>
+  <p>Single-cell co-expression shows the opposite. Within KLRB1⁺ cells, the TIGIT⁺ subset has <em>higher</em> PRF1 positivity (depth-corrected OR ≈ 1.8, P &lt; 0.01) and <em>higher</em> NKG7 (OR ≈ 1.7). TIGIT only correlates with activation markers (NKG7, IFNG) when restricted to the CD4⁺ memory T subset — i.e. it behaves like an activation marker in this dataset, not an inhibitory one.</p>
   <p>This doesn't kill the manuscript; it scopes it. The "TIGIT⁺PRF1⁻ brake" claim needs to be qualified to: (a) only valid within the CD4⁺ memory T sub-compartment, and (b) only valid at the spatial-distance level, not the co-expression level.</p>
 </div>
 
+<figure class="sc">
+  <span class="fig-flag">Illustrative &middot; values perturbed</span>
+  <img src="/assets/sc/fig5-tigit-quadrant.png" alt="Two-by-two contingency of TIGIT and PRF1 positivity" loading="lazy" width="1600" height="800">
+  <figcaption><b>The quadrant that should not look like this.</b> If TIGIT were applying a brake, the TIGIT-positive / PRF1-negative corner should be the crowded one. It is not. In this dataset TIGIT travels with cytotoxic machinery, which is the behaviour of an activation marker, not an inhibitory one.</figcaption>
+</figure>
+
+
 <div class="find-block contradict">
   <h3>✗ "CD4⁺ memory T cells as PVR/NECTIN2 ligand source" — not supported</h3>
-  <p>The manuscript's spatial model has CD4⁺ memory T cells providing the TIGIT ligands PVR (CD155) and NECTIN2 (CD112) to nearby cells. The agent checked the expression: PVR 0.34% and NECTIN2 1.81% positivity in CD4⁺ memory T cells. The actual PVR/NECTIN2 sources in this dataset are epithelial tumor cells, myeloid cells, fibroblasts, and endothelium.</p>
+  <p>The manuscript's spatial model has CD4⁺ memory T cells providing the TIGIT ligands PVR (CD155) and NECTIN2 (CD112) to nearby cells. The agent checked the expression: PVR under 0.5% and NECTIN2 under 2% positivity in CD4⁺ memory T cells. The actual PVR/NECTIN2 sources in this dataset are epithelial tumor cells, myeloid cells, fibroblasts, and endothelium.</p>
   <p>If the manuscript wants to keep this part of the mechanism, it needs to be rewritten as an <em>indirect</em> model — CD4⁺ memory T cells induce myeloid / tumor-cell ligand upregulation — rather than a direct ligand-source model.</p>
 </div>
 
