@@ -1,0 +1,112 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Free-Model Clinical LLM Leaderboard — by a Practicing Surgeon | AI Tool Stack</title><meta name="description" content="A living leaderboard of free AI models on one anonymized post-op breast-cancer case, scored against 2026 CBCS / CSCO 2024 / NCCN 2025. The original finding: the agent wrapper raises a model's floor far more than its ceiling (GLM 5.2 +39 → V4 Flash +6 → Kimi K2.6 +9). Updated monthly."><meta name="robots" content="index, follow"><link rel="canonical" href="https://tanhaosheng.asia/leaderboard"><meta property="og:title" content="Free-Model Clinical LLM Leaderboard"><meta property="og:description" content="Free AI models scored on one real anonymized breast-cancer case. The agent wrapper raises the floor, not the ceiling."><meta property="og:type" content="website"><meta property="og:url" content="https://tanhaosheng.asia/leaderboard"><meta property="og:image" content="https://tanhaosheng.asia/assets/og-cover.png"><meta property="og:locale" content="en_US"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Free-Model Clinical LLM Leaderboard"><meta name="twitter:description" content="Free AI models scored on one real anonymized breast-cancer case — updated monthly."><!-- AdSense --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3090420115329103" crossorigin="anonymous"></script><!-- Google Analytics 4 --><script async src="https://www.googletagmanager.com/gtag/js?id=G-NE8DYNMNYZ"></script><script>(function(){const gaId="G-NE8DYNMNYZ";window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',gaId);})();</script><style>:root{--primary:#6c3ce1;--primary-dark:#4f2db5;--accent:#f59e0b;--bg:#f5f7fa;--text:#1a1a2e;--text-light:#6b7280;--border:#e5e7eb;--card:#fff}*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--text);max-width:900px;margin:0 auto;padding:0 20px;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;font-size:18px;line-height:1.75}a{color:var(--primary);text-decoration:none}h1{color:var(--primary);margin:28px 0 14px;font-size:30px;line-height:1.25}h2{color:var(--primary-dark);margin:34px 0 12px;font-size:22px;padding-bottom:6px;border-bottom:2px solid var(--primary)}h3{color:var(--primary-dark);margin:20px 0 8px;font-size:17px}p{margin-bottom:14px}ul,ol{margin:0 0 16px 22px}li{margin-bottom:7px}table{border-collapse:collapse;width:100%;margin:18px 0;font-size:15px}th,td{border:1px solid var(--border);text-align:left;padding:10px 11px}th{background:#f3f4f6;font-weight:600}tr:nth-child(2n){background:#f9fafb}nav{z-index:100;background:linear-gradient(135deg,#6c3ce1 0%,#4f2db5 100%);position:sticky;top:0;box-shadow:0 2px 12px #6c3ce13a}nav .nav-inner{max-width:900px;margin:0 auto;display:flex;overflow-x:auto}nav a{color:#ffffffe6;white-space:nowrap;padding:14px 16px;font-size:15px;font-weight:500;text-decoration:none}nav a:hover,nav a.active{color:#fff;background:#ffffff26}.article-byline{font-size:14px;color:#6b7280;margin:0 0 16px;padding:10px 14px;background:#f8fafc;border-left:3px solid #2563eb;border-radius:6px}.pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12.5px;font-weight:600}.pill.green{background:#dcfce7;color:#15803d}.pill.red{background:#fee2e2;color:#b91c1c}.pill.amber{background:#fef3c7;color:#b45309}.pill.blue{background:#dbeafe;color:#1e40af}.pill.violet{background:#ede9fe;color:#5b21b6}.hero{background:linear-gradient(135deg,#6c3ce1 0%,#4f2db5 60%,#2d1b69 100%);color:#fff;border-radius:14px;margin:22px auto;padding:26px 26px;box-shadow:0 6px 28px #6c3ce13a}.hero h1{color:#fff;margin:0 0 6px;font-size:1.9em;line-height:1.2}.hero .sub{opacity:.92;font-size:1.02em}.hero .updated{margin-top:10px;font-size:.82em;opacity:.8}.callout{border-left:4px solid var(--accent);background:#fff3cd;border-radius:4px;margin:18px 0;padding:16px}.takeaways{background:var(--card);border:1px solid var(--border);border-radius:8px;margin:18px 0;padding:16px 22px}.takeaways h3{margin-top:0}.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:16px 0}.mini-card{border:1px solid var(--border);border-radius:12px;padding:16px;background:#fff;box-shadow:0 2px 8px #0000000d}.mini-card .score{font-size:2em;font-weight:800;color:var(--primary)}.mini-card .who{font-weight:600;margin:4px 0}.mini-card .for{font-size:13.5px;color:#475569}.nl-block{border:1px solid var(--border);border-radius:14px;padding:20px 24px;margin:18px 0;background:#fff;box-shadow:0 2px 8px #0000000d}.nl-block h3{margin-top:0}.nl-block form{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.nl-block input{flex:1;min-width:200px;padding:10px 12px;border:1px solid #d1d5db;border-radius:8px;font-size:15px}.nl-block button{background:var(--primary);color:#fff;border:none;border-radius:8px;padding:10px 18px;font-weight:600;cursor:pointer}.nl-note{font-size:13px;color:#6b7280;margin-top:8px}.byline-card{font-size:13px;color:#475569;font-style:italic;border-top:1px solid #e5e7eb;padding-top:10px;margin-top:14px}.site-footer{margin-top:30px;padding:18px 0;font-size:14px;color:#6b7280;border-top:1px solid var(--border)}.site-footer a{color:var(--primary)}.mt-banner{background:#fef3c7;color:#92400e;border-bottom:1px solid #fcd34d;padding:9px 16px;font:600 13px/1.5 system-ui,sans-serif;text-align:center}.mt-banner a{color:#92400e;font-weight:700}</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "Free-Model Clinical LLM Benchmark — post-op breast cancer case",
+  "description": "Reproducible scores of free AI models (web chat vs agent wrapper) on one anonymized post-operative breast-cancer case, graded with a 16-item / 100-point rubric against 2026 CBCS / CSCO 2024 / NCCN 2025. Core finding: the agent wrapper raises a model's floor far more than its ceiling.",
+  "url": "https://tanhaosheng.asia/leaderboard",
+  "creator": {
+    "@type": "Person",
+    "name": "Tan Haosheng",
+    "alternateName": "谭好升",
+    "jobTitle": "Associate Chief Physician, Thyroid and Breast Surgery",
+    "affiliation": "Taizhou People's Hospital"
+  },
+  "datePublished": "2026-07-31",
+  "dateModified": "2026-07-31",
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "keywords": ["clinical LLM", "free AI model", "breast cancer", "agent wrapper", "benchmark"],
+  "distribution": {
+    "@type": "DataDownload",
+    "encodingFormat": "text/html",
+    "contentUrl": "https://tanhaosheng.asia/leaderboard"
+  }
+}
+</script>
+</head><body><div id="lang-switcher"><label for="lang-select">🌐</label><select id="lang-select"><option value="en" selected>English</option><option value="zh">中文</option></select></div><nav><div class="nav-inner"><a href="/" class>🏠 Home</a><a href="/model-reviews" class>🧪 Model Reviews</a><a href="/agents-for-research/">🤖 Agents for Research</a><a href="/clinical-benchmark/" >📊 Benchmark Data</a><a href="/leaderboard" class="active">📈 Leaderboard</a><a href="/about" class>About</a><input id="site-search" type="search" placeholder="Search…" aria-label="Search this site"><div id="search-results" aria-live="polite"></div></div></nav>
+<div class="mt-banner">⚠️ <strong>Affiliate Disclosure / 利益披露:</strong> This page may contain affiliate or promotional links. They never increase your price and never change my independent conclusions. <a href="/affiliate-disclosure">Details</a></div>
+<div class="hero"><h1>Free-Model Clinical LLM Leaderboard</h1><div class="sub">One anonymized post-op breast-cancer case · same prompt · same 16-item / 100-point rubric · 2026 CBCS / CSCO 2024 / NCCN 2025.<br>Not a marketing leaderboard — a surgeon's reproducible one.</div><div class="updated">Last updated 2026-07-31 · updated monthly</div></div>
+
+<div class="article-byline">By <a href="/about">Tan Haosheng, MD/PhD</a> · 副主任医师 (Associate Chief Physician) · 甲状腺乳腺外科 (Thyroid &amp; Breast Surgery), 泰州市人民医院 (Taizhou People's Hospital). Scores are signed and reproducible; see the <a href="/clinical-benchmark/">Benchmark Data</a> appendix.</div>
+
+<h2>The one finding that matters</h2>
+<p>The headline isn't "which model wins" — it's <strong>what the wrapper does</strong>. Testing the same model, same case, with and without an agent scaffold:</p>
+<div class="callout"><strong>Agent wrapper raises the <em>floor</em>, not the <em>ceiling</em>.</strong> GLM 5.2 went from <strong>5 → 44 (+39)</strong>, DeepSeek V4 Flash <strong>28 → 34 (+6)</strong>, Kimi K2.6 <strong>37 → 46 (+9)</strong>. The higher a model's web baseline, the smaller the wrapper lift. A model that flounders alone gains enormously from scaffolding; a model already coherent gains polish.</div>
+<img src="/assets/charts/wrapper-delta.svg" alt="Bar chart of agent-wrapper lift in points: GLM 5.2 +39, Kimi K2.6 +9, DeepSeek V4 Flash +6. The agent raises the floor, not the ceiling — higher web baseline means smaller wrapper gain." style="width:100%;height:auto;border:1px solid #e5e7eb;border-radius:12px;margin:14px 0;">
+<img src="/assets/charts/web-vs-agent.svg" alt="Grouped bar chart: the same anonymized breast-cancer case scored 0-100 with a 16-item rubric vs 2026 CBCS. GLM 5.2 web 5 vs agent 44; DeepSeek V4 Flash web 28 vs agent 34; Kimi K2.6 web 37 vs agent 46." style="width:100%;height:auto;border:1px solid #e5e7eb;border-radius:12px;">
+
+<h2>Ranked leaderboard — best score per model</h2>
+<p>Same anonymized case, graded against the same guideline set. "Wrapper" = how the model was used.</p>
+<table>
+  <thead><tr><th>#</th><th>Model</th><th>Wrapper</th><th>Best score /100</th><th>Key note</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>DeepSeek V4 Pro</td><td><span class="pill violet">WorkBuddy agent</span></td><td><strong>50</strong></td><td>Only model to catch the staging trap (pT1aN0M0 IA)</td></tr>
+    <tr><td>2</td><td>Kimi K2.6</td><td><span class="pill violet">WorkBuddy agent</span></td><td><strong>46</strong></td><td>Stability flag: refused on first attempt in 1/3 runs</td></tr>
+    <tr><td>3</td><td>GLM 5.2 (Zhipu)</td><td><span class="pill violet">WorkBuddy agent</span></td><td><strong>44</strong></td><td>Largest floor lift (+39) — see wrapper effect</td></tr>
+    <tr><td>4</td><td>Doubao</td><td><span class="pill blue">web</span></td><td><strong>41</strong></td><td>Strong web baseline without an agent</td></tr>
+    <tr><td>5</td><td>Kimi K3</td><td><span class="pill violet">WorkBuddy agent</span></td><td><strong>40</strong></td><td>Re-scored 27 → 40 after a published correction</td></tr>
+    <tr><td>6</td><td>DeepSeek V4 Flash</td><td><span class="pill violet">agent</span> / <span class="pill blue">web</span></td><td><strong>34</strong></td><td>Web 28 → agent 34 (+6)</td></tr>
+    <tr><td>7</td><td>DeepSeek (web, fast tier)</td><td><span class="pill blue">web</span></td><td><strong>28</strong></td><td>—</td></tr>
+    <tr><td>8</td><td>ChatGLM / GLM (web)</td><td><span class="pill blue">web</span></td><td><strong>5</strong></td><td>Baseline floor — wrap it in an agent before trusting</td></tr>
+  </tbody>
+</table>
+
+<h2>Wrapper effect — same model, web vs agent</h2>
+<table>
+  <thead><tr><th>Model</th><th>Web /100</th><th>Agent /100</th><th>Wrapper Δ</th><th>Read</th></tr></thead>
+  <tbody>
+    <tr><td>GLM 5.2</td><td>5</td><td>44</td><td><span class="pill green">+39</span></td><td>Scaffolding turns a non-answer into a usable one</td></tr>
+    <tr><td>Kimi K2.6</td><td>37</td><td>46</td><td><span class="pill green">+9</span></td><td>Already coherent; agent adds polish + a cited guideline</td></tr>
+    <tr><td>DeepSeek V4 Flash</td><td>28</td><td>34</td><td><span class="pill green">+6</span></td><td>Small lift — web baseline already moderate</td></tr>
+  </tbody>
+</table>
+<p style="font-size:13.5px;color:#64748b;">Only models tested in <em>both</em> wrappers are listed (series rule). Full web-only runs for Kimi K3 and DeepSeek V4 Flash are pending and will extend this grid.</p>
+
+<h2>Free-model cheat card — which for which job</h2>
+<p>A clinician's quick routing. All scores are on the same case; your mileage varies with the prompt and the guideline version.</p>
+<div class="card-grid">
+  <div class="mini-card"><div class="score">50</div><div class="who">DeepSeek V4 Pro · agent</div><div class="for">Safest single answer on a tricky staging case — the only model that caught the trap.</div></div>
+  <div class="mini-card"><div class="score">+39</div><div class="who">GLM 5.2 · wrap in agent</div><div class="for">If you only have a plain web chat with a weak model, scaffold it — the floor lift is largest.</div></div>
+  <div class="mini-card"><div class="score">46</div><div class="who">Kimi K2.6 · agent</div><div class="for">Consistent + decent, but watch the refusal flag — keep a human in the loop.</div></div>
+  <div class="mini-card"><div class="score">14 / 5</div><div class="who">Grok 4.5 fast / ChatGLM web</div><div class="for">Avoid for unassisted clinical decisions — copied the erroneous "Stage 0" line.</div></div>
+</div>
+<div class="nl-block" id="nl-block">
+  <h3>📬 Get the printable free-model cheat card</h3>
+  <p>Subscribe and I'll send the one-page PDF cheat card (which free model for which clinical task, updated as the leaderboard grows). Free, roughly monthly, unsubscribe anytime.</p>
+  <form action="https://buttondown.email/tanhaosheng" method="post" target="_blank">
+    <input type="email" name="email" placeholder="you@hospital.com" required>
+    <button type="submit">Subscribe</button>
+  </form>
+  <p class="nl-note">Powered by Buttondown. Your email is never sold and never changes my independent conclusions.</p>
+</div>
+
+<h2>Methodology in one line</h2>
+<p>One anonymized post-op breast-cancer case; identical prompt; a 16-item / 100-point rubric; reference standard = 2026 CBCS / CSCO 2024 / NCCN 2025. Every run is signed and reproducible. The case image, prompt, and score sheet are published in the <a href="/clinical-benchmark/">Benchmark Data</a> appendix so anyone can re-score any model. See the full <a href="/model-reviews">Model Reviews series (V1 → V4)</a> for transcripts.</p>
+
+<h2>Submit your own run (community)</h2>
+<p>This leaderboard is meant to grow beyond my own runs. To add your model:</p>
+<ol>
+  <li>Take the published <strong>anonymized case image + prompt</strong> from the <a href="/clinical-benchmark/">Benchmark Data</a> appendix.</li>
+  <li>Score the model's answer with the same <strong>10/16-item score sheet</strong> against 2026 CBCS.</li>
+  <li>Submit your numbers via the project's GitHub repo (being set up — link added here once live), or email them in.</li>
+</ol>
+<p style="font-size:13.5px;color:#64748b;">Only the public case/prompt/score sheet are used. No unpublished material is involved, by design.</p>
+
+<div class="byline-card">— Tan Haosheng, MD/PhD · 副主任医师 · 甲状腺乳腺外科 (Thyroid &amp; Breast Surgery), 泰州市人民医院 (Taizhou People's Hospital). This is research-methodology documentation, not medical advice.</div>
+<footer class="site-footer">&copy; 2024-2026 Tan Haosheng · <a href="/">Home</a> · <a href="/about">About</a> · <a href="/privacy">Privacy</a><br>Anonymous, privacy-respecting usage analytics (Google Analytics). Open benchmark data on the <a href="/clinical-benchmark/">Benchmark</a> page.</footer>
+<script>
+(function(){
+  var CODES=['en','zh'];
+  function switchLang(l){
+    var p=location.pathname.replace(/^\//,'').split('/');
+    var base=CODES.indexOf(p[0])!==-1?p.slice(1).join('/'):p.join('/');
+    var url=(l==='en'?'/'+base:'/'+l+'/'+base)+(location.search||'');
+    try{localStorage.setItem('pref',l);}catch(e){}
+    location.href=url;
+  }
+  var s=document.getElementById('lang-select');
+  if(s){ s.addEventListener('change',function(){switchLang(this.value);}); }
+})();
+</script>
+</body></html>
