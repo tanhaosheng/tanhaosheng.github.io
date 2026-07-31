@@ -75,7 +75,7 @@ nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1
   <p class="sub">Framework v1.0 · Post-operative breast cancer case interpretation + adjuvant therapy recommendations · Reference: 2026 CBCS Version 2026.1.0</p>
 
   <div class="note">
-    <b>Correction (input modality):</b> This report originally stated the case was provided as plain text because DeepSeek's Expert mode could not read images. Per the test author's correction, the actual input across the whole series &mdash; including this DeepSeek/ChatGLM comparison &mdash; was a single screenshot of the de-identified outpatient medical record. The "text-only" statement was inaccurate and is retracted.
+    <b>Input modality:</b> For this DeepSeek vs ChatGLM comparison, DeepSeek was tested in web "fast mode" (text input) because <b>Expert mode does not support image input</b>. GLM 5.2 was tested via web interface (supports image input).<br>For all other benchmarks in this series (V1–V5, four-models showdown, etc.), the input was a <b>screenshot of the de-identified outpatient medical record</b> — a single image containing both the case and the 16 questions. This comparison is an exception due to DeepSeek Expert mode limitations.
     Both models are on the free tier (DeepSeek web Fast mode / Zhipu ChatGLM 5.2), at zero cost.
   </div>
 
