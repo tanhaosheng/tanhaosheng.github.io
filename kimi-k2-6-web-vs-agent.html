@@ -8,7 +8,7 @@
 #lang-switcher select:focus{outline:2px solid #6366f1}
 #lang-switcher option:disabled{color:#bbb}
 </style>
-</head><body><div id="lang-switcher"><label for="lang-select">🌐</label><select id="lang-select"><option value="en" selected>English</option><option value="zh" disabled>中文</option></select></div><nav><div class="nav-inner"><a href="/" class>🏠 Home</a><a href="/" class>📰 News</a><a href="/" class>🤖 AI</a><a href="/about" class>About</a></div></nav><div style="background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:10px;margin:14px auto;padding:10px 16px;max-width:900px;font:600 13px/1.6 system-ui,sans-serif;">⚠️ <strong>Affiliate Disclosure / 利益披露:</strong> This page may contain affiliate or promotional links. If you sign up or subscribe through such a link, I may earn a commission — but it <strong>never increases your price</strong> and <strong>never changes my independent conclusions</strong>. See the <a href="/affiliate-disclosure" style="color:#1e3a8a;text-decoration:underline;">Affiliate Disclosure</a> page.</div>
+ENHANCE_CSSENHANCE_CSS</head><body><div id="lang-switcher"><label for="lang-select">🌐</label><select id="lang-select"><option value="en" selected>English</option><option value="zh" disabled>中文</option></select></div><nav><div class="nav-inner"><a href="/" class>🏠 Home</a><a href="/" class>📰 News</a><a href="/" class>🤖 AI</a><a href="/about" class>About</a><input id="site-search" type="search" placeholder="Search…" aria-label="Search this site"><div id="search-results" aria-live="polite"></div></div></nav><div style="background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:10px;margin:14px auto;padding:10px 16px;max-width:900px;font:600 13px/1.6 system-ui,sans-serif;">⚠️ <strong>Affiliate Disclosure / 利益披露:</strong> This page may contain affiliate or promotional links. If you sign up or subscribe through such a link, I may earn a commission — but it <strong>never increases your price</strong> and <strong>never changes my independent conclusions</strong>. See the <a href="/affiliate-disclosure" style="color:#1e3a8a;text-decoration:underline;">Affiliate Disclosure</a> page.</div>
 
 <nav class="series-nav" aria-label="Series" style="max-width:900px;margin:18px auto 0;font:600 13px/1.6 system-ui,sans-serif;display:flex;align-items:center;gap:8px;flex-wrap:wrap;"><a href="/" style="color:#6b7280;text-decoration:none;">🏠 Home</a><span style="color:#c4b5fd;">›</span><a href="/model-reviews" style="color:#6c3ce1;text-decoration:none;font-weight:700;">🧪 Model Reviews</a><span style="color:#c4b5fd;">›</span><a href="/clinical-benchmark/" style="color:#6c3ce1;text-decoration:none;">📊 Benchmark data</a></nav>
 <h1>Kimi K2.6 in 2026: Same Case, Same Model, Two Wrappers — Web (Standard Thinking) vs WorkBuddy Agent — Hands-on Review 4 of 5</h1>
@@ -27,7 +27,16 @@
 <strong>⚠️ Stability flag — Kimi K2.6 agent refused the first prompt on this medical case.</strong> One of the three WorkBuddy-agent runs below required a re-prompt: the model returned <em>\"This topic is currently outside the scope of my capabilities, so I\'m unable to discuss it further.\"</em> on first attempt and only produced the answer on the second try. This is the same refusal pattern that DeepSeek V4 Pro shows inside the agent (noted in V3) — and it is not unique to one model family. <strong>For real-world clinical deployment this matters more than a 9-point score difference</strong>: a model that occasionally refuses medical questions on first attempt is harder to integrate into a workflow than one that consistently answers and lets the clinician filter. The actual answers below are correct, but the failure mode is being flagged up front so the reader is not surprised by it later.
 </div>
 
-<h2>The single-model wrapper test</h2>
+<div class="viz-block" id="viz-block">
+  <figure style="margin:22px 0;">
+    <img src="/assets/charts/web-vs-agent.svg" alt="Grouped bar chart: the same anonymized breast-cancer case scored 0-100 with a 16-item rubric vs 2026 CBCS. GLM 5.2 web 5 vs agent 44; DeepSeek V4 Flash web 28 vs agent 34; Kimi K2.6 web 37 vs agent 46. The agent wrapper raises every model's floor." style="width:100%;height:auto;border:1px solid #e5e7eb;border-radius:12px;">
+    <figcaption style="font-size:13px;color:#64748b;margin-top:8px;">Figure 1 — Web chat vs WorkBuddy agent, identical case. Same rubric, same guideline (2026 CBCS).</figcaption>
+  </figure>
+  <figure style="margin:22px 0;">
+    <img src="/assets/charts/wrapper-delta.svg" alt="Bar chart of agent-wrapper lift in points: GLM 5.2 +39, Kimi K2.6 +9, DeepSeek V4 Flash +6. A higher web baseline means a smaller wrapper gain — the agent raises the floor, not the ceiling." style="width:100%;height:auto;border:1px solid #e5e7eb;border-radius:12px;">
+    <figcaption style="font-size:13px;color:#64748b;margin-top:8px;">Figure 2 — The agent wrapper lifts the score, but less so when the web baseline is already high.</figcaption>
+  </figure>
+</div><h2>The single-model wrapper test</h2>
 <p>Up to Part 3, the series was answering two questions at once: <em>"which model?"</em> and <em>"which wrapper?"</em>. The agent-vs-web-isolation article tried to disentangle them by running multiple models through the same wrapper (WorkBuddy) and a few through both wrappers. But mixing those two variables together still left room for confound.</p>
 <p>Part 4 tightens the design. <strong>One model. Two wrappers. Same case, same prompt, three runs each.</strong> That is the cleanest possible wrapper-effect test, and it answers a single, sharp question: <em>does the WorkBuddy agent change what Kimi K2.6 says, and by how much?</em></p>
 
@@ -285,7 +294,15 @@
 <p style="margin-top:24px"><em>This is the fourth of a planned 5-part <strong>原创实测 / Hands-on Review</strong> series — real, signed, reproducible tests of AI tools I actually use in clinical and research work. See the full <a href="/model-reviews">Model Reviews</a> index for V1, V2, V3 and the planned Part 5. This page now contains both halves of the wrapper test for Kimi K2.6 (web + agent, six runs in total) plus the three-model cross-wrapper grid. Next planned update: <strong>V4.2</strong> — additional agent runs to firm up the +9 delta, plus a formal n = 20 same-prompt refusal-rate test across Kimi K2.6 / DeepSeek V4 Pro / GLM 5.2 / DeepSeek V4 Flash agents.</em></p>
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":["Article","MedicalWebPage"],"headline":"Kimi K2.6 in 2026: Same Case, Same Model, Two Wrappers — Web (Standard Thinking) vs WorkBuddy Agent","description":"Part 4 of the hands-on clinical LLM series. Kimi K2.6 (Moonshot AI) tested as a plain web chat in Kimi Quick / standard thinking mode AND inside the WorkBuddy agent, on the same anonymized post-op breast cancer case (pT1aN0M0 Stage IA, three foci of interstitial invasion, no lymphovascular invasion), scored on a 10-item / 100-pt rubric against 2026 CBCS / CSCO 2024 / NCCN 2025. Web median 37/100 (R1 35, R2 42, R3 37); WorkBuddy agent median 46/100 (R1 46, R2 45, R3 60) with one first-attempt refusal on the medical case (stability flag, same pattern as DeepSeek V4 Pro agent). Wrapper-effect Δ = +9. The three same-model pairs (GLM 5.2 +39, V4 Flash +6, Kimi K2.6 +9) form a descending curve consistent with V3's claim that the agent wrapper improves the floor, not the ceiling. Per the series rule, only models with BOTH a web version AND an agent wrapper are scored.","author":{"@type":"Person","name":"Tan Haosheng","alternateName":"谭好升","url":"https://tanhaosheng.asia/about","jobTitle":"Associate Chief Physician, Department of Thyroid and Breast Surgery","description":"Tan Haosheng (谭好升), MD/PhD (医学博士), Associate Chief Physician (副主任医师) at Taizhou People's Hospital (泰州市人民医院), specializing in thyroid and breast surgery (甲状腺乳腺外科).","alumniOf":{"@type":"EducationalOrganization","name":"Tsinghua University – Peking Union Medical College / National Cancer Center (清华大学-北京协和医学院 / 国家癌症中心)"},"worksFor":{"@type":"Organization","name":"Taizhou People's Hospital (泰州市人民医院)"}},"sameAs":["https://www.jstzhospital.com"],"datePublished":"2026-07-31","dateModified":"2026-07-31","publisher":{"@type":"Organization","name":"AI Tool Stack"},"mainEntityOfPage":"https://tanhaosheng.asia/kimi-k2-6-web-vs-agent","image":"https://tanhaosheng.asia/assets/og-ai-tools.jpg"}</script>
-<footer>&copy; 2024-2026 AI Tool Stack<br><a href="/">Home</a> · <a href="/about">About</a> · <a href="/">AI Models &amp; Tools</a> · <a href="/clinical-benchmark/">Clinical Benchmark Data</a> · <a href="/privacy">Privacy</a> · <a href="/affiliate-disclosure">Affiliate Disclosure</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+<div class="nl-block" id="nl-block">
+  <h3>📬 Subscribe — clinical LLM testing, no spam</h3>
+  <p>Get new hands-on model reviews and benchmark updates by email. Free, roughly monthly, unsubscribe anytime.</p>
+  <form action="https://buttondown.email/REPLACE_WITH_YOUR_BUTTONDOWN_USERNAME" method="post" target="_blank">
+    <input type="email" name="email" placeholder="you@hospital.com" required>
+    <button type="submit">Subscribe</button>
+  </form>
+  <p class="nl-note">Powered by Buttondown. Replace <code>REPLACE_WITH_YOUR_BUTTONDOWN_USERNAME</code> in the form action with your Buttondown username to activate (or switch to ConvertKit/Mailchimp the same way).</p>
+</div><footer>&copy; 2024-2026 AI Tool Stack<br><a href="/">Home</a> · <a href="/about">About</a> · <a href="/">AI Models &amp; Tools</a> · <a href="/clinical-benchmark/">Clinical Benchmark Data</a> · <a href="/privacy">Privacy</a> · <a href="/affiliate-disclosure">Affiliate Disclosure</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 <div class="page-stats" style="margin-top:10px;font-size:.85em;color:#6b7280;">📊 全站浏览 <span id="busuanzi_value_site_pv">0</span> · 全站独立访客 <span id="busuanzi_value_site_uv">0</span>　|　📄 本页浏览 <span id="busuanzi_value_page_pv">0</span> · 本页独立访客 <span id="busuanzi_value_page_uv">0</span></div><div id="cf-stats" style="margin-top:6px;font-size:.85em;color:#6b7280;display:none;">🌐 Cloudflare 真实IP：全站 <b id="cf-site-pv">–</b> 浏览 / <b id="cf-site-uv">–</b> 唯一IP　|　📄 本页 <b id="cf-page-pv">–</b> 浏览 / <b id="cf-page-uv">–</b> 唯一IP <span style="opacity:.6;">(按IP累计，区别于busuanzi的cookie访客)</span></div>
 </footer><script>
 (function(){
@@ -347,5 +364,33 @@
     }
   ]
 }
+</script>
+
+<script id="enhance-js">
+(function(){
+  var s=document.getElementById('site-search');
+  if(!s) return;
+  var box=document.getElementById('search-results');
+  var pf=null, timer=null;
+  function esc(t){return (t||'').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  s.addEventListener('input',function(){
+    var q=s.value.trim();
+    clearTimeout(timer);
+    if(q.length<2){box.style.display='none';return;}
+    timer=setTimeout(function(){
+      if(!pf){pf=import('/pagefind/pagefind.js');}
+      pf.then(function(m){return m.search(q);})
+        .then(function(r){return Promise.all(r.results.slice(0,8).map(function(x){return x.data();}));})
+        .then(function(rows){
+          if(!rows.length){box.innerHTML='<div style="padding:12px;color:#64748b;font-size:14px;">No results.</div>';box.style.display='block';return;}
+          box.innerHTML=rows.map(function(d){
+            return '<a href="'+d.url+'">'+esc(d.meta&&d.meta.title||d.url)+'<div class="ex">'+esc(d.excerpt)+'</div></a><hr>';
+          }).join('');
+          box.style.display='block';
+        }).catch(function(){box.style.display='none';});
+    },180);
+  });
+  document.addEventListener('click',function(e){if(e.target!==s&&!box.contains(e.target))box.style.display='none';});
+})();
 </script>
 </body></html>

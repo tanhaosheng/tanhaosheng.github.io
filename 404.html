@@ -6,7 +6,7 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', gaId);
-})();</script></head><body><nav><div class="nav-inner"><a href="/" class>🏠 Home</a><a href="/" class>📰 News</a><a href="/" class>🤖 AI</a><a href="/" class>💻 Dev Tools</a><a href="/" class>🖥️ Tech Products</a><a href="/about" class>About</a></div></nav><div class="prose" style="text-align:center;padding:60px 20px;"><h1>404 — Page Not Found</h1><p>The page you were looking for doesn't exist or may have moved.</p><p><a href="/">← Back to Home</a></p></div><footer class="site-footer">&copy; 2024-2026 AI Tool Stack<br><a href="/">Home</a> · <a href="/about">About</a> · <a href="/">AI Models &amp; Tools</a> · <a href="/">Developer Tools</a> · <a href="/">Tech Products</a> · <a href="/privacy">Privacy</a>&nbsp;&nbsp;|&nbsp;&nbsp; 
+})();</script>ENHANCE_CSSENHANCE_CSS</head><body><nav><div class="nav-inner"><a href="/" class>🏠 Home</a><a href="/" class>📰 News</a><a href="/" class>🤖 AI</a><a href="/" class>💻 Dev Tools</a><a href="/" class>🖥️ Tech Products</a><a href="/about" class>About</a><input id="site-search" type="search" placeholder="Search…" aria-label="Search this site"><div id="search-results" aria-live="polite"></div></div></nav><div class="prose" style="text-align:center;padding:60px 20px;"><h1>404 — Page Not Found</h1><p>The page you were looking for doesn't exist or may have moved.</p><p><a href="/">← Back to Home</a></p></div><footer class="site-footer">&copy; 2024-2026 AI Tool Stack<br><a href="/">Home</a> · <a href="/about">About</a> · <a href="/">AI Models &amp; Tools</a> · <a href="/">Developer Tools</a> · <a href="/">Tech Products</a> · <a href="/privacy">Privacy</a>&nbsp;&nbsp;|&nbsp;&nbsp; 
 <div class="page-stats" style="margin-top:10px;font-size:.85em;color:#6b7280;">📊 全站浏览 <span id="busuanzi_value_site_pv">0</span> · 全站独立访客 <span id="busuanzi_value_site_uv">0</span>　|　📄 本页浏览 <span id="busuanzi_value_page_pv">0</span> · 本页独立访客 <span id="busuanzi_value_page_uv">0</span></div><div id="cf-stats" style="margin-top:6px;font-size:.85em;color:#6b7280;display:none;">🌐 Cloudflare 真实IP：全站 <b id="cf-site-pv">–</b> 浏览 / <b id="cf-site-uv">–</b> 唯一IP　|　📄 本页 <b id="cf-page-pv">–</b> 浏览 / <b id="cf-page-uv">–</b> 唯一IP <span style="opacity:.6;">(按IP累计，区别于busuanzi的cookie访客)</span></div>
 </footer>
 <script async defer src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
@@ -30,6 +30,34 @@
       })
       .catch(function(){});
   } catch(e){}
+})();
+</script>
+
+<script id="enhance-js">
+(function(){
+  var s=document.getElementById('site-search');
+  if(!s) return;
+  var box=document.getElementById('search-results');
+  var pf=null, timer=null;
+  function esc(t){return (t||'').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  s.addEventListener('input',function(){
+    var q=s.value.trim();
+    clearTimeout(timer);
+    if(q.length<2){box.style.display='none';return;}
+    timer=setTimeout(function(){
+      if(!pf){pf=import('/pagefind/pagefind.js');}
+      pf.then(function(m){return m.search(q);})
+        .then(function(r){return Promise.all(r.results.slice(0,8).map(function(x){return x.data();}));})
+        .then(function(rows){
+          if(!rows.length){box.innerHTML='<div style="padding:12px;color:#64748b;font-size:14px;">No results.</div>';box.style.display='block';return;}
+          box.innerHTML=rows.map(function(d){
+            return '<a href="'+d.url+'">'+esc(d.meta&&d.meta.title||d.url)+'<div class="ex">'+esc(d.excerpt)+'</div></a><hr>';
+          }).join('');
+          box.style.display='block';
+        }).catch(function(){box.style.display='none';});
+    },180);
+  });
+  document.addEventListener('click',function(e){if(e.target!==s&&!box.contains(e.target))box.style.display='none';});
 })();
 </script>
 </body></html>

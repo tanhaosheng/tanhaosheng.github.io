@@ -19,7 +19,7 @@
 .mt-banner a{color:#92400e;font-weight:700}
 </style>
 
-</head><body><div id="lang-switcher"><label for="lang-select">🌐</label><select id="lang-select"><option value="en" selected>English</option><option value="zh">中文</option></select></div><div style="background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:10px;margin:14px auto;padding:10px 16px;max-width:900px;font:600 13px/1.6 system-ui,sans-serif;">⚠️ <strong>Affiliate Disclosure / 利益披露:</strong> This page may contain affiliate or promotional links. If you sign up or subscribe through such a link, I may earn a commission — but it <strong>never increases your price</strong> and <strong>never changes my independent conclusions</strong>. See the <a href="/affiliate-disclosure" style="color:#1e3a8a;text-decoration:underline;">Affiliate Disclosure</a> page.</div><div style="border:2px solid #6c3ce1;background:#f5f3ff;border-radius:14px;margin:18px auto;padding:18px 22px;max-width:900px;">
+ENHANCE_CSSENHANCE_CSS</head><body><div id="lang-switcher"><label for="lang-select">🌐</label><select id="lang-select"><option value="en" selected>English</option><option value="zh">中文</option></select></div><div style="background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:10px;margin:14px auto;padding:10px 16px;max-width:900px;font:600 13px/1.6 system-ui,sans-serif;">⚠️ <strong>Affiliate Disclosure / 利益披露:</strong> This page may contain affiliate or promotional links. If you sign up or subscribe through such a link, I may earn a commission — but it <strong>never increases your price</strong> and <strong>never changes my independent conclusions</strong>. See the <a href="/affiliate-disclosure" style="color:#1e3a8a;text-decoration:underline;">Affiliate Disclosure</a> page.</div><div style="border:2px solid #6c3ce1;background:#f5f3ff;border-radius:14px;margin:18px auto;padding:18px 22px;max-width:900px;">
   <div style="font-size:1.05em;font-weight:700;color:#4f2db5;margin-bottom:6px;">🚀 Want to try WorkBuddy yourself? (free credits)</div>
   <div style="font-size:.92em;color:#374151;margin-bottom:12px;">Visit WorkBuddy via the link below and claim your free credits on sign-up. This is an independent hands-on review — whether the link is promotional does not affect the features or price you get.</div>
   <a href="https://workbuddy.cn" target="_blank" rel="noopener" style="display:inline-block;background:#6c3ce1;color:#fff;font-weight:700;text-decoration:none;border-radius:50px;padding:10px 22px;font-size:.95em;">Go to WorkBuddy official site →</a>
@@ -335,6 +335,34 @@
       })
       .catch(function(){});
   } catch(e){}
+})();
+</script>
+
+<script id="enhance-js">
+(function(){
+  var s=document.getElementById('site-search');
+  if(!s) return;
+  var box=document.getElementById('search-results');
+  var pf=null, timer=null;
+  function esc(t){return (t||'').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  s.addEventListener('input',function(){
+    var q=s.value.trim();
+    clearTimeout(timer);
+    if(q.length<2){box.style.display='none';return;}
+    timer=setTimeout(function(){
+      if(!pf){pf=import('/pagefind/pagefind.js');}
+      pf.then(function(m){return m.search(q);})
+        .then(function(r){return Promise.all(r.results.slice(0,8).map(function(x){return x.data();}));})
+        .then(function(rows){
+          if(!rows.length){box.innerHTML='<div style="padding:12px;color:#64748b;font-size:14px;">No results.</div>';box.style.display='block';return;}
+          box.innerHTML=rows.map(function(d){
+            return '<a href="'+d.url+'">'+esc(d.meta&&d.meta.title||d.url)+'<div class="ex">'+esc(d.excerpt)+'</div></a><hr>';
+          }).join('');
+          box.style.display='block';
+        }).catch(function(){box.style.display='none';});
+    },180);
+  });
+  document.addEventListener('click',function(e){if(e.target!==s&&!box.contains(e.target))box.style.display='none';});
 })();
 </script>
 </body></html>

@@ -17,7 +17,7 @@
 .mt-banner a{color:#92400e;font-weight:700}
 </style>
 
-</head><body><div id="lang-switcher"><label for="lang-select">🌐</label><select id="lang-select"><option value="en" selected>English</option><option value="zh">中文</option></select></div><nav><div class="nav-inner"><a href="/" class>🏠 Home</a><a href="/" class>📰 News</a><a href="/" class>🤖 AI</a><a href="/about" class>About</a></div></nav><div style="background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:10px;margin:14px auto;padding:10px 16px;max-width:900px;font:600 13px/1.6 system-ui,sans-serif;">⚠️ <strong>Affiliate Disclosure / 利益披露:</strong> This page may contain affiliate or promotional links. If you sign up or subscribe through such a link, I may earn a commission — but it <strong>never increases your price</strong> and <strong>never changes my independent conclusions</strong>. See the <a href="/affiliate-disclosure" style="color:#1e3a8a;text-decoration:underline;">Affiliate Disclosure</a> page.</div><div style="border:2px solid #6c3ce1;background:#f5f3ff;border-radius:14px;margin:18px auto;padding:18px 22px;max-width:900px;">
+ENHANCE_CSSENHANCE_CSS</head><body><div id="lang-switcher"><label for="lang-select">🌐</label><select id="lang-select"><option value="en" selected>English</option><option value="zh">中文</option></select></div><nav><div class="nav-inner"><a href="/" class>🏠 Home</a><a href="/" class>📰 News</a><a href="/" class>🤖 AI</a><a href="/about" class>About</a><input id="site-search" type="search" placeholder="Search…" aria-label="Search this site"><div id="search-results" aria-live="polite"></div></div></nav><div style="background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:10px;margin:14px auto;padding:10px 16px;max-width:900px;font:600 13px/1.6 system-ui,sans-serif;">⚠️ <strong>Affiliate Disclosure / 利益披露:</strong> This page may contain affiliate or promotional links. If you sign up or subscribe through such a link, I may earn a commission — but it <strong>never increases your price</strong> and <strong>never changes my independent conclusions</strong>. See the <a href="/affiliate-disclosure" style="color:#1e3a8a;text-decoration:underline;">Affiliate Disclosure</a> page.</div><div style="border:2px solid #6c3ce1;background:#f5f3ff;border-radius:14px;margin:18px auto;padding:18px 22px;max-width:900px;">
   <div style="font-size:1.05em;font-weight:700;color:#4f2db5;margin-bottom:6px;">📊 Want the full benchmark data?</div>
   <div style="font-size:.92em;color:#374151;margin-bottom:12px;">This article is a summary of the DeepSeek vs ChatGLM clinical-decision hands-on test. The complete 16-item scoring sheet, the case text, and the scoring rubric live in the micro-site below. Official affiliate/referral programs for these models are still under evaluation.</div>
   <a href="/clinical-benchmark/" style="display:inline-block;background:#6c3ce1;color:#fff;font-weight:700;text-decoration:none;border-radius:50px;padding:10px 22px;font-size:.95em;">Open the full benchmark micro-site →</a>
@@ -36,7 +36,16 @@
 <strong>The question that started this:</strong> Can a <em>free</em> chatbot be trusted with a post-operative breast cancer treatment plan? I'm a thyroid &amp; breast surgeon, not a prompt engineer — so instead of debating it, I ran the two cheapest models I could find on a <strong>real, fully anonymized case</strong> from my own specialty, and scored their answers against the <strong>2026 Chinese Breast Cancer Society (CBCS) guideline</strong> with a fixed rubric. This is what happened. <strong>Spoiler: neither passed, but they failed in very different ways.</strong>
 </div>
 
-<h2>Why I ran this test</h2>
+<div class="viz-block" id="viz-block">
+  <figure style="margin:22px 0;">
+    <img src="/assets/charts/web-vs-agent.svg" alt="Grouped bar chart: the same anonymized breast-cancer case scored 0-100 with a 16-item rubric vs 2026 CBCS. GLM 5.2 web 5 vs agent 44; DeepSeek V4 Flash web 28 vs agent 34; Kimi K2.6 web 37 vs agent 46. The agent wrapper raises every model's floor." style="width:100%;height:auto;border:1px solid #e5e7eb;border-radius:12px;">
+    <figcaption style="font-size:13px;color:#64748b;margin-top:8px;">Figure 1 — Web chat vs WorkBuddy agent, identical case. Same rubric, same guideline (2026 CBCS).</figcaption>
+  </figure>
+  <figure style="margin:22px 0;">
+    <img src="/assets/charts/wrapper-delta.svg" alt="Bar chart of agent-wrapper lift in points: GLM 5.2 +39, Kimi K2.6 +9, DeepSeek V4 Flash +6. A higher web baseline means a smaller wrapper gain — the agent raises the floor, not the ceiling." style="width:100%;height:auto;border:1px solid #e5e7eb;border-radius:12px;">
+    <figcaption style="font-size:13px;color:#64748b;margin-top:8px;">Figure 2 — The agent wrapper lifts the score, but less so when the web baseline is already high.</figcaption>
+  </figure>
+</div><h2>Why I ran this test</h2>
 <p>I work at a public hospital. My department's software budget does not stretch to GPT-4-class subscriptions, and I suspect most of my colleagues are in the same boat. What I <em>do</em> have is free web access to a handful of Chinese LLMs. So the practical question isn't "which model is theoretically best" — it's <strong>"which free model is still useful for the clinical-adjacent reasoning I actually do?"</strong></p>
 <p>I picked a task that is hard, checkable, and high-stakes: <strong>reading a post-op pathology report and recommending next-step adjuvant therapy</strong> for an early breast cancer case. If a model can't handle this, it can't be a decision aid. If it handles it but can't show its work, I still can't trust it. Two free models went head-to-head:</p>
 <ul>
@@ -164,7 +173,15 @@
 <p style="margin-top:24px"><em>This is the first of a planned 5-part <strong>原创实测 / Hands-on Review</strong> series — real, signed, reproducible tests of AI tools I actually use in clinical and research work. Next up: a paid-API cross-check on the same case.</em></p>
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":["Article","MedicalWebPage"],"headline":"ChatGLM 5.2 vs DeepSeek on a Real Breast Cancer Case — A Surgeon's Hands-on Test","description":"A surgeon's hands-on test of two free LLMs (ChatGLM 5.2 vs DeepSeek fast mode) on a real, anonymized post-op breast cancer case, scored against the 2026 CBCS guideline with a 16-item / 100-point rubric. ChatGLM median 5/100 (English, unstable); DeepSeek median 28/100 (Chinese, reproducible). Neither is safe to trust alone on staging or nuance.","author":{"@type":"Person","name":"Tan Haosheng","alternateName":"谭好升","url":"https://tanhaosheng.asia/about.html","jobTitle":"Associate Chief Physician, Department of Thyroid and Breast Surgery","description":"Tan Haosheng (谭好升), MD/PhD (医学博士), Associate Chief Physician (副主任医师) at Taizhou People's Hospital (泰州市人民医院), specializing in thyroid and breast surgery (甲状腺乳腺外科).","alumniOf":{"@type":"EducationalOrganization","name":"Tsinghua University – Peking Union Medical College / National Cancer Center (清华大学-北京协和医学院 / 国家癌症中心)"},"worksFor":{"@type":"Organization","name":"Taizhou People's Hospital (泰州市人民医院)"}},"sameAs":["https://www.jstzhospital.com"],"datePublished":"2026-07-29","dateModified":"2026-07-29","publisher":{"@type":"Organization","name":"AI Tool Stack"},"mainEntityOfPage":"https://tanhaosheng.asia/chatglm-vs-deepseek-clinical-hands-on.html","image":"https://tanhaosheng.asia/assets/og-ai-tools.jpg"}</script>
-<footer>&copy; 2024-2026 AI Tool Stack<br><a href="/">Home</a> · <a href="/about">About</a> · <a href="/">AI Models &amp; Tools</a> · <a href="/clinical-benchmark/">Clinical Benchmark Data</a> · <a href="/privacy">Privacy</a> · <a href="/affiliate-disclosure">Affiliate Disclosure</a>&nbsp;&nbsp;|&nbsp;&nbsp; 
+<div class="nl-block" id="nl-block">
+  <h3>📬 Subscribe — clinical LLM testing, no spam</h3>
+  <p>Get new hands-on model reviews and benchmark updates by email. Free, roughly monthly, unsubscribe anytime.</p>
+  <form action="https://buttondown.email/REPLACE_WITH_YOUR_BUTTONDOWN_USERNAME" method="post" target="_blank">
+    <input type="email" name="email" placeholder="you@hospital.com" required>
+    <button type="submit">Subscribe</button>
+  </form>
+  <p class="nl-note">Powered by Buttondown. Replace <code>REPLACE_WITH_YOUR_BUTTONDOWN_USERNAME</code> in the form action with your Buttondown username to activate (or switch to ConvertKit/Mailchimp the same way).</p>
+</div><footer>&copy; 2024-2026 AI Tool Stack<br><a href="/">Home</a> · <a href="/about">About</a> · <a href="/">AI Models &amp; Tools</a> · <a href="/clinical-benchmark/">Clinical Benchmark Data</a> · <a href="/privacy">Privacy</a> · <a href="/affiliate-disclosure">Affiliate Disclosure</a>&nbsp;&nbsp;|&nbsp;&nbsp; 
 <div class="page-stats" style="margin-top:10px;font-size:.85em;color:#6b7280;">📊 全站浏览 <span id="busuanzi_value_site_pv">0</span> · 全站独立访客 <span id="busuanzi_value_site_uv">0</span>　|　📄 本页浏览 <span id="busuanzi_value_page_pv">0</span> · 本页独立访客 <span id="busuanzi_value_page_uv">0</span></div><div id="cf-stats" style="margin-top:6px;font-size:.85em;color:#6b7280;display:none;">🌐 Cloudflare 真实IP：全站 <b id="cf-site-pv">–</b> 浏览 / <b id="cf-site-uv">–</b> 唯一IP　|　📄 本页 <b id="cf-page-pv">–</b> 浏览 / <b id="cf-page-uv">–</b> 唯一IP <span style="opacity:.6;">(按IP累计，区别于busuanzi的cookie访客)</span></div>
 </footer><script>
 (function(){
@@ -243,5 +260,33 @@
     }
   ]
 }
+</script>
+
+<script id="enhance-js">
+(function(){
+  var s=document.getElementById('site-search');
+  if(!s) return;
+  var box=document.getElementById('search-results');
+  var pf=null, timer=null;
+  function esc(t){return (t||'').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  s.addEventListener('input',function(){
+    var q=s.value.trim();
+    clearTimeout(timer);
+    if(q.length<2){box.style.display='none';return;}
+    timer=setTimeout(function(){
+      if(!pf){pf=import('/pagefind/pagefind.js');}
+      pf.then(function(m){return m.search(q);})
+        .then(function(r){return Promise.all(r.results.slice(0,8).map(function(x){return x.data();}));})
+        .then(function(rows){
+          if(!rows.length){box.innerHTML='<div style="padding:12px;color:#64748b;font-size:14px;">No results.</div>';box.style.display='block';return;}
+          box.innerHTML=rows.map(function(d){
+            return '<a href="'+d.url+'">'+esc(d.meta&&d.meta.title||d.url)+'<div class="ex">'+esc(d.excerpt)+'</div></a><hr>';
+          }).join('');
+          box.style.display='block';
+        }).catch(function(){box.style.display='none';});
+    },180);
+  });
+  document.addEventListener('click',function(e){if(e.target!==s&&!box.contains(e.target))box.style.display='none';});
+})();
 </script>
 </body></html>

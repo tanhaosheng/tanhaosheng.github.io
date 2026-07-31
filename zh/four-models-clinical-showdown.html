@@ -9,7 +9,7 @@
 #lang-switcher select:focus{outline:2px solid #6366f1}
 #lang-switcher option:disabled{color:#bbb}
 </style>
-</head><body><div id="lang-switcher"><label for="lang-select">🌐</label><select id="lang-select"><option value="en">English</option><option value="zh" selected>中文</option></select></div><nav><div class="nav-inner"><a href="/zh/" class>🏠 首页</a><a href="/zh/" class>📰 资讯</a><a href="/zh/" class>🤖 AI</a><a href="/about" class>关于</a></div></nav><div style="background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:10px;margin:14px auto;padding:10px 16px;max-width:900px;font:600 13px/1.6 system-ui,sans-serif;">⚠️ <strong>利益披露 / Affiliate Disclosure：</strong> 本页可能含联盟或推广链接。若通过此类链接注册或订阅，我可能获得佣金——但<strong>不会增加你的价格</strong>，也<strong>不会改变我的独立结论</strong>。详见<a href="/affiliate-disclosure" style="color:#1e3a8a;text-decoration:underline;">利益披露页</a>。</div>
+ENHANCE_CSSENHANCE_CSS</head><body><div id="lang-switcher"><label for="lang-select">🌐</label><select id="lang-select"><option value="en">English</option><option value="zh" selected>中文</option></select></div><nav><div class="nav-inner"><a href="/zh/" class>🏠 首页</a><a href="/zh/" class>📰 资讯</a><a href="/zh/" class>🤖 AI</a><a href="/about" class>关于</a><input id="site-search" type="search" placeholder="Search…" aria-label="Search this site"><div id="search-results" aria-live="polite"></div></div></nav><div style="background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:10px;margin:14px auto;padding:10px 16px;max-width:900px;font:600 13px/1.6 system-ui,sans-serif;">⚠️ <strong>利益披露 / Affiliate Disclosure：</strong> 本页可能含联盟或推广链接。若通过此类链接注册或订阅，我可能获得佣金——但<strong>不会增加你的价格</strong>，也<strong>不会改变我的独立结论</strong>。详见<a href="/affiliate-disclosure" style="color:#1e3a8a;text-decoration:underline;">利益披露页</a>。</div>
 
 <nav class="series-nav" aria-label="Series" style="max-width:900px;margin:18px auto 0;font:600 13px/1.6 system-ui,sans-serif;display:flex;align-items:center;gap:8px;flex-wrap:wrap;"><a href="/" style="color:#6b7280;text-decoration:none;">🏠 首页</a><span style="color:#c4b5fd;">›</span><a href="/model-reviews" style="color:#6c3ce1;text-decoration:none;font-weight:700;">🧪 模型实测系列</a><span style="color:#c4b5fd;">›</span><a href="/clinical-benchmark/" style="color:#6c3ce1;text-decoration:none;">📊 基准数据</a></nav>
 <h1>4 个免费 AI 模型同测一个乳腺癌病例 — 一位外科医生的扩展实测</h1>
@@ -20,7 +20,16 @@
 <strong>为什么写这篇续作：</strong> 我的<a href="/chatglm-vs-deepseek-clinical-hands-on">首测</a>让 DeepSeek 网页快速模式对阵 ChatGLM，用固定的 16 项/100 分标准对照 2026 CBCS 指南评了一个真实的脱敏术后乳腺癌病例。两个模型不够看。读者（也包括我自己）都想知道<strong>豆包（Doubao）</strong>和新的<strong>DeepSeek V4 Pro（跑在 WorkBuddy 智能体里）</strong>排在哪里。于是我把<em>同一个病例、同一段 prompt、同一套评分标准</em>在四个模型上各跑一遍，并列摆出来。剧透：四个里只有一个识破了病历里藏着的那个最关键错误——而且不是你以为的那个。
 </div>
 
-<h2>相比第 1 篇，变了什么</h2>
+<div class="viz-block" id="viz-block">
+  <figure style="margin:22px 0;">
+    <img src="/assets/charts/web-vs-agent.svg" alt="Grouped bar chart: the same anonymized breast-cancer case scored 0-100 with a 16-item rubric vs 2026 CBCS. GLM 5.2 web 5 vs agent 44; DeepSeek V4 Flash web 28 vs agent 34; Kimi K2.6 web 37 vs agent 46. The agent wrapper raises every model's floor." style="width:100%;height:auto;border:1px solid #e5e7eb;border-radius:12px;">
+    <figcaption style="font-size:13px;color:#64748b;margin-top:8px;">Figure 1 — Web chat vs WorkBuddy agent, identical case. Same rubric, same guideline (2026 CBCS).</figcaption>
+  </figure>
+  <figure style="margin:22px 0;">
+    <img src="/assets/charts/wrapper-delta.svg" alt="Bar chart of agent-wrapper lift in points: GLM 5.2 +39, Kimi K2.6 +9, DeepSeek V4 Flash +6. A higher web baseline means a smaller wrapper gain — the agent raises the floor, not the ceiling." style="width:100%;height:auto;border:1px solid #e5e7eb;border-radius:12px;">
+    <figcaption style="font-size:13px;color:#64748b;margin-top:8px;">Figure 2 — The agent wrapper lifts the score, but less so when the web baseline is already high.</figcaption>
+  </figure>
+</div><h2>相比第 1 篇，变了什么</h2>
 <p>病例不变、16 项 prompt 不变、评分标准不变（正确且引用指南=满分；正确但未引=半分；错误=0）。新增两员：</p>
 <ul>
   <li><strong>豆包 Doubao（手机网页版）</strong> — <a href="https://www.doubao.com/" target="_blank" rel="noopener">doubao.com</a>。三次回答，全用英文。</li>
@@ -182,7 +191,15 @@
 <p style="margin-top:24px"><em>这是计划中的 5 篇<strong>原创实测 / Hands-on Review</strong>系列第 2 篇——真实、署名、可复现的 AI 工具实测，皆为我临床与科研中真在用的工具。下一篇：隔离 V4 Pro 的提升究竟来自模型本身还是 WorkBuddy 智能体。</em></p>
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"4 个免费 AI 模型同测一个乳腺癌病例 — 一位外科医生的扩展实测","description":"扩展实测：4 个免费 AI 模型（DeepSeek V4 Pro 经 WorkBuddy、豆包手机版、DeepSeek 网页快速模式、ChatGLM 网页版）跑同一脱敏术后乳腺癌病例，用同一套 16 项/100 分标准对照 2026 CBCS 指南。DeepSeek V4 Pro 50、豆包 41、DeepSeek 网页版 28、ChatGLM 5。仅 V4 Pro 识破分期陷阱。","author":{"@type":"Person","name":"谭好升","alternateName":"Tan Haosheng","url":"https://tanhaosheng.asia/about.html","jobTitle":"Associate Chief Physician, Department of Thyroid and Breast Surgery","description":"谭好升 (Tan Haosheng), 医学博士 (MD/PhD), 副主任医师 (Associate Chief Physician) at 泰州市人民医院 (Taizhou People's Hospital), 甲状腺乳腺外科 (thyroid and breast surgery).","alumniOf":{"@type":"EducationalOrganization","name":"清华大学-北京协和医学院 / 国家癌症中心 (Tsinghua University – Peking Union Medical College / National Cancer Center)"},"worksFor":{"@type":"Organization","name":"泰州市人民医院 (Taizhou People's Hospital)"}},"datePublished":"2026-07-30","dateModified":"2026-07-30","publisher":{"@type":"Organization","name":"AI Tool Stack"},"mainEntityOfPage":"https://tanhaosheng.asia/zh/four-models-clinical-showdown.html","image":"https://tanhaosheng.asia/assets/og-ai-tools.jpg"}</script>
-<footer>&copy; 2024-2026 AI Tool Stack<br><a href="/zh/">首页</a> · <a href="/about">关于</a> · <a href="/zh/">AI 模型与工具</a> · <a href="/clinical-benchmark/">临床基准数据</a> · <a href="/privacy">隐私</a> · <a href="/affiliate-disclosure">利益披露</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+<div class="nl-block" id="nl-block">
+  <h3>📬 Subscribe — clinical LLM testing, no spam</h3>
+  <p>Get new hands-on model reviews and benchmark updates by email. Free, roughly monthly, unsubscribe anytime.</p>
+  <form action="https://buttondown.email/REPLACE_WITH_YOUR_BUTTONDOWN_USERNAME" method="post" target="_blank">
+    <input type="email" name="email" placeholder="you@hospital.com" required>
+    <button type="submit">Subscribe</button>
+  </form>
+  <p class="nl-note">Powered by Buttondown. Replace <code>REPLACE_WITH_YOUR_BUTTONDOWN_USERNAME</code> in the form action with your Buttondown username to activate (or switch to ConvertKit/Mailchimp the same way).</p>
+</div><footer>&copy; 2024-2026 AI Tool Stack<br><a href="/zh/">首页</a> · <a href="/about">关于</a> · <a href="/zh/">AI 模型与工具</a> · <a href="/clinical-benchmark/">临床基准数据</a> · <a href="/privacy">隐私</a> · <a href="/affiliate-disclosure">利益披露</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 <div class="page-stats" style="margin-top:10px;font-size:.85em;color:#6b7280;">📊 全站浏览 <span id="busuanzi_value_site_pv">0</span> · 全站独立访客 <span id="busuanzi_value_site_uv">0</span>　|　📄 本页浏览 <span id="busuanzi_value_page_pv">0</span> · 本页独立访客 <span id="busuanzi_value_page_uv">0</span></div><div id="cf-stats" style="margin-top:6px;font-size:.85em;color:#6b7280;display:none;">🌐 Cloudflare 真实IP：全站 <b id="cf-site-pv">–</b> 浏览 / <b id="cf-site-uv">–</b> 唯一IP　|　📄 本页 <b id="cf-page-pv">–</b> 浏览 / <b id="cf-page-uv">–</b> 唯一IP <span style="opacity:.6;">(按IP累计，区别于busuanzi的cookie访客)</span></div>
 </footer><script>
 (function(){
@@ -259,5 +276,33 @@
     }
   ]
 }
+</script>
+
+<script id="enhance-js">
+(function(){
+  var s=document.getElementById('site-search');
+  if(!s) return;
+  var box=document.getElementById('search-results');
+  var pf=null, timer=null;
+  function esc(t){return (t||'').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  s.addEventListener('input',function(){
+    var q=s.value.trim();
+    clearTimeout(timer);
+    if(q.length<2){box.style.display='none';return;}
+    timer=setTimeout(function(){
+      if(!pf){pf=import('/pagefind/pagefind.js');}
+      pf.then(function(m){return m.search(q);})
+        .then(function(r){return Promise.all(r.results.slice(0,8).map(function(x){return x.data();}));})
+        .then(function(rows){
+          if(!rows.length){box.innerHTML='<div style="padding:12px;color:#64748b;font-size:14px;">No results.</div>';box.style.display='block';return;}
+          box.innerHTML=rows.map(function(d){
+            return '<a href="'+d.url+'">'+esc(d.meta&&d.meta.title||d.url)+'<div class="ex">'+esc(d.excerpt)+'</div></a><hr>';
+          }).join('');
+          box.style.display='block';
+        }).catch(function(){box.style.display='none';});
+    },180);
+  });
+  document.addEventListener('click',function(e){if(e.target!==s&&!box.contains(e.target))box.style.display='none';});
+})();
 </script>
 </body></html>

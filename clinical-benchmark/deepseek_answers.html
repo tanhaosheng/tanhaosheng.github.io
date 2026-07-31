@@ -40,7 +40,7 @@ li{margin:6px 0}
 .meta div{margin:4px 0}
 .meta b{color:#0f172a}
 </style>
-</head>
+ENHANCE_CSSENHANCE_CSS</head>
 <body>
 <div class="wrap">
 <nav class="series-nav" aria-label="Breadcrumb" style="font:600 13px/1.6 system-ui,sans-serif;display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px;"><a href="/" style="color:#6b7280;text-decoration:none;">🏠 首页</a><span style="color:#cbd5e1;">›</span><a href="/model-reviews" style="color:#6c3ce1;text-decoration:none;font-weight:700;">🧪 模型实测系列</a><span style="color:#cbd5e1;">›</span><span style="color:#374151;">📊 基准数据</span></nav>
@@ -136,6 +136,34 @@ li{margin:6px 0}
       })
       .catch(function(){});
   } catch(e){}
+})();
+</script>
+
+<script id="enhance-js">
+(function(){
+  var s=document.getElementById('site-search');
+  if(!s) return;
+  var box=document.getElementById('search-results');
+  var pf=null, timer=null;
+  function esc(t){return (t||'').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  s.addEventListener('input',function(){
+    var q=s.value.trim();
+    clearTimeout(timer);
+    if(q.length<2){box.style.display='none';return;}
+    timer=setTimeout(function(){
+      if(!pf){pf=import('/pagefind/pagefind.js');}
+      pf.then(function(m){return m.search(q);})
+        .then(function(r){return Promise.all(r.results.slice(0,8).map(function(x){return x.data();}));})
+        .then(function(rows){
+          if(!rows.length){box.innerHTML='<div style="padding:12px;color:#64748b;font-size:14px;">No results.</div>';box.style.display='block';return;}
+          box.innerHTML=rows.map(function(d){
+            return '<a href="'+d.url+'">'+esc(d.meta&&d.meta.title||d.url)+'<div class="ex">'+esc(d.excerpt)+'</div></a><hr>';
+          }).join('');
+          box.style.display='block';
+        }).catch(function(){box.style.display='none';});
+    },180);
+  });
+  document.addEventListener('click',function(e){if(e.target!==s&&!box.contains(e.target))box.style.display='none';});
 })();
 </script>
 </body>

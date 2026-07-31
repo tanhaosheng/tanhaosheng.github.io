@@ -9,7 +9,7 @@
 #lang-switcher select:focus{outline:2px solid #6366f1}
 #lang-switcher option:disabled{color:#bbb}
 </style>
-</head><body><div id="lang-switcher"><label for="lang-select">🌐</label><select id="lang-select"><option value="en" selected>English</option><option value="zh">中文</option></select></div><nav><div class="nav-inner"><a href="/" class>🏠 Home</a><a href="/" class>📰 News</a><a href="/" class>🤖 AI</a><a href="/about" class>About</a></div></nav><div style="background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:10px;margin:14px auto;padding:10px 16px;max-width:900px;font:600 13px/1.6 system-ui,sans-serif;">⚠️ <strong>Affiliate Disclosure / 利益披露:</strong> This page may contain affiliate or promotional links. If you sign up or subscribe through such a link, I may earn a commission — but it <strong>never increases your price</strong> and <strong>never changes my independent conclusions</strong>. See the <a href="/affiliate-disclosure" style="color:#1e3a8a;text-decoration:underline;">Affiliate Disclosure</a> page.</div>
+ENHANCE_CSSENHANCE_CSS</head><body><div id="lang-switcher"><label for="lang-select">🌐</label><select id="lang-select"><option value="en" selected>English</option><option value="zh">中文</option></select></div><nav><div class="nav-inner"><a href="/" class>🏠 Home</a><a href="/" class>📰 News</a><a href="/" class>🤖 AI</a><a href="/about" class>About</a><input id="site-search" type="search" placeholder="Search…" aria-label="Search this site"><div id="search-results" aria-live="polite"></div></div></nav><div style="background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:10px;margin:14px auto;padding:10px 16px;max-width:900px;font:600 13px/1.6 system-ui,sans-serif;">⚠️ <strong>Affiliate Disclosure / 利益披露:</strong> This page may contain affiliate or promotional links. If you sign up or subscribe through such a link, I may earn a commission — but it <strong>never increases your price</strong> and <strong>never changes my independent conclusions</strong>. See the <a href="/affiliate-disclosure" style="color:#1e3a8a;text-decoration:underline;">Affiliate Disclosure</a> page.</div>
 
 <nav class="series-nav" aria-label="Series" style="max-width:900px;margin:18px auto 0;font:600 13px/1.6 system-ui,sans-serif;display:flex;align-items:center;gap:8px;flex-wrap:wrap;"><a href="/" style="color:#6b7280;text-decoration:none;">🏠 Home</a><span style="color:#c4b5fd;">›</span><a href="/model-reviews" style="color:#6c3ce1;text-decoration:none;font-weight:700;">🧪 Model Reviews</a><span style="color:#c4b5fd;">›</span><a href="/clinical-benchmark/" style="color:#6c3ce1;text-decoration:none;">📊 Benchmark data</a></nav>
 <h1>4 Free AI Models on One Breast Cancer Case — A Surgeon's Extended Test</h1>
@@ -33,7 +33,16 @@
 <strong>Why this follow-up exists:</strong> My <a href="/chatglm-vs-deepseek-clinical-hands-on">first test</a> pitted DeepSeek web (fast mode) against ChatGLM on a real, anonymized post-op breast cancer case and scored them with a fixed 16-item / 100-point rubric against the 2026 CBCS guideline. Two models were not enough. Readers — and I — wanted to know where <strong>Doubao (豆包)</strong> and the new <strong>DeepSeek V4 Pro inside the WorkBuddy agent</strong> land. So I ran the <em>identical case, identical prompt, identical rubric</em> on all four and put them side by side. Spoiler: only one model caught the single most important error hidden in the record — and it wasn't the one you'd guess.
 </div>
 
-<h2>What changed since Part 1</h2>
+<div class="viz-block" id="viz-block">
+  <figure style="margin:22px 0;">
+    <img src="/assets/charts/web-vs-agent.svg" alt="Grouped bar chart: the same anonymized breast-cancer case scored 0-100 with a 16-item rubric vs 2026 CBCS. GLM 5.2 web 5 vs agent 44; DeepSeek V4 Flash web 28 vs agent 34; Kimi K2.6 web 37 vs agent 46. The agent wrapper raises every model's floor." style="width:100%;height:auto;border:1px solid #e5e7eb;border-radius:12px;">
+    <figcaption style="font-size:13px;color:#64748b;margin-top:8px;">Figure 1 — Web chat vs WorkBuddy agent, identical case. Same rubric, same guideline (2026 CBCS).</figcaption>
+  </figure>
+  <figure style="margin:22px 0;">
+    <img src="/assets/charts/wrapper-delta.svg" alt="Bar chart of agent-wrapper lift in points: GLM 5.2 +39, Kimi K2.6 +9, DeepSeek V4 Flash +6. A higher web baseline means a smaller wrapper gain — the agent raises the floor, not the ceiling." style="width:100%;height:auto;border:1px solid #e5e7eb;border-radius:12px;">
+    <figcaption style="font-size:13px;color:#64748b;margin-top:8px;">Figure 2 — The agent wrapper lifts the score, but less so when the web baseline is already high.</figcaption>
+  </figure>
+</div><h2>What changed since Part 1</h2>
 <p>Same case, same 16-part prompt, same scoring key (correct + cited guideline = full; correct but uncited = half; wrong = 0). What's new:</p>
 <ul>
   <li><strong>豆包 Doubao (mobile web)</strong> — <a href="https://www.doubao.com/" target="_blank" rel="noopener">doubao.com</a>. Three runs, all in English.</li>
@@ -195,7 +204,15 @@
 <p style="margin-top:24px"><em>This is the second of a planned 5-part <strong>原创实测 / Hands-on Review</strong> series — real, signed, reproducible tests of AI tools I actually use in clinical and research work. Next up: isolate whether the V4 Pro gain comes from the model or the WorkBuddy agent.</em></p>
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":["Article","MedicalWebPage"],"headline":"4 Free AI Models on One Breast Cancer Case — A Surgeon's Extended Test","description":"Extended hands-on test of four free AI models (DeepSeek V4 Pro via WorkBuddy, Doubao mobile, DeepSeek web fast, ChatGLM web) on one anonymized post-op breast cancer case, scored with the same 16-item / 100-point rubric against the 2026 CBCS guideline. DeepSeek V4 Pro 50, Doubao 41, DeepSeek web 28, ChatGLM 5. Only V4 Pro caught the staging trap.","author":{"@type":"Person","name":"Tan Haosheng","alternateName":"谭好升","url":"https://tanhaosheng.asia/about.html","jobTitle":"Associate Chief Physician, Department of Thyroid and Breast Surgery","description":"Tan Haosheng (谭好升), MD/PhD (医学博士), Associate Chief Physician (副主任医师) at Taizhou People's Hospital (泰州市人民医院), specializing in thyroid and breast surgery (甲状腺乳腺外科).","alumniOf":{"@type":"EducationalOrganization","name":"Tsinghua University – Peking Union Medical College / National Cancer Center (清华大学-北京协和医学院 / 国家癌症中心)"},"worksFor":{"@type":"Organization","name":"Taizhou People's Hospital (泰州市人民医院)"}},"sameAs":["https://www.jstzhospital.com"],"datePublished":"2026-07-30","dateModified":"2026-07-30","publisher":{"@type":"Organization","name":"AI Tool Stack"},"mainEntityOfPage":"https://tanhaosheng.asia/four-models-clinical-showdown.html","image":"https://tanhaosheng.asia/assets/og-ai-tools.jpg"}</script>
-<footer>&copy; 2024-2026 AI Tool Stack<br><a href="/">Home</a> · <a href="/about">About</a> · <a href="/">AI Models &amp; Tools</a> · <a href="/clinical-benchmark/">Clinical Benchmark Data</a> · <a href="/privacy">Privacy</a> · <a href="/affiliate-disclosure">Affiliate Disclosure</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+<div class="nl-block" id="nl-block">
+  <h3>📬 Subscribe — clinical LLM testing, no spam</h3>
+  <p>Get new hands-on model reviews and benchmark updates by email. Free, roughly monthly, unsubscribe anytime.</p>
+  <form action="https://buttondown.email/REPLACE_WITH_YOUR_BUTTONDOWN_USERNAME" method="post" target="_blank">
+    <input type="email" name="email" placeholder="you@hospital.com" required>
+    <button type="submit">Subscribe</button>
+  </form>
+  <p class="nl-note">Powered by Buttondown. Replace <code>REPLACE_WITH_YOUR_BUTTONDOWN_USERNAME</code> in the form action with your Buttondown username to activate (or switch to ConvertKit/Mailchimp the same way).</p>
+</div><footer>&copy; 2024-2026 AI Tool Stack<br><a href="/">Home</a> · <a href="/about">About</a> · <a href="/">AI Models &amp; Tools</a> · <a href="/clinical-benchmark/">Clinical Benchmark Data</a> · <a href="/privacy">Privacy</a> · <a href="/affiliate-disclosure">Affiliate Disclosure</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 <div class="page-stats" style="margin-top:10px;font-size:.85em;color:#6b7280;">📊 全站浏览 <span id="busuanzi_value_site_pv">0</span> · 全站独立访客 <span id="busuanzi_value_site_uv">0</span>　|　📄 本页浏览 <span id="busuanzi_value_page_pv">0</span> · 本页独立访客 <span id="busuanzi_value_page_uv">0</span></div><div id="cf-stats" style="margin-top:6px;font-size:.85em;color:#6b7280;display:none;">🌐 Cloudflare 真实IP：全站 <b id="cf-site-pv">–</b> 浏览 / <b id="cf-site-uv">–</b> 唯一IP　|　📄 本页 <b id="cf-page-pv">–</b> 浏览 / <b id="cf-page-uv">–</b> 唯一IP <span style="opacity:.6;">(按IP累计，区别于busuanzi的cookie访客)</span></div>
 </footer><script>
 (function(){
@@ -272,5 +289,33 @@
     }
   ]
 }
+</script>
+
+<script id="enhance-js">
+(function(){
+  var s=document.getElementById('site-search');
+  if(!s) return;
+  var box=document.getElementById('search-results');
+  var pf=null, timer=null;
+  function esc(t){return (t||'').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  s.addEventListener('input',function(){
+    var q=s.value.trim();
+    clearTimeout(timer);
+    if(q.length<2){box.style.display='none';return;}
+    timer=setTimeout(function(){
+      if(!pf){pf=import('/pagefind/pagefind.js');}
+      pf.then(function(m){return m.search(q);})
+        .then(function(r){return Promise.all(r.results.slice(0,8).map(function(x){return x.data();}));})
+        .then(function(rows){
+          if(!rows.length){box.innerHTML='<div style="padding:12px;color:#64748b;font-size:14px;">No results.</div>';box.style.display='block';return;}
+          box.innerHTML=rows.map(function(d){
+            return '<a href="'+d.url+'">'+esc(d.meta&&d.meta.title||d.url)+'<div class="ex">'+esc(d.excerpt)+'</div></a><hr>';
+          }).join('');
+          box.style.display='block';
+        }).catch(function(){box.style.display='none';});
+    },180);
+  });
+  document.addEventListener('click',function(e){if(e.target!==s&&!box.contains(e.target))box.style.display='none';});
+})();
 </script>
 </body></html>
