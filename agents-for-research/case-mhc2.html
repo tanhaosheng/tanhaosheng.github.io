@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Case 2 — MHC-II / NK Co-culture: The Cross-Tumor Trap Test · AI Tool Stack</title>
+<meta name="description" content="The 'unrelated paper' trap: a surgeon deliberately drops an NK co-culture / MHC-II / LAG-3 draft (HNSCC + thyroid cancer) onto a breast-cancer scRNA-seq dataset and watches whether the AI agent notices the data doesn't match the paper. Full transcript, honest verdict.">
+<meta name="author" content="Tan Haosheng, MD, PhD">
+<meta name="keywords" content="MHC-II LAG-3 NK co-culture, HNSCC thyroid cancer, AI agent cross-tumor validation, AI agent scientific writing, AI manuscript review, agent failure mode">
+<meta name="robots" content="index,follow">
+<meta name="article:author" content="Tan Haosheng">
+<meta name="article:published_time" content="2026-07-31">
+<meta name="article:modified_time" content="2026-07-31">
+<link rel="canonical" href="https://tanhaosheng.asia/agents-for-research/case-mhc2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Case 2 — MHC-II / NK Co-culture: The Cross-Tumor Trap Test">
+<meta property="og:description" content="The unrelated-paper test: a surgeon drops an NK co-culture / MHC-II draft on top of breast-cancer scRNA-seq. Does the agent notice the mismatch, or does it fabricate?">
+<meta property="og:url" content="https://tanhaosheng.asia/agents-for-research/case-mhc2">
+<meta property="og:image" content="https://tanhaosheng.asia/assets/og-cover.png">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Case 2 — The Cross-Tumor Trap Test">
+<meta name="twitter:description" content="Does the agent notice when the data and the paper are about different tumors? Full transcript.">
+<meta name="twitter:image" content="https://tanhaosheng.asia/assets/og-cover.png">
+<link rel="alternate" hreflang="en" href="https://tanhaosheng.asia/agents-for-research/case-mhc2">
+<link rel="alternate" hreflang="x-default" href="https://tanhaosheng.asia/agents-for-research/case-mhc2">
+
+<!--SITE-NAV-CSS-->
+<style>
+nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1 0%,#4f2db5 100%);box-shadow:0 2px 12px rgba(108,60,225,.25)}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 18px;flex-wrap:wrap}
+.nav-inner a{color:#fff;text-decoration:none;font:600 14px/1 system-ui,sans-serif;padding:6px 8px;border-radius:8px;white-space:nowrap}
+.nav-inner a:hover{background:rgba(255,255,255,.16)}
+.nav-inner a.active{background:rgba(255,255,255,.22)}
+#site-search{flex:1;min-width:140px;max-width:320px;margin-left:auto;padding:8px 12px;border:1px solid rgba(255,255,255,.4);border-radius:999px;background:rgba(255,255,255,.95);color:#1f2937;font:500 14px system-ui,sans-serif}
+#site-search::placeholder{color:#6b7280}
+#search-results{position:absolute;top:100%;right:18px;width:min(360px,92vw);background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.18);padding:8px;z-index:1001;max-height:60vh;overflow:auto}
+#search-results a{display:block;padding:8px 10px;border-radius:8px;color:#1f2937;text-decoration:none;font:500 14px system-ui}
+#search-results a:hover{background:#f3f0ff}
+#search-results mark{background:#fde68a;color:#1f2937}
+</style>
+
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font:16px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#1f2937;background:#f7f8fb}
+a{color:#4f2db5;text-decoration:none}a:hover{text-decoration:underline}
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+h1,h2,h3{line-height:1.25;color:#111827;margin:1.4em 0 .6em}
+h1{font-size:2rem}h2{font-size:1.5rem}h3{font-size:1.2rem}
+code{background:#eef0f7;padding:2px 6px;border-radius:6px;font-size:.9em}
+pre{background:#0f172a;color:#e2e8f0;padding:16px;border-radius:12px;overflow:auto;font-size:13px;line-height:1.55}
+pre code{background:none;color:inherit;padding:0}
+blockquote{border-left:4px solid #6c3ce1;margin:1em 0;padding:.4em 1em;background:#f3f0ff;color:#374151}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.95rem}
+th,td{border:1px solid #e5e7eb;padding:9px 12px;text-align:left;vertical-align:top}
+th{background:#f3f0ff;color:#4f2db5;font-weight:700}
+tr:nth-child(even) td{background:#faf9ff}
+hr{border:none;border-top:1px solid #e5e7eb;margin:2em 0}
+main{padding:32px 0}
+.series-nav{font:600 13px system-ui;color:#6b7280;margin:18px 0 -8px}
+.series-nav a{color:#4f2db5;text-decoration:none;margin-right:6px}
+.lede{font-size:1.1rem;color:#374151;margin:0 0 1.4em;max-width:42em}
+.tag{display:inline-block;font:700 11px/1 system-ui;padding:4px 8px;border-radius:999px;margin-right:4px;text-transform:uppercase;letter-spacing:.04em}
+.tag.good{background:#dcfce7;color:#166534}
+.tag.warn{background:#fef3c7;color:#92400e}
+.tag.bad{background:#fee2e2;color:#991b1b}
+.tag.info{background:#dbeafe;color:#1e40af}
+.find-block{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:18px 22px;margin:16px 0}
+.find-block h3{margin-top:0;color:#4f2db5;font-size:1.1rem}
+.find-block p{margin:.4em 0;color:#374151}
+.find-block ul{margin:.4em 0 .4em 1.2em}
+.find-block li{margin:.3em 0}
+.find-block.support{border-left:4px solid #16a34a}
+.find-block.contradict{border-left:4px solid #ea580c}
+.find-block.partial{border-left:4px solid #ca8a04}
+.find-block.soften{border-left:4px solid #4f2db5}
+.prompt-box{background:#f9fafb;border:1px solid #d1d5db;border-radius:12px;padding:14px 18px;margin:14px 0;font:500 14px/1.6 ui-monospace,Menlo,Consolas,monospace;color:#1f2937;white-space:pre-wrap}
+.callout{background:#fff7ed;border:1px solid #fed7aa;border-radius:14px;padding:18px 22px;margin:24px 0}
+.callout h3{margin-top:0;color:#9a3412}
+.meta-row{display:flex;gap:14px;flex-wrap:wrap;color:#6b7280;font:600 13px system-ui;margin:.2em 0 1.4em}
+.meta-row span{background:#f3f0ff;color:#4f2db5;padding:4px 10px;border-radius:999px}
+.nl-block{background:#f3f0ff;border:1px solid #ddd6fe;border-radius:16px;padding:22px 24px;margin:32px 0;text-align:center}
+.nl-block h3{margin-top:0;color:#4f2db5}
+.nl-block form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.nl-block input[type=email]{padding:11px 14px;border:1px solid #cbbcf6;border-radius:999px;min-width:260px;font-size:15px}
+.nl-block button{background:#4f2db5;color:#fff;border:none;padding:11px 22px;border-radius:999px;font-weight:700;cursor:pointer}
+.nl-note{font-size:13px;color:#6b7280;margin-top:10px}
+footer{background:#0f172a;color:#cbd5e1;padding:36px 20px;margin-top:48px}
+footer .container{max-width:1100px;margin:0 auto;padding:0 20px}
+footer a{color:#a5b4fc;text-decoration:none}
+footer a:hover{text-decoration:underline}
+footer .credits{font-size:13px;color:#94a3b8;margin-top:14px}
+@media(max-width:760px){.nav-inner{gap:8px}}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "name": "Case 2 — MHC-II / NK Co-culture: The Cross-Tumor Trap Test",
+  "headline": "Case 2 — The Cross-Tumor Trap Test",
+  "description": "A surgeon deliberately drops an NK co-culture / MHC-II / LAG-3 draft (HNSCC + thyroid cancer) onto a breast-cancer scRNA-seq dataset and watches whether the AI agent notices the mismatch.",
+  "author": {"@type": "Person", "name": "Tan Haosheng", "honorificSuffix": "MD, PhD"},
+  "publisher": {"@type": "Person", "name": "Tan Haosheng"},
+  "datePublished": "2026-07-31",
+  "dateModified": "2026-07-31",
+  "inLanguage": "en",
+  "isPartOf": {"@type": "CollectionPage", "name": "AI Agents for Medical Research Writing", "url": "https://tanhaosheng.asia/agents-for-research/"},
+  "about": [
+    {"@type": "MedicalCondition", "name": "Head and neck squamous cell carcinoma"},
+    {"@type": "MedicalCondition", "name": "Thyroid cancer"},
+    {"@type": "Gene", "name": "LAG-3"},
+    {"@type": "Gene", "name": "HLA-DRA"},
+    {"@type": "Gene", "name": "STAT1"}
+  ]
+}
+</script>
+</head>
+
+<body>
+<nav aria-label="Primary"><div class="nav-inner"><a href="/">🏠 Home</a><a href="/model-reviews">🔬 Model Reviews</a><a href="/agents-for-research/" class="active">🤖 Agents for Research</a><a href="/clinical-benchmark/">📊 Benchmark</a><a href="/about">About</a><input id="site-search" type="search" placeholder="Search…" aria-label="Search this site"><div id="search-results" aria-live="polite"></div></div></nav>
+
+<main>
+<div class="container">
+
+<p class="series-nav"><a href="/">Home</a> › <a href="/agents-for-research/">Agents for Research</a> › <strong>Case 2 — MHC-II cross-tumor trap</strong></p>
+
+<h1>Case 2 — MHC-II / NK co-culture: the cross-tumor trap</h1>
+<p class="byline" style="color:#6b7280;font:600 13px system-ui">By Tan Haosheng, MD, PhD · Last reviewed 2026-07-31</p>
+<p class="meta-row"><span>Trap test</span><span>Same scRNA-seq data as Case 1</span><span>Different paper, different tumor type</span><span>WorkBuddy Hy3</span><span>Reproducible transcript</span></p>
+
+<p class="lede">The single-cell dataset is the same breast-cancer samples from <a href="/agents-for-research/case-klrb1">Case 1</a>. The paper is different on purpose. It's an NK co-culture study on head-and-neck squamous cell carcinoma and thyroid cancer — co-culture with NK cells, MHC-II upregulation, LAG-3 inhibition. Wrong tumor. Wrong immune-pressure design. Wrong everything to validate against breast-cancer scRNA-seq. I gave the agent the same data and this second paper, with one short follow-up prompt. This case tests failure mode ④ — domain-mismatch blindness.</p>
+
+<h2>The prompt I gave the agent (verbatim)</h2>
+<div class="prompt-box">10-MHC-II.docx 这篇文章的结论支持吗？</div>
+<p>That's the entire second prompt. The first session had already loaded the breast-cancer data and the KLRB1 manuscript. I just dropped the MHC-II paper in and asked: does this one's conclusions get supported?</p>
+
+<h2>Setup</h2>
+<table>
+  <tr><th>Item</th><th>Detail</th></tr>
+  <tr><td>scRNA-seq data</td><td>Same as Case 1 — two breast-cancer tumor biopsies, one patient. No NK co-culture arm.</td></tr>
+  <tr><td>Manuscript</td><td>HNSCC + thyroid cancer NK co-culture. Core thesis: tumor cells under NK pressure upregulate MHC-II; MHC-II binds LAG-3 on T/NK; result is NK inhibition. Quantitative claims include MHC-II gene co-linearity (ρ=0.78–0.93) and STAT1/CIITA correlation with MHC-II (ρ=0.30–0.34).</td></tr>
+  <tr><td>Manuscript status</td><td>Draft. I do not quote the manuscript here; only summarize the agent's assessment.</td></tr>
+  <tr><td>What "pass" looks like</td><td>Agent identifies that the data and paper are mismatched, restricts its evaluation to <em>cross-tumor</em> claims, and flags which quantitative numbers would transfer and which would not.</td></tr>
+  <tr><td>What "fail" looks like</td><td>Agent generates a confident paragraph claiming the breast-cancer data "supports" the HNSCC + thyroid co-culture conclusion.</td></tr>
+</table>
+
+<h2>Hard limits the agent named before any conclusion</h2>
+<p>This is the part that matters most. Before running any analysis, the agent flagged two structural mismatches that would have invalidated any quantitative comparison:</p>
+<div class="callout">
+  <h3>Two constraints the agent named up front</h3>
+  <ol>
+    <li><strong>Wrong cancer type.</strong> The dataset is breast cancer (luminal / mixed microenvironment); the paper is HNSCC + thyroid. Tumor-cell MHC-II regulation and immune-compartment composition differ substantially across these sites. Any quantitative number from one does not transfer to the other.</li>
+    <li><strong>No NK pressure pairing.</strong> The paper's mechanism depends on NK co-culture inducing MHC-II upregulation. The dataset has only two conditions (CD45-sorted / unsorted), not an NK-pressure arm. The dataset cannot test the central mechanistic claim, full stop.</li>
+  </ol>
+  <p>The agent still went on to evaluate what <em>could</em> be evaluated cross-tumor — but with these caveats attached to every conclusion. That's the difference between a usable output and a fabricated one.</p>
+</div>
+
+<h2>Result 1 — LAG-3 enrichment in cytotoxic T/NK</h2>
+<p>This part the agent <strong>could</strong> evaluate cross-tumor, because the LAG-3 / cytotoxic axis is not strongly tumor-type-specific.</p>
+
+<div class="find-block support">
+  <h3>✓ LAG-3⁺ cells have ~2.3× the cytotoxic score of LAG-3⁻ cells</h3>
+  <p>LAG3⁺ cell cytotoxic-score mean: <strong>0.754</strong>. LAG3⁻: <strong>0.326</strong>. Ratio 2.31×. P-value ≈ 0. Depth-corrected OR = 2.281, P = 1.2×10⁻³¹.</p>
+  <p>Effectors enriched in LAG3⁺: GZMB OR 4.14, NKG7 OR 4.17, CD8A OR 3.63, GNLY OR 2.60.</p>
+  <p>Sub-compartment distribution of LAG3⁺ cells: CD8⁺ effector/exhausted T 17.9% &gt; proliferating T 10.7% ≈ NKT-like γδ T 10.2% &gt;&gt; CD4⁺ memory T 5.9% &gt; Treg 2.2%. Same ranking pattern the paper reports.</p>
+</div>
+
+<div class="find-block partial">
+  <h3>△ But the effect-size correlation is much weaker than the paper's</h3>
+  <p>Within-cell-type LAG3 vs cytotoxicity score: Spearman ρ = <strong>0.211</strong>. The paper reports ρ = 0.62 in its dataset. The agent noted that the 2.3× ratio matches in direction but the continuous correlation magnitude is much smaller in this breast-cancer data — consistent with the cross-tumor caveat, but also consistent with sample-size and depth-distribution differences. The agent did <strong>not</strong> claim this is a refutation.</p>
+</div>
+
+<h2>Result 2 — Tumor-cell MHC-II expression</h2>
+<div class="find-block support">
+  <h3>✓ Epithelial tumor cells do express MHC-II, and MHC-I is intact</h3>
+  <p>MHC-II on tumor epithelium: HLA-DRA 47.4%, CD74 66.5% positivity.</p>
+  <p>MHC-I on tumor epithelium: HLA-B 79.2%, HLA-C 72.6%, B2M 86.0% — consistent with the paper's claim that MHC-I is not downregulated in this setting.</p>
+  <p>But myeloid cells have higher MHC-II than epithelium (HLA-DRA 99.5% positivity in myeloid). Tumor-cell MHC-II mean expression is roughly 1/9 of myeloid MHC-II. The agent flagged this asymmetry explicitly.</p>
+</div>
+
+<div class="find-block contradict">
+  <h3>✗ MHC-II gene co-linearity is much weaker than the paper reports</h3>
+  <p>The paper claims tight co-expression among MHC-II genes (ρ 0.78–0.93). In this breast-cancer data, intra-epithelial MHC-II gene Spearman ρ has median <strong>0.167</strong> (range 0.083–0.236) — about 1/5 of the paper's value. Only within myeloid cells does the correlation approach the paper's number (median 0.696, still below the paper's 0.78–0.93 range).</p>
+  <p>The agent's interpretation: tight MHC-II co-linearity is a <em>myeloid</em> signature, not a tumor-epithelial signature. The paper's claim, if validated in HNSCC + thyroid, may not generalize to epithelial cells in breast cancer.</p>
+</div>
+
+<div class="find-block contradict">
+  <h3>✗ STAT1 / CIITA drive MHC-II — correlation is far weaker here</h3>
+  <p>The paper reports STAT1 ↔ MHC-II ρ ≈ 0.30–0.34 and CIITA involvement. In the breast-cancer data, STAT1's highest correlation with MHC-II components is <strong>0.138</strong>; CIITA, the canonical MHC-II master regulator, only reaches ~0.05. Both are far below the paper's claim.</p>
+</div>
+
+<h2>Writing recommendations</h2>
+<p>The agent's evaluation ended with three explicit writing recommendations, which I am following as I revise the MHC-II draft:</p>
+<ol>
+  <li><strong>Cite cross-tumor for LAG-3 enrichment only.</strong> The 2.3× ratio and the sub-compartment ranking of LAG3⁺ cells are robust enough to cite this breast-cancer data as supportive. The continuous ρ does not transfer, so do not put a specific number in the cross-tumor discussion.</li>
+  <li><strong>Do not cite this dataset for MHC-II co-linearity or STAT1/CIITA correlations.</strong> Including those numbers in a cross-tumor paragraph would actively weaken the paper's quantitative claims. Keep the paper's own bulk / co-culture data as the source.</li>
+  <li><strong>Add a "limits of cross-tumor inference" annotation.</strong> When the paper's discussion mentions MHC-II regulation in epithelial cells, it should explicitly note that this breast-cancer dataset shows different magnitudes and that the mechanism may be tumor-site-specific.</li>
+</ol>
+
+<div class="find-block soften">
+  <h3>Additional methodological flag from the agent</h3>
+  <p>The HLA-DRA-high epithelial cells in this dataset show a small but consistent enrichment for LYZ⁺ / C1QA⁺ signal — a myeloid marker pattern. The agent flagged this as a possible ambient-RNA contamination artifact: free RNA from myeloid cells in the input solution gets attributed to tumor cells in the count matrix. Before the paper cites any epithelial MHC-II percentage from this dataset, it should run a decontamination step (e.g. SoupX, DecontX) and re-measure.</p>
+</div>
+
+<h2>Score against the methodology rubric</h2>
+<table>
+  <tr><th>Dimension</th><th>Score</th><th>Why</th></tr>
+  <tr><td>Technical accuracy</td><td><span class="tag good">Pass</span></td><td>Correct MHC-I / MHC-II / effector numbers; correct depth correction; correct comparison to paper-reported effect sizes.</td></tr>
+  <tr><td>Honesty about uncertainty</td><td><span class="tag good">Pass</span></td><td>Named the cross-tumor and no-NK-pressure caveats <em>before</em> the analysis. Did not paper over the ρ mismatch.</td></tr>
+  <tr><td>Actionable writing recommendations</td><td><span class="tag good">Pass</span></td><td>Three explicit edits: cite LAG-3 only, do not cite correlations, add cross-tumor caveat. Plus the ambient-RNA decontamination step recommendation.</td></tr>
+  <tr><td>Failure-mode handling</td><td><span class="tag good">Pass</span></td><td>Failure mode ④ (domain-mismatch blindness) explicitly avoided. The agent refused to draw quantitative conclusions that depend on cross-tumor generalization. It also flagged a downstream methodological risk (ambient RNA).</td></tr>
+</table>
+
+<h2>What this case taught me about AI agents</h2>
+<ul>
+  <li><strong>The most useful behavior was refusal to fully answer.</strong> A weaker agent would have said "yes the data supports your paper" with a confident paragraph. This one said "here is what I can evaluate cross-tumor, here is what I cannot, here is what the numbers actually say." That's the difference between a tool I can cite and a tool I cannot.</li>
+  <li><strong>Mismatch-naming has to happen early, not late.</strong> The agent named "wrong cancer type" and "no NK pressure pairing" in the first paragraph of its reply, before any number. That ordering matters — once an agent has shown you numbers, you tend to trust them; the structural caveat has to come first.</li>
+  <li><strong>Cross-tumor inference is not a binary yes/no.</strong> Some claims transfer (LAG-3 enrichment in cytotoxic T/NK is broadly conserved). Others don't (MHC-II co-linearity and STAT1/CIITA correlations are tumor-site-dependent). A useful agent splits these; a fabrication-prone one treats the paper as a single yes/no target.</li>
+  <li><strong>Ambient RNA contamination is a real risk in single-cell tumor data.</strong> An agent that just reports "% of epithelial cells expressing HLA-DRA" without a contamination check is selling you numbers that may not exist.</li>
+</ul>
+
+<div class="callout">
+  <h3>Limitations of this case</h3>
+  <ul>
+    <li>Cross-tumor inference is the test — that is also the case's limit. The MHC-II paper's HNSCC + thyroid mechanism is not directly validated or refuted by breast-cancer data.</li>
+    <li>One patient, two samples. No claim about cohort-level behavior.</li>
+    <li>Ambient-RNA decontamination was recommended but not run inside this session; the reported HLA-DRA percentage on tumor epithelium is the pre-decontamination number.</li>
+  </ul>
+</div>
+
+<p style="text-align:center;margin:32px 0">
+  <a class="cta" style="display:inline-block;background:#fff;color:#4f2db5;font-weight:700;padding:12px 22px;border-radius:999px;text-decoration:none;border:1px solid #4f2db5;margin-right:8px" href="/agents-for-research/case-klrb1">← Back to Case 1 (KLRB1)</a>
+  <a class="cta" style="display:inline-block;background:#4f2db5;color:#fff;font-weight:700;padding:12px 22px;border-radius:999px;text-decoration:none" href="/agents-for-research/methodology">Methodology →</a>
+</p>
+
+<div class="nl-block">
+  <h3>Get the next case study by email</h3>
+  <form action="https://buttondown.email/tanhaosheng" method="post" target="_blank">
+    <input type="email" name="email" placeholder="you@hospital.com" required>
+    <button type="submit">Subscribe</button>
+  </form>
+  <p class="nl-note">Powered by Buttondown.</p>
+</div>
+
+</div>
+</main>
+
+<footer>
+<div class="container">
+  <p><strong>Tan Haosheng, MD, PhD</strong> · Associate Chief Physician, Thyroid &amp; Breast Surgery · Taizhou People's Hospital</p>
+  <p style="margin:.4em 0"><a href="/">Home</a> · <a href="/model-reviews">Model Reviews</a> · <a href="/agents-for-research/">Agents for Research</a> · <a href="/clinical-benchmark/">Clinical Benchmark</a> · <a href="/about">About</a> · <a href="/contact">Contact</a> · <a href="/privacy">Privacy</a></p>
+  <p class="credits">The MHC-II draft referenced here is an unpublished work-in-progress and is summarized, not quoted. The breast-cancer scRNA-seq data is my own de-identified patient material.</p>
+</div>
+</footer>
+
+<!--ENHANCE-JS-->
+<script>
+let _pfReady = false;
+async function loadPagefind() {
+  if (_pfReady) return; _pfReady = true;
+  try {
+    const m = await import('/pagefind/pagefind.js');
+    await m.options({ excerptLength: 30 });
+    window._pf = m;
+  } catch(e) { console.warn('pagefind load failed', e); }
+}
+const sb = document.getElementById('site-search');
+const sr = document.getElementById('search-results');
+if (sb && sr) {
+  let t;
+  sb.addEventListener('input', () => {
+    clearTimeout(t);
+    const q = sb.value.trim();
+    if (!q) { sr.innerHTML=''; sr.style.display='none'; return; }
+    t = setTimeout(async () => {
+      if (!window._pf) await loadPagefind();
+      if (!window._pf) return;
+      const r = await window._pf.search(q);
+      if (!r.results.length) { sr.innerHTML='<div style="padding:8px;color:#6b7280">No results</div>'; sr.style.display='block'; return; }
+      const top = r.results.slice(0, 8);
+      const html = await Promise.all(top.map(async x => {
+        const d = await x.data();
+        return `<a href="${d.url}">${d.meta?.title || d.url}<br><small style="color:#6b7280">${(d.excerpt||'').replace(/<[^>]*>/g,'').slice(0,140)}</small></a>`;
+      }));
+      sr.innerHTML = html.join('');
+      sr.style.display = 'block';
+    }, 180);
+  });
+  sb.addEventListener('blur', () => setTimeout(()=>{ sr.style.display='none'; }, 200));
+  sb.addEventListener('focus', () => { if (sr.innerHTML) sr.style.display='block'; });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Methodology — How I Test AI Agents on Medical Research Tasks · AI Tool Stack</title>
+<meta name="description" content="The protocol I use to test AI agents on real medical research tasks: prompt construction, data attachment, evaluation rubric, and the four failure modes I watch for. Reproducible framework, honest scoring criteria.">
+<meta name="author" content="Tan Haosheng, MD, PhD">
+<meta name="keywords" content="AI agent evaluation, AI research methodology, AI manuscript review protocol, agent failure modes, reproducible AI testing">
+<meta name="robots" content="index,follow">
+<meta name="article:author" content="Tan Haosheng">
+<meta name="article:published_time" content="2026-07-31">
+<meta name="article:modified_time" content="2026-07-31">
+<link rel="canonical" href="https://tanhaosheng.asia/agents-for-research/methodology">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Methodology — How I Test AI Agents on Medical Research Tasks">
+<meta property="og:description" content="Reproducible protocol for testing AI agents on real research tasks: prompt, data, rubric, failure modes.">
+<meta property="og:url" content="https://tanhaosheng.asia/agents-for-research/methodology">
+<meta property="og:image" content="https://tanhaosheng.asia/assets/og-cover.png">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Methodology — How I Test AI Agents on Medical Research Tasks">
+<meta name="twitter:description" content="Reproducible protocol. Prompt, data, rubric, four failure modes.">
+<meta name="twitter:image" content="https://tanhaosheng.asia/assets/og-cover.png">
+<link rel="alternate" hreflang="en" href="https://tanhaosheng.asia/agents-for-research/methodology">
+<link rel="alternate" hreflang="x-default" href="https://tanhaosheng.asia/agents-for-research/methodology">
+
+<!--SITE-NAV-CSS-->
+<style>
+nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1 0%,#4f2db5 100%);box-shadow:0 2px 12px rgba(108,60,225,.25)}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 18px;flex-wrap:wrap}
+.nav-inner a{color:#fff;text-decoration:none;font:600 14px/1 system-ui,sans-serif;padding:6px 8px;border-radius:8px;white-space:nowrap}
+.nav-inner a:hover{background:rgba(255,255,255,.16)}
+.nav-inner a.active{background:rgba(255,255,255,.22)}
+#site-search{flex:1;min-width:140px;max-width:320px;margin-left:auto;padding:8px 12px;border:1px solid rgba(255,255,255,.4);border-radius:999px;background:rgba(255,255,255,.95);color:#1f2937;font:500 14px system-ui,sans-serif}
+#site-search::placeholder{color:#6b7280}
+#search-results{position:absolute;top:100%;right:18px;width:min(360px,92vw);background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.18);padding:8px;z-index:1001;max-height:60vh;overflow:auto}
+#search-results a{display:block;padding:8px 10px;border-radius:8px;color:#1f2937;text-decoration:none;font:500 14px system-ui}
+#search-results a:hover{background:#f3f0ff}
+#search-results mark{background:#fde68a;color:#1f2937}
+</style>
+
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font:16px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#1f2937;background:#f7f8fb}
+a{color:#4f2db5;text-decoration:none}a:hover{text-decoration:underline}
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+h1,h2,h3{line-height:1.25;color:#111827;margin:1.4em 0 .6em}
+h1{font-size:2rem}h2{font-size:1.5rem}h3{font-size:1.2rem}
+code{background:#eef0f7;padding:2px 6px;border-radius:6px;font-size:.9em}
+pre{background:#0f172a;color:#e2e8f0;padding:16px;border-radius:12px;overflow:auto}
+pre code{background:none;color:inherit;padding:0}
+blockquote{border-left:4px solid #6c3ce1;margin:1em 0;padding:.4em 1em;background:#f3f0ff;color:#374151}
+table{border-collapse:collapse;width:100%;margin:1em 0}
+th,td{border:1px solid #e5e7eb;padding:8px 10px;text-align:left;vertical-align:top}
+hr{border:none;border-top:1px solid #e5e7eb;margin:2em 0}
+main,.content{padding:32px 0}
+.series-nav{font:600 13px system-ui;color:#6b7280;margin:18px 0 -8px}
+.series-nav a{color:#4f2db5;text-decoration:none;margin-right:6px}
+.series-nav a:hover{text-decoration:underline}
+.lede{font-size:1.1rem;color:#374151;margin:0 0 1.4em;max-width:42em}
+.step{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:18px 22px;margin:18px 0}
+.step h3{margin-top:0;color:#4f2db5}
+.step .num{display:inline-block;background:#4f2db5;color:#fff;font:700 13px/1 system-ui;width:26px;height:26px;border-radius:50%;text-align:center;line-height:26px;margin-right:8px;vertical-align:middle}
+.failure{background:#fef2f2;border:1px solid #fecaca;border-radius:14px;padding:16px 20px;margin:14px 0}
+.failure h4{margin:0 0 4px;color:#991b1b}
+.failure p{margin:.3em 0;color:#7f1d1d;font-size:.95rem}
+.callout{background:#fff7ed;border:1px solid #fed7aa;border-radius:14px;padding:18px 22px;margin:24px 0}
+.callout h3{margin-top:0;color:#9a3412}
+.nl-block{background:#f3f0ff;border:1px solid #ddd6fe;border-radius:16px;padding:22px 24px;margin:32px 0;text-align:center}
+.nl-block h3{margin-top:0;color:#4f2db5}
+.nl-block form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.nl-block input[type=email]{padding:11px 14px;border:1px solid #cbbcf6;border-radius:999px;min-width:260px;font-size:15px}
+.nl-block button{background:#4f2db5;color:#fff;border:none;padding:11px 22px;border-radius:999px;font-weight:700;cursor:pointer}
+.nl-note{font-size:13px;color:#6b7280;margin-top:10px}
+footer{background:#0f172a;color:#cbd5e1;padding:36px 20px;margin-top:48px}
+footer .container{max-width:1100px;margin:0 auto;padding:0 20px}
+footer a{color:#a5b4fc;text-decoration:none}
+footer a:hover{text-decoration:underline}
+footer .credits{font-size:13px;color:#94a3b8;margin-top:14px}
+@media(max-width:760px){.nav-inner{gap:8px}}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "name": "Methodology — How I Test AI Agents on Medical Research Tasks",
+  "headline": "How to Test AI Agents on Medical Research Tasks",
+  "description": "Reproducible protocol for evaluating AI agents on real research tasks: prompt construction, data attachment, scoring rubric, and four key failure modes to watch for.",
+  "author": {"@type": "Person", "name": "Tan Haosheng", "honorificSuffix": "MD, PhD"},
+  "publisher": {"@type": "Person", "name": "Tan Haosheng"},
+  "datePublished": "2026-07-31",
+  "dateModified": "2026-07-31",
+  "inLanguage": "en",
+  "isPartOf": {"@type": "CollectionPage", "name": "AI Agents for Medical Research Writing", "url": "https://tanhaosheng.asia/agents-for-research/"}
+}
+</script>
+</head>
+
+<body>
+<nav aria-label="Primary"><div class="nav-inner"><a href="/">🏠 Home</a><a href="/model-reviews">🔬 Model Reviews</a><a href="/agents-for-research/" class="active">🤖 Agents for Research</a><a href="/clinical-benchmark/">📊 Benchmark</a><a href="/about">About</a><input id="site-search" type="search" placeholder="Search…" aria-label="Search this site"><div id="search-results" aria-live="polite"></div></div></nav>
+
+<main>
+<div class="container">
+
+<p class="series-nav"><a href="/">Home</a> › <a href="/agents-for-research/">Agents for Research</a> › <strong>Methodology</strong></p>
+
+<h1>Methodology — How I test AI agents on medical research tasks</h1>
+<p class="byline" style="color:#6b7280;font:600 13px system-ui">By Tan Haosheng, MD, PhD · Last reviewed 2026-07-31</p>
+
+<p class="lede">Every case in <a href="/agents-for-research/">this section</a> follows the same protocol. I document it here so you can reproduce it, audit it, and — most importantly — apply it to <em>your</em> data before trusting any agent's conclusions.</p>
+
+<h2>The 5-step protocol</h2>
+
+<div class="step">
+  <h3><span class="num">1</span>Pick a task a real surgeon-researcher would outsource</h3>
+  <p>Not a synthetic Q&amp;A. The task must be (a) something I'd do myself with R/Python/literature-search, and (b) something where a bad answer would actually cost me time or get caught in peer review. Examples I use here:</p>
+  <ul>
+    <li><strong>Sample identity verification</strong>: which sample is CD45-sorted, which isn't, given two unmarked BAM/MEX files.</li>
+    <li><strong>Manuscript support check</strong>: does a published dataset actually support the claims in my own draft?</li>
+    <li><strong>Cross-tumor trap</strong>: attach an unrelated draft on top of the data and see if the agent notices the mismatch.</li>
+  </ul>
+</div>
+
+<div class="step">
+  <h3><span class="num">2</span>One prompt, no chain-of-thought guidance</h3>
+  <p>The prompt is plain language, written the way I would ask a colleague. I do not give the agent step-by-step instructions or pre-structured JSON. If the agent needs to scaffold itself, that is part of the test.</p>
+  <p>I do not tell the agent which tools it is allowed to use. A real agent will pick whatever it has available (Python, scanpy, file readers, etc.). Restricting the toolset would change the answer.</p>
+</div>
+
+<div class="step">
+  <h3><span class="num">3</span>Attach real data, not toy data</h3>
+  <p>The protocol requires real, messy, partially-remembered data. Real data is what exposes the difference between a tool that knows what it doesn't know and a tool that hallucinates. Toy data hides everything interesting.</p>
+</div>
+
+<div class="step">
+  <h3><span class="num">4</span>One shot, no retries, recorded in full</h3>
+  <p>I run the agent exactly once per case. I save the entire transcript — every code execution, every error, every retry the agent does on its own. The point of one-shot is to capture the realistic worst case for a busy researcher. The transcript is published alongside the verdict.</p>
+</div>
+
+<div class="step">
+  <h3><span class="num">5</span>Score against a fixed rubric</h3>
+  <p>The rubric has four dimensions. Each case gets a verdict per dimension, plus an overall pass/fail/partial.</p>
+  <table>
+    <thead><tr><th>Dimension</th><th>What "pass" looks like</th><th>What "fail" looks like</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Technical accuracy</strong></td><td>Correct cell-type calls, correct marker lists, correct statistical test, correct effect size, correct direction of effect.</td><td>Wrong marker → wrong cell type; confounded test (e.g. pseudo-bulk treated as single-cell); statistical claim with no underlying numbers.</td></tr>
+      <tr><td><strong>Honesty about uncertainty</strong></td><td>Says "I cannot conclude X from this data", names what would be needed, doesn't oversell.</td><td>Smooths over mismatched sample/paper; reports correlation as "strong" when n=2.</td></tr>
+      <tr><td><strong>Actionable writing recommendations</strong></td><td>Tells me which sentences to soften, which to remove, what caveats to add, what additional experiments would settle the question.</td><td>Generic "results are promising" boilerplate; "consider further validation" without naming what.</td></tr>
+      <tr><td><strong>Failure-mode handling</strong></td><td>Notices when it's looking at the wrong tumor type, single patient, or no NK-pressure pairing. Calls it out before drawing conclusions.</td><td>Generates a plausible-sounding answer anyway.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2>The four failure modes I watch for</h2>
+<p>Most "AI failed on my data" stories are actually one of these four. I score each case against all four.</p>
+
+<div class="failure">
+  <h4>① Silent guessing</h4>
+  <p>The agent doesn't know which sample is which, and instead of saying so, picks one and proceeds. This is the worst failure mode for biological data because every downstream conclusion inherits the wrong assumption.</p>
+  <p><em>How I test it</em>: deliberately withhold ground truth on sample labels. The agent has to reason from cell-type composition or marker expression. If it can name the right one from the data, that's a pass; if it asks, that's a partial pass (still better than guessing); if it invents, that's a fail.</p>
+</div>
+
+<div class="failure">
+  <h4>② Composition confusion</h4>
+  <p>The agent computes a correlation on aggregated (pseudo-bulk) data and calls it a "single-cell finding". In a heterogeneous tumor, this conflates cell-type composition with cell-type behavior. Two cells can have ρ=0 inside themselves but ρ=0.85 when you average by patient — and both are mathematically true, biologically opposite.</p>
+  <p><em>How I test it</em>: ask about a claim that exists in the literature as a single-cell statement but is often computed as pseudo-bulk. If the agent runs both and explains the difference, pass; if it only reports pseudo-bulk and calls it single-cell, fail.</p>
+</div>
+
+<div class="failure">
+  <h4>③ Depth confounding</h4>
+  <p>scRNA-seq cells with higher UMI counts have more genes detected. A "positive" gene is more likely to be detected in a high-depth cell regardless of biology. Naïve %positive comparisons can be entirely an artifact of sequencing depth.</p>
+  <p><em>How I test it</em>: when the agent reports a gene X as enriched in cluster Y, I check whether it stratified by depth (or used a depth-corrected test). If it did, pass; if it just said "X is enriched in Y", partial at best.</p>
+</div>
+
+<div class="failure">
+  <h4>④ Domain-mismatch blindness</h4>
+  <p>The agent has the data for breast cancer and a paper about HNSCC + thyroid. A model with no domain awareness will still generate a confident cross-tumor validation. A useful agent should refuse, or at minimum flag the mismatch as a limitation before drawing conclusions.</p>
+  <p><em>How I test it</em>: this is exactly <a href="/agents-for-research/case-mhc2">Case 2</a> — the "unrelated paper" trap.</p>
+</div>
+
+<h2>What I do <em>not</em> test in this section</h2>
+<ul>
+  <li><strong>Speed benchmarks</strong>: I report wall-clock time but I do not optimize for it. A 5-minute answer that's wrong is worse than an 18-minute answer that's right.</li>
+  <li><strong>Hallucinated citations</strong>: the agent's training-data cutoff is not in scope for this section. I test on real attached files, not on the agent's recall.</li>
+  <li><strong>UI / UX / latency</strong>: this is a research methodology section, not a product review.</li>
+  <li><strong>Multi-agent orchestration</strong>: I run one agent per case. Multi-agent routing is a separate (and interesting) question.</li>
+</ul>
+
+<div class="callout">
+  <h3>Reproducibility — what you can actually verify</h3>
+  <p>For each case I publish:</p>
+  <ul>
+    <li>The <strong>prompt as written</strong> (so you can re-run it verbatim).</li>
+    <li>The <strong>data description</strong> (sample IDs, tissue, platform, sequencing depth band) without re-uploading raw FASTQ.</li>
+    <li>The <strong>agent's full transcript</strong> (install steps, code, errors, retries, final output) — typically several thousand lines.</li>
+    <li>The <strong>summary verdict</strong> in three columns: what the agent got right, what it got wrong, what it would take to settle the question.</li>
+  </ul>
+  <p>What you cannot fully reproduce is the exact agent version. Agents drift between versions; the model weights and toolset I tested under are pinned in each case file.</p>
+</div>
+
+<h2>My biases, declared up front</h2>
+<p>I'm not a neutral evaluator. Three biases you should know about when reading my verdicts:</p>
+<ol>
+  <li><strong>I want the agent to be useful.</strong> I am a busy surgeon-researcher with limited time for Python pipelines. A working agent saves me days per paper. I am inclined to give partial credit.</li>
+  <li><strong>I know the biology of my own data.</strong> I can tell when the agent is hand-waving because I already have a hypothesis. An outside reader might rate the same output more generously. I'm trying to compensate for this by quoting the agent's claims verbatim and showing the underlying numbers in each case.</li>
+  <li><strong>I tested one agent.</strong> WorkBuddy Hy3 is what I have access to. Until I run the same protocol against another agent under the same conditions, "the agent" in these case studies means "this one agent on this version on this date".</li>
+</ol>
+
+<p>Now read <a href="/agents-for-research/case-klrb1">Case 1 (KLRB1 + breast cancer scRNA-seq)</a> or <a href="/agents-for-research/case-mhc2">Case 2 (MHC-II cross-tumor trap)</a>.</p>
+
+<div class="nl-block">
+  <h3>Get the next case study by email</h3>
+  <form action="https://buttondown.email/tanhaosheng" method="post" target="_blank">
+    <input type="email" name="email" placeholder="you@hospital.com" required>
+    <button type="submit">Subscribe</button>
+  </form>
+  <p class="nl-note">Powered by Buttondown.</p>
+</div>
+
+</div>
+</main>
+
+<footer>
+<div class="container">
+  <p><strong>Tan Haosheng, MD, PhD</strong> · Associate Chief Physician, Thyroid &amp; Breast Surgery · Taizhou People's Hospital</p>
+  <p style="margin:.4em 0"><a href="/">Home</a> · <a href="/model-reviews">Model Reviews</a> · <a href="/agents-for-research/">Agents for Research</a> · <a href="/clinical-benchmark/">Clinical Benchmark</a> · <a href="/about">About</a> · <a href="/contact">Contact</a> · <a href="/privacy">Privacy</a></p>
+  <p class="credits">Methodology is research-methodology documentation. It is not a substitute for IRB protocol, statistical consulting, or domain expert review.</p>
+</div>
+</footer>
+
+<!--ENHANCE-JS-->
+<script>
+let _pfReady = false;
+async function loadPagefind() {
+  if (_pfReady) return; _pfReady = true;
+  try {
+    const m = await import('/pagefind/pagefind.js');
+    await m.options({ excerptLength: 30 });
+    window._pf = m;
+  } catch(e) { console.warn('pagefind load failed', e); }
+}
+const sb = document.getElementById('site-search');
+const sr = document.getElementById('search-results');
+if (sb && sr) {
+  let t;
+  sb.addEventListener('input', () => {
+    clearTimeout(t);
+    const q = sb.value.trim();
+    if (!q) { sr.innerHTML=''; sr.style.display='none'; return; }
+    t = setTimeout(async () => {
+      if (!window._pf) await loadPagefind();
+      if (!window._pf) return;
+      const r = await window._pf.search(q);
+      if (!r.results.length) { sr.innerHTML='<div style="padding:8px;color:#6b7280">No results</div>'; sr.style.display='block'; return; }
+      const top = r.results.slice(0, 8);
+      const html = await Promise.all(top.map(async x => {
+        const d = await x.data();
+        return `<a href="${d.url}">${d.meta?.title || d.url}<br><small style="color:#6b7280">${(d.excerpt||'').replace(/<[^>]*>/g,'').slice(0,140)}</small></a>`;
+      }));
+      sr.innerHTML = html.join('');
+      sr.style.display = 'block';
+    }, 180);
+  });
+  sb.addEventListener('blur', () => setTimeout(()=>{ sr.style.display='none'; }, 200));
+  sb.addEventListener('focus', () => { if (sr.innerHTML) sr.style.display='block'; });
+}
+</script>
+</body>
+</html>
