@@ -5,4 +5,6 @@ compatibility_flags = ["nodejs_compat"]
 
 [assets]
 directory = "."
-exclude = [".git", ".git/**", ".wrangler", ".wrangler/**", "node_modules", "node_modules/**", ".DS_Store"]
+# NOTE: Wrangler 4.x does NOT support an "exclude" key here. It is silently
+# ignored (only a warning), which previously caused .git/ to be uploaded
+# publicly. Exclusions are handled by the .assetsignore file in this directory.
