@@ -85,13 +85,64 @@
 <p>One anonymized post-op breast-cancer case; identical prompt; a 16-item / 100-point rubric; reference standard = 2026 CBCS / CSCO 2024 / NCCN 2025. Every run is signed and reproducible. The case image, prompt, and score sheet are published in the <a href="/clinical-benchmark/">Benchmark Data</a> appendix so anyone can re-score any model. See the full <a href="/model-reviews">Model Reviews series (V1 → V4)</a> for transcripts.</p>
 
 <h2>Submit your own run (community)</h2>
-<p>This leaderboard is meant to grow beyond my own runs. To add your model:</p>
-<ol>
-  <li>Take the published <strong>anonymized case image + prompt</strong> from the <a href="/clinical-benchmark/">Benchmark Data</a> appendix.</li>
-  <li>Score the model's answer with the same <strong>10/16-item score sheet</strong> against 2026 CBCS.</li>
-  <li>Submit your numbers via the project's GitHub repo (being set up — link added here once live), or email them in.</li>
-</ol>
-<p style="font-size:13.5px;color:#64748b;">Only the public case/prompt/score sheet are used. No unpublished material is involved, by design.</p>
+<p>This leaderboard is meant to grow beyond my own runs. You can add any free model you've tested — no code, no GitHub account needed.</p>
+
+<style>
+.submit-kit{border:1px solid #e5e7eb;border-radius:12px;padding:16px 18px;margin:16px 0;background:#fff}
+.submit-kit h3{margin:0 0 8px;color:#4f2db5;font-size:17px}
+.submit-kit ul{margin:6px 0 4px 20px}
+.submit-kit li{margin-bottom:6px}
+#submit-run{display:grid;gap:11px;margin-top:6px}
+#submit-run label{display:flex;flex-direction:column;font-size:13.5px;font-weight:600;color:#374151;gap:4px}
+#submit-run input,#submit-run select,#submit-run textarea{border:1px solid #cbd5e1;border-radius:8px;padding:9px 11px;font:400 15px/1.4 system-ui;color:#1a1a2e}
+#submit-run input:focus,#submit-run select:focus,#submit-run textarea:focus{outline:2px solid #6c3ce1;outline-offset:1px}
+#submit-run button{justify-self:start;background:#6c3ce1;color:#fff;border:0;border-radius:9px;padding:11px 18px;font:700 15px/1 system-ui;cursor:pointer}
+#submit-run button:hover{background:#4f2db5}
+.note-conf{border-left:4px solid #16a34a;background:#f0fdf4;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:14px}
+.fine{font-size:12.5px;color:#64748b;margin:10px 0 0;line-height:1.6}
+.fine code{background:#f1f5f9;padding:1px 5px;border-radius:4px}
+</style>
+
+<div class="submit-kit">
+  <h3>① Get the public test kit (free, reusable)</h3>
+  <p style="margin:0">Everything you need is already published:</p>
+  <ul>
+    <li>The anonymized case image + identical prompt → <a href="/clinical-benchmark/framework_en">Framework v1.0 (EN)</a> or <a href="/clinical-benchmark/framework">框架 v1.0 (中文)</a> — §1 Prompt, §2 the 16-item / 100-point score sheet, §3 the answer key.</li>
+    <li>Run the prompt in your model (web chat <em>or</em> agent wrapper), then score the answer with the same 16-item rubric against 2026 CBCS / CSCO 2024 / NCCN 2025.</li>
+  </ul>
+</div>
+
+<div class="submit-kit">
+  <h3>② Fill in your result</h3>
+  <form id="submit-run" onsubmit="return buildRunMail();">
+    <label>Model name *<input name="model" required placeholder="e.g. Qwen3, GLM-5.2, DeepSeek-V4"></label>
+    <label>Model version / snapshot date<input name="ver" placeholder="e.g. 2026-07 snapshot"></label>
+    <label>Interface *<select name="iface"><option value="web chat">Web chat</option><option value="agent wrapper">Agent wrapper</option></select></label>
+    <label>Your total score /100 *<input name="score" type="number" min="0" max="100" required placeholder="0–100"></label>
+    <label>Your email (so I can verify / credit you) *<input name="email" type="email" required placeholder="you@example.com"></label>
+    <label>Optional notes<textarea name="notes" rows="3" placeholder="Run-to-run variance, stability, anything worth flagging"></textarea></label>
+    <button type="submit">📧 Compose submission email</button>
+  </form>
+  <p class="fine">Clicking opens your email app pre-filled to <code>jstz1983@163.com</code> with your answers. Please attach 1–2 screenshots of the model's answer so I can re-score and verify before publishing. <strong>Nothing is posted automatically</strong> — I review every submission.</p>
+</div>
+
+<div class="note-conf"><strong>Confidentiality:</strong> submit only results produced from the <em>public</em> framework kit. Do not include any patient data, unpublished manuscripts, or private prompts. By submitting you agree the result may be published on this leaderboard with credit (or anonymously, on request).</div>
+
+<script>
+function buildRunMail(){
+  var f=document.getElementById('submit-run'), d=f.elements;
+  var subject='[Leaderboard submission] '+d['model'].value+' ('+d['iface'].value+') — '+d['score'].value+'/100';
+  var body='Model: '+d['model'].value+'\n'+
+           'Version / snapshot date: '+d['ver'].value+'\n'+
+           'Interface: '+d['iface'].value+'\n'+
+           'Total score /100: '+d['score'].value+'\n'+
+           'Submitted by: '+d['email'].value+'\n'+
+           'Notes:\n'+d['notes'].value+'\n\n'+
+           'Attached: 1–2 screenshots of the model answer for re-scoring.\n';
+  window.location.href='mailto:jstz1983@163.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+  return false;
+}
+</script>
 
 <div class="byline-card">— Tan Haosheng, MD/PhD · 副主任医师 · 甲状腺乳腺外科 (Thyroid &amp; Breast Surgery), 泰州市人民医院 (Taizhou People's Hospital). This is research-methodology documentation, not medical advice.</div>
 <footer class="site-footer">&copy; 2024-2026 Tan Haosheng · <a href="/">Home</a> · <a href="/about">About</a> · <a href="/privacy">Privacy</a><br>Anonymous, privacy-respecting usage analytics (Google Analytics). Open benchmark data on the <a href="/clinical-benchmark/">Benchmark</a> page.</footer>

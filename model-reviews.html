@@ -225,7 +225,7 @@ nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1
 <details><summary>Why is the same model scored on different cases across reviews?</summary>
 <p>V1 and V2 use a "Tis trap" case (a 0.2 cm microinvasive focus where the report's literal line says "TisN0M0 / Stage 0" but the correct stage is pT1miN0M0 IA — a classic transcription-error trap). V3 uses a different case that has no such trap but adds a multi-feature decision (correct staging + LVI handling + AI duration + bone protection). Different cases = different rubrics = different absolute scores, but within each review the ordering is fair and meaningful.</p></details>
 <details><summary>Can I submit my own run to the series?</summary>
-<p>Yes. The image, prompt, and rubric are public in the <a href="/clinical-benchmark/">data appendix</a>. Run any model, score yourself against the same 10 / 16 items, and email me the screenshot + score. I will add a community-runners section to the appendix and credit the runner. The point of the series is reproducibility, not exclusivity.</p></details>
+<p>Yes. The image, prompt, and rubric are public in the <a href="/clinical-benchmark/">data appendix</a>. Run any model, score yourself against the same 16-item rubric, and submit it through the <a href="/leaderboard">leaderboard submission form</a> (email + screenshot). I'll verify and add your run to the community leaderboard, crediting you if you like. The point of the series is reproducibility, not exclusivity.</p></details>
 <details><summary>What is the "specific guideline section" rule, and why does it cost so many models points?</summary>
 <p>Each model's answer must cite a specific guideline <em>section, table, or page number</em> for the decision to count as fully correct. Citing a guideline by name (e.g., "NCCN 2025" or "CSCO 2024") without a specific location is half credit. Citing nothing is zero on that item. In V1–V3, <em>every</em> model in the series has lost the full 12 / 100 points on this item — across four model families and three wrappers. That is itself a finding: the "I don't cite sections" weakness is a model behavior, not a wrapper behavior.</p></details>
 </div>
@@ -284,7 +284,7 @@ nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1
       "name": "Can I submit my own run to the series?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. The image, prompt, and rubric are public in the data appendix. Run any model, score yourself against the same 10 / 16 items, and email me the screenshot + score. I will add a community-runners section to the appendix and credit the runner. The point of the series is reproducibility, not exclusivity."
+        "text": "Yes. The image, prompt, and rubric are public in the data appendix. Run any model, score yourself against the same 16-item rubric, and submit it through the leaderboard form at /leaderboard (email + screenshot). I will verify and add your run to the community leaderboard, crediting you if you like. The point of the series is reproducibility, not exclusivity."
       }
     },
     {
