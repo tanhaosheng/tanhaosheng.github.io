@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" href="/assets/favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://tanhaosheng.asia/benchmark-repeats/deepseek-20runs-en">
+<meta name="description" content="DeepSeek web (fast mode) run 20 times on one anonymized breast-cancer case using the standard text prompt, scored with the 16-item/100 rubric against 2026 CBCS guidelines. Mean 69.8, SD 3.54, range 12 (63–75), judged unstable per the 1.96×SD academic criterion. Systematic blind spots in endocrine details (3.2a/b/c/d).">
+<title>DeepSeek 20-Run Repeat: Same Case, Same Rubric</title>
+<style>:root{--primary:#6c3ce1;--primary-dark:#4f2db5;--accent:#f59e0b;--bg:#f5f7fa;--text:#1a1a2e;--text-light:#6b7280;--border:#e5e7eb;--card:#fff}.*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--text);max-width:820px;margin:0 auto;padding:0 20px;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;font-size:19px;line-height:1.8}a{color:var(--primary);text-decoration:none}h1{color:var(--primary);margin:28px 0 14px;font-size:30px;line-height:1.25}h2{color:var(--primary-dark);margin:34px 0 12px;font-size:23px;padding-bottom:6px;border-bottom:2px solid var(--primary)}h3{color:var(--primary-dark);margin:22px 0 8px;font-size:18px}p{margin-bottom:15px}ul,ol{margin:0 0 16px 22px}li{margin-bottom:7px}table{border-collapse:collapse;width:100%;margin:18px 0;font-size:15px}th,td{border:1px solid var(--border);text-align:left;padding:10px 11px}th{background:#f3f4f6;font-weight:600}tr:nth-child(2n){background:#f9fafb}nav{z-index:100;background:linear-gradient(135deg,#6c3ce1 0%,#4f2db5 100%);position:sticky;top:0;box-shadow:0 2px 12px #6c3ce140}nav .nav-inner{max-width:900px;margin:0 auto;display:flex;overflow-x:auto}nav a{color:#ffffffe6;white-space:nowrap;padding:14px 16px;font-size:15px;font-weight:500;text-decoration:none}nav a:hover,nav a.active{color:#fff;background:#ffffff26}.article-byline{font-size:14px;color:#6b7280;margin:0 0 16px;padding:10px 14px;background:#f8fafc;border-left:3px solid #2563eb;border-radius:6px}.article-byline a{font-weight:600}.series-badge{display:inline-block;background:#ede9fe;color:var(--primary-dark);border:1px solid #c4b5fd;border-radius:999px;padding:4px 12px;font-size:13px;font-weight:700;margin-bottom:14px}.box{border-left:4px solid var(--accent);background:#fff3cd;border-radius:4px;margin:18px 0;padding:16px}.box.blue{border-left-color:#2563eb;background:#eff6ff}.takeaways{background:var(--card);border:1px solid var(--border);border-radius:8px;margin:18px 0;padding:16px 22px}.takeaways h3{margin-top:0}.score-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:20px 0}.score-card{border:1px solid var(--border);border-radius:12px;padding:14px 16px;background:#fff;box-shadow:0 1px 4px #0000000d}.score-card .model{font-weight:700;font-size:16px;margin-bottom:6px}.score-card .big{font-size:40px;font-weight:800;line-height:1}.score-card .big.win{color:#16a34a}.score-card .big.mid{color:#d97706}.score-card .big.lose{color:#dc2626}.score-card .rows{font-size:13.5px;color:#374151;margin-top:8px;line-height:1.7}.pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12.5px;font-weight:600}.pill.green{background:#dcfce7;color:#15803d}.pill.red{background:#fee2e2;color:#b91c1c}.pill.amber{background:#fef3c7;color:#b45309}.miss{border-left:4px solid #dc2626;background:#fef2f2;border-radius:4px;padding:12px 14px;margin:12px 0;font-size:15px}.win-note{border-left:4px solid #16a34a;background:#f0fdf4;border-radius:4px;padding:12px 14px;margin:12px 0;font-size:15px}.verdict{border:2px solid var(--primary);background:#f5f3ff;border-radius:10px;padding:16px;margin:18px 0;font-size:16px}.ext{border-left:4px solid #6c3ce1;background:#f5f3ff;border-radius:6px;padding:13px 16px;margin:18px 0;font-size:15px}.note{border-left:4px solid #8b5cf6;background:#f5f3ff;border-radius:6px;padding:13px 16px;margin:16px 0;font-size:15px}.zh{border-left:4px solid #06b6d4;background:#ecfeff;border-radius:6px;padding:13px 16px;margin:16px 0;font-size:15px;line-height:1.75}.faq details{border:1px solid var(--border);border-radius:8px;padding:10px 14px;margin:10px 0;background:#fff}.faq summary{cursor:pointer;font-weight:600;font-size:16px}.faq p{margin:10px 0 0}.mt-banner{background:#fef3c7;color:#92400e;border-bottom:1px solid #fcd34d;padding:9px 16px;font:600 13px/1.5 system-ui,sans-serif;text-align:center}.mt-banner a{color:#92400e;font-weight:700}</style>
+<style>
+#lang-switcher{position:fixed;top:10px;right:12px;z-index:99999;background:#fff;border:1px solid #d1d5db;border-radius:10px;padding:5px 9px;box-shadow:0 2px 10px rgba(0,0,0,.15);font:600 13px/1.3 system-ui,sans-serif;display:flex;align-items:center;gap:6px}
+#lang-switcher label{font-size:15px;cursor:default}
+#lang-switcher select{border:none;background:transparent;font:600 13px system-ui,sans-serif;cursor:pointer;outline:none;max-width:130px}
+#lang-switcher select:focus{outline:2px solid #6366f1}
+#lang-switcher option:disabled{color:#bbb}
+</style>
+<style>
+nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1 0%,#4f2db5 100%);box-shadow:0 2px 12px rgba(108,60,225,.25)}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 18px;flex-wrap:wrap}
+.nav-inner a{color:#fff;text-decoration:none;font:600 14px/1 system-ui,sans-serif;padding:6px 8px;border-radius:8px;white-space:nowrap}
+.nav-inner a:hover{background:rgba(255,255,255,.16)}
+.nav-inner a.active{background:rgba(255,255,255,.22)}
+#site-search{flex:1;min-width:140px;max-width:320px;margin-left:auto;padding:8px 12px;border:1px solid rgba(255,255,255,.4);border-radius:999px;background:rgba(255,255,255,.95);color:#1f2937;font:500 14px system-ui,sans-serif}
+#site-search::placeholder{color:#6b7280}
+#search-results{position:absolute;top:100%;right:18px;width:min(360px,92vw);background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.18);padding:8px;z-index:1001;max-height:60vh;overflow:auto}
+#search-results a{display:block;padding:8px 10px;border-radius:8px;color:#1f2937;text-decoration:none;font:500 14px system-ui}
+#search-results a:hover{background:#f3f0ff}
+#search-results mark{background:#fde68a;color:#1f2937}
+</style>
+<link rel="alternate" hreflang="en" href="https://tanhaosheng.asia/benchmark-repeats/deepseek-20runs-en">
+<link rel="alternate" hreflang="zh" href="https://tanhaosheng.asia/benchmark-repeats/deepseek-20runs">
+<link rel="alternate" hreflang="x-default" href="https://tanhaosheng.asia/benchmark-repeats/deepseek-20runs-en">
+<link rel="alternate" type="application/rss+xml" title="AI Tool Stack" href="https://tanhaosheng.asia/feed.xml">
+<meta property="og:title" content="DeepSeek Web 20-Run Complete Repeat Test: One Case, One Rubric | AI Tool Stack">
+<meta property="og:description" content="20 runs, mean 69.8/100, SD 3.54, range 12 (63–75) → unstable per framework rule. Systematic blind spots in endocrine details (3.2a/b/c/d).">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tanhaosheng.asia/benchmark-repeats/deepseek-20runs-en">
+<meta property="og:image" content="https://tanhaosheng.asia/assets/og-ai-tools.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DeepSeek Web 20-Run Complete Repeat Test: One Case, One Rubric | AI Tool Stack">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalWebPage",
+  "name": "DeepSeek Web 20-Run Repeat Test: One Case, One Rubric",
+  "description": "DeepSeek web (fast mode) run 20 times on one anonymized breast-cancer case using the standard text prompt, scored with the 16-item/100 rubric against 2026 CBCS guidelines. Mean 69.8, SD 3.54, range 12 (63-75), judged unstable per 1.96×SD academic criterion.",
+  "url": "https://tanhaosheng.asia/benchmark-repeats/deepseek-20runs-en",
+  "inLanguage": "en",
+  "author": {
+    "@type": "Person",
+    "name": "Tan Haosheng",
+    "jobTitle": "Associate Chief Physician, Breast & Thyroid Surgery",
+    "alumniOf": ["Tsinghua University", "Peking Union Medical College"],
+    "affiliation": "National Cancer Center"
+  },
+  "about": {
+    "@type": "MedicalCondition",
+    "name": "Breast Cancer"
+  },
+  "datePublished": "2026-08-01",
+  "dateModified": "2026-08-01"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why does the same model score 12 points apart across 20 runs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "LLM sampling is stochastic, and DeepSeek web auto-searches the web each run (reading 7–15 pages); the different evidence retrieved can shift staging judgment and radiotherapy decisions. Across 20 runs the range reached 12 points (63–75), and by the academic criterion (range > 1.96×SD = 6.94) it is also judged unstable — a single run is not representative of the model's level."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I directly compare Benchmark Repeats scores with Model Reviews (V1–V5)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. V1–V5 are small-sample groups (1–3 runs per model, mixed prompt styles); this column is a 20-run repeated standardized test. Adding or subtracting scores across the two columns yields wrong conclusions; they must be read separately."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What stable blind spots does DeepSeek show across 20 runs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "All 4 endocrine-detail items scored 0/20 full marks: 3.2a never distinguished 'strong recommendation for invasive cancer vs. chemoprevention after DCIS mastectomy'; 3.2b always recommended AI but never mentioned the 60-year age cutoff (≥60 AI≈TAM); 3.2c/3.2d lacked specific drug doses and OFS/CDK4/6 assessment. These are reproducible blind spots."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does the staging conclusion differ each time?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The largest invasive focus is 0.2cm (2mm), just over the microinvasion definition (≤1mm). Across 20 runs most judged pT1mi, 2 correctly judged pT1a, and 1 misread it as pT1b — this is a difference in how the model parses the numeric value '0.2cm' in the text prompt, not a visual/OCR issue. Using text input (not screenshots) removes OCR error and isolates the model's clinical reasoning."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is the input a text prompt rather than a screenshot?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The whole column uses a standardized text prompt (not an anonymized case screenshot); the model reads directly from text. This tests pure text reasoning and clinical decision-making, and makes 'reading fluctuation' attribution clearer — fluctuations come from text-value parsing, not OCR error."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body><div id="lang-switcher"><label for="lang-select">🌐</label><select id="lang-select"><option value="en" selected>English</option><option value="zh">中文</option></select></div><nav aria-label="Primary"><div class="nav-inner"><a href="/">🏠 Home</a><a href="/model-reviews">🔬 Model Reviews</a><a href="/benchmark-repeats/" class="active">🔁 Benchmark Repeats</a><a href="/agents-for-research/">🤖 Agents for Research</a><a href="/clinical-benchmark/">📊 Benchmark</a><a href="/benchmark-repeats/">🔁 Repeats</a><a href="/about">About</a><input id="site-search" type="search" placeholder="Search…" aria-label="Search this site"><div id="search-results" aria-live="polite"></div></div></nav>
+
+<p class="lang-switch">🇨🇳 <a href="/benchmark-repeats/deepseek-20runs" rel="alternate" hreflang="zh">阅读中文版</a> · This article is also available in Chinese.</p>
+
+<div class="series-badge">🔁 Benchmark Repeats · Repeat Test #1 / 2026-08-01</div>
+
+<h1>DeepSeek Web 20-Run Complete Repeat Test: Same Case, Same Rubric — Is the Answer Stable?</h1>
+
+<div class="article-byline">By <a href="https://tanhaosheng.asia/about">Tan Haosheng</a> · Associate Chief Physician / MD, PhD · Thyroid &amp; Breast Surgery, Taizhou People's Hospital · Published 2026-08-01</div>
+
+<div class="note medical-disclaimer" style="border-left:4px solid #6366f1;background:#eef2ff;margin:14px 0;">
+<strong>⚠️ Medical disclaimer:</strong> All clinical case analyses, model evaluations, and treatment discussions on this site are for <strong>educational and research purposes only</strong>. They are based on a single anonymized case and <strong>do not constitute individual medical advice, diagnosis, or treatment</strong>. For any real patient, always consult your own qualified physician and follow current guidelines (NCCN / CSCO / CBCS). AI outputs are <strong>not</strong> a substitute for professional clinical judgment. <span style="opacity:.7;">Last reviewed: 2026-08-01.</span>
+</div>
+
+<div class="box" style="border-left-color:#6c3ce1;background:#f5f3ff;">
+<strong>TL;DR (30-second takeaway)</strong>
+<ul>
+  <li>DeepSeek web (fast mode) was fed the <strong>same standardized text prompt</strong> 20 times, scored item-by-item with the 16-item/100 rubric</li>
+  <li>Result: <strong>mean 69.8</strong> (median 71.5), SD 3.54, range <strong>12 points</strong> (63–75)</li>
+  <li>Per the framework stability rule (range ≥ 8 = unstable): <span class="pill red">judged UNSTABLE</span> — about 1 in 4 runs fell into the low tier</li>
+  <li>Stable strengths: molecular subtype, anti-HER2, self-assessment (all 20 runs full marks)</li>
+  <li><strong>Stable blind spot</strong>: all 4 endocrine-detail items (3.2a/b/c/d) scored 0/20 full marks, losing ~18 points combined — a reproducible model blind spot, not偶然</li>
+</ul>
+</div>
+
+<h2>1. Why 20 runs: from "which model is best" to "is the answer stable?"</h2>
+<p>The Model Reviews series (V1–V5) answers the <strong>selection</strong> question: which free model performs better clinically. It runs each model only 1–3 times — a <strong>small-sample test group</strong> — which tells us the "average level" but not another, more critical question:</p>
+<div class="verdict">Same model, same standardized text prompt, run 20 times — <strong>will it crash?</strong></div>
+<p>For clinical use, one good run does not prove reliability. If a model tells you "no radiotherapy needed" in 15 runs but "strongly recommend radiotherapy" in 5, its high mean is useless for independent decisions. That is the purpose of this column (Benchmark Repeats): <strong>use repeated runs to expose occasional and systematic problems</strong>.</p>
+
+<h2>2. Method (same case, same rubric as Model Reviews)</h2>
+<ul>
+  <li><strong>Input</strong>: standardized text prompt (sent verbatim, not a screenshot) — the whole column uses the <a href="/benchmark-repeats/#prompt">standard prompt</a>, pure-text reasoning comparison, excluding visual/OCR error</li>
+  <li><strong>Case</strong>: 60-year-old woman, right mastectomy + SLNB; low-grade DCIS with 0.6cm invasion (3 stromal invasive clusters 0.05/0.06/0.2cm); ER 3+(90%), PR 3+(90%), HER2 0, Ki-67 5%; sentinel 0/2 + 1 negative; discharge mislabeled TisN0M0</li>
+  <li><strong>Model</strong>: DeepSeek web fast mode; <strong>auto web search every run</strong> ("read 7–15 web pages"), no API, no expert mode</li>
+  <li><strong>Run</strong>: 20 runs each with a new browser session (each time manually verifying login then pasting the prompt), no context carryover; the framework auto-sends instructions and extracts the full response, with raw data archived for traceability</li>
+  <li><strong>Scoring</strong>: the only Rubric = <a href="/clinical-benchmark/framework">clinical-benchmark/framework</a> 16-item/100; each response scored item-by-item by a clinician</li>
+  <li><strong>Statistics</strong>: mean / median / SD / variance / range / coefficient of variation; stability judged by the framework rule (range ≥ 8 = unstable), and also by the academic criterion (range &gt; 1.96×SD also = unstable)</li>
+</ul>
+
+<h2>3. 20 total scores and distribution</h2>
+<table>
+<tr><th>Run</th><th>Score distribution</th><th>Total</th><th>Tier</th></tr>
+<tr><td>Run 1</td><td style="font-family:monospace;">█████████████░░░░░░░</td><td><strong>65</strong></td><td><span class="pill red">RED</span></td></tr>
+<tr><td>Run 2</td><td style="font-family:monospace;">█████████████░░░░░░░</td><td><strong>69</strong></td><td><span class="pill amber">AMBER</span></td></tr>
+<tr><td>Run 3</td><td style="font-family:monospace;">█████████████░░░░░░░</td><td><strong>68</strong></td><td><span class="pill amber">AMBER</span></td></tr>
+<tr><td>Run 4</td><td style="font-family:monospace;">██████████████░░░░░░</td><td><strong>72</strong></td><td><span class="pill green">GREEN</span></td></tr>
+<tr><td>Run 5</td><td style="font-family:monospace;">███████████████░░░░░</td><td><strong>75</strong></td><td><span class="pill green">GREEN</span></td></tr>
+<tr><td>Run 6</td><td style="font-family:monospace;">████████████░░░░░░░░</td><td><strong>63</strong></td><td><span class="pill red">RED</span></td></tr>
+<tr><td>Run 7</td><td style="font-family:monospace;">█████████████░░░░░░░</td><td><strong>66</strong></td><td><span class="pill red">RED</span></td></tr>
+<tr><td>Run 8</td><td style="font-family:monospace;">█████████████░░░░░░░</td><td><strong>66</strong></td><td><span class="pill red">RED</span></td></tr>
+<tr><td>Run 9</td><td style="font-family:monospace;">██████████████░░░░░░</td><td><strong>70</strong></td><td><span class="pill amber">AMBER</span></td></tr>
+<tr><td>Run 10</td><td style="font-family:monospace;">███████████████░░░░░</td><td><strong>75</strong></td><td><span class="pill green">GREEN</span></td></tr>
+<tr><td>Run 11</td><td style="font-family:monospace;">██████████████░░░░░░</td><td><strong>72</strong></td><td><span class="pill green">GREEN</span></td></tr>
+<tr><td>Run 12</td><td style="font-family:monospace;">█████████████░░░░░░░</td><td><strong>68</strong></td><td><span class="pill amber">AMBER</span></td></tr>
+<tr><td>Run 13</td><td style="font-family:monospace;">████████████░░░░░░░░</td><td><strong>64</strong></td><td><span class="pill red">RED</span></td></tr>
+<tr><td>Run 14</td><td style="font-family:monospace;">██████████████░░░░░░</td><td><strong>71</strong></td><td><span class="pill amber">AMBER</span></td></tr>
+<tr><td>Run 15</td><td style="font-family:monospace;">██████████████░░░░░░</td><td><strong>72</strong></td><td><span class="pill green">GREEN</span></td></tr>
+<tr><td>Run 16</td><td style="font-family:monospace;">██████████████░░░░░░</td><td><strong>73</strong></td><td><span class="pill green">GREEN</span></td></tr>
+<tr><td>Run 17</td><td style="font-family:monospace;">██████████████░░░░░░</td><td><strong>72</strong></td><td><span class="pill green">GREEN</span></td></tr>
+<tr><td>Run 18</td><td style="font-family:monospace;">██████████████░░░░░░</td><td><strong>72</strong></td><td><span class="pill green">GREEN</span></td></tr>
+<tr><td>Run 19</td><td style="font-family:monospace;">██████████████░░░░░░</td><td><strong>72</strong></td><td><span class="pill green">GREEN</span></td></tr>
+<tr><td>Run 20</td><td style="font-family:monospace;">██████████████░░░░░░</td><td><strong>72</strong></td><td><span class="pill green">GREEN</span></td></tr>
+
+</table>
+<table>
+<tr><th>Statistic</th><th>Value</th></tr>
+<tr><td><strong>Mean</strong></td><td><strong>69.8 / 100</strong></td></tr>
+<tr><td>Median</td><td>71.5</td></tr>
+<tr><td>Std Dev (SD)</td><td>3.54</td></tr>
+<tr><td>Variance</td><td>12.56</td></tr>
+<tr><td>Range (max−min)</td><td><strong>12</strong> (max 75 / min 63)</td></tr>
+<tr><td>Coeff. of Variation (CV)</td><td>5.1%</td></tr>
+</table>
+
+<figure style="margin:24px 0;padding:12px;background:#f8f9fa;border:1px solid #e5e7eb;border-radius:8px;">
+  <img src="/assets/benchmark-repeats/capture-deepseek-run15.png" alt="DeepSeek web run 15 result (score 72, top tier)" style="max-width:100%;border-radius:4px;">
+  <figcaption style="margin-top:8px;font-size:13px;color:#6b7280;text-align:center;">Fig: DeepSeek web run 15, score 72 (top tier), showing "read 8 web pages". That run misread the invasive focus as 0.6cm → misjudged pT1b, an instance of text-value parsing fluctuation.</figcaption>
+</figure>
+
+<div class="box" style="border-left-color:#dc2626;background:#fef2f2;">
+<strong>⚠️ Stability verdict: UNSTABLE</strong>　Range 12 ≥ framework threshold 8. Also unstable by the academic criterion (range &gt; 1.96×SD = 6.94). Across 20 runs: high tier (72–75) 10 times, mid tier (67–71) 5 times, low tier (63–66) 5 times — <strong>1 in 4 runs fell into the low tier</strong>.
+</div>
+
+<h2>4. Item-by-item scores: what's stable, what's a blind spot</h2>
+<table>
+<tr><th>Item</th><th>Max</th><th>Mean</th><th>Full-mark runs</th><th>Zero runs</th></tr>
+<tr><td>1.1 Agree with TisN0M0</td><td>6</td><td>5.9</td><td>19/20</td><td>0/20</td></tr>
+<tr><td>1.2 Staging correction</td><td>10</td><td>7.0</td><td>2/20</td><td>0/20</td></tr>
+<tr><td>1.3 Molecular subtype</td><td>4</td><td>4.0</td><td>20/20</td><td>0/20</td></tr>
+<tr><td>2.1 Surgery rationale + ALND</td><td>8</td><td>7.9</td><td>19/20</td><td>0/20</td></tr>
+<tr><td>2.2 Adjuvant radiotherapy</td><td>4</td><td>3.8</td><td>18/20</td><td>0/20</td></tr>
+<tr><td>3.1 Chemotherapy + multigene test</td><td>10</td><td>7.9</td><td>0/20</td><td>0/20</td></tr>
+<tr><td>3.2a Endocrine necessity + mastectomy/BCS difference ★</td><td>12</td><td>6.0</td><td>0/20</td><td>0/20</td></tr>
+<tr><td>3.2b AI vs TAM + age cutoff ★</td><td>10</td><td>6.0</td><td>0/20</td><td>0/20</td></tr>
+<tr><td>3.2c Drug dose &amp; duration</td><td>6</td><td>2.5</td><td>0/20</td><td>0/20</td></tr>
+<tr><td>3.2d OFS / extension / CDK4/6</td><td>6</td><td>1.5</td><td>0/20</td><td>0/20</td></tr>
+<tr><td>3.3 Anti-HER2</td><td>4</td><td>4.0</td><td>20/20</td><td>0/20</td></tr>
+<tr><td>4.1 Endocrine adverse monitoring</td><td>6</td><td>2.5</td><td>0/20</td><td>0/20</td></tr>
+<tr><td>4.2 Bone density &amp; lifestyle</td><td>4</td><td>1.9</td><td>1/20</td><td>0/20</td></tr>
+<tr><td>4.3 Follow-up plan</td><td>4</td><td>3.5</td><td>11/20</td><td>0/20</td></tr>
+<tr><td>4.4 Contralateral breast + BRCA</td><td>4</td><td>3.4</td><td>9/20</td><td>0/20</td></tr>
+<tr><td>5 Self-assessment + uncertainty</td><td>2</td><td>2.0</td><td>20/20</td><td>0/20</td></tr>
+
+</table>
+
+<h3>4.1 Strengths (highly consistent full marks across 20 runs ✅)</h3>
+<ul>
+  <li><strong>1.3 Molecular subtype</strong> (4/4 · 20/20): Luminal A judged 100% correct</li>
+  <li><strong>3.3 Anti-HER2</strong> (4/4 · 20/20): HER2 0 → no targeted indication, 100% correct</li>
+  <li><strong>5 Self-assessment</strong> (2/2 · 20/20): all gave confidence + discussion of unclear points</li>
+  <li><strong>1.1 Agree TisN0M0</strong> (5.9/6 · 19/20) and <strong>2.1 Surgery+ALND</strong> (7.9/8 · 19/20): basically stable and correct</li>
+</ul>
+
+<h3>4.2 Systematic blind spots (0/20 full marks — reproducible, not occasional)</h3>
+<table>
+<tr><th>Item</th><th>Mean/Max</th><th>Lost</th><th>Problem</th></tr>
+<tr><td><strong>3.2a Endocrine necessity + mastectomy/BCS difference ★</strong></td><td>6.0/12</td><td>−6</td><td>All 20 runs failed to distinguish "strong recommendation for invasive cancer vs. chemoprevention after DCIS mastectomy (consider/optional)"</td></tr>
+<tr><td><strong>3.2b AI vs TAM + age cutoff ★</strong></td><td>6.0/10</td><td>−4</td><td>All recommended AI, but <strong>none mentioned the 60-year age cutoff</strong> (≥60 AI≈TAM)</td></tr>
+<tr><td>3.2c Drug dose &amp; duration</td><td>2.5/6</td><td>−3.5</td><td>Only wrote "5 years" without specific drug + dose (letrozole 2.5mg/d, etc.)</td></tr>
+<tr><td>3.2d OFS/extension/CDK4/6</td><td>1.5/6</td><td>−4.5</td><td>Most omitted that OFS is not applicable (postmenopausal), CDK4/6 not indicated</td></tr>
+<tr><td>4.1 Adverse monitoring</td><td>2.5/6</td><td>−3.5</td><td>Only vaguely "monitor bone density/lipids", lacking specific adverse events and monitoring frequency</td></tr>
+<tr><td>4.2 Bone density &amp; lifestyle</td><td>1.9/4</td><td>−2.1</td><td>Lacked calcium + Vit D + weight-bearing exercise lifestyle advice</td></tr>
+<tr><td>1.2 Staging correction</td><td>7.0/10</td><td>−3.0</td><td>0.2cm already exceeds microinvasion definition yet most judged pT1mi (OCR reading issue); Run 15 misread 0.6cm → pT1b</td></tr>
+</table>
+
+<h3>4.3 Fluctuating items (occasional loss — source of instability)</h3>
+<ul>
+  <li><strong>2.2 Radiotherapy</strong> (3.8/4): Run 1 judged "needs radiotherapy (strongly recommend)" ❌, Run 6 "strongly consider" — opposite to the correct answer (no indication). This is the most dangerous occasional-error type</li>
+  <li><strong>4.3 Follow-up</strong> (3.5/4): some runs recommended unnecessary routine imaging/tumor-marker screening</li>
+  <li><strong>4.4 BRCA</strong> (3.4/4): 4 runs "recommend testing" too aggressively (standard: no family history → not routine)</li>
+</ul>
+
+<h2>5. Clinical consistency observations</h2>
+<ul>
+  <li><strong>Text input causes numeric-parsing fluctuation</strong>: Run 15 misread "invasive focus 0.2cm" as 0.6cm → misjudged pT1b (see screenshot in Section 3); most runs correctly judged pT1mi; Runs 5/10 correctly judged pT1a — this is the model's difference in parsing the numeric value in the text prompt, not a visual/OCR limitation</li>
+  <li><strong>Web search is an extra variable</strong>: all 20 runs auto-searched the web (7–15 pages), with mixed citation numbers (-1-, -2-), making it impossible to confirm they cited the exact 2026 CBCS page/section — the framework's requirement to "cite guideline section/page" is hard to verify in web fast mode</li>
+  <li><strong>Core items stably lose points</strong> (strong): 3.2a/3.2b are deliberate framework discriminators (post-mastectomy DCIS endocrine = chemoprevention; 60-year AI/TAM age cutoff); DeepSeek missed both in all 20 runs — a <strong>reproducible model blind spot</strong>, suggesting systematic insufficiency in "distinguishing recommendation strength across scenarios" and "catching age cutoffs"</li>
+</ul>
+
+<h2>6. Conclusion & usage recommendations</h2>
+<div class="verdict">
+<strong>Overall</strong>: mean 69.8/100 (good, not excellent). Strengths concentrate on "guideline-clear, decision-tree-clear" items (staging recognition, surgery, chemo, targeted, self-assessment); the core weakness is <strong>endocrine-treatment details</strong> (3.2a/b/c/d combined lost ~18 points).
+<br><br>
+<strong>Stability</strong>: ❌ range 12, judged <strong>UNSTABLE</strong> by the framework rule — must be stated when reporting or publishing.
+<br><br>
+<strong>Usage recommendation</strong>: DeepSeek web can serve as a <strong>first-pass assistant</strong> for clinical decisions; but endocrine-detail and age-stratified decisions must be manually reviewed; high-risk decisions like radiotherapy have occasional crashes and <strong>must not be trusted</strong> from a single output.
+</div>
+
+<h2>7. Data & reproduction</h2>
+<ul>
+  <li>All 20 raw responses: <a href="/benchmark-repeats/deepseek-20runs-raw">public page</a> (each run independently accessible, full text copyable — not a local path)</li>
+  <li>Scoring basis: <a href="/clinical-benchmark/framework">16-item Rubric (clinical-benchmark/framework)</a></li>
+  <li>Scoring method: clinician scored each response item-by-item; per-item scores traceable</li>
+</ul>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+  <details><summary>Why does the same model score 12 points apart across 20 runs?</summary><p>LLM sampling is stochastic, and DeepSeek web auto-searches the web each run (reading 7–15 pages), and the different evidence retrieved can shift staging and radiotherapy decisions. Across 20 runs the range reached 12 points (63–75) across 3 tiers, showing a single run is not representative.</p></details>
+  <details><summary>Can I directly compare this column with Model Reviews (V1–V5)?</summary><p>No. V1–V5 are small-sample groups (1–3 runs/model, mixed prompt styles); this column is a 20-run repeated standardized test. Adding or subtracting scores across columns yields wrong conclusions; read them separately.</p></details>
+  <details><summary>What stable blind spots does DeepSeek show across 20 runs?</summary><p>All 4 endocrine-detail items scored 0/20 full marks: 3.2a never distinguished "strong recommendation for invasive cancer vs. chemoprevention after DCIS mastectomy"; 3.2b always recommended AI but never mentioned the 60-year age cutoff; 3.2c/3.2d lacked specific drug doses and OFS/CDK4/6 assessment. Reproducible blind spots.</p></details>
+  <details><summary>Why does the staging conclusion differ each time?</summary><p>The largest invasive focus is 0.2cm (2mm), just over the microinvasion definition (≤1mm). Across 20 runs most judged pT1mi, 2 correctly pT1a, 1 misread as pT1b — this is a difference in how the model parses the value "0.2cm" in the text prompt, not a visual/OCR limitation. Run 15's screenshot (Fig 3-1) is exactly this misread-0.6cm output, confirming text-parsing fluctuation.</p></details>
+  <details><summary>Why is the input a text prompt rather than a screenshot?</summary><p>The whole column uses a standardized text prompt (not an anonymized case screenshot); the model reads directly from text. This tests pure text reasoning and clinical decision-making, and makes "reading fluctuation" attribution clearer — fluctuations come from text-value parsing, not OCR error.</p></details>
+</div>
+
+<p style="margin-top:24px;font-size:14px;color:#6b7280;">🔁 <a href="/benchmark-repeats/">Back to Benchmark Repeats</a> · 🔬 <a href="/model-reviews">Model Reviews (V1–V5)</a> · 📊 <a href="/clinical-benchmark/framework">Scoring framework</a></p>
+
+<script id="enhance-js">
+(function(){
+  var s=document.getElementById('site-search');
+  if(!s) return;
+  var box=document.getElementById('search-results');
+  var pf=null, timer=null;
+  function esc(t){return (t||'').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  s.addEventListener('input',function(){
+    var q=s.value.trim();
+    clearTimeout(timer);
+    if(q.length<2){box.style.display='none';return;}
+    timer=setTimeout(function(){
+      if(!pf){pf=import('/pagefind/pagefind.js');}
+      pf.then(function(m){return m.search(q);})
+        .then(function(r){return Promise.all(r.results.slice(0,8).map(function(x){return x.data();}));})
+        .then(function(rows){
+          if(!rows.length){box.innerHTML='<div style="padding:12px;color:#64748b;font-size:14px;">No results.</div>';box.style.display='block';return;}
+          box.innerHTML=rows.map(function(d){
+            return '<a href="'+d.url+'">'+esc(d.meta&&d.meta.title||d.url)+'<div class="ex">'+esc(d.excerpt)+'</div></a><hr>';
+          }).join('');
+          box.style.display='block';
+        }).catch(function(){box.style.display='none';});
+    },180);
+  });
+  document.addEventListener('click',function(e){if(e.target!==s&&!box.contains(e.target))box.style.display='none';});
+})();
+</script>
+</body></html>
+
+
+<footer class="site-footer">&copy; 2024-2026 Tan Haosheng · Associate Chief Physician / MD, PhD · Thyroid &amp; Breast Surgery, Taizhou People's Hospital<br><a href="/">Home</a> · <a href="/about">About</a> · <a href="/privacy">Privacy</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+<div class="page-stats" style="margin-top:10px;font-size:.82em;color:#9ca3af;">📊 Anonymous, privacy-respecting usage analytics (Google Analytics). Open benchmark data on the <a href="/clinical-benchmark/" style="color:#6366f1;text-decoration:none;">Benchmark</a> page.</div>
+ · <a href="/sitemap">Sitemap</a></footer></body></html>

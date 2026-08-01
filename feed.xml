@@ -7,7 +7,14 @@
     <language>en</language>
     <lastBuildDate>Fri, 31 Jul 2026 12:00:00 +0000</lastBuildDate>
     <atom:link href="https://tanhaosheng.asia/feed.xml" rel="self" type="application/rss+xml"/>
-    <item>
+    
+  <item>
+    <title>DeepSeek Web 20-Run Complete Repeat Test: Same Case, Same Rubric (EN)</title>
+    <link>https://tanhaosheng.asia/benchmark-repeats/deepseek-20runs-en</link>
+    <guid>https://tanhaosheng.asia/benchmark-repeats/deepseek-20runs-en</guid>
+    <description>DeepSeek web (fast mode) run 20 times on one anonymized breast-cancer case using the standard text prompt, scored with the 16-item/100 rubric against 2026 CBCS guidelines. Mean 69.8, SD 3.54, range 12 (63-75), judged unstable per 1.96xSD academic criterion. Systematic blind spots in endocrine details (3.2a/b/c/d). English edition.</description>
+    <pubDate>2026-08-01T10:00:00+08:00</pubDate>
+  </item><item>
       <title>DeepSeek 网页版 20 次复测：均值 69.8、极差 12 → 不稳定</title>
       <link>https://tanhaosheng.asia/benchmark-repeats/deepseek-20runs</link>
       <guid>https://tanhaosheng.asia/benchmark-repeats/deepseek-20runs</guid>
