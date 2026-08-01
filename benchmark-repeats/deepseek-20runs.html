@@ -178,11 +178,11 @@ nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1
 
 <figure style="margin:24px 0;padding:12px;background:#f8f9fa;border:1px solid #e5e7eb;border-radius:8px;">
   <img src="/assets/benchmark-repeats/capture-deepseek-run15.png" alt="DeepSeek网页版第15次运行结果截图（分数72分）" style="max-width:100%;border-radius:4px;">
-  <figcaption style="margin-top:8px;font-size:13px;color:#6b7280;text-align:center;">图：DeepSeek网页版第15次运行结果，分数72分（同榜最高档），显示「已阅读8个网页</figcaption>
+  <figcaption style="margin-top:8px;font-size:13px;color:#6b7280;text-align:center;">图：DeepSeek 网页版第 15 次运行结果，分数 72 分（同榜最高档），显示「已阅读 8 个网页」</figcaption>
 </figure>
 
 <div class="box" style="border-left-color:#dc2626;background:#fef2f2;">
-<strong>⚠️ 稳定性判定：不稳定</strong>　极差 12 分 ≥ 框架标准 8 分。20 次中：高档（72–75）10 次、中档（66–71）5 次、低档（63–65）5 次——<strong>每 4 次就有 1 次掉到低档</strong>。
+<strong>⚠️ 稳定性判定：不稳定</strong>　极差 12 分 ≥ 框架标准 8 分。20 次中：高档（72–75）10 次、中档（67–71）5 次、低档（63–66）5 次——<strong>每 4 次就有 1 次掉到低档</strong>。
 </div>
 
 <h2>4. 逐项得分：哪些稳定，哪些是盲区</h2>
@@ -236,8 +236,7 @@ nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1
 
 <h2>5. 临床一致性观察</h2>
 <ul>
-  <li><strong>截图输入导致读数波动</strong>：Run 15 的截图显示「浸润灶 0.2cm」→ 正确判 pT1a，而多数 run 判 pT1mi（OCR 误读0.2cm为≤0.1cm），属视觉/OCR能力局限，非临床知识问题。下图为其中一次高分运行的实际截图：</li>
-  <li><strong>联网搜索是额外变量</strong>：20 次均自动联网（7–15 页），引用编号混杂（-1-、-2-），无法确证引用的是 2026 CBCS 原文页码——框架要求的「引用指南章节/页码」在网页版快速模式下难以核验</li>
+  <li><strong>截图输入导致读数波动</strong>：Run 15 的截图显示其将浸润灶误读为 0.6cm → 误判 pT1b（见上方第 3 节截图），而多数 run 判 pT1mi（OCR 误读 0.2cm 为 ≤0.1cm），属视觉/OCR 能力局限，非临床知识问题</li>
   <li><strong>联网搜索是额外变量</strong>：20 次均自动联网（7–15 页），引用编号混杂（-1-、-2-），无法确证引用的是 2026 CBCS 原文页码——框架要求的「引用指南章节/页码」在网页版快速模式下难以核验</li>
   <li><strong>核心题稳定失分</strong>：3.2a/3.2b 是框架刻意设计的区分点（全切后 DCIS 内分泌属化学预防；60 岁 AI/TAM 年龄切点），DeepSeek 20 次全部未捕捉——这是<strong>可复现的模型盲区</strong>，提示它在「区分两种场景推荐强度」「抓住年龄切点」这类细粒度指南理解上系统性不足</li>
 </ul>
