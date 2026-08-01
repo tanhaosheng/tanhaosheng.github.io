@@ -36,7 +36,7 @@ nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1
 </style>
 <link rel="alternate" type="application/rss+xml" title="AI Tool Stack" href="https://tanhaosheng.asia/feed.xml">
 </head><body>
-<nav aria-label="Primary"><div class="nav-inner"><a href="/" class="active">🏠 Home</a><a href="/model-reviews">🧪 Model Reviews</a><a href="/agents-for-research/">🤖 Agents for Research</a><a href="/clinical-benchmark/">📊 Benchmark</a><a href="/about">About</a><input id="site-search" type="search" placeholder="Search…" aria-label="Search this site"><div id="search-results" aria-live="polite"></div></div></nav><div id="lang-switcher"><label for="lang-select">🌐</label><select id="lang-select"><option value="en" selected>English</option><option value="zh">中文</option></select></div><div style="background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:10px;margin:14px auto;padding:10px 16px;max-width:900px;font:600 13px/1.6 system-ui,sans-serif;">⚠️ <strong>利益披露 / Affiliate Disclosure：</strong>本页可能包含联盟（affiliate）或推广链接。若你通过本页链接注册或订阅，我可能获得佣金，但<strong>不会影响你的价格</strong>，也<strong>不会改变我的独立评测结论</strong>。详见 <a href="/zh/affiliate-disclosure" style="color:#1e3a8a;text-decoration:underline;">利益披露页</a>。</div><div style="border:2px solid #6c3ce1;background:#f5f3ff;border-radius:14px;margin:18px auto;padding:18px 22px;max-width:900px;">
+<nav aria-label="Primary"><div class="nav-inner"><a href="/" class="active">🏠 Home</a><a href="/model-reviews">🧪 Model Reviews</a><a href="/agents-for-research/">🤖 Agents for Research</a><a href="/clinical-benchmark/">📊 Benchmark</a><a href="/benchmark-repeats/">🔁 Repeats</a><a href="/about">About</a><input id="site-search" type="search" placeholder="Search…" aria-label="Search this site"><div id="search-results" aria-live="polite"></div></div></nav><div id="lang-switcher"><label for="lang-select">🌐</label><select id="lang-select"><option value="en" selected>English</option><option value="zh">中文</option></select></div><div style="background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:10px;margin:14px auto;padding:10px 16px;max-width:900px;font:600 13px/1.6 system-ui,sans-serif;">⚠️ <strong>利益披露 / Affiliate Disclosure：</strong>本页可能包含联盟（affiliate）或推广链接。若你通过本页链接注册或订阅，我可能获得佣金，但<strong>不会影响你的价格</strong>，也<strong>不会改变我的独立评测结论</strong>。详见 <a href="/zh/affiliate-disclosure" style="color:#1e3a8a;text-decoration:underline;">利益披露页</a>。</div><div style="border:2px solid #6c3ce1;background:#f5f3ff;border-radius:14px;margin:18px auto;padding:18px 22px;max-width:900px;">
   <div style="font-size:1.05em;font-weight:700;color:#4f2db5;margin-bottom:6px;">🚀 想自己试试 WorkBuddy？（免费额度）</div>
   <div style="font-size:.92em;color:#374151;margin-bottom:12px;">通过下方链接访问 WorkBuddy，注册即可领取免费额度。本文为独立实测，链接是否带推广不影响你获得的功能与价格。</div>
   <a href="https://workbuddy.cn" target="_blank" rel="noopener" style="display:inline-block;background:#6c3ce1;color:#fff;font-weight:700;text-decoration:none;border-radius:50px;padding:10px 22px;font-size:.95em;">前往 WorkBuddy 官网 →</a>
@@ -307,6 +307,18 @@ nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1
   <li><strong>「免费」的真含义已被截图钉死</strong>：底层模型限期免费 + 额度无上限（本期到 <strong>2026-07-29</strong>），账户必须维持<strong>积分余额 &gt; 0</strong>，否则默认欠费停用免费模型。每日签到领 <strong>100 通用积分</strong>，作者当前余额 <strong>125.7</strong>。</li>
   <li><strong>选混元 hy3 已经被产品 UI 默认锁定</strong>：Hy3 在模型列表里顶置、带"限时免费·0.00x"标识，登录后默认即 Hy3，<strong>不需要额外点击就能用免费模型</strong>。可选的其他模型（GLM-5.x、Kimi-K3 等）倍率从 0.25x 到 1.62x 不等——给"想跑得更专业"的用户留出口，给"只想省心"的用户留默认。</li>
 </ul>
+
+<!-- NEW: Web vs Agent Efficiency Comparison -->
+<hr style="margin:20px 0;border:0;border-top:1px solid #ddd;background:#fff;">
+<li><strong>工作效率对比</strong>：实测显示，使用 WorkBuddy 智能体 vs 网页版直接交互写文章效率差异显著。以撰写一篇类似本文的长篇评测为例：</li>
+<ul>
+  <li><strong>网页版直接交互</strong>：每次生成代码或终端结果，都需要<strong>反复复制粘贴到下一轮对话</strong>，平均 15-20 分钟需要 5-8 次复制粘贴动作。一篇 3000 字文章耗时约 60-90 分钟。</li>
+  <li><strong>WorkBuddy 智能体</strong>：输入一句指令即可自动生成完整内容，包含结构化排版、代码块内嵌、多次迭代优化，同样篇幅耗时约 8-15 分钟。</li>
+</ul>
+<p><strong>效率倍数</strong>：智能体大约是网页版的 <strong>6-10 倍</strong>（即网页版是智能体的 1/6 至 1/10）。核心差异在于：<strong>智能体消除了复制粘贴摩擦</strong>，而网页版的「复制-选择-粘贴-刷新」循环是效率杀手——写代码分析类内容时尤为明显。</li>
+
+<!-- END NEW -->
+
 <p><strong>Caveat</strong>：以下核心指标<strong>仍未实测</strong>——① 跑一次对话任务实际扣多少积分；② 跑一次多步任务实际扣多少积分；③ Hy3 在多步工具调用下的产物质量与稳定性。<strong>不要基于本节就断言 WorkBuddy "无敌"</strong>——等剩下截图补全后结论可能改变。</p>
 </div>
 

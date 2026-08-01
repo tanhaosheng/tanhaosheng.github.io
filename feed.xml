@@ -8,6 +8,20 @@
     <lastBuildDate>Fri, 31 Jul 2026 12:00:00 +0000</lastBuildDate>
     <atom:link href="https://tanhaosheng.asia/feed.xml" rel="self" type="application/rss+xml"/>
     <item>
+      <title>DeepSeek 网页版 20 次复测：均值 69.8、极差 12 → 不稳定</title>
+      <link>https://tanhaosheng.asia/benchmark-repeats/deepseek-20runs</link>
+      <guid>https://tanhaosheng.asia/benchmark-repeats/deepseek-20runs</guid>
+      <description>同一份乳腺癌病例截图连续输入 DeepSeek 网页版 20 次，按 16 项/100 量表评分：均值 69.8、标准差 3.54、极差 12（63–75），判定不稳定，内分泌治疗细节存在系统性盲区。</description>
+      <pubDate>Sat, 01 Aug 2026 12:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>TODO: Title for claude-3-opus-clinical</title>
+      <link>https://tanhaosheng.asia/claude-3-opus-clinical</link>
+      <guid>https://tanhaosheng.asia/claude-3-opus-clinical</guid>
+      <description>TODO: Description for claude-3-opus-clinical page</description>
+      <pubDate>Fri, 31 Jul 2026 12:00:00 +0000</pubDate>
+    </item>
+    <item>
       <title>4 Free AI Models on One Breast Cancer Case | AI Tool Stack</title>
       <link>https://tanhaosheng.asia/four-models-clinical-showdown</link>
       <guid>https://tanhaosheng.asia/four-models-clinical-showdown</guid>
@@ -15,10 +29,10 @@
       <pubDate>Fri, 31 Jul 2026 12:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>AI Tool Stack — Clinical LLM Benchmark &amp; AI Tools for Surgeons</title>
+      <title>AI Tool Stack — Clinical LLM Benchmarks for Clinicians</title>
       <link>https://tanhaosheng.asia/</link>
       <guid>https://tanhaosheng.asia/</guid>
-      <description>The AI-era tool-selection guide for surgeons — pick the right AI model and tool with clear, source-backed comparisons.</description>
+      <description>The AI-era tool-selection guide for clinicians — pick the right AI model and tool with clear, source-backed comparisons.</description>
       <pubDate>Fri, 31 Jul 2026 12:00:00 +0000</pubDate>
     </item>
     <item>
@@ -39,6 +53,7 @@
       <title>Site Map — AI Tool Stack</title>
       <link>https://tanhaosheng.asia/sitemap</link>
       <guid>https://tanhaosheng.asia/sitemap</guid>
+      <description>Full page index of AI Tool Stack: clinical LLM benchmarks, model reviews, repeatability tests and AI agent guides for clinicians, by Tan Haosheng MD/PhD.</description>
       <pubDate>Fri, 31 Jul 2026 12:00:00 +0000</pubDate>
     </item>
     <item>
@@ -98,10 +113,24 @@
       <pubDate>Fri, 31 Jul 2026 12:00:00 +0000</pubDate>
     </item>
     <item>
+      <title>TODO: Title for claude-3-opus-clinical</title>
+      <link>https://tanhaosheng.asia/zh/claude-3-opus-clinical</link>
+      <guid>https://tanhaosheng.asia/zh/claude-3-opus-clinical</guid>
+      <description>TODO: Description for claude-3-opus-clinical page</description>
+      <pubDate>Fri, 31 Jul 2026 12:00:00 +0000</pubDate>
+    </item>
+    <item>
       <title>AI Tool Stack — 🛠️ AI 工具栈</title>
       <link>https://tanhaosheng.asia/zh/</link>
       <guid>https://tanhaosheng.asia/zh/</guid>
-      <description>面向外科医生的 AI 时代选型指南——挑选合适的 AI 模型与工具，清晰、有来源对比。</description>
+      <description>面向临床医生的 AI 时代选型指南——挑选合适的 AI 模型与工具，清晰、有来源对比。</description>
+      <pubDate>Fri, 31 Jul 2026 12:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>规范复测专栏 · Benchmark Repeats | AI Tool Stack</title>
+      <link>https://tanhaosheng.asia/benchmark-repeats/</link>
+      <guid>https://tanhaosheng.asia/benchmark-repeats/</guid>
+      <description>Benchmark Repeats — full-scale, repeated-run clinical LLM tests: 20 runs per model, one anonymized case, one 16-item/100 rubric. Stability-first evidence, unlike the small V1–V5 sample group.</description>
       <pubDate>Fri, 31 Jul 2026 12:00:00 +0000</pubDate>
     </item>
     <item>
@@ -245,11 +274,11 @@
       <pubDate>Wed, 29 Jul 2026 12:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>WorkBuddy Free Agent (Hunyuan hy3): Hands-on | AI Tool Stack</title>
+      <title>WorkBuddy Agent (Hunyuan hy3): Setup &amp; Credits | AI Tool Stack</title>
       <link>https://tanhaosheng.asia/workbuddy-free-agent-hunyuan-hy3-en</link>
       <guid>https://tanhaosheng.asia/workbuddy-free-agent-hunyuan-hy3-en</guid>
-      <description>A screenshot-driven walkthrough by Tan Haosheng on WorkBuddy (Tencent): sign-up, WeChat login, the credits system, where Hunyuan hy3 fits, and the model-picker UI.</description>
-      <pubDate>Mon, 27 Jul 2026 12:00:00 +0000</pubDate>
+      <description>Hands-on WorkBuddy (workbuddy.cn) walkthrough by Tan Haosheng: WeChat sign-up, the credit system (tasks + daily check-in), Hunyuan hy3's free tier, and the home/download UI.</description>
+      <pubDate>Sun, 26 Jul 2026 12:00:00 +0000</pubDate>
     </item>
     <item>
       <title>WorkBuddy 免费运行 Agent（混元 hy3）实测：注册、积分机制与首批流程 - AI Tool Stack</title>

@@ -1,20 +1,145 @@
+# robots.txt for tanhaosheng.asia
+# Last updated: 2026-08-01
+
 User-agent: *
 Allow: /
+
+# Block scanners from probing sensitive config paths
+Disallow: /appsettings.json
+Disallow: /web.config
+Disallow: /netlify.toml
+Disallow: /vercel.json
+Disallow: /proc/
+Disallow: /wp/
+Disallow: /.git/
+Disallow: /.env
+Disallow: /.env.*
+Disallow: /config.yml
+Disallow: /.npmrc
+Disallow: /service-account.json
+Disallow: /*.json
+Disallow: /*.yml
+Disallow: /*.yaml
+Disallow: /*.toml
+Disallow: /*.lock
+Disallow: /admin/
+Disallow: /backup/
+Disallow: /temp/
 
 Sitemap: https://tanhaosheng.asia/sitemap.xml
 
 # Allow AI answer engines to crawl & cite this site (Generative Engine Optimization, 2026)
 User-agent: GPTBot
 Allow: /
+Disallow: /appsettings.json
+Disallow: /web.config
+Disallow: /netlify.toml
+Disallow: /proc/
+Disallow: /.git/
+Disallow: /.env
+Disallow: /.env.*
+Disallow: /admin/
+Disallow: /backup/
+Disallow: /temp/
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /appsettings.json
+Disallow: /web.config
+Disallow: /netlify.toml
+Disallow: /proc/
+Disallow: /.git/
+Disallow: /.env
+Disallow: /.env.*
+Disallow: /admin/
+Disallow: /backup/
+Disallow: /temp/
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /appsettings.json
+Disallow: /web.config
+Disallow: /netlify.toml
+Disallow: /proc/
+Disallow: /.git/
+Disallow: /.env
+Disallow: /.env.*
+Disallow: /admin/
+Disallow: /backup/
+Disallow: /temp/
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /appsettings.json
+Disallow: /web.config
+Disallow: /netlify.toml
+Disallow: /proc/
+Disallow: /.git/
+Disallow: /.env
+Disallow: /.env.*
+Disallow: /admin/
+Disallow: /backup/
+Disallow: /temp/
 
 User-agent: CCBot
 Allow: /
+Disallow: /appsettings.json
+Disallow: /web.config
+Disallow: /netlify.toml
+Disallow: /proc/
+Disallow: /.git/
+Disallow: /.env
+Disallow: /.env.*
+Disallow: /admin/
+Disallow: /backup/
+Disallow: /temp/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /appsettings.json
+Disallow: /web.config
+Disallow: /netlify.toml
+Disallow: /proc/
+Disallow: /.git/
+Disallow: /.env
+Disallow: /.env.*
+Disallow: /admin/
+Disallow: /backup/
+Disallow: /temp/
+
+# Block common scrapers and bad bots
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: petalbot
+Disallow: /
+# Additional scanner protection (2026-08-01)
+Disallow: /graphql
+Disallow: /local_settings.py
+Disallow: /actuator/
+Disallow: /api/env
+Disallow: /openapi.json
+Disallow: /config.js
+Disallow: /env.js
+Disallow: /terraform.tfvars
+Disallow: /wp-config.php.bak
+Disallow: /.aws/
+Disallow: /.netrc
+Disallow: /keys.json
+Disallow: /credentials.json
+Disallow: /serviceAccountKey.json
+Disallow: /gcp-credentials.json
+Disallow: /awsconfiguration.json
+Disallow: /amplifyconfiguration.json
+Disallow: /api/.env
+Disallow: /backend/.env
+Disallow: /laravel/.env

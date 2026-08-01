@@ -1,0 +1,135 @@
+<!DOCTYPE html><html lang="zh"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude 3 Opus · 临床决策实测 — 乳腺癌病例</title>
+<meta name="description" content="Anthropic Claude 3 Opus 临床决策测试：乳腺癌术后病例。16项评分 vs 2026 CBCS 指南。外科医生实测。">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tanhaosheng.asia/zh/claude-3-opus-clinical">
+<link rel="icon" href="/assets/favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="alternate" hreflang="en" href="https://tanhaosheng.asia/zh/claude-3-opus-clinical">
+<link rel="alternate" hreflang="zh" href="https://tanhaosheng.asia/zh/claude-3-opus-clinical">
+<link rel="alternate" hreflang="x-default" href="https://tanhaosheng.asia/zh/claude-3-opus-clinical">
+<meta property="og:title" content="Claude 3 Opus · 临床决策实测 — 乳腺癌病例">
+<meta property="og:description" content="Anthropic Claude 3 Opus 临床决策测试：乳腺癌术后病例。16项评分 vs 2026 CBCS 指南。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tanhaosheng.asia/zh/claude-3-opus-clinical">
+<meta property="og:image" content="https://tanhaosheng.asia/assets/og-ai-tools.jpg">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="TODO: Title for claude-3-opus-clinical">
+<meta name="twitter:description" content="TODO: Description for claude-3-opus-clinical page">
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3090420115329103" crossorigin="anonymous"></script>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NE8DYNMNYZ"></script>
+<script>
+(function(){
+  const gaId = "G-NE8DYNMNYZ";
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', gaId);
+})();
+</script>
+<link rel="alternate" type="application/rss+xml" title="AI Tool Stack" href="https://tanhaosheng.asia/feed.xml">
+<style>
+:root{--primary:#6c3ce1;--primary-dark:#4f2db5;--accent:#f59e0b;--bg:#f5f7fa;--text:#1a1a2e;--text-light:#6b7280;--border:#e5e7eb;--card:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);max-width:820px;margin:0 auto;padding:0 20px;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;font-size:19px;line-height:1.8}
+a{color:var(--primary);text-decoration:none}
+h1{color:var(--primary);margin:28px 0 14px;font-size:30px;line-height:1.25}
+h2{color:var(--primary-dark);margin:34px 0 12px;font-size:23px;padding-bottom:6px;border-bottom:2px solid var(--primary)}
+h3{color:var(--primary-dark);margin:22px 0 8px;font-size:18px}
+p{margin-bottom:15px}
+ul,ol{margin:0 0 16px 22px}
+li{margin-bottom:7px}
+table{border-collapse:collapse;width:100%;margin:18px 0;font-size:15px}
+th,td{border:1px solid var(--border);text-align:left;padding:10px 11px}
+th{background:#f3f4f6;font-weight:600}
+tr:nth-child(2n){background:#f9fafb}
+nav{z-index:100;background:linear-gradient(135deg,#6c3ce1 0%,#4f2db5 100%);position:sticky;top:0;box-shadow:0 2px 12px #6c3ce140}
+nav .nav-inner{max-width:900px;margin:0 auto;display:flex;overflow-x:auto}
+nav a{color:#ffffffe6;white-space:nowrap;padding:14px 16px;font-size:15px;font-weight:500;text-decoration:none}
+nav a:hover,nav a.active{color:#fff;background:#ffffff26}
+.site-footer{color:#ffffffb3;text-align:center;background:#1a1a2e;margin-top:60px;padding:36px 0;font-size:14px;line-height:1.7}
+.site-footer a{color:#fffc;margin:0 8px}
+#lang-switcher{position:fixed;top:10px;right:12px;z-index:99999;background:#fff;border:1px solid #d1d5db;border-radius:10px;padding:5px 9px;box-shadow:0 2px 10px rgba(0,0,0,.15);font:600 13px/1.3 system-ui,sans-serif;display:flex;align-items:center;gap:6px}
+#lang-switcher label{font-size:15px;cursor:default}
+#lang-switcher select{border:none;background:transparent;font:600 13px system-ui,sans-serif;cursor:pointer;outline:none;max-width:130px}
+@media (width <= 600px) { body { font-size: 16px; } h1 { font-size: 24px; } }
+</style>
+</head><body>
+<div id="lang-switcher"><label for="lang-select">🌐</label><select id="lang-select"><option value="en" >English</option><option value="zh" selected>中文</option></select></div>
+<nav aria-label="Primary"><div class="nav-inner"><a href="/zh/" class="active">🏠 首页</a>
+<a href="/zh/clinical-benchmark/">📊 评测基准</a>
+<a href="/zh/benchmark-repeats/">🔁 重复性实测</a>
+<a href="/zh/about">关于</a><input id="site-search" type="search" placeholder="Search…" aria-label="Search this site"><div id="search-results" aria-live="polite"></div></div></nav>
+<article>
+<h1>Claude 3 Opus · 临床决策实测 — 乳腺癌病例</h1>
+<p class="subtitle">Anthropic 旗舰模型在乳腺癌术后病例上的表现。数据收集中。</p>
+
+<div class="status-banner" style="background:#fef3c7;border:2px solid #f59e0b;border-radius:12px;padding:16px 20px;margin:20px 0;">
+  <strong>🚧 数据收集中</strong> — Claude 3 Opus 临床评测数据正在收集。页面将随结果更新。
+</div>
+
+<h2>为什么测试 Claude 3 Opus？</h2>
+<p>Claude 3 Opus 是 Anthropic 最强的推理模型。我们在乳腺癌病例上测试它的临床决策能力。</p>
+
+<h2>测试方法</h2>
+<ul>
+  <li><strong>病例：</strong>乳腺癌术后（60岁女性，pT1aN0M0 IA）</li>
+  <li><strong>输入：</strong>门诊病例脱敏截图</li>
+  <li><strong>评分：</strong>16项 rubric vs 2026 CBCS 指南（满分 100）</li>
+  <li><strong>次数：</strong>20 次迭代测稳定性</li>
+</ul>
+
+<h2>结果</h2>
+<p>数据收集完成后将在此发布。</p>
+
+<h2>与其他模型对比</h2>
+<p>Claude 3 Opus 将与 DeepSeek V4、ChatGLM 5.2、Kimi K2.6、豆包进行统一排名对比。</p>
+
+<h2>常见问题</h2>
+<h3>结果什么时候发布？</h3>
+<p>正在收集 20 次运行数据。预计 2026 年 8 月完成。</p>
+
+<h3>Claude 3 Opus 和 GPT-4 谁更强？</h3>
+<p>两者使用相同方法测试，结果将在统一排名中公布。</p>
+
+<div class="byline" style="margin-top:30px;padding-top:20px;border-top:1px solid #e5e7eb;font-size:0.88em;color:#6b7280;">
+  — 谭好升，医学博士 / 副主任医师<br>
+  甲状腺乳腺外科，泰州市人民医院
+</div>
+</article>
+<footer class="site-footer">&copy; 2024-2026 Tan Haosheng · 副主任医师 (Associate Chief Physician) / 医学博士 (MD/PhD) · 甲状腺乳腺外科 (Thyroid &amp; Breast Surgery), 泰州市人民医院 (Taizhou People's Hospital)<br><a href="/">Home</a> · <a href="/about">About</a> · <a href="/privacy">Privacy</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+<div class="page-stats" style="margin-top:10px;font-size:.82em;color:#9ca3af;">📊 Anonymous, privacy-respecting usage analytics (Google Analytics). Open benchmark data on the <a href="/clinical-benchmark/" style="color:#6366f1;text-decoration:none;">Benchmark</a> page.</div>
+ · <a href="/sitemap">Sitemap</a></footer>
+<script id="enhance-js">
+(function(){
+  var s=document.getElementById('site-search');
+  if(!s) return;
+  var box=document.getElementById('search-results');
+  var pf=null, timer=null;
+  function esc(t){return (t||'').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  s.addEventListener('input',function(){
+    var q=s.value.trim();
+    clearTimeout(timer);
+    if(q.length<2){box.style.display='none';return;}
+    timer=setTimeout(function(){
+      if(!pf){pf=import('/pagefind/pagefind.js');}
+      pf.then(function(m){return m.search(q);})
+        .then(function(r){return Promise.all(r.results.slice(0,8).map(function(x){return x.data();}));})
+        .then(function(rows){
+          if(!rows.length){box.innerHTML='<div style="padding:12px;color:#64748b;font-size:14px;">No results.</div>';box.style.display='block';return;}
+          box.innerHTML=rows.map(function(d){
+            return '<a href="'+d.url+'">'+esc(d.meta&&d.meta.title||d.url)+'<div class="ex">'+esc(d.excerpt)+'</div></a><hr>';
+          }).join('');
+          box.style.display='block';
+        }).catch(function(){box.style.display='none';});
+    },180);
+  });
+  document.addEventListener('click',function(e){if(e.target!==s&&!box.contains(e.target))box.style.display='none';});
+})();
+</script>
+</body></html>
