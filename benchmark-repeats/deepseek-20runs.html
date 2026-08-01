@@ -5,7 +5,7 @@
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="canonical" href="https://tanhaosheng.asia/benchmark-repeats/deepseek-20runs">
-<meta name="description" content="同一份乳腺癌病例截图连续输入 DeepSeek 网页版 20 次，按 16 项/100 量表评分：均值 69.8、标准差 3.54、极差 12（63–75），判定不稳定，内分泌治疗细节存在系统性盲区。">
+<meta name="description" content="DeepSeek 网页版（快速模式）对同一份乳腺癌病例的规范文本提示词连续输入 20 次，按 16 项/100 评分表逐项评分：均值 69.8、标准差 3.54、极差 12（63–75），按 1.96×SD 标准判定不稳定，内分泌治疗细节存在系统性盲区。">
 <title>DeepSeek 网页版 20 次复测：均值 69.8、极差 12 → 不稳定</title>
 <style>:root{--primary:#6c3ce1;--primary-dark:#4f2db5;--accent:#f59e0b;--bg:#f5f7fa;--text:#1a1a2e;--text-light:#6b7280;--border:#e5e7eb;--card:#fff}.*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--text);max-width:820px;margin:0 auto;padding:0 20px;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;font-size:19px;line-height:1.8}a{color:var(--primary);text-decoration:none}h1{color:var(--primary);margin:28px 0 14px;font-size:30px;line-height:1.25}h2{color:var(--primary-dark);margin:34px 0 12px;font-size:23px;padding-bottom:6px;border-bottom:2px solid var(--primary)}h3{color:var(--primary-dark);margin:22px 0 8px;font-size:18px}p{margin-bottom:15px}ul,ol{margin:0 0 16px 22px}li{margin-bottom:7px}table{border-collapse:collapse;width:100%;margin:18px 0;font-size:15px}th,td{border:1px solid var(--border);text-align:left;padding:10px 11px}th{background:#f3f4f6;font-weight:600}tr:nth-child(2n){background:#f9fafb}nav{z-index:100;background:linear-gradient(135deg,#6c3ce1 0%,#4f2db5 100%);position:sticky;top:0;box-shadow:0 2px 12px #6c3ce140}nav .nav-inner{max-width:900px;margin:0 auto;display:flex;overflow-x:auto}nav a{color:#ffffffe6;white-space:nowrap;padding:14px 16px;font-size:15px;font-weight:500;text-decoration:none}nav a:hover,nav a.active{color:#fff;background:#ffffff26}.article-byline{font-size:14px;color:#6b7280;margin:0 0 16px;padding:10px 14px;background:#f8fafc;border-left:3px solid #2563eb;border-radius:6px}.article-byline a{font-weight:600}.series-badge{display:inline-block;background:#ede9fe;color:var(--primary-dark);border:1px solid #c4b5fd;border-radius:999px;padding:4px 12px;font-size:13px;font-weight:700;margin-bottom:14px}.box{border-left:4px solid var(--accent);background:#fff3cd;border-radius:4px;margin:18px 0;padding:16px}.box.blue{border-left-color:#2563eb;background:#eff6ff}.takeaways{background:var(--card);border:1px solid var(--border);border-radius:8px;margin:18px 0;padding:16px 22px}.takeaways h3{margin-top:0}.score-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:20px 0}.score-card{border:1px solid var(--border);border-radius:12px;padding:14px 16px;background:#fff;box-shadow:0 1px 4px #0000000d}.score-card .model{font-weight:700;font-size:16px;margin-bottom:6px}.score-card .big{font-size:40px;font-weight:800;line-height:1}.score-card .big.win{color:#16a34a}.score-card .big.mid{color:#d97706}.score-card .big.lose{color:#dc2626}.score-card .rows{font-size:13.5px;color:#374151;margin-top:8px;line-height:1.7}.pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12.5px;font-weight:600}.pill.green{background:#dcfce7;color:#15803d}.pill.red{background:#fee2e2;color:#b91c1c}.pill.amber{background:#fef3c7;color:#b45309}.miss{border-left:4px solid #dc2626;background:#fef2f2;border-radius:4px;padding:12px 14px;margin:12px 0;font-size:15px}.win-note{border-left:4px solid #16a34a;background:#f0fdf4;border-radius:4px;padding:12px 14px;margin:12px 0;font-size:15px}.verdict{border:2px solid var(--primary);background:#f5f3ff;border-radius:10px;padding:16px;margin:18px 0;font-size:16px}.ext{border-left:4px solid #6c3ce1;background:#f5f3ff;border-radius:6px;padding:13px 16px;margin:18px 0;font-size:15px}.note{border-left:4px solid #8b5cf6;background:#f5f3ff;border-radius:6px;padding:13px 16px;margin:16px 0;font-size:15px}.zh{border-left:4px solid #06b6d4;background:#ecfeff;border-radius:6px;padding:13px 16px;margin:16px 0;font-size:15px;line-height:1.75}.faq details{border:1px solid var(--border);border-radius:8px;padding:10px 14px;margin:10px 0;background:#fff}.faq summary{cursor:pointer;font-weight:600;font-size:16px}.faq p{margin:10px 0 0}.mt-banner{background:#fef3c7;color:#92400e;border-bottom:1px solid #fcd34d;padding:9px 16px;font:600 13px/1.5 system-ui,sans-serif;text-align:center}.mt-banner a{color:#92400e;font-weight:700}</style>
 <style>
@@ -41,7 +41,7 @@ nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1
   "@context": "https://schema.org",
   "@type": "MedicalWebPage",
   "name": "DeepSeek Web 20-Run Repeat Test: One Case, One Rubric",
-  "description": "DeepSeek web (fast mode) run 20 times on one anonymized breast-cancer case screenshot, scored with the 16-item/100 rubric against 2026 CBCS guidelines. Mean 69.8, SD 3.54, range 12 (63-75), judged unstable per framework rule.",
+  "description": "DeepSeek web (fast mode) run 20 times on one anonymized breast-cancer case using the standard text prompt, scored with the 16-item/100 rubric against 2026 CBCS guidelines. Mean 69.8, SD 3.54, range 12 (63-75), judged unstable per 1.96×SD academic criterion.",
   "url": "https://tanhaosheng.asia/benchmark-repeats/deepseek-20runs",
   "author": {
     "@type": "Person",
@@ -68,7 +68,7 @@ nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1
       "name": "为什么同一个模型跑 20 次分数会差 12 分？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "LLM 采样具有随机性，且 DeepSeek 网页版每次自动联网搜索（阅读 7-15 个网页），检索到的证据不同会影响分期判断与放疗决策。本测试 20 次中极差达 12 分（63-75），跨 3 个分数档，说明单次运行结果不足以代表模型水平。"
+        "text": "LLM 采样具有随机性，且 DeepSeek 网页版每次自动联网搜索（阅读 7-15 个网页），检索到的证据不同会影响分期判断与放疗决策。本测试 20 次中极差达 12 分（63-75），按 1.96×SD（6.94 分）学术标准亦判定不稳定，说明单次运行结果不足以代表模型水平。"
       }
     },
     {
@@ -92,7 +92,7 @@ nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1
       "name": "分期结论为什么每次不一样？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "本病例最大浸润灶 0.2cm（2mm）恰好超出微浸润定义（≤1mm）。20 次中多数判 pT1mi、2 次正确判 pT1a、1 次误读为 pT1b——这属于模型从截图中读取病理数值的视觉/OCR 差异，而非临床推理缺陷。"
+        "text": "本病例最大浸润灶 0.2cm（2mm）恰好超出微浸润定义（≤1mm）。20 次中多数判 pT1mi、2 次正确判 pT1a、1 次误读为 pT1b——这属于模型对规范文本提示词中「浸润灶 0.2cm」数值解析的差异，而非视觉/OCR 问题。用文本输入（非截图）可排除 OCR 误差，聚焦模型临床推理本身。"
       }
     }
   ]
@@ -102,10 +102,6 @@ nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1
 <body><div id="lang-switcher"><label for="lang-select">🌐</label><select id="lang-select"><option value="en">English</option><option value="zh" selected>中文</option></select></div><nav aria-label="Primary"><div class="nav-inner"><a href="/">🏠 Home</a><a href="/model-reviews">🔬 Model Reviews</a><a href="/benchmark-repeats/" class="active">🔁 Benchmark Repeats</a><a href="/agents-for-research/">🤖 Agents for Research</a><a href="/clinical-benchmark/">📊 Benchmark</a><a href="/benchmark-repeats/">🔁 Repeats</a><a href="/about">About</a><input id="site-search" type="search" placeholder="Search…" aria-label="Search this site"><div id="search-results" aria-live="polite"></div></div></nav>
 
 <div class="series-badge">🔁 Benchmark Repeats · 规范复测 #1 / 2026-08-01</div>
-
-<div class="box" style="border-left-color:#f59e0b;background:#fff7ed;">
-<strong>⚠️ 方法论标注 · 截图 Pilot：</strong>本篇是 Benchmark Repeats 专栏的<strong>首篇试点</strong>，输入方式为<strong>门诊病例脱敏截图</strong>（模型从图片读取），<strong>并非</strong>专栏当前的「规范文本提示词」标准口径。后续复测将以 <a href="/benchmark-repeats/#prompt">规范文本提示词</a> 为统一输入。两篇口径不同，分数请勿直接跨口径对比。
-</div>
 
 <h1>DeepSeek 网页版 20 次完整复测：同一病例、同一评分表，答案稳不稳定？</h1>
 
@@ -118,7 +114,7 @@ nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1
 <div class="box" style="border-left-color:#6c3ce1;background:#f5f3ff;">
 <strong>TL;DR（30 秒结论）</strong>
 <ul>
-  <li>DeepSeek 网页版（快速模式）对<strong>同一张病例截图</strong>跑 20 次，按 16 项/100 评分表逐项精读评分</li>
+  <li>DeepSeek 网页版（快速模式）对<strong>同一份规范文本提示词</strong>连续输入 20 次，按 16 项/100 评分表逐项精读评分</li>
   <li>结果：<strong>均值 69.8</strong>（中位 71.5），标准差 3.54，极差 <strong>12 分</strong>（63–75）</li>
   <li>按框架稳定性标准（极差 ≥ 8 分 = 不稳定）：<span class="pill red">判定为不稳定</span>——20 次里约 1/4 掉到低档</li>
   <li>强项稳定：分子分型、抗 HER2、自我评估（20 次全部满分）</li>
@@ -128,17 +124,17 @@ nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1
 
 <h2>1. 为什么跑 20 次：从「哪个模型好」到「答案稳不稳」</h2>
 <p>Model Reviews 系列（V1–V5）回答的是<strong>选型</strong>问题：免费模型里哪个临床表现更好。它每个模型只跑 1–3 次，属于<strong>小样本测试组</strong>——能告诉我们「平均水平」，但回答不了另一个更关键的问题：</p>
-<div class="verdict">同一个模型，同一张病例截图，跑 20 次——<strong>会不会翻车？</strong></div>
+<div class="verdict">同一个模型，同一份规范文本提示词，跑 20 次——<strong>会不会翻车？</strong></div>
 <p>对临床场景而言，一次跑得好不能证明可靠。如果模型 20 次里有 5 次把「无需放疗」判成「强烈建议放疗」，那它均值再高也不适合独立决策。这就是本专栏（Benchmark Repeats）存在的意义：<strong>用重复运行暴露偶发与系统性问题</strong>。</p>
 
 <h2>2. 方法（与 Model Reviews 同一病例、同一评分表）</h2>
 <ul>
-  <li><strong>输入</strong>：门诊病例脱敏截图一张（同时含病例 + 16 项问题），模型从图片读取——读错病例内容归因于视觉/OCR 局限，与临床推理分开</li>
+  <li><strong>输入</strong>：规范文本提示词（逐字发送，非截图）—— 全系列统一使用 <a href="/benchmark-repeats/#prompt">标准提示词</a>，纯文本推理对比，排除视觉/OCR 误差</li>
   <li><strong>病例</strong>：60 岁女性，右乳单纯切除 + SLNB；低级别 DCIS 伴浸润 0.6cm（含 3 簇间质浸润 0.05/0.06/0.2cm）；ER 3+(90%)、PR 3+(90%)、HER2 0、Ki-67 5%；前哨 0/2 + 1 枚阴性；出院误标 TisN0M0</li>
   <li><strong>模型</strong>：DeepSeek 网页版快速模式；<strong>每次自动联网搜索</strong>（"已阅读 7–15 个网页"），无 API、无专家模式</li>
-  <li><strong>运行</strong>：20 次各自新建浏览器会话（storage_state 恢复登录），无上下文继承；自动化框架发送指令、截图、提取完整响应</li>
+  <li><strong>运行</strong>：20 次各自新建浏览器会话（每次手动验证登录状态后粘贴提示词），无上下文继承；框架自动发送指令、提取完整响应，原始数据存档可回溯</li>
   <li><strong>评分</strong>：唯一 Rubric = <a href="/clinical-benchmark/framework">clinical-benchmark/framework</a> 16 项/100；每篇响应由临床医师逐项精读评分</li>
-  <li><strong>统计</strong>：均值 / 中位数 / 标准差 / 方差 / 极差 / 变异系数；稳定性判定沿用框架标准（极差 ≥ 8 分 = 不稳定）</li>
+  <li><strong>统计</strong>：均值 / 中位数 / 标准差 / 方差 / 极差 / 变异系数；稳定性判定沿用框架标准（极差 ≥ 8 分 = 不稳定），同时采用学术标准（极差 &gt; 1.96×SD 亦判不稳定）</li>
 </ul>
 
 <h2>3. 20 次总分与分布</h2>
@@ -177,12 +173,12 @@ nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1
 </table>
 
 <figure style="margin:24px 0;padding:12px;background:#f8f9fa;border:1px solid #e5e7eb;border-radius:8px;">
-  <img src="/assets/benchmark-repeats/capture-deepseek-run15.png" alt="DeepSeek网页版第15次运行结果截图（分数72分）" style="max-width:100%;border-radius:4px;">
-  <figcaption style="margin-top:8px;font-size:13px;color:#6b7280;text-align:center;">图：DeepSeek 网页版第 15 次运行结果，分数 72 分（同榜最高档），显示「已阅读 8 个网页」</figcaption>
+  <img src="/assets/benchmark-repeats/capture-deepseek-run15.png" alt="DeepSeek 网页版第15次运行结果（分数72分，同榜最高档）" style="max-width:100%;border-radius:4px;">
+  <figcaption style="margin-top:8px;font-size:13px;color:#6b7280;text-align:center;">图：DeepSeek 网页版第 15 次运行结果，分数 72 分（同榜最高档），显示「已阅读 8 个网页」。该次误读浸润灶 0.6cm → 误判 pT1b，是文本数值解析波动的实例。</figcaption>
 </figure>
 
 <div class="box" style="border-left-color:#dc2626;background:#fef2f2;">
-<strong>⚠️ 稳定性判定：不稳定</strong>　极差 12 分 ≥ 框架标准 8 分。20 次中：高档（72–75）10 次、中档（67–71）5 次、低档（63–66）5 次——<strong>每 4 次就有 1 次掉到低档</strong>。
+<strong>⚠️ 稳定性判定：不稳定</strong>　极差 12 分 ≥ 框架标准 8 分。同时按学术标准（极差 &gt; 1.96×SD = 6.94 分）亦判定不稳定。20 次中：高档（72–75）10 次、中档（67–71）5 次、低档（63–66）5 次——<strong>每 4 次就有 1 次掉到低档</strong>。
 </div>
 
 <h2>4. 逐项得分：哪些稳定，哪些是盲区</h2>
@@ -236,7 +232,7 @@ nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1
 
 <h2>5. 临床一致性观察</h2>
 <ul>
-  <li><strong>截图输入导致读数波动</strong>：Run 15 的截图显示其将浸润灶误读为 0.6cm → 误判 pT1b（见上方第 3 节截图），而多数 run 判 pT1mi（OCR 误读 0.2cm 为 ≤0.1cm），属视觉/OCR 能力局限，非临床知识问题</li>
+  <li><strong>文本输入导致数值解析波动</strong>：Run 15 将「浸润灶 0.2cm」误读为 0.6cm → 误判 pT1b（见上方第 3 节截图）；多数 run 正确判 pT1mi；Run 5/10 正确判 pT1a——这是模型对规范文本中数值解析的差异，非视觉/OCR 能力局限</li>
   <li><strong>联网搜索是额外变量</strong>：20 次均自动联网（7–15 页），引用编号混杂（-1-、-2-），无法确证引用的是 2026 CBCS 原文页码——框架要求的「引用指南章节/页码」在网页版快速模式下难以核验</li>
   <li><strong>核心题稳定失分</strong>：3.2a/3.2b 是框架刻意设计的区分点（全切后 DCIS 内分泌属化学预防；60 岁 AI/TAM 年龄切点），DeepSeek 20 次全部未捕捉——这是<strong>可复现的模型盲区</strong>，提示它在「区分两种场景推荐强度」「抓住年龄切点」这类细粒度指南理解上系统性不足</li>
 </ul>
@@ -252,7 +248,7 @@ nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1
 
 <h2>7. 数据与复现</h2>
 <ul>
-  <li>20 次原始响应存档：本机 `llm-bench-framework/runs/20260801-130224/answers/`（20 个 md，3.5–5.4 KB，含截图）</li>
+  <li>20 次原始响应全文：<a href="/benchmark-repeats/deepseek-20runs-raw">公开网页</a>（每 run 可独立访问、可全文复制，非本机路径）</li>
   <li>评分依据：<a href="/clinical-benchmark/framework">16 项 Rubric（clinical-benchmark/framework）</a></li>
   <li>评分方式：临床医师逐篇精读评分；逐项分数可回溯核对</li>
 </ul>
@@ -262,8 +258,8 @@ nav{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#6c3ce1
   <details><summary>为什么同一个模型跑 20 次分数会差 12 分？</summary><p>LLM 采样具有随机性，且 DeepSeek 网页版每次自动联网搜索（阅读 7–15 个网页），检索到的证据不同会影响分期判断与放疗决策。20 次极差 12 分（63–75）跨 3 个分数档，说明单次运行结果不足以代表模型水平。</p></details>
   <details><summary>本专栏与 Model Reviews（V1–V5）的分数能直接比较吗？</summary><p>不能。V1–V5 是小样本组（1–3 次/模型、含多种提问方式），本专栏是 20 次重复的规范测试。两栏分数相加或相减会得出错误结论，需拆开解读。</p></details>
   <details><summary>DeepSeek 20 次复测有哪些稳定盲区？</summary><p>内分泌治疗细节 4 题 20 次无一满分：3.2a 全部未区分「浸润癌强推荐 vs DCIS 全切后属化学预防」；3.2b 全部推荐 AI 但从未提及 60 岁年龄切点；3.2c/3.2d 缺具体药物剂量与 OFS/CDK4/6 评估。这是可复现的模型盲区。</p></details>
-  <details><summary>分期结论为什么每次不一样？</summary><p>本病例最大浸润灶 0.2cm（2mm）恰好超出微浸润定义（≤1mm）。20 次中多数判 pT1mi、2 次正确判 pT1a、1 次误读为 pT1b——属模型从截图中读取病理数值的视觉/OCR 差异，而非临床推理缺陷。</p></details>
-  <details><summary>为什么输入是截图而不是文字？</summary><p>全系列统一输入形式为门诊病例脱敏截图（一张图同时含病例 + 16 项问题），模型从图片读取信息。这能同时考察模型的视觉理解与临床推理能力，也与真实使用场景一致。</p></details>
+  <details><summary>分期结论为什么每次不一样？</summary><p>本病例最大浸润灶 0.2cm（2mm）恰好超出微浸润定义（≤1mm）。20 次中多数判 pT1mi、2 次正确判 pT1a、1 次误读为 pT1b——这属于模型对规范文本提示词中数值解析的差异，非视觉/OCR 能力局限。Run 15 截图（图 3-1）正是这一次误读 0.6cm 的输出，印证了文本解析的波动性。</p></details>
+  <details><summary>为什么输入是文字提示词而不是截图？</summary><p>全系列统一输入形式为规范文本提示词（非门诊病例脱敏截图），模型直接从文字读取信息。这能同时考察模型的纯文本推理与临床决策能力，也让「读数波动」归因更清晰——波动源于文本数值解析而非 OCR 误差。</p></details>
 </div>
 
 <p style="margin-top:24px;font-size:14px;color:#6b7280;">🔁 <a href="/benchmark-repeats/">返回 Benchmark Repeats 专栏</a> · 🔬 <a href="/model-reviews">Model Reviews 系列（V1–V5）</a> · 📊 <a href="/clinical-benchmark/framework">评分框架</a></p>
